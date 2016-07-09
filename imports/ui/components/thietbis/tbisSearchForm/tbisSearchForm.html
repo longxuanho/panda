@@ -1,0 +1,12 @@
+<form ng-submit="tbisSearchForm.submit()" layout="row" layout-padding>
+    <div flex>
+        <input class="k-textbox" style="width:100%" type="text" ng-model="tbisSearchForm.searchText"/>
+    </div>
+    <div flex="none">
+        <md-button class="md-icon-button" aria-label="Tìm kiếm" ng-click="tbisSearchForm.submit()">
+            <md-icon md-svg-icon="img/icons/common/search.svg" ng-class="{'md-accent': tbisSearchForm.settings.searchText.length}"></md-icon>
+        </md-button>
+    </div>
+</form>
+
+

@@ -1,0 +1,47 @@
+<md-content layout="column">
+    <tbis-utils-bar></tbis-utils-bar>
+    <div>
+        <tbis-search-form ng-hide="tbisList.settings.searchFilterMode=='filter'"></tbis-search-form>
+        <tbis-filter-form ng-hide="tbisList.settings.searchFilterMode=='search'"></tbis-filter-form>
+        <tbis-display-list-view thietbis="tbisList.thietbis"></tbis-display-list-view>
+        <div layout="column" layout-padding>
+
+            <!--Them thiet bi moi-->
+            <div layout="column">
+            <pre>
+                {{tbisList.settings |json}}
+            </pre>
+                <md-content>
+                    <md-input-container>
+                        <label>
+                            Mã thiết bị:
+                        </label>
+                        <input type="text" ng-model="tbisList.newThietBi.ma_thiet_bi.keyId"/>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>
+                            Phân loại:
+                        </label>
+                        <input type="text" ng-model="tbisList.newThietBi.phan_loai.nhom"/>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>
+                            Trạng thái:
+                        </label>
+                        <input type="text" ng-model="tbisList.newThietBi.trang_thai"/>
+                    </md-input-container>
+                    <div flex>
+                        <md-checkbox ng-model="tbisList.newThietBi.isActive" aria-label="Is Active?">
+                            Is Active?
+                        </md-checkbox>
+                    </div>
+                    <div flex>
+                        <md-button ng-click="tbisList.submit()" class="md-raised">Thêm mới!</md-button>
+                    </div>
+                </md-content>
+            </div>
+        </div>
+    </div>
+</md-content>
+<tbis-list-fab-menu></tbis-list-fab-menu>
+

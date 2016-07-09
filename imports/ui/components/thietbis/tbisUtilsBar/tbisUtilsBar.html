@@ -1,0 +1,58 @@
+<md-toolbar class="md-hue-2">
+    <div class="md-toolbar-tools">
+        <!--Category-->
+        <md-menu>
+            <md-button aria-label="Chọn bộ lọc thiết bị" class="md-icon-button"
+                       ng-click="tbisUtilsBar.openFilterMenu($mdOpenMenu, $event)">
+                <md-icon md-menu-origin md-svg-icon="{{tbisUtilsBar.utilsBarIconsOptions.categories[tbisUtilsBar.settings.category]}}"></md-icon>
+            </md-button>
+            <md-menu-content width="4">
+                <md-menu-item ng-repeat="item in tbisUtilsBar.categoryOptions">
+                    <md-button ng-click="tbisUtilsBar.setCategory(item.value)">
+                        <md-icon md-svg-icon="{{item.icon}}" ng-class="{'md-accent': item.value==tbisUtilsBar.settings.category}" md-menu-align-target></md-icon>
+                        {{item.text}}
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+        <h2>
+            <span>{{tbisUtilsBar.settings.category}}</span>
+        </h2>
+
+        <span flex></span>
+
+        <!--View Mode-->
+        <md-menu>
+            <md-button aria-label="Chọn chế độ xem" class="md-icon-button"
+                       ng-click="tbisUtilsBar.openFilterMenu($mdOpenMenu, $event)">
+                <md-icon md-menu-origin md-svg-icon="{{tbisUtilsBar.utilsBarIconsOptions.viewMode[tbisUtilsBar.settings.viewMode]}}"></md-icon>
+            </md-button>
+            <md-menu-content width="4">
+                <md-menu-item ng-repeat="item in tbisUtilsBar.viewModeOptions">
+                    <md-button ng-click="tbisUtilsBar.setViewMode(item.value)">
+                        <md-icon ng-class="{'md-accent': item.value==tbisUtilsBar.settings.viewMode}" md-svg-icon="{{item.icon}}" md-menu-align-target></md-icon>
+                        {{item.text}}
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+        <!--Search / Filter Select Mode-->
+        <md-menu>
+            <md-button aria-label="Chọn chế độ tìm kiếm / lọc" class="md-icon-button"
+                       ng-click="tbisUtilsBar.openFilterMenu($mdOpenMenu, $event)">
+                <md-icon md-menu-origin md-svg-icon="{{tbisUtilsBar.utilsBarIconsOptions.searchFilterMode[tbisUtilsBar.settings.searchFilterMode]}}"></md-icon>
+            </md-button>
+            <md-menu-content width="4">
+                <md-menu-item ng-repeat="item in tbisUtilsBar.searchFilterOptions">
+                    <md-button ng-click="tbisUtilsBar.setSearchFilterMode(item.value)">
+                        <md-icon ng-class="{'md-accent': item.value==tbisUtilsBar.settings.searchFilterMode}" md-svg-icon="{{item.icon}}" md-menu-align-target></md-icon>
+                        {{item.text}}
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+        <md-button class="md-icon-button" aria-label="Cài đặt thanh tiện ích">
+            <md-icon md-svg-icon="img/icons/common/settings.svg"></md-icon>
+        </md-button>
+    </div>
+</md-toolbar>
