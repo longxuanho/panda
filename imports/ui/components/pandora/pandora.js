@@ -2,9 +2,11 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import ngAria from 'angular-aria';
 import ngAnimate from 'angular-animate';
+import ngMessages from 'angular-messages';
 import ngMaterial from 'angular-material';
 import uiRouter from 'angular-ui-router';
 
+import 'angular-material/angular-material.min.css';
 import 'angular-google-maps';
 
 import template from './pandora.html';
@@ -24,10 +26,10 @@ export default angular.module(name, [
     angularMeteor,
     ngAria,
     ngAnimate,
+    ngMessages,
     ngMaterial,
     uiRouter,
     Navigation,
-    // ThietBisList,
     TbisList,
     PartiesList,
     PartyDetails,

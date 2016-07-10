@@ -1,0 +1,73 @@
+<md-dialog aria-label="Tạo mới" ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Tạo mới thiết bị</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="tbisListAddNewModal.close()">
+                    <md-icon md-svg-src="img/icons/common/close.svg" aria-label="Đóng hộp thoại"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <!-- <div class="md-dialog-content"> -->
+                <p class="md-subhead" style="padding: 16px 16px 0px 16px;">Vui lòng điền thông tin vào mẫu phiếu dưới đây:</p>
+                <form name="tbisListAddNewModal.addNewThietBiForm">
+	                <md-list>
+	                	<md-subheader class="md-no-sticky">Mã thiết bị</md-subheader>
+						<md-list-item>
+							<md-input-container class="md-block">
+								<label>Mã quản lý</label>
+								<input ng-model="tbisListAddNewModal.newThietBi.ma_thiet_bi.keyId" required md-no-asterisk name="ma_tb">
+								<div ng-messages="tbisListAddNewModal.addNewThietBiForm.ma_tb.$error">
+									<div ng-message="required">Thông tin bắt buộc.</div>
+								</div>								
+							</md-input-container>
+							<md-input-container class="md-block">
+								<label>Mã TopX</label>
+								<input ng-model="tbisListAddNewModal.newThietBi.ma_thiet_bi.topX" name="ma_topX">							
+							</md-input-container>
+							<md-input-container class="md-block">
+								<label>Mã Maximo</label>
+								<input ng-model="tbisListAddNewModal.newThietBi.ma_thiet_bi.maximo" name="ma_maximo">							
+							</md-input-container>
+						</md-list-item>
+						<md-subheader class="md-no-sticky">Phân loại</md-subheader>
+						<md-list-item>
+							<md-input-container class="md-block">
+								<label>Nhóm</label>
+								<input ng-model="tbisListAddNewModal.newThietBi.phan_loai.nhom" required md-no-asterisk name="phan_loai_nhom">
+								<div ng-messages="tbisListAddNewModal.addNewThietBiForm.phan_loai_nhom.$error">
+									<div ng-message="required">Thông tin bắt buộc.</div>
+								</div>
+							</md-input-container>
+							<md-input-container class="md-block">
+								<label>Chủng loại</label>
+								<input ng-model="tbisListAddNewModal.newThietBi.phan_loai.chung_loai" required md-no-asterisk name="phan_loai_chung_loai">
+								<div ng-messages="tbisListAddNewModal.addNewThietBiForm.phan_loai_chung_loai.$error">
+									<div ng-message="required">Thông tin bắt buộc.</div>
+								</div>
+							</md-input-container>
+							<md-input-container class="md-block">
+								<label>Loại</label>
+								<input ng-model="tbisListAddNewModal.newThietBi.phan_loai.loai" required md-no-asterisk name="phan_loai_loai">
+								<div ng-messages="tbisListAddNewModal.addNewThietBiForm.phan_loai_loai.$error">
+									<div ng-message="required">Thông tin bắt buộc.</div>
+								</div>
+							</md-input-container>
+						</md-list-item>
+	                </md-list>
+                </form>
+                
+                
+                <p>
+                    It originated in Indian subcontinent (present day India and Pakistan) and Burma. It is the national fruit of India, Pakistan, and the Philippines, and the national tree of Bangladesh. In several cultures, its fruit and leaves are ritually used as floral decorations at weddings, public celebrations, and religious ceremonies.
+                </p>
+            <!-- </div> -->
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-click="partyAddModal.close()" md-autofocus>Đóng</md-button>
+            <span flex></span>
+            <md-button></md-button>
+            <md-button style="margin-right:20px;">Tạo mới</md-button>
+        </md-dialog-actions>
+</md-dialog>

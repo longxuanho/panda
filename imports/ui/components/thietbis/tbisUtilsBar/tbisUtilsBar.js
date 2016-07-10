@@ -25,10 +25,10 @@ class TbisUtilsBar {
                 utilsBarElem = $('tbis-utils-bar');
 
             if ($(window).scrollTop() > 64)
-                utilsBarElem.addClass("sky-sticky");
+                utilsBarElem.addClass("sky-sticky md-whiteframe-2dp");
             else {
                 if (navBarElem.offset().top == utilsBarElem.offset().top)
-                    utilsBarElem.removeClass("sky-sticky");
+                    utilsBarElem.removeClass("sky-sticky md-whiteframe-2dp");
             }
         })
     }
