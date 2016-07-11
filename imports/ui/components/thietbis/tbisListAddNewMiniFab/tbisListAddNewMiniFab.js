@@ -20,6 +20,8 @@ class tbisListAddNewMiniFab {
 
         this.$mdDialog = $mdDialog;
         this.$mdMedia = $mdMedia;
+
+
     }
 
     open(event) {
@@ -29,6 +31,7 @@ class tbisListAddNewMiniFab {
                        tbisNguonGocDataService, tbisDiaDiemDataService, tbisPhanQuyenDataService,
                        notificationService) {
                 'ngInject';
+
 
                 this.selectOptions = tbisPhanLoaiDataService.getSelectOptions();
                 _.extend(this.selectOptions, tbisNguonGocDataService.getSelectOptions());

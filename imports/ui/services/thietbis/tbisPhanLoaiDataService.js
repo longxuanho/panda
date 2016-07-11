@@ -2,27 +2,37 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import _ from 'underscore';
 
-// import { ThietBis } from '../../../api/tbis/thietbis/thietbis';
+import { TbisHelpers } from '../../../api/thietbis/tbisHelpers';
 
 class TbisPhanLoaiDataService {
 
     constructor() {
         'ngInject';
+        
 
         // Chuẩn bị đặt helper() tại đây để truy vấn thời gian thực
-        this.nhoms = queryNhoms();
+        // this.nhoms = queryNhoms();
         this.chungloais = queryChungLoais();
         this.loais = queryLoais();
 
         this.options = {
-            nhoms: buildNhomOptions(this.nhoms),
+            // nhoms: buildNhomOptions(this.nhoms),
             chungloais: buildChungLoaiOptions(this.chungloais),
             loais: buildLoaiOptions(this.loais)
-        }
+        };
     }
 
     getSelectOptions() {
         return this.options;
+    }
+    
+    queryTest() {
+        return TbisHelpers.find({
+            subject: 'phanloais',
+            category: 'nhoms'
+        }, {
+            sort: { order: 1 }
+        }).fetch()
     }
 
     getNhoms() {
@@ -49,28 +59,38 @@ export default angular.module(name, [
 
 function queryNhoms() {
     "use strict";
-    return [{
-        _id: 'keyId_tbis_TBN',
-        ten: 'Thiết bị nâng',
-        order: 100
+    return TbisHelpers.find({
+        subject: 'phanloais',
+        category: 'nhoms'
     }, {
-        _id: 'keyId_tbis_XMY',
-        ten: 'Xe máy',
-        order: 200
-    }, {
-        _id: 'keyId_tbis_TTH',
-        ten: 'Tàu thuyền',
-        order: 300
-    }, {
-        _id: 'keyId_tbis_TRN',
-        ten: 'Trạm nguồn',
-        order: 400
-    }, {
-        _id: 'keyId_tbis_TLY',
-        ten: 'Thanh lý',
-        order: 500
-    }];
+        sort: { order: 1 }
+    }).fetch();
 }
+//
+// function queryNhoms() {
+//     "use strict";
+//     return [{
+//         _id: 'keyId_tbis_TBN',
+//         ten: 'Thiết bị nâng',
+//         order: 100
+//     }, {
+//         _id: 'keyId_tbis_XMY',
+//         ten: 'Xe máy',
+//         order: 200
+//     }, {
+//         _id: 'keyId_tbis_TTH',
+//         ten: 'Tàu thuyền',
+//         order: 300
+//     }, {
+//         _id: 'keyId_tbis_TRN',
+//         ten: 'Trạm nguồn',
+//         order: 400
+//     }, {
+//         _id: 'keyId_tbis_TLY',
+//         ten: 'Thanh lý',
+//         order: 500
+//     }];
+// }
 
 function queryChungLoais() {
     "use strict";

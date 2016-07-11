@@ -17,8 +17,11 @@ import { name as TbisFilterForm } from '../tbisFilterForm/tbisFilterForm';
 import { name as TbisDisplayListView } from '../tbisDisplayListView/tbisDisplayListView';
 import { name as TbisListFabMenu } from '../tbisListFabMenu/tbisListFabMenu';
 
+import { name as TbisPhanLoaiDataSerivce } from '../../../services/thietbis/tbisPhanLoaiDataService';
+
 class TbisList {
-    constructor($scope, $reactive, tbisListPageSettingsService, tbisDataService) {
+    constructor($scope, $reactive, tbisListPageSettingsService, tbisDataService,
+                tbisPhanLoaiDataService) {
         'ngInject';
 
         $reactive(this).attach($scope);
@@ -53,22 +56,27 @@ class TbisList {
         //     this.getReactively('searchText')
         // ]);
         
-        // this.helpers({
-        //     thietbis() {
-        //         return Tbis.find({}, {
-        //             sort : this.getReactively('sort')
-        //         });
-        //     },
-        //     thietbisCount() {
-        //         return Counts.get('numberOfTbis');
-        //     },
-        //     isLoggedIn() {
-        //         return !!Meteor.userId();
-        //     },
-        //     currentUserId() {
-        //         return Meteor.userId();
-        //     }
-        // });
+        this.subscribe('tbishelpers');
+        
+        this.helpers({
+            tbishelpers() {
+                console.log('query test... ', tbisPhanLoaiDataService.queryTest());
+            }
+            // thietbis() {
+            //     return Tbis.find({}, {
+            //         sort : this.getReactively('sort')
+            //     });
+            // },
+            // thietbisCount() {
+            //     return Counts.get('numberOfTbis');
+            // },
+            // isLoggedIn() {
+            //     return !!Meteor.userId();
+            // },
+            // currentUserId() {
+            //     return Meteor.userId();
+            // }
+        });
     }
 
     pageChanged(newPage) {
@@ -104,7 +112,9 @@ export default angular.module(name, [
     TbisDisplayListView,
     TbisListPageSettingsService,
     TbisDataService,
-    TbisListFabMenu
+    TbisListFabMenu,
+
+    TbisPhanLoaiDataSerivce
 ]).component(name, {
     template,
     controllerAs: name,
