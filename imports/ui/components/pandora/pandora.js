@@ -11,7 +11,6 @@ import 'angular-google-maps';
 
 import template from './pandora.html';
 import { name as Navigation } from '../layout/navigation/navigation';
-// import { name as ThietBisList } from '../tbis/thietBisList/thietBisList';
 import { name as PartiesList } from '../demo/partiesList/partiesList';
 import { name as PartyDetails } from '../demo/partyDetails/partyDetails';
 import { name as TbisList } from '../thietbis/tbisList/tbisList';

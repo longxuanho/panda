@@ -9,21 +9,23 @@ Schema.ThietBi = new SimpleSchema({
     },
         'ma_thiet_bi.keyId': {
             type: String,
-            max: 30
+            index: true,
+            unique: true,
+            max: 50
         },
-        'ma_thiet_bi.topoVN': {
+        'ma_thiet_bi.ref': {
             type: String,
-            max: 30,
+            max: 50,
             optional: true
         },
         'ma_thiet_bi.topX': {
             type: String,
-            max: 30,
+            max: 50,
             optional: true
         },
         'ma_thiet_bi.maximo': {
             type: String,
-            max: 30,
+            max: 50,
             optional: true
         },
     phan_loai: {
@@ -36,16 +38,93 @@ Schema.ThietBi = new SimpleSchema({
         },
         'phan_loai.nhom': {
             type: String,
-            allowedValues: ['Thiết bị nâng', 'Xe máy', 'Tàu thuyền', 'Trạm nguồn', 'Thanh lý', 'Khác']
+            allowedValues: ['Thiết bị nâng', 'Xe máy', 'Tàu thuyền', 'Trạm nguồn', 'Thanh lý']
+
         },
         'phan_loai.chung_loai': {
-            type: String,
-            max: 30,
-            optional: true
+            type: String
         },
         'phan_loai.loai': {
+            type: String
+        },
+    trang_thai: {
+        type: String,
+        defaultValue: 'Đang hoạt động',
+        allowedValues: ['Đang hoạt động', 'Niêm cất', 'Chờ thanh lý', 'Ngừng hoạt động']
+    },
+    nguon_goc: {
+        type: Object
+    },
+        'nguon_goc.hang_san_xuat': {
+            type: Object
+        },
+            'nguon_goc.hang_san_xuat._id': {
+                type: String
+            },
+            'nguon_goc.hang_san_xuat.ma': {
+                type: String
+            },
+            'nguon_goc.hang_san_xuat.ten': {
+                type: String
+            },
+        'nguon_goc.model': {
             type: String,
-            max: 30,
+            optional: true
+        },
+        'nguon_goc.nam_san_xuat': {
+            type: Number,
+            optional: true
+        },
+        'nguon_goc.noi_lap_rap': {
+            type: String,
+            optional: true
+        },
+        'nguon_goc.vendor': {
+            type: Object,
+            optional: true
+        },
+            'nguon_goc.vendor._id': {
+                type: String
+            },
+            'nguon_goc.vendor.ten': {
+                type: String
+            },
+            'nguon_goc.vendor.ma': {
+                type: String
+            },
+    dia_diem: {
+        type: Object
+    },
+        'dia_diem.quoc_gia': {
+            type: String,
+            defaultValue: 'Việt Nam'
+        },
+        'dia_diem.mien': {
+            type: String,
+            defaultValue: 'Nam'
+        },
+        'dia_diem.dia_phuong': {
+            type: String,
+            optional: true
+        },
+        'dia_diem.khu_vuc': {
+            type: Object
+        },
+            'dia_diem.khu_vuc._id': {
+                type: String
+            },
+            'dia_diem.khu_vuc.ten': {
+                type: String
+            },
+            'dia_diem.khu_vuc.ma': {
+                type: String
+            },
+        'dia_diem.terminal': {
+            type: String,
+            optional: true
+        },
+        'dia_diem.line': {
+            type: String,
             optional: true
         },
     phan_quyen: {
@@ -54,61 +133,122 @@ Schema.ThietBi = new SimpleSchema({
         'phan_quyen.quan_ly': {
             type: Object
         },
-            'phan_quyen.quan_ly.keyId': {
+            'phan_quyen.quan_ly._id': {
                 type: String
             },
-            'phan_quyen.quan_ly.ma_don_vi': {
+            'phan_quyen.quan_ly.ma': {
                 type: String
             },
-            'phan_quyen.quan_ly.ten_don_vi': {
+            'phan_quyen.quan_ly.ten': {
                 type: String
             },
-    hang_san_xuat: {
+        'phan_quyen.so_huu': {
+            type: Object
+        },
+            'phan_quyen.so_huu._id': {
+                type: String
+            },
+            'phan_quyen.so_huu.ma': {
+                type: String
+            },
+            'phan_quyen.so_huu.ten': {
+                type: String
+            },
+        'phan_quyen.van_hanh': {
+            type: Object,
+            optional: true
+        },
+            'phan_quyen.van_hanh._id': {
+                type: String
+            },
+            'phan_quyen.van_hanh.ten': {
+                type: String
+            },
+            'phan_quyen.van_hanh.ma': {
+                type: String
+            },
+        'phan_quyen.doi_van_hanh': {
+            type: Object,
+            optional: true
+        },
+            'phan_quyen.doi_van_hanh._id': {
+                type: String
+            },
+            'phan_quyen.doi_van_hanh.ten': {
+                type: String
+            },
+            'phan_quyen.doi_van_hanh.ma': {
+                type: String
+            },
+    ho_so: {
         type: Object
     },
-        'hang_san_xuat.keyId': {
-            type: String
+        'ho_so.nam_su_dung': {
+            type: Number,
+            optional: true
         },
-        'hang_san_xuat.ma_hang': {
-            type: String
-        },
-        'hang_san_xuat.ten_hang': {
-            type: String
-        },
-    vi_tri: {
-        type: Object
-    },
-        'vi_tri.quoc_gia': {
-            type: String,
-            defaultValue: 'Việt Nam'
-        },
-        'vi_tri.mien': {
-            type: String
-        },
-        'vi_tri.dia_phuong': {
+        'ho_so.so_dang_ky': {
             type: String,
             optional: true
         },
-        'vi_tri.khu_vuc': {
-            type: Object
+        'ho_so.so_khung': {
+            type: String,
+            optional: true
         },
-            'vi_tri.khu_vuc.keyId': {
-                type: String
-            },
-            'vi_tri.khu_vuc.ma_khu_vuc': {
-                type: String
-            },
-            'vi_tri.khu_vuc.ten_khu_vuc': {
-                type: String
-            },
-    trang_thai: {
+        'ho_so.so_may': {
+            type: String,
+            optional: true
+        },
+        'ho_so.bien_so': {
+            type: String,
+            optional: true
+        },
+        'ho_so.so_giay_dang_kiem': {
+            type: String,
+            optional: true
+        },
+        'ho_so.xuat_xu': {
+            type: String,
+            optional: true
+        },
+    bao_hanh: {
+        type: Object
+    },
+        'bao_hanh.isThongTinBaoHanh': {
+            type: Boolean,
+            defaultValue: false
+        },
+        'bao_hanh.ngay_bat_dau': {
+            type: Date,
+            optional: true
+        },
+        'bao_hanh.ngay_ket_thuc': {
+            type: Date,
+            optional: true
+        },
+        'bao_hanh.thoi_gian_bao_hanh': {
+            type: Number,
+            optional: true
+        },
+    tags: {
+        type: [String],
+        defaultValue: []
+    },
+    ghi_chu: {
         type: String,
-        defaultValue: 'Đang hoạt động',
-        allowedValues: ['Đang hoạt động', 'Niêm cất', 'Chờ thanh lý', 'Ngừng hoạt động']
+        optional: true
+    },
+    mo_ta: {
+        type: String,
+        optional: true
     },
     isActive: {
         type: Boolean,
         defaultValue: true
+    },
+    metadata: {
+        type: Object,
+        blackbox: true
     }
 });
 

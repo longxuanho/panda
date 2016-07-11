@@ -14,8 +14,8 @@
     <orderEntry type="library" name="angular-ui-router-DefinitelyTyped" level="project" />
     <orderEntry type="library" name="angular-meteor-DefinitelyTyped" level="project" />
     <orderEntry type="library" name="pandora node_modules" level="project" />
-    <orderEntry type="library" name="meteor-packages-auto-import-browser" level="project" />
-    <orderEntry type="library" name="meteor-packages-auto-import-npm" level="project" />
     <orderEntry type="library" name="angular-material-DefinitelyTyped" level="project" />
+    <orderEntry type="library" name="meteor-packages-auto-import-npm" level="project" />
+    <orderEntry type="library" name="meteor-packages-auto-import-browser" level="project" />
   </component>
 </module>
