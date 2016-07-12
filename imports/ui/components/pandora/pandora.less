@@ -1,7 +1,35 @@
+@import "../demo/partiesList/partiesList.less";
+@import "../demo/partyDetails/partyDetails.less";
+@import "../thietbis/tbisList/tbisList.less";
+
 pandora {
   display: block;
 }
 
-@import "../demo/partiesList/partiesList.less";
-@import "../demo/partyDetails/partyDetails.less";
-@import "../thietbis/tbisList/tbisList.less";
+.k-multiselect {
+  border-width: 0 0 1px;
+  &.k-header {
+    &.k-state-hover {
+      border-color: #E1E1E1;
+    }
+    border-color: #E1E1E1;
+  }
+  .k-input {
+    color: rgba(0,0,0,0.38);
+    text-align: start;
+    text-indent: 0;
+    margin: 0;
+    padding: 2px 2px 1px;
+    line-height: 26px;
+    height: 30px;
+  }
+
+  .k-button {
+    text-transform: none;
+    font-weight: 400;
+  }
+}
+
+.k-popup .k-list .k-item {
+  font-weight: 400;
+}

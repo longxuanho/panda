@@ -2,9 +2,8 @@ import { Meteor } from 'meteor/meteor';
 import { TbisHelpers } from '../../api/thietbis/tbisHelpers';
 
 Meteor.startup(() => {
-    console.log('start up server... ', TbisHelpers.find().count());
-
-    console.log('test passed... ');
+    console.log('start up server... ', TbisHelpers.find().count(), ' tbisHelper items already seeded!');
+    
     if (TbisHelpers.find().count() === 0) {
 
         // Subject: DiaDiems
@@ -1164,7 +1163,7 @@ Meteor.startup(() => {
                 }
             }, {
                 _id: 'keyId_tbis_XMY_ROMOOC',
-                ten: 'Rơ móoc',
+                ten: 'Rơ moóc',
                 order: 200,
                 nhom: {
                     _id: 'keyId_tbis_XMY',
@@ -1432,27 +1431,27 @@ Meteor.startup(() => {
                 }
             }, {
                 _id: 'keyId_tbis_ROMOOC_ROMOOC20',
-                ten: 'Rơ móoc 20ft',
+                ten: 'Rơ moóc 20ft',
                 order: 100,
                 chung_loai: {
                     _id: 'keyId_tbis_ROMOOC',
-                    ten: 'Rơ móoc'
+                    ten: 'Rơ moóc'
                 }
             }, {
                 _id: 'keyId_tbis_ROMOOC_ROMOOC40',
-                ten: 'Rơ móoc 40ft',
+                ten: 'Rơ moóc 40ft',
                 order: 200,
                 chung_loai: {
                     _id: 'keyId_tbis_ROMOOC',
-                    ten: 'Rơ móoc'
+                    ten: 'Rơ moóc'
                 }
             }, {
                 _id: 'keyId_tbis_ROMOOC_ROMOOC45',
-                ten: 'Rơ móoc 45ft',
+                ten: 'Rơ moóc 45ft',
                 order: 300,
                 chung_loai: {
                     _id: 'keyId_tbis_ROMOOC',
-                    ten: 'Rơ móoc'
+                    ten: 'Rơ moóc'
                 }
             }, {
                 _id: 'keyId_tbis_XETAIBANTAI_XETAI',
@@ -1860,6 +1859,24 @@ Meteor.startup(() => {
             }
         ];
 
+        // Subject: Tags
+
+        const tags = [
+            {
+                ten: 'Xe cứu hỏa',
+                nhom: {
+                    _id: 'keyId_tbis_XMY',
+                    ten: 'Xe máy'
+                }
+            }, {
+                ten: 'Xe biển đỏ',
+                nhom: {
+                    _id: 'keyId_tbis_XMY',
+                    ten: 'Xe máy'
+                }
+            }
+        ];
+
         // >>>>>>>>>>>>>>>>>>>>>
         // DIADIEMS
 
@@ -1946,6 +1963,16 @@ Meteor.startup(() => {
                 subject: 'phanquyens',
                 category: 'doivanhanhs',
                 dataObject: doivanhanh
+            });
+        });
+
+        // TAGS
+
+        tags.forEach((tag) => {
+            TbisHelpers.insert({
+                subject: 'references',
+                category: 'tags',
+                dataObject: tag
             });
         });
 

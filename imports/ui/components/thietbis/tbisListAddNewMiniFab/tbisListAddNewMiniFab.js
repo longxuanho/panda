@@ -3,16 +3,18 @@ import angularMeteor from 'angular-meteor';
 
 import ngMessages from 'angular-messages';
 
+import _ from 'underscore';
 import fabTemplate from './tbisListAddNewMiniFab.html';
 import modalTemplate from './tbisListAddNewModal.html';
 
 // import { ThietBis } from '../../../api/tbis/thietbis/thietbis';
 import { name as TbisDataSerivce } from '../../../services/thietbis/tbisDataService';
-import { name as TbisPhanLoaiDataSerivce } from '../../../services/thietbis/tbisPhanLoaiDataService';
-import { name as TbisNguonGocDataSerivce } from '../../../services/thietbis/tbisNguonGocDataService';
-import { name as TbisDiaDiemDataService } from '../../../services/thietbis/tbisDiaDiemDataService';
+import { name as TbisPhanLoaiDataService } from '../../../services/thietbis/tbisPhanLoaiDataService';
+import { name as TbisNguonGocDataService } from '../../../services/thietbis/tbisNguonGocDataService';
 import { name as TbisPhanQuyenDataService } from '../../../services/thietbis/tbisPhanQuyenDataService';
+import { name as TbisDiaDiemDataService } from '../../../services/thietbis/tbisDiaDiemDataService';
 import { name as NotificationService } from '../../../services/common/notificationService';
+import { name as TbisReferenceDataService } from '../../../services/thietbis/tbisReferenceDataService';
 
 class tbisListAddNewMiniFab {
     constructor($mdDialog, $mdMedia) {
@@ -28,7 +30,7 @@ class tbisListAddNewMiniFab {
         this.$mdDialog.show({
             controller($mdDialog,
                        tbisDataService, tbisPhanLoaiDataService,
-                       tbisNguonGocDataService, tbisDiaDiemDataService, tbisPhanQuyenDataService,
+                       tbisNguonGocDataService, tbisDiaDiemDataService, tbisPhanQuyenDataService, tbisReferenceDataService,
                        notificationService) {
                 'ngInject';
 
@@ -37,6 +39,7 @@ class tbisListAddNewMiniFab {
                 _.extend(this.selectOptions, tbisNguonGocDataService.getSelectOptions());
                 _.extend(this.selectOptions, tbisDiaDiemDataService.getSelectOptions());
                 _.extend(this.selectOptions, tbisPhanQuyenDataService.getSelectOptions());
+                _.extend(this.selectOptions, tbisReferenceDataService.getSelectOptions());
 
                 console.log('select options: ', this.selectOptions);
                 
@@ -78,10 +81,11 @@ export default angular.module(name, [
     angularMeteor,
     ngMessages,
     TbisDataSerivce,
-    TbisPhanLoaiDataSerivce,
-    TbisNguonGocDataSerivce,
-    TbisDiaDiemDataService,
+    TbisPhanLoaiDataService,
+    TbisNguonGocDataService,
     TbisPhanQuyenDataService,
+    TbisDiaDiemDataService,
+    TbisReferenceDataService,
     NotificationService
 ]).component(name, {
     template: fabTemplate,

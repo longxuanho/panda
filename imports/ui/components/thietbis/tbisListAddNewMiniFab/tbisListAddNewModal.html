@@ -41,7 +41,9 @@
                                 <div layout="row">
                                     <md-input-container class="md-block" flex="50">
                                         <label>Nhóm</label>
-                                        <md-select name="phan_loai_nhom" ng-model="tbisListAddNewModal.newThietBi.phan_loai.nhom" required>
+                                        <md-select name="phan_loai_nhom" ng-model="tbisListAddNewModal.newThietBi.phan_loai.nhom"
+                                                   ng-change="tbisListAddNewModal.newThietBi.phan_loai.chung_loai = '';tbisListAddNewModal.newThietBi.phan_loai.loai = '';"
+                                                   required>
                                             <md-option ng-value="nhom" ng-repeat="nhom in tbisListAddNewModal.selectOptions.nhoms">{{nhom}}</md-option>
                                         </md-select>
                                         <div class="errors" ng-messages="tbisListAddNewModal.addNewThietBiForm.phan_loai_nhom.$error">
@@ -50,7 +52,9 @@
                                     </md-input-container>
                                     <md-input-container class="md-block" flex="50">
                                         <label>Chủng loại</label>
-                                        <md-select name="phan_loai_chung_loai" ng-model="tbisListAddNewModal.newThietBi.phan_loai.chung_loai" required>
+                                        <md-select name="phan_loai_chung_loai" ng-model="tbisListAddNewModal.newThietBi.phan_loai.chung_loai"
+                                                   ng-change="tbisListAddNewModal.newThietBi.phan_loai.loai = '';"
+                                                   required>
                                             <md-option ng-value="chungloai" ng-repeat="chungloai in tbisListAddNewModal.selectOptions.chungloais[tbisListAddNewModal.newThietBi.phan_loai.nhom]">{{chungloai}}</md-option>
                                         </md-select>
                                         <div class="errors" ng-messages="tbisListAddNewModal.addNewThietBiForm.phan_loai_chung_loai.$error">
@@ -58,7 +62,7 @@
                                         </div>
                                     </md-input-container>
                                 </div>
-                                <div layout="row">
+                                <div layout="row" style="margin-bottom: 24px;">
                                     <md-input-container class="md-block" flex="50">
                                         <label>Loại</label>
                                         <md-select name="phan_loai_loai" ng-model="tbisListAddNewModal.newThietBi.phan_loai.loai" required>
@@ -79,8 +83,9 @@
                                 <div layout="row">
                                     <md-input-container class="md-block" flex="50">
                                         <label>Hãng sản xuất</label>
-                                        <md-select name="nguon_goc_hang_san_xuat" ng-model="tbisListAddNewModal.newThietBi.nguon_goc.hang_san_xuat" required>
-                                            <md-option ng-value="hangsanxuat" ng-repeat="hangsanxuat in tbisListAddNewModal.selectOptions.hangsanxuats">{{hangsanxuat}}</md-option>
+                                        <md-select name="nguon_goc_hang_san_xuat" ng-model="tbisListAddNewModal.newThietBi.nguon_goc.hang_san_xuat"
+                                                   ng-change="tbisListAddNewModal.newThietBi.nguon_goc.model = '';" required>
+                                            <md-option ng-value="hangsanxuat" ng-repeat="hangsanxuat in tbisListAddNewModal.selectOptions.hangsanxuats | orderBy">{{hangsanxuat}}</md-option>
                                         </md-select>
                                         <div class="errors" ng-messages="tbisListAddNewModal.addNewThietBiForm.nguon_goc_hang_san_xuat.$error">
                                             <div ng-message="required">Thông tin bắt buộc.</div>
@@ -89,7 +94,7 @@
                                     <md-input-container class="md-block" flex="50">
                                         <label>Model thiết bị</label>
                                         <md-select name="nguon_goc_model" ng-model="tbisListAddNewModal.newThietBi.nguon_goc.model">
-                                            <md-option ng-value="model" ng-repeat="model in tbisListAddNewModal.selectOptions.models[tbisListAddNewModal.newThietBi.nguon_goc.hang_san_xuat]">{{model}}</md-option>
+                                            <md-option ng-value="model" ng-repeat="model in tbisListAddNewModal.selectOptions.models[tbisListAddNewModal.newThietBi.nguon_goc.hang_san_xuat] | orderBy">{{model}}</md-option>
                                         </md-select>
                                     </md-input-container>
                                 </div>
@@ -97,13 +102,13 @@
                                     <md-input-container class="md-block" flex="50">
                                         <label>Nhà phân phối</label>
                                         <md-select name="nguon_goc_vendor" ng-model="tbisListAddNewModal.newThietBi.nguon_goc.vendor">
-                                            <md-option ng-value="vendor" ng-repeat="vendor in tbisListAddNewModal.selectOptions.vendors">{{vendor}}</md-option>
+                                            <md-option ng-value="vendor" ng-repeat="vendor in tbisListAddNewModal.selectOptions.vendors | orderBy">{{vendor}}</md-option>
                                         </md-select>
                                     </md-input-container>
                                     <md-input-container class="md-block" flex="50">
                                         <label>Nơi lắp ráp</label>
                                         <md-select name="nguon_goc_noi_lap_rap" ng-model="tbisListAddNewModal.newThietBi.nguon_goc.noi_lap_rap">
-                                            <md-option ng-value="quocgia" ng-repeat="quocgia in tbisListAddNewModal.selectOptions.quocgias">{{quocgia}}</md-option>
+                                            <md-option ng-value="quocgia" ng-repeat="quocgia in tbisListAddNewModal.selectOptions.quocgias | orderBy">{{quocgia}}</md-option>
                                         </md-select>
                                     </md-input-container>
                                 </div>
@@ -178,7 +183,8 @@
                                 <div layout="row">
                                     <md-input-container class="md-block" flex="50">
                                         <label>Vận hành</label>
-                                        <md-select name="phan_quyen_van_hanh" ng-model="tbisListAddNewModal.newThietBi.phan_quyen.van_hanh">
+                                        <md-select name="phan_quyen_van_hanh" ng-model="tbisListAddNewModal.newThietBi.phan_quyen.van_hanh"
+                                            ng-change="tbisListAddNewModal.newThietBi.phan_quyen.doi_van_hanh = {};">
                                             <md-option ng-value="dvvanhanh" ng-repeat="dvvanhanh in tbisListAddNewModal.selectOptions.donvis | orderBy:'ten'">{{dvvanhanh.ten}}</md-option>
                                         </md-select>
                                     </md-input-container>
@@ -240,11 +246,11 @@
                                         <input name="ho_so_so_giay_dang_kiem" ng-model="tbisListAddNewModal.newThietBi.ho_so.so_giay_dang_kiem">
                                     </md-input-container>
                                 </div>
-                                <div layout="row">
+                                <div layout="row" style="margin-bottom: 24px;">
                                     <md-input-container class="md-block" flex="50">
                                         <label>Xuất xứ</label>
                                         <md-select name="ho_so_xuat_xu" ng-model="tbisListAddNewModal.newThietBi.ho_so.xuat_xu">
-                                            <md-option ng-value="quocgia" ng-repeat="quocgia in tbisListAddNewModal.selectOptions.quocgias">{{quocgia}}</md-option>
+                                            <md-option ng-value="quocgia" ng-repeat="quocgia in tbisListAddNewModal.selectOptions.quocgias | orderBy">{{quocgia}}</md-option>
                                         </md-select>
                                     </md-input-container>
                                 </div>
@@ -305,11 +311,12 @@
                         <md-subheader class="md-no-sticky">Các mục bổ sung</md-subheader>
                         <md-list-item>
                             <div layout="column" layout-fill>
-                                <div layout="row" style="padding-top: 24px;">
-                                    <md-input-container class="md-block" flex="100">
-                                        <label>Gắn thẻ</label>
-                                        <input name="tags" ng-model="tbisListAddNewModal.newThietBi._tags">
-                                    </md-input-container>
+                                <div layout="row" style="margin-top: 40px; margin-bottom: 40px;">
+                                    <select kendo-multi-select
+                                            k-data-source="tbisListAddNewModal.selectOptions.tags[tbisListAddNewModal.newThietBi.phan_loai.nhom]"
+                                            k-ng-model="tbisListAddNewModal.newThietBi.tags"
+                                            style="width: 100%;"
+                                            k-placeholder="'Gắn thẻ...'"></select>
                                 </div>
                                 <div layout="row">
                                     <md-input-container class="md-block" flex="100">

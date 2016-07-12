@@ -17,11 +17,15 @@ import { name as TbisFilterForm } from '../tbisFilterForm/tbisFilterForm';
 import { name as TbisDisplayListView } from '../tbisDisplayListView/tbisDisplayListView';
 import { name as TbisListFabMenu } from '../tbisListFabMenu/tbisListFabMenu';
 
-import { name as TbisPhanLoaiDataSerivce } from '../../../services/thietbis/tbisPhanLoaiDataService';
+import { name as TbisPhanLoaiDataService } from '../../../services/thietbis/tbisPhanLoaiDataService';
+import { name as TbisNguonGocDataService } from '../../../services/thietbis/tbisNguonGocDataService';
+import { name as TbisPhanQuyenDataService } from '../../../services/thietbis/tbisPhanQuyenDataService';
+import { name as TbisDiaDiemDataSerivce } from '../../../services/thietbis/tbisDiaDiemDataService';
+import { name as TbisReferenceDataSerivce } from '../../../services/thietbis/tbisReferenceDataService';
 
 class TbisList {
     constructor($scope, $reactive, tbisListPageSettingsService, tbisDataService,
-                tbisPhanLoaiDataService) {
+                tbisPhanLoaiDataService, tbisNguonGocDataService, tbisPhanQuyenDataService, tbisDiaDiemDataService, tbisReferenceDataService) {
         'ngInject';
 
         $reactive(this).attach($scope);
@@ -60,7 +64,12 @@ class TbisList {
         
         this.helpers({
             tbishelpers() {
-                console.log('query test... ', tbisPhanLoaiDataService.queryTest());
+                console.log('query..');
+                tbisPhanLoaiDataService.queryAll();
+                tbisNguonGocDataService.queryAll();
+                tbisPhanQuyenDataService.queryAll();
+                tbisDiaDiemDataService.queryAll();
+                tbisReferenceDataService.queryAll();
             }
             // thietbis() {
             //     return Tbis.find({}, {
@@ -114,7 +123,11 @@ export default angular.module(name, [
     TbisDataService,
     TbisListFabMenu,
 
-    TbisPhanLoaiDataSerivce
+    TbisPhanLoaiDataService,
+    TbisNguonGocDataService,
+    TbisPhanQuyenDataService,
+    TbisDiaDiemDataSerivce,
+    TbisReferenceDataSerivce
 ]).component(name, {
     template,
     controllerAs: name,

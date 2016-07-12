@@ -6,11 +6,11 @@ let Schema = {};
 Schema.TbisHelper = new SimpleSchema({
     subject: {
         type: String,
-        allowedValues: ['diadiems', 'nguongocs', 'phanloais', 'phanquyens']
+        allowedValues: ['diadiems', 'nguongocs', 'phanloais', 'phanquyens', 'references']
     },
     category: {
         type: String,
-        allowedValues: ['quocgias', 'khuvucs', 'hangsanxuats', 'models', 'vendors', 'nhoms', 'chungloais', 'loais', 'donvis', 'doivanhanhs']
+        allowedValues: ['quocgias', 'khuvucs', 'hangsanxuats', 'models', 'vendors', 'nhoms', 'chungloais', 'loais', 'donvis', 'doivanhanhs', 'tags']
     },
     dataObject: {
         type: Object,
