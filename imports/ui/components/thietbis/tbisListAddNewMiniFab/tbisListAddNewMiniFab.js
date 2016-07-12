@@ -7,6 +7,7 @@ import _ from 'underscore';
 import fabTemplate from './tbisListAddNewMiniFab.html';
 import modalTemplate from './tbisListAddNewModal.html';
 
+import { name as MetadataService } from '../../../services/common/metadataService';
 // import { ThietBis } from '../../../api/tbis/thietbis/thietbis';
 import { name as TbisDataSerivce } from '../../../services/thietbis/tbisDataService';
 import { name as TbisPhanLoaiDataService } from '../../../services/thietbis/tbisPhanLoaiDataService';
@@ -31,6 +32,7 @@ class tbisListAddNewMiniFab {
             controller($mdDialog,
                        tbisDataService, tbisPhanLoaiDataService,
                        tbisNguonGocDataService, tbisDiaDiemDataService, tbisPhanQuyenDataService, tbisReferenceDataService,
+                       metadataService,
                        notificationService) {
                 'ngInject';
 
@@ -40,15 +42,19 @@ class tbisListAddNewMiniFab {
                 _.extend(this.selectOptions, tbisDiaDiemDataService.getSelectOptions());
                 _.extend(this.selectOptions, tbisPhanQuyenDataService.getSelectOptions());
                 _.extend(this.selectOptions, tbisReferenceDataService.getSelectOptions());
-
-                console.log('select options: ', this.selectOptions);
                 
                 this.newThietBi = tbisDataService.initNewThietBiData();
 
                 this.save = () => {
                     try {
+                        metadataService.buildNewMetadata(this.newThietBi, Meteor.user());
                         tbisDataService.validateNewThietBiData(this.newThietBi);
-                        tbisDataService.addNew(this.newThietBi);
+                        tbisDataService.addNew(this.newThietBi).then(() => {
+                            notificationService.success('Thiết bị của bạn đã được ghi nhận vào Skynet.', 'Tạo mới thành công');
+                            this.reset();
+                        }).catch((err) => {
+                            notificationService.error(err.message, 'Tạo mới thất bại');
+                        });
                     }
                     catch (error) {
                         notificationService.error(error.message, 'Thiếu thông tin');
@@ -57,6 +63,8 @@ class tbisListAddNewMiniFab {
 
                 this.reset = () => {
                     this.newThietBi = tbisDataService.initNewThietBiData();
+                    this.addNewThietBiForm.$setPristine();
+                    this.addNewThietBiForm.$setUntouched();
                 };
 
                 this.close = () => {
@@ -86,6 +94,7 @@ export default angular.module(name, [
     TbisPhanQuyenDataService,
     TbisDiaDiemDataService,
     TbisReferenceDataService,
+    MetadataService,
     NotificationService
 ]).component(name, {
     template: fabTemplate,

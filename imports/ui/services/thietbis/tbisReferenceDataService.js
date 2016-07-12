@@ -21,7 +21,6 @@ class TbisReferenceDataService {
 
     queryAll() {
         this.queryTags();
-        console.log('data solve from service: ', this.selectOptions);
     }
 
     queryTags() {

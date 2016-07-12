@@ -9,12 +9,16 @@ import uiRouter from 'angular-ui-router';
 import 'angular-material/angular-material.min.css';
 import 'angular-google-maps';
 
+import moment from 'moment/min/moment-with-locales.min';
+
 import template from './pandora.html';
 import { name as Navigation } from '../layout/navigation/navigation';
 import { name as PartiesList } from '../demo/partiesList/partiesList';
 import { name as PartyDetails } from '../demo/partyDetails/partyDetails';
 import { name as TbisList } from '../thietbis/tbisList/tbisList';
 import { name as Auth } from '../auth/auth';
+
+
 
 class Pandora {}
 
@@ -49,6 +53,8 @@ function config($locationProvider, $urlRouterProvider, uiGmapGoogleMapApiProvide
     $locationProvider.html5Mode(true);
 
     $urlRouterProvider.otherwise('/parties');
+    
+    moment.locale('vi');
 
     uiGmapGoogleMapApiProvider.configure({
         key: 'AIzaSyDf6ECMBu2pWez3xo4s1H1Sc-spt3PwLDQ'

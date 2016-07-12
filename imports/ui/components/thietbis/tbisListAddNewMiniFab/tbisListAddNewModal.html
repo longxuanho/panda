@@ -185,7 +185,7 @@
                                         <label>Vận hành</label>
                                         <md-select name="phan_quyen_van_hanh" ng-model="tbisListAddNewModal.newThietBi.phan_quyen.van_hanh"
                                             ng-change="tbisListAddNewModal.newThietBi.phan_quyen.doi_van_hanh = {};">
-                                            <md-option ng-value="dvvanhanh" ng-repeat="dvvanhanh in tbisListAddNewModal.selectOptions.donvis | orderBy:'ten'">{{dvvanhanh.ten}}</md-option>
+                                            <md-option ng-value="doivanhanh" ng-repeat="doivanhanh in tbisListAddNewModal.selectOptions.donvis | orderBy:'ten'">{{doivanhanh.ten}}</md-option>
                                         </md-select>
                                     </md-input-container>
                                     <md-input-container class="md-block" flex="50">

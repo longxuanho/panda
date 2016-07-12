@@ -56,17 +56,8 @@ Schema.ThietBi = new SimpleSchema({
         type: Object
     },
         'nguon_goc.hang_san_xuat': {
-            type: Object
+            type: String
         },
-            'nguon_goc.hang_san_xuat._id': {
-                type: String
-            },
-            'nguon_goc.hang_san_xuat.ma': {
-                type: String
-            },
-            'nguon_goc.hang_san_xuat.ten': {
-                type: String
-            },
         'nguon_goc.model': {
             type: String,
             optional: true
@@ -80,18 +71,9 @@ Schema.ThietBi = new SimpleSchema({
             optional: true
         },
         'nguon_goc.vendor': {
-            type: Object,
+            type: String,
             optional: true
         },
-            'nguon_goc.vendor._id': {
-                type: String
-            },
-            'nguon_goc.vendor.ten': {
-                type: String
-            },
-            'nguon_goc.vendor.ma': {
-                type: String
-            },
     dia_diem: {
         type: Object
     },
@@ -159,26 +141,33 @@ Schema.ThietBi = new SimpleSchema({
             optional: true
         },
             'phan_quyen.van_hanh._id': {
-                type: String
+                type: String,
+                optional: true
+
             },
             'phan_quyen.van_hanh.ten': {
-                type: String
+                type: String,
+                optional: true
             },
             'phan_quyen.van_hanh.ma': {
-                type: String
+                type: String,
+                optional: true
             },
         'phan_quyen.doi_van_hanh': {
             type: Object,
             optional: true
         },
             'phan_quyen.doi_van_hanh._id': {
-                type: String
+                type: String,
+                optional: true
             },
             'phan_quyen.doi_van_hanh.ten': {
-                type: String
+                type: String,
+                optional: true
             },
             'phan_quyen.doi_van_hanh.ma': {
-                type: String
+                type: String,
+                optional: true
             },
     ho_so: {
         type: Object

@@ -1,22 +1,17 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
-// import { ThietBis } from '../../../api/tbis/thietbis/thietbis';
+import { ThietBis } from '../../../api/thietbis/tbis';
 
 class TbisDataService {
 
-    constructor() {
+    constructor($q) {
         'ngInject';
+
+        this.$q = $q;
+
         this.thietbis = queryThietBis();
         this.errors = [];
-    }
-
-    getAllThietBis() {
-        return this.thietbis;
-    }
-
-    addNew(data) {
-        console.log('add New: ', data);
     }
 
     initNewThietBiData() {
@@ -44,15 +39,32 @@ class TbisDataService {
             throw Error('Chưa có thông tin về chủng loại thiết bị');
         if (!data.phan_loai.loai)
             throw Error('Chưa có thông tin về loại thiết bị');
-        if (!data.phan_loai.nguon_goc.hang_san_xuat._id)
+        if (!data.nguon_goc.hang_san_xuat)
             throw Error('Chưa có thông tin về hãng sản xuất');
-        if (!data.phan_loai.dia_diem.khu_vuc._id)
+        if (_.isEmpty(data.dia_diem.khu_vuc))
             throw Error('Chưa có thông tin về khu vực hoạt động');
-        if (!data.phan_loai.phan_quyen.quan_ly._id)
+        if (_.isEmpty(data.phan_quyen.quan_ly))
             throw Error('Chưa có thông tin về đơn vị quản lý');
-        if (!data.phan_loai.phan_quyen.so_huu._id)
+        if (_.isEmpty(data.phan_quyen.so_huu))
             throw Error('Chưa có thông tin về đơn vị sở hữu');
     }
+
+    addNew(data) {
+        let defer = this.$q.defer();
+        ThietBis.insert(data, (error) => {
+            if (error)
+                defer.reject(error);
+            else
+                defer.resolve();
+        });        
+        return defer.promise;
+    }
+
+    getAllThietBis() {
+        return this.thietbis;
+    }
+
+
 }
 
 const name = 'tbisDataService';
