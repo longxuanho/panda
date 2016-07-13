@@ -1,7 +1,7 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
-class TbisListPageSettingsService {
+class TbisDetailsViewPageSettingsService {
 
     constructor() {
         'ngInject';
@@ -15,23 +15,17 @@ class TbisListPageSettingsService {
     }
 }
 
-const name = 'tbisListPageSettingsService';
+const name = 'tbisDetailsViewPageSettingsService';
 
 // create a module
 export default angular.module(name, [
     angularMeteor
 ])
-    .service(name, TbisListPageSettingsService);
+    .service(name, TbisDetailsViewPageSettingsService);
 
 function initPageSettings() {
     return {
-        category: 'Tất cả',
-        viewMode: 'list',
-        filterText: '',
-        filterBy: '',
-        searchText: '',
-        searchBy: 'searchField',
-        searchFilterMode: 'search',     // Available options: search, filter, search_filter
+        category: 'Hồ sơ',
         page: '',
         sort: {
         }

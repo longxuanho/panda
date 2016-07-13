@@ -1,35 +1,25 @@
 @import "../demo/partiesList/partiesList.less";
 @import "../demo/partyDetails/partyDetails.less";
 @import "../thietbis/tbisList/tbisList.less";
+@import "../thietbis/tbisDetailsView/tbisDetailsView.less";
 
 pandora {
   display: block;
 }
 
-.k-multiselect {
-  border-width: 0 0 1px;
-  &.k-header {
-    &.k-state-hover {
-      border-color: #E1E1E1;
-    }
-    border-color: #E1E1E1;
-  }
-  .k-input {
-    color: rgba(0,0,0,0.38);
-    text-align: start;
-    text-indent: 0;
-    margin: 0;
-    padding: 2px 2px 1px;
-    line-height: 26px;
-    height: 30px;
-  }
+.sky {
 
-  .k-button {
-    text-transform: none;
-    font-weight: 400;
+  &-margin-top-50 {
+    margin-top: 50px;
   }
-}
-
-.k-popup .k-list .k-item {
-  font-weight: 400;
+  &-margin-top-40 {
+    margin-top: 40px;
+  }
+  &-sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12);
+    z-index: 1;
+  }
 }

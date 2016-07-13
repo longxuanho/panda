@@ -1,0 +1,23 @@
+<md-toolbar class="md-hue-2 md-whiteframe-2dp">
+    <div class="md-toolbar-tools">
+        <!--Category-->
+        <h3>NB_191</h3>
+        <span flex></span>
+        <h3>{{tbisDetailsUtilsBar.settings.category}}</h3>
+        <md-menu md-position-mode="target-right target">
+            <md-button class="md-icon-button" aria-label="Chọn mục" ng-click="tbisDetailsUtilsBar.openFilterMenu($mdOpenMenu, $event)">
+                <md-icon md-svg-icon="{{tbisDetailsUtilsBar.utilsBarIconsOptions.categories[tbisDetailsUtilsBar.settings.category]}}"></md-icon>
+            </md-button>
+            <md-menu-content width="3">
+                <md-menu-item ng-repeat="item in tbisDetailsUtilsBar.categoryOptions">
+                    <md-button ng-click="tbisDetailsUtilsBar.setCategory(item.value)">
+                        <div layout="row" flex>
+                            <p flex>{{item.text}}</p>
+                            <md-icon md-svg-icon="{{item.icon}}" ng-class="{'md-accent': item.value==tbisDetailsUtilsBar.settings.category}" style="margin: auto 3px auto 0;"></md-icon>
+                        </div>
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+    </div>
+</md-toolbar>

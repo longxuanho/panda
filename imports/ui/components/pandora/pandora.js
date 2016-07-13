@@ -9,13 +9,15 @@ import uiRouter from 'angular-ui-router';
 import 'angular-material/angular-material.min.css';
 import 'angular-google-maps';
 
-import moment from 'moment/min/moment-with-locales.min';
+import moment from 'moment';
+import 'moment/locale/vi';
 
 import template from './pandora.html';
 import { name as Navigation } from '../layout/navigation/navigation';
 import { name as PartiesList } from '../demo/partiesList/partiesList';
 import { name as PartyDetails } from '../demo/partyDetails/partyDetails';
 import { name as TbisList } from '../thietbis/tbisList/tbisList';
+import { name as TbisDetailsView } from '../thietbis/tbisDetailsView/tbisDetailsView';
 import { name as Auth } from '../auth/auth';
 
 
@@ -34,6 +36,7 @@ export default angular.module(name, [
     uiRouter,
     Navigation,
     TbisList,
+    TbisDetailsView,
     PartiesList,
     PartyDetails,
     Auth,

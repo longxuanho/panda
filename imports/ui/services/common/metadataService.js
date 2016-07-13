@@ -1,7 +1,7 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
-import moment from 'moment/min/moment-with-locales.min';
+import moment from 'moment';
 
 class MetadataService {
 
