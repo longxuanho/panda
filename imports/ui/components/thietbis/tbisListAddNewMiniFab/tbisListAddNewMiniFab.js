@@ -8,14 +8,10 @@ import fabTemplate from './tbisListAddNewMiniFab.html';
 import modalTemplate from './tbisListAddNewModal.html';
 
 import { name as MetadataService } from '../../../services/common/metadataService';
-// import { ThietBis } from '../../../api/tbis/thietbis/thietbis';
+import { name as TbisListMajorInputForm } from '../tbisListMajorInputForm/tbisListMajorInputForm';
 import { name as TbisDataSerivce } from '../../../services/thietbis/tbisDataService';
-import { name as TbisPhanLoaiDataService } from '../../../services/thietbis/tbisPhanLoaiDataService';
-import { name as TbisNguonGocDataService } from '../../../services/thietbis/tbisNguonGocDataService';
-import { name as TbisPhanQuyenDataService } from '../../../services/thietbis/tbisPhanQuyenDataService';
-import { name as TbisDiaDiemDataService } from '../../../services/thietbis/tbisDiaDiemDataService';
 import { name as NotificationService } from '../../../services/common/notificationService';
-import { name as TbisReferenceDataService } from '../../../services/thietbis/tbisReferenceDataService';
+
 
 class tbisListAddNewMiniFab {
     constructor($mdDialog, $mdMedia) {
@@ -23,26 +19,13 @@ class tbisListAddNewMiniFab {
 
         this.$mdDialog = $mdDialog;
         this.$mdMedia = $mdMedia;
-
-
     }
 
     open(event) {
         this.$mdDialog.show({
-            controller($mdDialog,
-                       tbisDataService, tbisPhanLoaiDataService,
-                       tbisNguonGocDataService, tbisDiaDiemDataService, tbisPhanQuyenDataService, tbisReferenceDataService,
-                       metadataService,
-                       notificationService) {
+            controller($scope, $mdDialog, tbisDataService, metadataService, notificationService) {
                 'ngInject';
 
-
-                this.selectOptions = tbisPhanLoaiDataService.getSelectOptions();
-                _.extend(this.selectOptions, tbisNguonGocDataService.getSelectOptions());
-                _.extend(this.selectOptions, tbisDiaDiemDataService.getSelectOptions());
-                _.extend(this.selectOptions, tbisPhanQuyenDataService.getSelectOptions());
-                _.extend(this.selectOptions, tbisReferenceDataService.getSelectOptions());
-                
                 this.newThietBi = tbisDataService.initNewThietBiData();
 
                 this.save = () => {
@@ -63,8 +46,7 @@ class tbisListAddNewMiniFab {
 
                 this.reset = () => {
                     this.newThietBi = tbisDataService.initNewThietBiData();
-                    this.addNewThietBiForm.$setPristine();
-                    this.addNewThietBiForm.$setUntouched();
+                    $scope.$broadcast('reset-tbis-list-major-input-form');
                 };
 
                 this.close = () => {
@@ -88,12 +70,8 @@ const name = 'tbisListAddNewMiniFab';
 export default angular.module(name, [
     angularMeteor,
     ngMessages,
+    TbisListMajorInputForm,
     TbisDataSerivce,
-    TbisPhanLoaiDataService,
-    TbisNguonGocDataService,
-    TbisPhanQuyenDataService,
-    TbisDiaDiemDataService,
-    TbisReferenceDataService,
     MetadataService,
     NotificationService
 ]).component(name, {

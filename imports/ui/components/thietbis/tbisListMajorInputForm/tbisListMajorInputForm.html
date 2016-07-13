@@ -1,0 +1,313 @@
+<form name="tbisListMajorInputForm.addNewThietBiForm">
+    <md-list>
+        <!--Section: Mã thiết bị-->
+        <md-divider></md-divider>
+        <md-subheader class="md-no-sticky">Mã thiết bị</md-subheader>
+        <md-list-item>
+            <md-input-container class="md-block">
+                <label>Mã quản lý</label>
+                <input ng-model="tbisListMajorInputForm.viewModel.ma_thiet_bi.keyId" required name="ma_tb">
+                <div ng-messages="tbisListMajorInputForm.addNewThietBiForm.ma_tb.$error">
+                    <div ng-message="required">Thông tin bắt buộc.</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Mã TopX</label>
+                <input ng-model="tbisListMajorInputForm.viewModel.ma_thiet_bi.topX" name="ma_topX">
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Mã Maximo</label>
+                <input ng-model="tbisListMajorInputForm.viewModel.ma_thiet_bi.maximo" name="ma_maximo">
+            </md-input-container>
+        </md-list-item>
+        <!--Section: Phân loại-->
+        <md-divider></md-divider>
+        <md-subheader class="md-no-sticky">Phân loại</md-subheader>
+        <md-list-item>
+            <div layout="column" layout-fill>
+                <div layout="row">
+                    <md-input-container class="md-block" flex="50">
+                        <label>Nhóm</label>
+                        <md-select name="phan_loai_nhom" ng-model="tbisListMajorInputForm.viewModel.phan_loai.nhom"
+                                   ng-change="tbisListMajorInputForm.viewModel.phan_loai.chung_loai = '';tbisListMajorInputForm.viewModel.phan_loai.loai = '';"
+                                   required>
+                            <md-option ng-value="nhom" ng-repeat="nhom in tbisListMajorInputForm.selectOptions.nhoms">{{nhom}}</md-option>
+                        </md-select>
+                        <div class="errors" ng-messages="tbisListMajorInputForm.addNewThietBiForm.phan_loai_nhom.$error">
+                            <div ng-message="required">Thông tin bắt buộc.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex="50">
+                        <label>Chủng loại</label>
+                        <md-select name="phan_loai_chung_loai" ng-model="tbisListMajorInputForm.viewModel.phan_loai.chung_loai"
+                                   ng-change="tbisListMajorInputForm.viewModel.phan_loai.loai = '';"
+                                   required>
+                            <md-option ng-value="chungloai" ng-repeat="chungloai in tbisListMajorInputForm.selectOptions.chungloais[tbisListMajorInputForm.viewModel.phan_loai.nhom]">{{chungloai}}</md-option>
+                        </md-select>
+                        <div class="errors" ng-messages="tbisListMajorInputForm.addNewThietBiForm.phan_loai_chung_loai.$error">
+                            <div ng-message="required">Thông tin bắt buộc.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout="row" style="margin-bottom: 24px;">
+                    <md-input-container class="md-block" flex="50">
+                        <label>Loại</label>
+                        <md-select name="phan_loai_loai" ng-model="tbisListMajorInputForm.viewModel.phan_loai.loai" required>
+                            <md-option ng-value="loai" ng-repeat="loai in tbisListMajorInputForm.selectOptions.loais[tbisListMajorInputForm.viewModel.phan_loai.chung_loai]">{{loai}}</md-option>
+                        </md-select>
+                        <div class="errors" ng-messages="tbisListMajorInputForm.addNewThietBiForm.phan_loai_loai.$error">
+                            <div ng-message="required">Thông tin bắt buộc.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+        </md-list-item>
+        <!--Section: Nguồn gốc, xuất xứ-->
+        <md-divider></md-divider>
+        <md-subheader class="md-no-sticky">Nguồn gốc, xuất xứ</md-subheader>
+        <md-list-item>
+            <div layout="column" layout-fill>
+                <div layout="row">
+                    <md-input-container class="md-block" flex="50">
+                        <label>Hãng sản xuất</label>
+                        <md-select name="nguon_goc_hang_san_xuat" ng-model="tbisListMajorInputForm.viewModel.nguon_goc.hang_san_xuat"
+                                   ng-change="tbisListMajorInputForm.viewModel.nguon_goc.model = '';" required>
+                            <md-option ng-value="hangsanxuat" ng-repeat="hangsanxuat in tbisListMajorInputForm.selectOptions.hangsanxuats | orderBy">{{hangsanxuat}}</md-option>
+                        </md-select>
+                        <div class="errors" ng-messages="tbisListMajorInputForm.addNewThietBiForm.nguon_goc_hang_san_xuat.$error">
+                            <div ng-message="required">Thông tin bắt buộc.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex="50">
+                        <label>Model thiết bị</label>
+                        <md-select name="nguon_goc_model" ng-model="tbisListMajorInputForm.viewModel.nguon_goc.model">
+                            <md-option ng-value="model" ng-repeat="model in tbisListMajorInputForm.selectOptions.models[tbisListMajorInputForm.viewModel.nguon_goc.hang_san_xuat] | orderBy">{{model}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div layout="row">
+                    <md-input-container class="md-block" flex="50">
+                        <label>Nhà phân phối</label>
+                        <md-select name="nguon_goc_vendor" ng-model="tbisListMajorInputForm.viewModel.nguon_goc.vendor">
+                            <md-option ng-value="vendor" ng-repeat="vendor in tbisListMajorInputForm.selectOptions.vendors | orderBy">{{vendor}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex="50">
+                        <label>Nơi lắp ráp</label>
+                        <md-select name="nguon_goc_noi_lap_rap" ng-model="tbisListMajorInputForm.viewModel.nguon_goc.noi_lap_rap">
+                            <md-option ng-value="quocgia" ng-repeat="quocgia in tbisListMajorInputForm.selectOptions.quocgias | orderBy">{{quocgia}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div layout="row">
+                    <md-input-container class="md-block" flex="50">
+                        <label>Năm sản xuất</label>
+                        <input name="nguon_goc_nam_san_xuat" ng-model="tbisListMajorInputForm.viewModel.nguon_goc.nam_san_xuat" type="number" step="any" min="1900" max="2100">
+                        <div ng-messages="tbisListMajorInputForm.addNewThietBiForm.nguon_goc_nam_san_xuat.$error">
+                            <div ng-message="min">Năm sản xuất không ít hơn 1900.</div>
+                            <div ng-message="max">Năm sản xuất không quá 2100.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+        </md-list-item>
+        <!--Section: Địa điểm-->
+        <md-divider></md-divider>
+        <md-subheader class="md-no-sticky">Địa điểm</md-subheader>
+        <md-list-item>
+            <div layout="column" layout-fill>
+                <div layout="row">
+                    <md-input-container class="md-block" flex="50">
+                        <label>Khu vực</label>
+                        <md-select name="dia_diem_khu_vuc" ng-model="tbisListMajorInputForm.viewModel.dia_diem.khu_vuc">
+                            <md-option ng-value="khuvuc" ng-repeat="khuvuc in tbisListMajorInputForm.selectOptions.khuvucs">{{khuvuc.ten}}</md-option>
+                        </md-select>
+                        <div class="errors" ng-messages="tbisListMajorInputForm.addNewThietBiForm.phan_quyen_quan_ly.$error">
+                            <div ng-message="required">Thông tin bắt buộc.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex="50">
+                        <label>Terminal</label>
+                        <md-select name="dia_diem_terminal" ng-model="tbisListMajorInputForm.viewModel.dia_diem.terminal">
+                            <md-option value="TER A">TER A</md-option>
+                            <md-option value="TER B">TER B</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div layout="row">
+                    <md-input-container class="md-block" flex="50">
+                        <label>Line</label>
+                        <input ng-model="tbisListMajorInputForm.viewModel.dia_diem.line" name="dia_diem_line">
+                    </md-input-container>
+                </div>
+            </div>
+        </md-list-item>
+        <!--Section: Phân quyền-->
+        <md-divider></md-divider>
+        <md-subheader class="md-no-sticky">Phân quyền</md-subheader>
+        <md-list-item>
+            <div layout="column" layout-fill>
+                <div layout="row">
+                    <md-input-container class="md-block" flex="50">
+                        <label>Quản lý</label>
+                        <md-select name="phan_quyen_quan_ly" ng-model="tbisListMajorInputForm.viewModel.phan_quyen.quan_ly">
+                            <md-option ng-value="dvquanly" ng-repeat="dvquanly in tbisListMajorInputForm.selectOptions.donvis | orderBy:'ten'">{{dvquanly.ten}}</md-option>
+                        </md-select>
+                        <div class="errors" ng-messages="tbisListMajorInputForm.addNewThietBiForm.phan_quyen_quan_ly.$error">
+                            <div ng-message="required">Thông tin bắt buộc.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex="50">
+                        <label>Sở hữu</label>
+                        <md-select name="phan_quyen_so_huu" ng-model="tbisListMajorInputForm.viewModel.phan_quyen.so_huu">
+                            <md-option ng-value="dvsohuu" ng-repeat="dvsohuu in tbisListMajorInputForm.selectOptions.donvis | orderBy:'ten'">{{dvsohuu.ten}}</md-option>
+                        </md-select>
+                        <div class="errors" ng-messages="tbisListMajorInputForm.addNewThietBiForm.phan_quyen_so_huu.$error">
+                            <div ng-message="required">Thông tin bắt buộc.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout="row">
+                    <md-input-container class="md-block" flex="50">
+                        <label>Vận hành</label>
+                        <md-select name="phan_quyen_van_hanh" ng-model="tbisListMajorInputForm.viewModel.phan_quyen.van_hanh"
+                                   ng-change="tbisListMajorInputForm.viewModel.phan_quyen.doi_van_hanh = {};">
+                            <md-option ng-value="doivanhanh" ng-repeat="doivanhanh in tbisListMajorInputForm.selectOptions.donvis | orderBy:'ten'">{{doivanhanh.ten}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex="50">
+                        <label>Đội vận hành</label>
+                        <md-select name="phan_quyen_doi_van_hanh" ng-model="tbisListMajorInputForm.viewModel.phan_quyen.doi_van_hanh">
+                            <md-option ng-value="doivanhanh" ng-repeat="doivanhanh in tbisListMajorInputForm.selectOptions.doivanhanhs[tbisListMajorInputForm.viewModel.phan_quyen.van_hanh.ten] | orderBy:'ten'">{{doivanhanh.ten}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+            </div>
+        </md-list-item>
+        <!--Section: Hồ sơ-->
+        <md-divider></md-divider>
+        <md-subheader class="md-no-sticky">Hồ sơ thiết bị</md-subheader>
+        <md-list-item>
+            <div layout="column" layout-fill>
+                <div layout="row">
+                    <md-input-container class="md-block" flex="50">
+                        <label>Năm sử dụng</label>
+                        <input name="ho_so_nam_su_dung" ng-model="tbisListMajorInputForm.viewModel.ho_so.nam_su_dung" type="number" step="1" min="1900" max="2100">
+                        <div ng-messages="tbisListMajorInputForm.addNewThietBiForm.ho_so_nam_su_dung.$error">
+                            <div ng-message="min">Năm sản xuất không ít hơn 1900.</div>
+                            <div ng-message="max">Năm sản xuất không quá 2100.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex="50">
+                        <label>Số đăng ký</label>
+                        <input name="ho_so_so_dang_ky" ng-model="tbisListMajorInputForm.viewModel.ho_so.so_dang_ky">
+                    </md-input-container>
+                </div>
+                <div layout="row">
+                    <md-input-container class="md-block" flex="50">
+                        <label>Số khung</label>
+                        <input name="ho_so_so_khung" ng-model="tbisListMajorInputForm.viewModel.ho_so.so_khung">
+                    </md-input-container>
+                    <md-input-container class="md-block" flex="50">
+                        <label>Số máy</label>
+                        <input name="ho_so_so_may" ng-model="tbisListMajorInputForm.viewModel.ho_so.so_may">
+                    </md-input-container>
+                </div>
+                <div layout="row">
+                    <md-input-container class="md-block" flex="50">
+                        <label>Biển số</label>
+                        <input name="ho_so_bien_so" ng-model="tbisListMajorInputForm.viewModel.ho_so.bien_so">
+                    </md-input-container>
+                    <md-input-container class="md-block" flex="50">
+                        <label>Số giấy đăng kiểm</label>
+                        <input name="ho_so_so_giay_dang_kiem" ng-model="tbisListMajorInputForm.viewModel.ho_so.so_giay_dang_kiem">
+                    </md-input-container>
+                </div>
+                <div layout="row" style="margin-bottom: 24px;">
+                    <md-input-container class="md-block" flex="50">
+                        <label>Xuất xứ</label>
+                        <md-select name="ho_so_xuat_xu" ng-model="tbisListMajorInputForm.viewModel.ho_so.xuat_xu">
+                            <md-option ng-value="quocgia" ng-repeat="quocgia in tbisListMajorInputForm.selectOptions.quocgias | orderBy">{{quocgia}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+            </div>
+        </md-list-item>
+        <!--Section: Bảo hành-->
+        <md-divider></md-divider>
+        <md-subheader class="md-no-sticky">Thông tin bảo hành</md-subheader>
+        <md-list-item>
+            <div layout="row" style="padding-top: 24px; padding-bottom: 10px;">
+                <md-checkbox ng-model="tbisListMajorInputForm.viewModel.bao_hanh.isBaoHanh" aria-label="Có thông tin bảo hành?">
+                    Có thông tin bảo hành
+                </md-checkbox>
+            </div>
+        </md-list-item>
+        <md-list-item ng-show="tbisListMajorInputForm.viewModel.bao_hanh.isBaoHanh">
+            <div layout="column" layout-fill>
+                <div layout="row">
+                    <md-input-container class="md-block" flex="50">
+                        <label>T.gian bảo hành (tháng)</label>
+                        <input name="bao_hanh_thoi_gian_bao_hanh" ng-model="tbisListMajorInputForm.viewModel.bao_hanh.thoi_gian_bao_hanh" type="number" step="1" min="0" max="1000">
+                        <div ng-messages="tbisListMajorInputForm.addNewThietBiForm.bao_hanh_thoi_gian_bao_hanh.$error">
+                            <div ng-message="min">Thời gian bảo hành thể âm.</div>
+                            <div ng-message="max">Thời gian bảo hành không thể vượt quá 1000 (tháng)</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout="row">
+                    <md-datepicker ng-model="tbisListMajorInputForm.viewModel.bao_hanh.ngay_bat_dau" md-placeholder="Ngày bắt đầu" flex="50"></md-datepicker>
+                    <md-datepicker ng-model="tbisListMajorInputForm.viewModel.bao_hanh.ngay_ket_thuc" md-placeholder="Ngày kết thúc" flex="50" disabled></md-datepicker>
+                </div>
+            </div>
+        </md-list-item>
+
+        <!--Section: Thiết bị đi kèm-->
+        <md-divider></md-divider>
+        <md-subheader class="md-no-sticky">Thiết bị đi kèm</md-subheader>
+        <md-list-item>
+            <div layout="row" style="padding-top: 24px; padding-bottom: 10px;">
+                <md-checkbox ng-model="tbisListMajorInputForm.viewModel.thiet_bi_di_kem.isThietBiDiKem" aria-label="Có thiết bị đi kèm?">
+                    Có thiết bị đi kèm
+                </md-checkbox>
+            </div>
+        </md-list-item>
+        <md-list-item ng-show="tbisListMajorInputForm.viewModel.thiet_bi_di_kem.isThietBiDiKem">
+            <div layout="column" layout-fill>
+                <div layout="row">
+                    <md-input-container class="md-block" flex="100">
+                        <label>Các thiết bị đi kèm</label>
+                        <input name="thiet_bi_di_kem_array" ng-model="tbisListMajorInputForm.viewModel.bao_hanh.thiet_bi_di_kem.danh_sach">
+                    </md-input-container>
+                </div>
+            </div>
+        </md-list-item>
+
+        <!--Section: Khác-->
+        <md-divider></md-divider>
+        <md-subheader class="md-no-sticky">Các mục bổ sung</md-subheader>
+        <md-list-item>
+            <div layout="column" layout-fill>
+                <div layout="row" style="margin-top: 40px; margin-bottom: 40px;">
+                    <select kendo-multi-select
+                            k-data-source="tbisListMajorInputForm.selectOptions.tags[tbisListMajorInputForm.viewModel.phan_loai.nhom]"
+                            k-ng-model="tbisListMajorInputForm.viewModel.tags"
+                            style="width: 100%;"
+                            k-placeholder="'Gắn thẻ...'"></select>
+                </div>
+                <div layout="row">
+                    <md-input-container class="md-block" flex="100">
+                        <label>Mô tả</label>
+                        <input name="mo_ta" ng-model="tbisListMajorInputForm.viewModel.mo_ta">
+                    </md-input-container>
+                </div>
+                <div layout="row">
+                    <md-input-container class="md-block" flex="100">
+                        <label>Ghi chú</label>
+                        <input name="ghi_chu" ng-model="tbisListMajorInputForm.viewModel.ghi_chu">
+                    </md-input-container>
+                </div>
+            </div>
+        </md-list-item>
+    </md-list>
+</form>
