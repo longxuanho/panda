@@ -22,7 +22,8 @@ export default angular.module(name, [
     template,
     controllerAs: name,
     bindings: {
-        thietbis: '='
+        thietbis: '=',
+        totalCount: '='
     },
     controller: TbisDisplayListView
 });

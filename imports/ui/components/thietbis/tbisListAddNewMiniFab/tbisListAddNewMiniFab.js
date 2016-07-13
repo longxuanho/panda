@@ -14,7 +14,7 @@ import { name as NotificationService } from '../../../services/common/notificati
 
 
 class tbisListAddNewMiniFab {
-    constructor($mdDialog, $mdMedia) {
+    constructor($scope, $mdDialog, $mdMedia) {
         'ngInject';
 
         this.$mdDialog = $mdDialog;
@@ -45,8 +45,8 @@ class tbisListAddNewMiniFab {
                 };
 
                 this.reset = () => {
-                    this.newThietBi = tbisDataService.initNewThietBiData();
                     $scope.$broadcast('reset-tbis-list-major-input-form');
+                    this.newThietBi = tbisDataService.initNewThietBiData();
                 };
 
                 this.close = () => {

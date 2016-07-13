@@ -31,15 +31,15 @@ class TbisList {
         $reactive(this).attach($scope);
 
         this.settings = tbisListPageSettingsService.getPageSettings();
-        this.thietbis = tbisDataService.getAllThietBis();
+        // this.thietbis = tbisDataService.getAllThietBis();
 
         console.log('thietbis: ', this.thietbis);
         
         this.isSearchMode = true;
-        this.perPage = 3;
+        this.perPage = 10;
         this.page = 1;
         this.sort = {
-            'ma_tb.keyId': 1
+            'ma_thiet_bi.keyId': 1
         };
         this.searchText = '';
 
@@ -51,14 +51,14 @@ class TbisList {
         this.availableDirections = ['up', 'down', 'left', 'right'];
         this.selectedDirection = 'up';
 
-        // this.subscribe('thietbis', () => [
-        //     {
-        //         limit: parseInt(this.perPage),
-        //         skip: parseInt((this.getReactively('page') - 1) * this.perPage),
-        //         sort: this.getReactively('sort')
-        //     },
-        //     this.getReactively('searchText')
-        // ]);
+        this.subscribe('thietbis', () => [
+            {
+                limit: parseInt(this.perPage),
+                skip: parseInt((this.getReactively('page') - 1) * this.perPage),
+                sort: this.getReactively('sort')
+            },
+            this.getReactively('searchText')
+        ]);
         
         this.subscribe('tbishelpers');
         
@@ -70,15 +70,13 @@ class TbisList {
                 tbisPhanQuyenDataService.queryAll();
                 tbisDiaDiemDataService.queryAll();
                 tbisReferenceDataService.queryAll();
-            }
-            // thietbis() {
-            //     return Tbis.find({}, {
-            //         sort : this.getReactively('sort')
-            //     });
-            // },
-            // thietbisCount() {
-            //     return Counts.get('numberOfTbis');
-            // },
+            },
+            thietbis() {
+                return tbisDataService.query();
+            },
+            thietbisCount() {
+                return Counts.get('numberOfThietBis');
+            },
             // isLoggedIn() {
             //     return !!Meteor.userId();
             // },

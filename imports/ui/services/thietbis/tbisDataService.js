@@ -1,6 +1,8 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
+import _ from 'underscore';
+
 import { ThietBis } from '../../../api/thietbis/tbis';
 
 class TbisDataService {
@@ -14,6 +16,13 @@ class TbisDataService {
         this.errors = [];
     }
 
+    query(selector, options) {
+        console.log('data ',ThietBis.find({}).fetch());
+        if (_.isEmpty(selector))
+            return ThietBis.find({}).fetch();
+        return ThietBis.find(selector, options).fetch();
+    }
+
     initNewThietBiData() {
         return {
             ma_thiet_bi: {},
@@ -21,7 +30,12 @@ class TbisDataService {
             trang_thai: 'Đang hoạt động',
             nguon_goc: {},
             dia_diem: {},
-            phan_quyen: {},
+            phan_quyen: {
+                quan_ly: {},
+                so_huu: {},
+                van_hanh: {},
+                doi_van_hanh: {}
+            },
             ho_so: {},
             bao_hanh: {},
             tags: [],

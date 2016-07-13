@@ -92,9 +92,6 @@ Schema.ThietBi = new SimpleSchema({
         'dia_diem.khu_vuc': {
             type: Object
         },
-            'dia_diem.khu_vuc._id': {
-                type: String
-            },
             'dia_diem.khu_vuc.ten': {
                 type: String
             },
@@ -115,9 +112,6 @@ Schema.ThietBi = new SimpleSchema({
         'phan_quyen.quan_ly': {
             type: Object
         },
-            'phan_quyen.quan_ly._id': {
-                type: String
-            },
             'phan_quyen.quan_ly.ma': {
                 type: String
             },
@@ -127,9 +121,6 @@ Schema.ThietBi = new SimpleSchema({
         'phan_quyen.so_huu': {
             type: Object
         },
-            'phan_quyen.so_huu._id': {
-                type: String
-            },
             'phan_quyen.so_huu.ma': {
                 type: String
             },
@@ -140,11 +131,6 @@ Schema.ThietBi = new SimpleSchema({
             type: Object,
             optional: true
         },
-            'phan_quyen.van_hanh._id': {
-                type: String,
-                optional: true
-
-            },
             'phan_quyen.van_hanh.ten': {
                 type: String,
                 optional: true
@@ -157,10 +143,6 @@ Schema.ThietBi = new SimpleSchema({
             type: Object,
             optional: true
         },
-            'phan_quyen.doi_van_hanh._id': {
-                type: String,
-                optional: true
-            },
             'phan_quyen.doi_van_hanh.ten': {
                 type: String,
                 optional: true
