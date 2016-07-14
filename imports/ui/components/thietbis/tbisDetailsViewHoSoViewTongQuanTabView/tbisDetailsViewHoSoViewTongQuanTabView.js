@@ -12,7 +12,11 @@ class TbisDetailsViewHoSoViewTongQuanTabView {
     }
 
     isEmptyThongTinDangKy() {
-        return this.thietbi && _.isEmpty(this.thietbi.ho_so);
+        if (this.thietbi) {
+            let testObject = _.omit(this.thietbi.ho_so, 'nam_su_dung');
+            return _.isEmpty(testObject);
+        }
+        return true;
     }
 }
 

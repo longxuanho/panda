@@ -59,6 +59,9 @@ export default angular.module(name, [
     TbisDetailsViewPageSettingsService
 ]).component(name, {
     template,
+    bindings: {
+        title: '@'
+    },
     controllerAs: name,
     controller: TbisDetailsUtilsBar
 });
