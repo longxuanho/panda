@@ -24,11 +24,13 @@ class TbisUtilsBar {
             let navBarElem = $('navigation'),
                 utilsBarElem = $('tbis-utils-bar');
 
-            if ($(window).scrollTop() > 64)
-                utilsBarElem.addClass("sky-sticky md-whiteframe-2dp");
-            else {
-                if (navBarElem.offset().top == utilsBarElem.offset().top)
-                    utilsBarElem.removeClass("sky-sticky md-whiteframe-2dp");
+            if (navBarElem.length && utilsBarElem.length) {
+                if ($(window).scrollTop() > 64)
+                    utilsBarElem.addClass("sky-sticky md-whiteframe-2dp");
+                else {
+                    if (navBarElem.offset().top == utilsBarElem.offset().top)
+                        utilsBarElem.removeClass("sky-sticky md-whiteframe-2dp");
+                }
             }
         })
     }

@@ -8,6 +8,7 @@ import template from './tbisDetailsView.html';
 import { ThietBis } from '../../../../api/thietbis/tbis';
 import { name as TbisDetailsUtilsBar } from '../tbisDetailsUtilsBar/tbisDetailsUtilsBar';
 import { name as TbisDetailsViewHoSoView } from '../tbisDetailsViewHoSoView/tbisDetailsViewHoSoView';
+import { name as TbisDetailsViewFabMenu } from '../tbisDetailsViewFabMenu/tbisDetailsViewFabMenu'
 
 class TbisDetailsView {
     constructor($stateParams, $scope, $reactive) {
@@ -75,7 +76,8 @@ export default angular.module(name, [
     angularMeteor,
     uiRouter,
     TbisDetailsUtilsBar,
-    TbisDetailsViewHoSoView
+    TbisDetailsViewHoSoView,
+    TbisDetailsViewFabMenu
 ]).component(name, {
     template,
     controllerAs: name,

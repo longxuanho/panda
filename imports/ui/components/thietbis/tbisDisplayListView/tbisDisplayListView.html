@@ -1,6 +1,6 @@
 <md-list>
     <md-subheader class="md-no-sticky" style="margin-top: -10px; padding-top: 0;">Đang xem {{tbisDisplayListView.thietbis.length}}/{{tbisDisplayListView.totalCount}} hạng mục</md-subheader>
-    <tbis-display-list-item ng-repeat="thietbi in tbisDisplayListView.thietbis" thietbi="thietbi"></tbis-display-list-item>
+    <tbis-display-list-item ui-sref="tbisDetailsView({thietbiId: thietbi._id})" ng-repeat="thietbi in tbisDisplayListView.thietbis" thietbi="thietbi"></tbis-display-list-item>
 </md-list>
 
 

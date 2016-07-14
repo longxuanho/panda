@@ -1,24 +1,21 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
-import template from './tbisListFabMenu.html';
-import { name as TbisListPageNavigationMiniFab } from '../tbisListPageNavigationMiniFab/tbisListPageNavigationMiniFab';
-import { name as TbisListAddNewMiniFab } from '../tbisListAddNewMiniFab/tbisListAddNewMiniFab';
+import template from './tbisDetailsViewFabMenu.html';
+// import { name as TbisListPageNavigationMiniFab } from '../tbisListPageNavigationMiniFab/tbisListPageNavigationMiniFab';
+// import { name as TbisListAddNewMiniFab } from '../tbisListAddNewMiniFab/tbisListAddNewMiniFab';
 
-class TbisListFabMenu {
+class TbisDetailsViewFabMenu {
     constructor($scope, $timeout) {
         'ngInject';
         this.clickIcon = 'menu';
         this.isOpen = false;
+        this.count = 0;
 
         $scope.$watch(() => this.isOpen, (newValue) => {
             // Thay đổi icon của FAB btn
             this.clickIcon = newValue ? 'more_vert' : 'menu';
         });
-    }
-
-    $onInit() {
-        console.log('tbisListFabMenu!');
     }
 
 
@@ -31,15 +28,15 @@ class TbisListFabMenu {
 
 }
 
-const name = 'tbisListFabMenu';
+const name = 'tbisDetailsViewFabMenu';
 
 // create a module
 export default angular.module(name, [
     angularMeteor,
-    TbisListPageNavigationMiniFab,
-    TbisListAddNewMiniFab
+    // TbisListPageNavigationMiniFab,
+    // TbisListAddNewMiniFab
 ]).component(name, {
     template,
     controllerAs: name,
-    controller: TbisListFabMenu
+    controller: TbisDetailsViewFabMenu
 });

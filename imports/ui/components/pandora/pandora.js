@@ -65,9 +65,9 @@ function config($locationProvider, $urlRouterProvider, uiGmapGoogleMapApiProvide
         // libraries: 'weather,geometry,visualization'
     });
 
-    $mdThemingProvider.theme('default')
-        .primaryPalette('indigo')
-        .accentPalette('pink');
+    // $mdThemingProvider.theme('default')
+    //     .primaryPalette('indigo')
+    //     .accentPalette('pink');
 }
 
 function run($rootScope, $state) {
