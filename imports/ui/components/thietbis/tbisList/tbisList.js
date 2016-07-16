@@ -59,7 +59,7 @@ class TbisList {
             },
             this.getReactively('searchText')
         ]);
-        
+
         this.subscribe('tbishelpers');
         
         this.helpers({

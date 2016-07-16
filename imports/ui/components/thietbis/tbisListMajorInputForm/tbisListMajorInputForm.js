@@ -11,7 +11,7 @@ import { name as TbisDiaDiemDataService } from '../../../services/thietbis/tbisD
 import { name as TbisReferenceDataService } from '../../../services/thietbis/tbisReferenceDataService';
 
 class TbisListMajorInputForm {
-    constructor($scope, tbisPhanLoaiDataService, tbisNguonGocDataService, tbisDiaDiemDataService, tbisPhanQuyenDataService, tbisReferenceDataService,) {
+    constructor($scope, tbisPhanLoaiDataService, tbisNguonGocDataService, tbisDiaDiemDataService, tbisPhanQuyenDataService, tbisReferenceDataService) {
         'ngInject';
 
         this.selectOptions = tbisPhanLoaiDataService.getSelectOptions();

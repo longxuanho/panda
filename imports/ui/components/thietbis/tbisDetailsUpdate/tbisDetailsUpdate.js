@@ -6,16 +6,18 @@ import { Meteor } from 'meteor/meteor';
 
 import template from './tbisDetailsUpdate.html';
 import { ThietBis } from '../../../../api/thietbis/tbis';
+import { name as TbisDetailsUpdateTongQuanTab } from '../tbisDetailsUpdateTongQuanTab/tbisDetailsUpdateTongQuanTab';
 // import { name as TbisDetailsUtilsBar } from '../tbisDetailsUtilsBar/tbisDetailsUtilsBar';
-// import { name as TbisDetailsUpdtateHoSoView } from '../tbisDetailsViewHoSoView/tbisDetailsViewHoSoView';
-// import { name as TbisDetailsUpdtateFabMenu } from '../tbisDetailsViewFabMenu/tbisDetailsViewFabMenu'
+// import { name as TbisDetailsUpdateHoSoView } from '../tbisDetailsViewHoSoView/tbisDetailsViewHoSoView';
+// import { name as TbisDetailsUpdateFabMenu } from '../tbisDetailsViewFabMenu/tbisDetailsViewFabMenu'
 
-class TbisDetailsUpdtate {
-    constructor($stateParams, $scope, $reactive) {
+class TbisDetailsUpdate {
+    constructor($stateParams, $scope, $reactive, $mdMedia) {
         'ngInject';
 
         $reactive(this).attach($scope);
 
+        this.$mdMedia = $mdMedia;
         this.thietbiId = $stateParams.thietbiId;
 
         this.subscribe('thietbis');
@@ -49,13 +51,14 @@ const name = 'tbisDetailsUpdate';
 export default angular.module(name, [
     angularMeteor,
     uiRouter,
+    TbisDetailsUpdateTongQuanTab
     // TbisDetailsUtilsBar,
-    // TbisDetailsUpdtateHoSoView,
-    // TbisDetailsUpdtateFabMenu
+    // TbisDetailsUpdateHoSoView,
+    // TbisDetailsUpdateFabMenu
 ]).component(name, {
     template,
     controllerAs: name,
-    controller: TbisDetailsUpdtate
+    controller: TbisDetailsUpdate
 })
     .config(config);
 

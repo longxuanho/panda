@@ -60,7 +60,8 @@ export default angular.module(name, [
 ]).component(name, {
     template,
     bindings: {
-        title: '@'
+        title: '@',
+        hasOptions: '<'
     },
     controllerAs: name,
     controller: TbisDetailsUtilsBar

@@ -3,8 +3,8 @@
         <!--Category-->
         <h3>{{tbisDetailsUtilsBar.title}}</h3>
         <span flex></span>
-        <h3>{{tbisDetailsUtilsBar.settings.category}}</h3>
-        <md-menu md-position-mode="target-right target">
+        <h3 ng-show="tbisDetailsUtilsBar.hasOptions">{{tbisDetailsUtilsBar.settings.category}}</h3>
+        <md-menu ng-show="tbisDetailsUtilsBar.hasOptions" md-position-mode="target-right target">
             <md-button class="md-icon-button" aria-label="Chọn mục" ng-click="tbisDetailsUtilsBar.openFilterMenu($mdOpenMenu, $event)">
                 <md-icon md-svg-icon="{{tbisDetailsUtilsBar.utilsBarIconsOptions.categories[tbisDetailsUtilsBar.settings.category]}}"></md-icon>
             </md-button>

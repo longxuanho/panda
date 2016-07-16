@@ -1,1 +1,19 @@
-This is tbisDetailsUpdate {{TbisDetailsUpdtate.thietbi}}
+<tbis-details-utils-bar has-options="false" title="{{tbisDetailsUpdate.thietbi.ma_thiet_bi.keyId}}"></tbis-details-utils-bar>
+<div class="sky-margin-top-{{tbisDetailsUpdate.$mdMedia('gt-sm') ? '64' : '56'}}"></div>
+<md-tabs md-dynamic-height md-border-bottom>
+    <md-tab label="Tổng quan">
+        <md-content>
+            <tbis-details-update-tong-quan-tab thietbi="tbisDetailsUpdate.thietbi"></tbis-details-update-tong-quan-tab>
+        </md-content>
+    </md-tab>
+    <md-tab label="Thông số">
+        <md-content>
+            <tbis-details-update-thong-so-tab-view></tbis-details-update-thong-so-tab-view>
+        </md-content>
+    </md-tab>
+    <md-tab label="Vị trí">
+        <md-content class="md-padding">
+            <tbis-details-update-vi-tri-tab-view></tbis-details-update-vi-tri-tab-view>
+        </md-content>
+    </md-tab>
+</md-tabs>
