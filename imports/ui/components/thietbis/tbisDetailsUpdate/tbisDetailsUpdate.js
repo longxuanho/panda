@@ -4,13 +4,13 @@ import uiRouter from 'angular-ui-router';
 
 import { Meteor } from 'meteor/meteor';
 
-import template from './tbisDetailsView.html';
+import template from './tbisDetailsUpdate.html';
 import { ThietBis } from '../../../../api/thietbis/tbis';
-import { name as TbisDetailsUtilsBar } from '../tbisDetailsUtilsBar/tbisDetailsUtilsBar';
-import { name as TbisDetailsViewHoSoView } from '../tbisDetailsViewHoSoView/tbisDetailsViewHoSoView';
-import { name as TbisDetailsViewFabMenu } from '../tbisDetailsViewFabMenu/tbisDetailsViewFabMenu'
+// import { name as TbisDetailsUtilsBar } from '../tbisDetailsUtilsBar/tbisDetailsUtilsBar';
+// import { name as TbisDetailsUpdtateHoSoView } from '../tbisDetailsViewHoSoView/tbisDetailsViewHoSoView';
+// import { name as TbisDetailsUpdtateFabMenu } from '../tbisDetailsViewFabMenu/tbisDetailsViewFabMenu'
 
-class TbisDetailsView {
+class TbisDetailsUpdtate {
     constructor($stateParams, $scope, $reactive) {
         'ngInject';
 
@@ -43,28 +43,28 @@ class TbisDetailsView {
 
 }
 
-const name = 'tbisDetailsView';
+const name = 'tbisDetailsUpdate';
 
 // create a module
 export default angular.module(name, [
     angularMeteor,
     uiRouter,
-    TbisDetailsUtilsBar,
-    TbisDetailsViewHoSoView,
-    TbisDetailsViewFabMenu
+    // TbisDetailsUtilsBar,
+    // TbisDetailsUpdtateHoSoView,
+    // TbisDetailsUpdtateFabMenu
 ]).component(name, {
     template,
     controllerAs: name,
-    controller: TbisDetailsView
+    controller: TbisDetailsUpdtate
 })
     .config(config);
 
 function config($stateProvider) {
     'ngInject';
 
-    $stateProvider.state('tbisDetailsView', {
-        url: '/thiet-bi/chi-tiet/:thietbiId',
-        template: '<tbis-details-view></tbis-details-view>',
+    $stateProvider.state('tbisDetailsUpdate', {
+        url: '/thiet-bi/cap-nhat/:thietbiId',
+        template: '<tbis-details-update></tbis-details-update>',
         resolve: {
             currentUser($q) {
                 if (Meteor.userId() === null) {

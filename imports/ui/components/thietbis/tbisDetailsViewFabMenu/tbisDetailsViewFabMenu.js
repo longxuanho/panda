@@ -38,5 +38,8 @@ export default angular.module(name, [
 ]).component(name, {
     template,
     controllerAs: name,
+    bindings: {
+        thietbiId: '@'
+    },
     controller: TbisDetailsViewFabMenu
 });

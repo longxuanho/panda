@@ -3,7 +3,4 @@ This is tbisDetails {{tbisDetailsView.thietbiId}}
 
 <a ui-sref="thietbis">Back</a>
 <tbis-details-view-ho-so-view thietbi="tbisDetailsView.thietbi"></tbis-details-view-ho-so-view>
-<tbis-details-view-fab-menu></tbis-details-view-fab-menu>
-<!--<pre>-->
-    <!--{{tbisDetailsView.thietbi | json}}-->
-<!--</pre>-->
+<tbis-details-view-fab-menu thietbiId="{{tbisDetailsView.thietbi.ma_thiet_bi.keyId}}"></tbis-details-view-fab-menu>
