@@ -1,0 +1,25 @@
+<md-dialog aria-label="Cập nhật thiết bị" ng-cloak>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Cập nhật thiết bị {{tbisDetailsUpdateModal.thietbi.ma_thiet_bi.keyId}}</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="tbisDetailsUpdateModal.close()">
+                <md-icon md-svg-src="img/icons/common/close.svg" aria-label="Đóng hộp thoại"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <!-- <div class="md-dialog-content"> -->
+        <p class="md-subhead" style="padding: 16px 16px 0px 16px;">Bạn có thể thay đổi các thông tin được ghi nhận trong mẫu phiếu dưới đây:</p>
+        <tbis-list-major-input-form view-model="tbisDetailsUpdateModal.thietbi"></tbis-list-major-input-form>
+            <pre>
+                {{ tbisDetailsUpdateModal.thietbi | json }}
+            </pre>
+        <!-- </div> -->
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <md-button ng-click="tbisDetailsUpdateModal.reset()" aria-label="Reset">Reset</md-button>
+        <span flex></span>
+        <md-button style="margin-right:20px;" ng-click="tbisDetailsUpdateModal.save()" aria-label="Cập nhật">Cập nhật</md-button>
+    </md-dialog-actions>
+</md-dialog>

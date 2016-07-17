@@ -2,7 +2,7 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
 import template from './tbisDetailsViewFabMenu.html';
-// import { name as TbisListPageNavigationMiniFab } from '../tbisListPageNavigationMiniFab/tbisListPageNavigationMiniFab';
+import { name as TbisDetailsUpdateMiniFab } from '../tbisDetailsUpdateMiniFab/tbisDetailsUpdateMiniFab';
 // import { name as TbisListAddNewMiniFab } from '../tbisListAddNewMiniFab/tbisListAddNewMiniFab';
 
 class TbisDetailsViewFabMenu {
@@ -11,11 +11,6 @@ class TbisDetailsViewFabMenu {
         this.clickIcon = 'menu';
         this.isOpen = false;
         this.count = 0;
-
-        $scope.$watch(() => this.isOpen, (newValue) => {
-            // Thay đổi icon của FAB btn
-            this.clickIcon = newValue ? 'more_vert' : 'menu';
-        });
     }
 
 
@@ -33,13 +28,11 @@ const name = 'tbisDetailsViewFabMenu';
 // create a module
 export default angular.module(name, [
     angularMeteor,
+    TbisDetailsUpdateMiniFab
     // TbisListPageNavigationMiniFab,
     // TbisListAddNewMiniFab
 ]).component(name, {
     template,
     controllerAs: name,
-    bindings: {
-        thietbiId: '@'
-    },
     controller: TbisDetailsViewFabMenu
 });

@@ -13,6 +13,7 @@ class TbisDataService {
         this.$q = $q;
 
         this.thietbis = queryThietBis();
+        this.selectedThietBi = {};
         this.errors = [];
     }
 
@@ -21,6 +22,10 @@ class TbisDataService {
         if (_.isEmpty(selector))
             return ThietBis.find({}).fetch();
         return ThietBis.find(selector, options).fetch();
+    }
+
+    queryOne(thietbiId) {
+        return ThietBis.findOne({_id: thietbiId});
     }
 
     initNewThietBiData() {
@@ -44,7 +49,7 @@ class TbisDataService {
         }
     }
 
-    validateNewThietBiData(data) {
+    validateMajorInputThietBiData(data) {
         if (!data.ma_thiet_bi.keyId)
             throw Error('Chưa có thông tin về mã thiết bị');
         if (!data.phan_loai.nhom)
@@ -74,11 +79,35 @@ class TbisDataService {
         return defer.promise;
     }
 
+    update(data) {
+        let defer = this.$q.defer();
+        ThietBis.update({
+            _id: data._id
+        }, {
+            $set: {
+                ma_thiet_bi: data.ma_thiet_bi,
+                metadata: data.metadata
+            }
+        }, (error) => {
+            if (error)
+                defer.reject(error);
+            else
+                defer.resolve();
+        });
+        return defer.promise;
+    }
+
     getAllThietBis() {
         return this.thietbis;
     }
 
+    getSelectedThietBi() {
+        return this.selectedThietBi;
+    }
 
+    setSelectedThietBi(thietbiId) {
+        this.selectedThietBi = this.queryOne(thietbiId);
+    }
 }
 
 const name = 'tbisDataService';

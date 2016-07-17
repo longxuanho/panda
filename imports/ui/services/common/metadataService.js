@@ -28,7 +28,7 @@ class MetadataService {
         }
     }
 
-    buildEditMetadata(object, user) {
+    buildUpdateMetadata(object, user) {
         if (_.isEmpty(object))
             throw Error('Không có thông tin về đối tượng được xử lý (metadata).');
         if (_.isEmpty(user))
@@ -55,11 +55,11 @@ function buildDateStamp() {
     let now = moment();
     return {
         ngay_tao_date: new Date(),
-        ngay_tao_string: now.format('YYYY-MM-DD, hh:mm:ss'),
+        ngay_tao_string: now.format('YYYY-MM-DD, HH:mm:ss'),
         nam: now.format('YYYY'),
         thang: now.format('MM'),
         ngay:  now.format('DD'),
-        gio: now.format('hh:mm:ss')
+        gio: now.format('HH:mm:ss')
     }
 }
 

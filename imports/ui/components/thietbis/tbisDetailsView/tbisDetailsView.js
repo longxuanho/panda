@@ -19,7 +19,6 @@ class TbisDetailsView {
         this.thietbiId = $stateParams.thietbiId;
 
         this.subscribe('thietbis');
-        // this.subscribe('users');
 
         this.helpers({
             thietbi() {
@@ -40,7 +39,6 @@ class TbisDetailsView {
     $onDestroy() {
         $('#sky-navigation').css({display: 'block'});
     }
-
 }
 
 const name = 'tbisDetailsView';

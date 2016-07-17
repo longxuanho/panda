@@ -3,9 +3,8 @@ import angularMeteor from 'angular-meteor';
 
 import ngMessages from 'angular-messages';
 
-import _ from 'underscore';
-import fabTemplate from './tbisListAddNewMiniFab.html';
-import modalTemplate from './tbisListAddNewModal.html';
+import fabTemplate from './tbisDetailsUpdateMiniFab.html';
+import modalTemplate from './tbisDetailsUpdateModal.html';
 
 import { name as MetadataService } from '../../../services/common/metadataService';
 import { name as TbisListMajorInputForm } from '../tbisListMajorInputForm/tbisListMajorInputForm';
@@ -13,8 +12,8 @@ import { name as TbisDataSerivce } from '../../../services/thietbis/tbisDataServ
 import { name as NotificationService } from '../../../services/common/notificationService';
 
 
-class TbisListAddNewMiniFab {
-    constructor($scope, $mdDialog, $mdMedia) {
+class TbisDetailsUpdateMiniFab {
+    constructor($mdDialog, $mdMedia, $timeout) {
         'ngInject';
 
         this.$mdDialog = $mdDialog;
@@ -23,20 +22,22 @@ class TbisListAddNewMiniFab {
 
     open(event) {
         this.$mdDialog.show({
-            controller($scope, $mdDialog, tbisDataService, metadataService, notificationService) {
+            controller($mdDialog, tbisDataService, metadataService, notificationService, $stateParams) {
                 'ngInject';
 
-                this.newThietBi = tbisDataService.initNewThietBiData();
-
+                tbisDataService.setSelectedThietBi($stateParams.thietbiId);
+                this.thietbi = angular.copy(tbisDataService.getSelectedThietBi());
+                
                 this.save = () => {
                     try {
-                        metadataService.buildNewMetadata(this.newThietBi, Meteor.user());
-                        tbisDataService.validateMajorInputThietBiData(this.newThietBi);
-                        tbisDataService.addNew(this.newThietBi).then(() => {
-                            notificationService.success('Thiết bị của bạn đã được ghi nhận vào Skynet.', 'Tạo mới thành công');
-                            this.reset();
+                        metadataService.buildUpdateMetadata(this.thietbi, Meteor.user());
+                        tbisDataService.validateMajorInputThietBiData(this.thietbi);
+                        tbisDataService.update(this.thietbi).then(() => {
+                            notificationService.success('Thay đổi của bạn đã được ghi nhận vào Skynet.', 'Cập nhật thành công');
+                            tbisDataService.setSelectedThietBi($stateParams.thietbiId);
+                            this.thietbi = angular.copy(tbisDataService.getSelectedThietBi());
                         }).catch((err) => {
-                            notificationService.error(err.message, 'Tạo mới thất bại');
+                            notificationService.error(err.message, 'Cập nhật thất bại');
                         });
                     }
                     catch (error) {
@@ -45,15 +46,14 @@ class TbisListAddNewMiniFab {
                 };
 
                 this.reset = () => {
-                    $scope.$broadcast('reset-tbis-list-major-input-form');
-                    this.newThietBi = tbisDataService.initNewThietBiData();
+                    this.thietbi = angular.copy(tbisDataService.getSelectedThietBi());
                 };
 
                 this.close = () => {
                     $mdDialog.hide();
                 };
             },
-            controllerAs: 'tbisListAddNewModal',
+            controllerAs: 'tbisDetailsUpdateModal',
             template: modalTemplate,
             targetEvent: event,
             parent: angular.element(document.body),
@@ -61,10 +61,9 @@ class TbisListAddNewMiniFab {
             fullscreen: this.$mdMedia('sm') || this.$mdMedia('xs')
         });
     }
-
 }
 
-const name = 'tbisListAddNewMiniFab';
+const name = 'tbisDetailsUpdateMiniFab';
 
 // create a module
 export default angular.module(name, [
@@ -77,5 +76,5 @@ export default angular.module(name, [
 ]).component(name, {
     template: fabTemplate,
     controllerAs: name,
-    controller: TbisListAddNewMiniFab
+    controller: TbisDetailsUpdateMiniFab
 });
