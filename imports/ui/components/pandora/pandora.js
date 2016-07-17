@@ -18,7 +18,6 @@ import { name as PartiesList } from '../demo/partiesList/partiesList';
 import { name as PartyDetails } from '../demo/partyDetails/partyDetails';
 import { name as TbisList } from '../thietbis/tbisList/tbisList';
 import { name as TbisDetailsView } from '../thietbis/tbisDetailsView/tbisDetailsView';
-import { name as TbisDetailsUpdate } from '../thietbis/tbisDetailsUpdate/tbisDetailsUpdate';
 import { name as Auth } from '../auth/auth';
 
 
@@ -38,7 +37,6 @@ export default angular.module(name, [
     Navigation,
     TbisList,
     TbisDetailsView,
-    TbisDetailsUpdate,
     PartiesList,
     PartyDetails,
     Auth,

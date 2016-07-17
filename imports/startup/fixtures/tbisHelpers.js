@@ -8,7 +8,7 @@ Meteor.startup(() => {
 
         // Subject: DiaDiems
 
-        console.log('start creating seed db...');
+        console.log('start creating seed TbisHelpers db...');
 
         const quocgias = [
             {
@@ -377,6 +377,12 @@ Meteor.startup(() => {
 
         const models = [
             {
+                ten: 'TJ5000',
+                hang_san_xuat: {
+                    ma: 'CAPACITY',
+                    ten: 'Capacity'
+                }
+            }, {
                 ten: 'TJ9000',
                 hang_san_xuat: {
                     ma: 'CAPACITY',

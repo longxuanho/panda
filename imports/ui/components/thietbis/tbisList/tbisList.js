@@ -7,7 +7,6 @@ import ngMdIcons from 'angular-material-icons';
 import { Counts } from 'meteor/tmeasday:publish-counts';
 
 import template from './tbisList.html';
-import { ThietBis } from '../../../../api/thietbis/tbis';
 
 import { name as TbisListPageSettingsService } from '../../../services/thietbis/tbisListPageSettingsService';
 import { name as TbisDataService } from '../../../services/thietbis/tbisDataService';
@@ -21,11 +20,15 @@ import { name as TbisPhanLoaiDataService } from '../../../services/thietbis/tbis
 import { name as TbisNguonGocDataService } from '../../../services/thietbis/tbisNguonGocDataService';
 import { name as TbisPhanQuyenDataService } from '../../../services/thietbis/tbisPhanQuyenDataService';
 import { name as TbisDiaDiemDataSerivce } from '../../../services/thietbis/tbisDiaDiemDataService';
-import { name as TbisReferenceDataSerivce } from '../../../services/thietbis/tbisReferenceDataService';
+import { name as TbisReferenceDataService } from '../../../services/thietbis/tbisReferenceDataService';
+
+import { name as TsktThongSoKyThuatDataService } from '../../../services/thietbis/tbisReferenceDataService';
 
 class TbisList {
     constructor($scope, $reactive, tbisListPageSettingsService, tbisDataService,
-                tbisPhanLoaiDataService, tbisNguonGocDataService, tbisPhanQuyenDataService, tbisDiaDiemDataService, tbisReferenceDataService) {
+                tbisPhanLoaiDataService, tbisNguonGocDataService, tbisPhanQuyenDataService,
+                tbisDiaDiemDataService, tbisReferenceDataService,
+                tsktThongSoKyThuatDataService) {
         'ngInject';
 
         $reactive(this).attach($scope);
@@ -61,6 +64,7 @@ class TbisList {
         ]);
 
         this.subscribe('tbishelpers');
+        this.subscribe('tskthelpers');
         
         this.helpers({
             tbishelpers() {
@@ -70,6 +74,9 @@ class TbisList {
                 tbisPhanQuyenDataService.queryAll();
                 tbisDiaDiemDataService.queryAll();
                 tbisReferenceDataService.queryAll();
+            },
+            tskthelpers() {
+                tsktThongSoKyThuatDataService.queryAll();
             },
             thietbis() {
                 return tbisDataService.query();
@@ -125,7 +132,9 @@ export default angular.module(name, [
     TbisNguonGocDataService,
     TbisPhanQuyenDataService,
     TbisDiaDiemDataSerivce,
-    TbisReferenceDataSerivce
+    TbisReferenceDataService,
+
+    TsktThongSoKyThuatDataService
 ]).component(name, {
     template,
     controllerAs: name,

@@ -10,7 +10,8 @@ Schema.TbisHelper = new SimpleSchema({
     },
     category: {
         type: String,
-        allowedValues: ['quocgias', 'khuvucs', 'hangsanxuats', 'models', 'vendors', 'nhoms', 'chungloais', 'loais', 'donvis', 'doivanhanhs', 'tags']
+        allowedValues: ['quocgias', 'khuvucs', 'hangsanxuats', 'models', 'vendors', 'nhoms',
+                        'chungloais', 'loais', 'donvis', 'doivanhanhs', 'tags']
     },
     dataObject: {
         type: Object,

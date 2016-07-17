@@ -8,6 +8,7 @@ import modalTemplate from './tbisDetailsUpdateModal.html';
 
 import { name as MetadataService } from '../../../services/common/metadataService';
 import { name as TbisListMajorInputForm } from '../tbisListMajorInputForm/tbisListMajorInputForm';
+import { name as TbisDetailsUpdateThongSoTab } from '../tbisDetailsUpdateThongSoTab/tbisDetailsUpdateThongSoTab';
 import { name as TbisDataSerivce } from '../../../services/thietbis/tbisDataService';
 import { name as NotificationService } from '../../../services/common/notificationService';
 
@@ -32,7 +33,7 @@ class TbisDetailsUpdateMiniFab {
                     try {
                         metadataService.buildUpdateMetadata(this.thietbi, Meteor.user());
                         tbisDataService.validateMajorInputThietBiData(this.thietbi);
-                        tbisDataService.update(this.thietbi).then(() => {
+                        tbisDataService.updateMajorForm(this.thietbi).then(() => {
                             notificationService.success('Thay đổi của bạn đã được ghi nhận vào Skynet.', 'Cập nhật thành công');
                             tbisDataService.setSelectedThietBi($stateParams.thietbiId);
                             this.thietbi = angular.copy(tbisDataService.getSelectedThietBi());
@@ -70,6 +71,7 @@ export default angular.module(name, [
     angularMeteor,
     ngMessages,
     TbisListMajorInputForm,
+    TbisDetailsUpdateThongSoTab,
     TbisDataSerivce,
     MetadataService,
     NotificationService

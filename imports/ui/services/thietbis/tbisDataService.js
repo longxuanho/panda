@@ -79,13 +79,23 @@ class TbisDataService {
         return defer.promise;
     }
 
-    update(data) {
+    updateMajorForm(data) {
         let defer = this.$q.defer();
         ThietBis.update({
             _id: data._id
         }, {
             $set: {
                 ma_thiet_bi: data.ma_thiet_bi,
+                phan_loai: data.phan_loai,
+                trang_thai: data.trang_thai,
+                nguon_goc: data.nguon_goc,
+                dia_diem: data.dia_diem,
+                phan_quyen: data.phan_quyen,
+                ho_so: data.ho_so,
+                bao_hanh: data.bao_hanh,
+                tags: data.tags,
+                ghi_chu: data.ghi_chu,
+                mo_ta: data.mo_ta,
                 metadata: data.metadata
             }
         }, (error) => {

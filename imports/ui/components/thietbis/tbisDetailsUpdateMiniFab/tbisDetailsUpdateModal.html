@@ -1,4 +1,4 @@
-<md-dialog aria-label="Cập nhật thiết bị" ng-cloak>
+<md-dialog id="tbis-details-update-modal" aria-label="Cập nhật thiết bị" ng-cloak>
     <md-toolbar>
         <div class="md-toolbar-tools">
             <h2>Cập nhật thiết bị {{tbisDetailsUpdateModal.thietbi.ma_thiet_bi.keyId}}</h2>
@@ -9,13 +9,29 @@
         </div>
     </md-toolbar>
     <md-dialog-content>
-        <!-- <div class="md-dialog-content"> -->
-        <p class="md-subhead" style="padding: 16px 16px 0px 16px;">Bạn có thể thay đổi các thông tin được ghi nhận trong mẫu phiếu dưới đây:</p>
-        <tbis-list-major-input-form view-model="tbisDetailsUpdateModal.thietbi"></tbis-list-major-input-form>
-            <pre>
-                {{ tbisDetailsUpdateModal.thietbi | json }}
-            </pre>
-        <!-- </div> -->
+        <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="Tổng quan">
+                <md-content>
+                    <tbis-list-major-input-form view-model="tbisDetailsUpdateModal.thietbi"></tbis-list-major-input-form>
+                </md-content>
+            </md-tab>
+            <md-tab label="Thông số">
+                <md-content>
+                    <tbis-details-update-thong-so-tab view-model="tbisDetailsUpdateModal.thietbi"></tbis-details-update-thong-so-tab>
+                </md-content>
+            </md-tab>
+            <md-tab label="Vị trí">
+                <md-content class="md-padding">
+                    <tbis-details-update-vi-tri-tab></tbis-details-update-vi-tri-tab>
+                </md-content>
+            </md-tab>
+        </md-tabs>
+
+        <!--<p class="md-subhead" style="padding: 16px 16px 0px 16px;">Bạn có thể thay đổi các thông tin được ghi nhận trong mẫu phiếu dưới đây:</p>-->
+        <!--<tbis-list-major-input-form view-model="tbisDetailsUpdateModal.thietbi"></tbis-list-major-input-form>-->
+        <pre>
+            {{ tbisDetailsUpdateModal.thietbi | json }}
+        </pre>
     </md-dialog-content>
     <md-dialog-actions layout="row">
         <md-button ng-click="tbisDetailsUpdateModal.reset()" aria-label="Reset">Reset</md-button>
