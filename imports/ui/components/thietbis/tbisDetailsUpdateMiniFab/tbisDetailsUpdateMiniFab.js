@@ -11,6 +11,7 @@ import { name as TbisListMajorInputForm } from '../tbisListMajorInputForm/tbisLi
 import { name as TbisDetailsUpdateThongSoTab } from '../tbisDetailsUpdateThongSoTab/tbisDetailsUpdateThongSoTab';
 import { name as TbisDataSerivce } from '../../../services/thietbis/tbisDataService';
 import { name as NotificationService } from '../../../services/common/notificationService';
+import { name as TsktThongSoKyThuatDataService } from '../../../services/thietbis/tsktThongSoKyThuatDataService';
 
 
 class TbisDetailsUpdateMiniFab {
@@ -23,11 +24,22 @@ class TbisDetailsUpdateMiniFab {
 
     open(event) {
         this.$mdDialog.show({
-            controller($mdDialog, tbisDataService, metadataService, notificationService, $stateParams) {
+            controller($mdDialog, tbisDataService, metadataService, notificationService, tsktThongSoKyThuatDataService, $stateParams) {
                 'ngInject';
 
                 tbisDataService.setSelectedThietBi($stateParams.thietbiId);
                 this.thietbi = angular.copy(tbisDataService.getSelectedThietBi());
+
+                tbisDataService.setSelectedThongSoKyThuat($stateParams.thietbiId);
+                this.thongsokythuats = angular.copy(tbisDataService.getSelectedThongSoKyThuat());
+
+                console.log('thongsokythuats', this.thongsokythuats);
+
+                this.tabSelected = '';
+                this.newThongSo = {
+                    thong_so_hoat_dong: {},
+                    thong_so_ky_thuat: {}
+                };
                 
                 this.save = () => {
                     try {
@@ -48,6 +60,30 @@ class TbisDetailsUpdateMiniFab {
 
                 this.reset = () => {
                     this.thietbi = angular.copy(tbisDataService.getSelectedThietBi());
+                };
+
+                this.addNewThongSo = () => {
+                    try {
+                        tsktThongSoKyThuatDataService.validateNewThongSoKyThuatInputData(this.newThongSo.thong_so_ky_thuat);
+                        this.thietbi.thong_so_ky_thuat = this.thietbi.thong_so_ky_thuat || [];
+                        this.thietbi.thong_so_ky_thuat.push(this.newThongSo.thong_so_ky_thuat);
+                        this.newThongSo.thong_so_ky_thuat = {};
+                    }
+                    catch (error) {                        
+                        notificationService.error(error.message, 'Thiếu thông tin');
+                    }
+                };
+
+                this.saveThongSo = () => {
+                    metadataService.buildUpdateMetadata(this.thietbi, Meteor.user());
+                    tbisDataService.updateThongSoKyThuat(this.thietbi).then(() => {
+                        notificationService.success('Thay đổi của bạn đã được ghi nhận vào Skynet.', 'Cập nhật thành công');
+                        tbisDataService.setSelectedThongSoKyThuat($stateParams.thietbiId);
+                        this.thongsokythuats = angular.copy(tbisDataService.getSelectedThongSoKyThuat());
+                    }).catch((err) => {
+                        notificationService.error(err.message, 'Cập nhật thất bại');                        
+                    });
+                    metadataService.buildUpdateMetadata(this.thietbi, Meteor.user());
                 };
 
                 this.close = () => {
@@ -74,6 +110,7 @@ export default angular.module(name, [
     TbisDetailsUpdateThongSoTab,
     TbisDataSerivce,
     MetadataService,
+    TsktThongSoKyThuatDataService,
     NotificationService
 ]).component(name, {
     template: fabTemplate,

@@ -8,45 +8,54 @@
 <form name="tbisDetailsUpdateThongSoTab.addNewThongSoKyThuatForm" style="margin: 16px;">
     <div layout="column" layout-fill>
         <pre>
-            {{tbisDetailsUpdateThongSoTab.newThongSoKyThuat | json}}
+            {{tbisDetailsUpdateThongSoTab.viewModel.thong_so_ky_thuat | json}}
         </pre>
 
         <div layout="row">
             <md-input-container class="md-block" flex="50">
                 <label>Nhóm thông số</label>
-                <md-select name="nhom_thong_so" ng-model="tbisDetailsUpdateThongSoTab.newThongSoKyThuat.nhom"
-                           ng-change="tbisDetailsUpdateThongSoTab.newThongSoKyThuat.ten_thong_so = {};tbisDetailsUpdateThongSoTab.newThongSoKyThuat.don_vi = '';"
-                           required>
-                    <md-option ng-value="nhom" ng-repeat="nhom in tbisDetailsUpdateThongSoTab.selectOptions.nhoms[tbisDetailsUpdateThongSoTab.viewModel.phan_loai.loai]">{{nhom}}</md-option>
+                <md-select name="nhom_thong_so" ng-model="tbisDetailsUpdateThongSoTab.viewModel.thong_so_ky_thuat.nhom"
+                           ng-change="tbisDetailsUpdateThongSoTab.viewModel.thong_so_ky_thuat.ten_thong_so = {};tbisDetailsUpdateThongSoTab.viewModel.thong_so_ky_thuat.don_vi = '';">
+                    <md-option ng-value="nhom" ng-repeat="nhom in tbisDetailsUpdateThongSoTab.selectOptions.nhoms[tbisDetailsUpdateThongSoTab.thietbi.phan_loai.loai]">{{nhom}}</md-option>
                 </md-select>
-                <div class="errors" ng-messages="tbisDetailsUpdateThongSoTab.addNewThongSoKyThuatForm.nhom_thong_so.$error">
-                    <div ng-message="required">Thông tin bắt buộc.</div>
-                </div>
             </md-input-container>
         </div>
         <div layout="row">
             <md-input-container class="md-block" flex="100">
                 <label>Tên thông số</label>
-                <md-select name="ten_thong_so" ng-model="tbisDetailsUpdateThongSoTab.newThongSoKyThuat.ten_thong_so">
-                    <md-option ng-value="ten_thong_so" ng-repeat="ten_thong_so in tbisDetailsUpdateThongSoTab.selectOptions.tenthongsos[tbisDetailsUpdateThongSoTab.viewModel.phan_loai.loai][tbisDetailsUpdateThongSoTab.newThongSoKyThuat.nhom]">{{ten_thong_so.ten}}</md-option>
+                <md-select name="ten_thong_so" ng-model="tbisDetailsUpdateThongSoTab.viewModel.thong_so_ky_thuat.ten_thong_so">
+                    <md-option ng-value="ten_thong_so" ng-repeat="ten_thong_so in tbisDetailsUpdateThongSoTab.selectOptions.tenthongsos[tbisDetailsUpdateThongSoTab.thietbi.phan_loai.loai][tbisDetailsUpdateThongSoTab.viewModel.thong_so_ky_thuat.nhom]">{{ten_thong_so.ten}}</md-option>
                 </md-select>
             </md-input-container>
         </div>
         <div layout="row">
             <md-input-container class="md-block" flex="50">
                 <label>Giá trị</label>
-                <input name="gia_tri" ng-model="tbisDetailsUpdateThongSoTab.newThongSoKyThuat.gia_tri" required>
-                <div ng-messages="tbisDetailsUpdateThongSoTab.addNewThongSoKyThuatForm.gia_tri.$error">
-                    <div ng-message="required">Thông tin bắt buộc.</div>
-                </div>
+                <input name="gia_tri" ng-model="tbisDetailsUpdateThongSoTab.viewModel.thong_so_ky_thuat.gia_tri">
             </md-input-container>
             <md-input-container class="md-block" flex="50">
                 <label>Đơn vị</label>
-                <md-select name="don_vi" ng-model="tbisDetailsUpdateThongSoTab.newThongSoKyThuat.don_vi">
-                    <md-option ng-value="donvi" ng-repeat="donvi in tbisDetailsUpdateThongSoTab.selectOptions.donvis[tbisDetailsUpdateThongSoTab.viewModel.phan_loai.loai][tbisDetailsUpdateThongSoTab.newThongSoKyThuat.nhom]">{{donvi}}</md-option>
+                <md-select name="don_vi" ng-model="tbisDetailsUpdateThongSoTab.viewModel.thong_so_ky_thuat.don_vi">
+                    <md-option ng-value="donvi" ng-repeat="donvi in tbisDetailsUpdateThongSoTab.selectOptions.donvis[tbisDetailsUpdateThongSoTab.thietbi.phan_loai.loai][tbisDetailsUpdateThongSoTab.viewModel.thong_so_ky_thuat.nhom]">{{donvi}}</md-option>
                 </md-select>
             </md-input-container>
         </div>
     </div>
 </form>
 <md-divider></md-divider>
+<pre>
+    {{tbisDetailsUpdateThongSoTab.thongsokythuats | json}}
+</pre>
+<md-list>
+    <div ng-repeat="(nhom, thongsokythuats) in tbisDetailsUpdateThongSoTab.thongsokythuats">
+        <md-subheader class="md-no-sticky">{{nhom}}</md-subheader>
+        <md-list-item ng-repeat="thongsokythuat in thongsokythuats">
+            <span class="sky-typo-strong">{{thongsokythuat.ten_thong_so.ten}}:&nbsp;</span><span class="sky-typo-normal">{{thongsokythuat.gia_tri}} {{thongsokythuat.don_vi}}</span>
+            <span flex></span>
+            <md-button class="md-icon-button" aria-label="Xóa thông số" ng-show="tbisDetailsUpdateThongSoTab.holverThongSoKyThuat === 'this_id'">
+                <md-icon md-svg-icon="img/icons/common/close.svg"></md-icon>
+            </md-button>
+        </md-list-item>
+        <md-divider></md-divider>
+    </div>
+</md-list>

@@ -217,6 +217,33 @@ Schema.ThietBi = new SimpleSchema({
         type: Boolean,
         defaultValue: true
     },
+    thong_so_ky_thuat: {
+        type: [Object],
+        defaultValue: []
+    },
+        // 'thong_so_ky_thuat.$': {
+        //     type: Object,
+        //     blackbox: true
+        // },
+        "thong_so_ky_thuat.$.nhom": {
+            type: String
+        },
+        "thong_so_ky_thuat.$.ten_thong_so": {
+            type: Object
+        },
+            "thong_so_ky_thuat.$.ten_thong_so.order": {
+                type: Number
+            },
+            "thong_so_ky_thuat.$.ten_thong_so.ten": {
+                type: String
+            },
+        "thong_so_ky_thuat.$.gia_tri": {
+            type: String
+        },
+        "thong_so_ky_thuat.$.don_vi": {
+            type: String,
+            optional: true
+        },
     metadata: {
         type: Object,
         blackbox: true

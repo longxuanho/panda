@@ -8,19 +8,19 @@
             </md-button>
         </div>
     </md-toolbar>
-    <md-dialog-content>
+    <md-dialog-content layout-fill>
         <md-tabs md-dynamic-height md-border-bottom>
-            <md-tab label="Tổng quan">
+            <md-tab label="Tổng quan" md-on-select="tbisDetailsUpdateModal.tabSelected='tong_quan'">
                 <md-content>
                     <tbis-list-major-input-form view-model="tbisDetailsUpdateModal.thietbi"></tbis-list-major-input-form>
                 </md-content>
             </md-tab>
-            <md-tab label="Thông số">
+            <md-tab label="Thông số" md-on-select="tbisDetailsUpdateModal.tabSelected='thong_so'">
                 <md-content>
-                    <tbis-details-update-thong-so-tab view-model="tbisDetailsUpdateModal.thietbi"></tbis-details-update-thong-so-tab>
+                    <tbis-details-update-thong-so-tab thietbi="tbisDetailsUpdateModal.thietbi" view-model="tbisDetailsUpdateModal.newThongSo" thongsokythuats="tbisDetailsUpdateModal.thongsokythuats"></tbis-details-update-thong-so-tab>
                 </md-content>
             </md-tab>
-            <md-tab label="Vị trí">
+            <md-tab label="Vị trí" md-on-select="tbisDetailsUpdateModal.tabSelected='vi_tri'">
                 <md-content class="md-padding">
                     <tbis-details-update-vi-tri-tab></tbis-details-update-vi-tri-tab>
                 </md-content>
@@ -33,9 +33,15 @@
             {{ tbisDetailsUpdateModal.thietbi | json }}
         </pre>
     </md-dialog-content>
-    <md-dialog-actions layout="row">
+    <md-dialog-actions layout="row" ng-if="tbisDetailsUpdateModal.tabSelected==='tong_quan'">
         <md-button ng-click="tbisDetailsUpdateModal.reset()" aria-label="Reset">Reset</md-button>
         <span flex></span>
         <md-button style="margin-right:20px;" ng-click="tbisDetailsUpdateModal.save()" aria-label="Cập nhật">Cập nhật</md-button>
+    </md-dialog-actions>
+    <md-dialog-actions layout="row" ng-if="tbisDetailsUpdateModal.tabSelected==='thong_so'">
+        <md-button ng-click="tbisDetailsUpdateModal.reset()" aria-label="Reset">Reset</md-button>
+        <md-button ng-click="tbisDetailsUpdateModal.addNewThongSo()" aria-label="Reset">Thêm thông số</md-button>
+        <span flex></span>
+        <md-button style="margin-right:20px;" ng-click="tbisDetailsUpdateModal.saveThongSo()" aria-label="Cập nhật">Lưu thay đổi</md-button>
     </md-dialog-actions>
 </md-dialog>

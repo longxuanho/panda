@@ -11,6 +11,8 @@ class TsktThongSoKyThuatDataService {
         this.nhoms = [];
         this.tenthongsos = [];
         this.donvis = [];
+        
+        this.thongSoKyThuatDisplay = {};
 
         this.selectOptions = {
             nhoms: {},
@@ -57,6 +59,15 @@ class TsktThongSoKyThuatDataService {
             }).fetch()
         );
         this.selectOptions.donvis = buildDonVisOptions(this.donvis);
+    }
+
+    validateNewThongSoKyThuatInputData(data) {
+        if (!data.nhom)
+            throw Error('Chưa có thông tin về nhóm thông số');
+        if (!data.ten_thong_so.ten)
+            throw Error('Chưa có thông tin về tên thông số');
+        if (!data.gia_tri)
+            throw Error('Chưa có thông tin về giá trị thông số');
     }
 }
 
