@@ -134,7 +134,7 @@ class TbisDataService {
             _id: data._id
         }, {
             $set: {
-                thong_so_hoat_dong: data.thong_so_ky_thuat,
+                thong_so_hoat_dong: data.thong_so_hoat_dong,
                 metadata: data.metadata
             }
         }, (error) => {
@@ -158,13 +158,9 @@ class TbisDataService {
         this.selectedThietBi = this.queryOne(thietbiId);
     }
 
-    setSelectedThongSoKyThuat(thietbiId) {
-        // this.selectedThietBi = this.queryOne(thietbiId);
-        this.selectedThongSoKyThuat = _.groupBy(this.selectedThietBi.thong_so_ky_thuat, 'nhom');
-    }
-
-    getSelectedThongSoKyThuat() {
-        return this.selectedThongSoKyThuat;
+    getSelectedThongSoKyThuatGroupBy(data) {
+        if (data)
+            return _.groupBy(data, 'nhom');;
     }
 }
 

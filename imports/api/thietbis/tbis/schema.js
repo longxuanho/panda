@@ -225,6 +225,9 @@ Schema.ThietBi = new SimpleSchema({
         //     type: Object,
         //     blackbox: true
         // },
+        "thong_so_ky_thuat.$._id": {
+            type: String
+        },
         "thong_so_ky_thuat.$.nhom": {
             type: String
         },
@@ -243,6 +246,22 @@ Schema.ThietBi = new SimpleSchema({
         "thong_so_ky_thuat.$.don_vi": {
             type: String,
             optional: true
+        },
+    thong_so_hoat_dong: {
+        type: Object,
+        defaultValue: {}
+    },
+        'thong_so_hoat_dong.hours': {
+            type: Number,
+            defaultValue: 0
+        },
+        'thong_so_hoat_dong.conts': {
+            type: Number,
+            defaultValue: 0
+        },
+        'thong_so_hoat_dong.kms': {
+            type: Number,
+            defaultValue: 0
         },
     metadata: {
         type: Object,

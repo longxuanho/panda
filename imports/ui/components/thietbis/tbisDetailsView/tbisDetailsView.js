@@ -8,10 +8,11 @@ import template from './tbisDetailsView.html';
 import { ThietBis } from '../../../../api/thietbis/tbis';
 import { name as TbisDetailsUtilsBar } from '../tbisDetailsUtilsBar/tbisDetailsUtilsBar';
 import { name as TbisDetailsViewHoSoView } from '../tbisDetailsViewHoSoView/tbisDetailsViewHoSoView';
-import { name as TbisDetailsViewFabMenu } from '../tbisDetailsViewFabMenu/tbisDetailsViewFabMenu'
+import { name as TbisDetailsViewFabMenu } from '../tbisDetailsViewFabMenu/tbisDetailsViewFabMenu';
+import { name as TbisDataSerivce } from '../../../services/thietbis/tbisDataService';
 
 class TbisDetailsView {
-    constructor($stateParams, $scope, $reactive) {
+    constructor($stateParams, $scope, $reactive, tbisDataService) {
         'ngInject';
 
         $reactive(this).attach($scope);
@@ -22,6 +23,9 @@ class TbisDetailsView {
 
         this.helpers({
             thietbi() {
+                // Dùng cho phần update với user có quyền hạn
+                tbisDataService.setSelectedThietBi($stateParams.thietbiId);
+
                 return ThietBis.findOne({
                     _id: $stateParams.thietbiId
                 });
@@ -49,7 +53,8 @@ export default angular.module(name, [
     uiRouter,
     TbisDetailsUtilsBar,
     TbisDetailsViewHoSoView,
-    TbisDetailsViewFabMenu
+    TbisDetailsViewFabMenu,
+    TbisDataSerivce
 ]).component(name, {
     template,
     controllerAs: name,

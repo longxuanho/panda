@@ -9,12 +9,7 @@ class TbisDetailsUpdateThongSoTab {
     constructor($scope, tsktThongSoKyThuatDataService) {
         'ngInject';
 
-        this.options = {
-            mode: 'thong_so_hoat_dong'
-        };
-
         this.selectOptions = tsktThongSoKyThuatDataService.getSelectOptions();
-        console.log('select tskt Options: ', this.selectOptions);
     }
 }
 
@@ -28,9 +23,11 @@ export default angular.module(name, [
     template,
     controllerAs: name,
     bindings: {
+        tabModeSelected: '=',
         thietbi: '<',
         viewModel: '=',
-        thongsokythuats: '<'
+        thongsokythuats: '<',
+        toggleRemoveThongSoKyThuat: '&'
     },
     controller: TbisDetailsUpdateThongSoTab
 });

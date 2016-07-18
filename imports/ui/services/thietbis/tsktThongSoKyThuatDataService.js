@@ -1,6 +1,8 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
+import {Random} from 'meteor/random';
+
 import _ from 'underscore';
 import { TsktHelpers } from '../../../api/thietbis/tsktHelpers';
 
@@ -62,6 +64,7 @@ class TsktThongSoKyThuatDataService {
     }
 
     validateNewThongSoKyThuatInputData(data) {
+        data._id = Random.id();
         if (!data.nhom)
             throw Error('Chưa có thông tin về nhóm thông số');
         if (!data.ten_thong_so.ten)
