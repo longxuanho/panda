@@ -1,0 +1,30 @@
+<md-dialog id="tbis-details-image-modal" aria-label="Quản lý hình ảnh" ng-cloak>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Hình ảnh {{tbisDetailsImageModal.thietbi.ma_thiet_bi.keyId}}</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="tbisDetailsImageModal.close()">
+                <md-icon md-svg-src="img/icons/common/close.svg" aria-label="Đóng hộp thoại"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content layout-fill>
+        <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="Tất cả" md-on-select="tbisDetailsImageModal.tabSelected='tat_ca'">
+                <md-content>
+                    Tất cả hình ảnh
+                </md-content>
+            </md-tab>
+            <md-tab label="Quản lý" md-on-select="tbisDetailsImageModal.tabSelected='quan_ly'">
+                <md-content>
+                    Quản lý hình ảnh
+                </md-content>
+            </md-tab>
+        </md-tabs>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" ng-if="tbisDetailsImageModal.tabSelected==='quan_ly'">
+        <md-button ng-click="tbisDetailsImageModal.reset()" aria-label="Reset">Reset</md-button>
+        <span flex></span>
+        <md-button style="margin-right:20px;" ng-click="tbisDetailsImageModal.save()" aria-label="Cập nhật">Cập nhật</md-button>
+    </md-dialog-actions>
+</md-dialog>
