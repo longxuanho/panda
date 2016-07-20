@@ -106,6 +106,32 @@ Schema.ThietBi = new SimpleSchema({
             type: String,
             optional: true
         },
+        'dia_diem.toa_do': {
+            type: Object
+        },
+            'dia_diem.toa_do.location': {
+                type: Object,
+                optional: true
+            },
+                'dia_diem.toa_do.location.latitude': {
+                    type: Number,
+                    decimal: true,
+                    optional: true
+                },
+                'dia_diem.toa_do.location.longitude': {
+                    type: Number,
+                    decimal: true,
+                    optional: true
+                },
+            'dia_diem.toa_do.enableAPI': {
+                type: Boolean,
+                defaultValue: false,
+                optional: true
+            },
+            'dia_diem.toa_do.api': {
+                type: String,
+                optional: true
+            },
     phan_quyen: {
         type: Object
     },

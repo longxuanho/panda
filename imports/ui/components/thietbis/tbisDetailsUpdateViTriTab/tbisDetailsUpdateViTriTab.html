@@ -1,0 +1,18 @@
+<p>Vui lòng click chọn trên bản đồ để cập nhật vị trí hiện thời cho thiết bị hoặc sử dụng API để cập nhật vị trí theo tọa độ GPS.</p>
+<tbis-details-map style="width: 100%" location="tbisDetailsUpdateViTriTab.viewModel.location" ng-if="tbisDetailsUpdateViTriTab.tabSelected==='vi_tri'"></tbis-details-map>
+<div layout="column" style="margin-top: 24px;">
+    <div layout="row">
+        <md-checkbox ng-model="tbisDetailsUpdateViTriTab.viewModel.enableAPI" aria-label="Cập nhật vị trí qua API">
+            Cập nhật vị trí qua API
+        </md-checkbox>
+    </div>
+    <form ng-show="tbisDetailsUpdateViTriTab.viewModel.enableAPI">
+        <div layout="row">
+            <md-input-container class="md-block" flex="100">
+                <label>API</label>
+                <input name="api_url" ng-model="tbisDetailsUpdateViTriTab.viewModel.api">
+            </md-input-container>
+        </div>
+    </form>
+</div>
+

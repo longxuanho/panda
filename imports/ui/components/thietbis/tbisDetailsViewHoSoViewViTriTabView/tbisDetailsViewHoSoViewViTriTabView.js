@@ -23,6 +23,10 @@ export default angular.module(name, [
     TbisDetailsMap
 ]).component(name, {
     template,
+    bindings: {
+        tabSelected: '@',
+        viewModel: '='
+    },
     controllerAs: name,
     controller: TbisDetailsViewHoSoViewViTriTabView
 });

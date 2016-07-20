@@ -146,6 +146,23 @@ class TbisDataService {
         return defer.promise;
     }
 
+    updateLocation(data) {
+        let defer = this.$q.defer();
+        ThietBis.update({
+            _id: data._id
+        }, {
+            $set: {
+                'dia_diem.toa_do': data.dia_diem.toa_do
+            }
+        }, (error) => {
+            if (error)
+                defer.reject(error);
+            else
+                defer.resolve();
+        });
+        return defer.promise;
+    }
+
     getAllThietBis() {
         return this.thietbis;
     }

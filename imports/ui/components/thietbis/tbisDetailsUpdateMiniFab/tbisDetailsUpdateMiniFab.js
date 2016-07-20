@@ -9,6 +9,7 @@ import modalTemplate from './tbisDetailsUpdateModal.html';
 import { name as MetadataService } from '../../../services/common/metadataService';
 import { name as TbisListMajorInputForm } from '../tbisListMajorInputForm/tbisListMajorInputForm';
 import { name as TbisDetailsUpdateThongSoTab } from '../tbisDetailsUpdateThongSoTab/tbisDetailsUpdateThongSoTab';
+import { name as TbisDetailsUpdateViTriTab } from '../tbisDetailsUpdateViTriTab/tbisDetailsUpdateViTriTab';
 import { name as TbisDataSerivce } from '../../../services/thietbis/tbisDataService';
 import { name as NotificationService } from '../../../services/common/notificationService';
 import { name as TsktThongSoKyThuatDataService } from '../../../services/thietbis/tsktThongSoKyThuatDataService';
@@ -108,6 +109,14 @@ class TbisDetailsUpdateMiniFab {
                     }                    
                 };
 
+                this.saveLocation = () => {
+                    tbisDataService.updateLocation(this.thietbi).then(() => {
+                        notificationService.success('Thay đổi của bạn đã được ghi nhận vào Skynet.', 'Cập nhật thành công');
+                    }).catch((err) => {
+                        notificationService.error(err.message, 'Cập nhật thất bại');
+                    });
+                };
+
                 this.toggleRemoveThongSoKyThuat = (thongsokythuat) => {
                     if (thongsokythuat.addNew) {
                         // Xóa khỏi arr thông số kỹ thuật nếu thông số là mới thêm vào và chưa được lưu
@@ -148,6 +157,7 @@ export default angular.module(name, [
     ngMessages,
     TbisListMajorInputForm,
     TbisDetailsUpdateThongSoTab,
+    TbisDetailsUpdateViTriTab,
     TbisDataSerivce,
     MetadataService,
     TsktThongSoKyThuatDataService,
