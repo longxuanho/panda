@@ -71,6 +71,19 @@ class TbisDataService {
             throw Error('Chưa có thông tin về đơn vị sở hữu');
     }
 
+    validateNewImageInputData(image) {
+        if (!image._id)
+            throw Error('Chưa có mã _id cho hình ảnh');
+        if (!image.tieu_de)
+            throw Error('Chưa có tiêu đề cho hình ảnh');
+        if (!image.ten_file)
+            throw Error('Chưa có tên file hình ảnh');
+        if (!image.url)
+            throw Error('Chưa có liên kết tới hình ảnh');
+        if (!image.thumb)
+            throw Error('Chưa có liên kết tới thumbnail');
+    }
+
     addNew(data) {
         let defer = this.$q.defer();
         ThietBis.insert(data, (error) => {
@@ -162,6 +175,44 @@ class TbisDataService {
         });
         return defer.promise;
     }
+
+    addNewImage(newImage) {
+        let defer = this.$q.defer();
+        let hinh_anh = angular.copy(this.selectedThietBi.hinh_anh);
+
+        hinh_anh.collections.push(newImage);
+        ThietBis.update({
+            _id: this.selectedThietBi._id
+        }, {
+            $set: {
+                'hinh_anh.collections': hinh_anh.collections
+            }
+        }, (error) => {
+            if (error)
+                defer.reject(error);
+            else
+                defer.resolve();
+        });
+        return defer.promise;
+    }
+
+    updateImages(thietbi) {
+        let defer = this.$q.defer();
+        ThietBis.update({
+            _id: this.thietbi._id
+        }, {
+            $set: {
+                'hinh_anh.collections': thietbi.hinh_anh.collections
+            }
+        }, (error) => {
+            if (error)
+                defer.reject(error);
+            else
+                defer.resolve();
+        });
+        return defer.promise;
+    }
+
 
     getAllThietBis() {
         return this.thietbis;

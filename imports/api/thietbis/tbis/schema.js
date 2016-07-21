@@ -227,6 +227,74 @@ Schema.ThietBi = new SimpleSchema({
             type: Number,
             optional: true
         },
+    hinh_anh: {
+        type: Object,
+        optional: true
+    },
+        'hinh_anh.collections': {
+            type: [Object],
+            defaultValue: []
+        },
+            'hinh_anh.collections.$._id': {
+                type: String,
+                optional: true
+            },
+            'hinh_anh.collections.$.tieu_de': {
+                type: String,
+                optional: true
+            },
+            'hinh_anh.collections.$.ten_file': {
+                type: String,
+                optional: true
+            },
+            'hinh_anh.collections.$.url': {
+                type: String,
+                optional: true
+            },
+            'hinh_anh.collections.$.thumb': {
+                type: String,
+                optional: true
+            },
+            'hinh_anh.collections.$.isDefault': {
+                type: Boolean,
+                defaultValue: false
+            },
+            'hinh_anh.collections.$.ngay_tao': {
+                type: Date,
+                optional: true
+            },
+            'hinh_anh.collections.$.span_row': {
+                type: Number,
+                optional: true
+            },
+            'hinh_anh.collections.$.span_column': {
+                type: Number,
+                optional: true
+            },
+            'hinh_anh.collections.$.class': {
+                type: String,
+                optional: true
+            },
+            'hinh_anh.collections.$.ngay_cap_nhat': {
+                type: Date,
+                optional: true
+            },
+        'hinh_anh.default': {
+            type: Object,
+            defaultValue: {}
+        },
+            'hinh_anh.default._id': {
+                type: String,
+                optional: true
+            },
+            'hinh_anh.default.url': {
+                type: String,
+                optional: true
+            },
+            'hinh_anh.default.thumb': {
+                type: String,
+                optional: true
+            },
     tags: {
         type: [String],
         defaultValue: []

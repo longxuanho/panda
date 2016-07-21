@@ -11,20 +11,31 @@
     <md-dialog-content layout-fill>
         <md-tabs md-dynamic-height md-border-bottom>
             <md-tab label="Tất cả" md-on-select="tbisDetailsImageModal.tabSelected='tat_ca'">
-                <md-content>
-                    Tất cả hình ảnh
-                </md-content>
+                <md-grid-list md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="3"
+                            md-row-height-gt-md="1:1" md-row-height="4:3" md-gutter="8px" md-gutter-gt-sm="4px" >
+                    <md-grid-tile ng-repeat="tile in tbisDetailsImageModal.thietbi.hinh_anh.collections"
+                                                  md-rowspan="{{tile.span_row}}" md-colspan="{{tile.span_column}}" md-colspan-sm="1" md-colspan-xs="1" ng-class="tile.class">
+                        <img ng-src="{{tile.url}}">
+                        <md-grid-tile-footer><h3>{{tile.tieu_de}}</h3></md-grid-tile-footer>
+                    </md-grid-tile>
+                </md-grid-list>
+                <div style="color: #ffffff;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
             </md-tab>
             <md-tab label="Quản lý" md-on-select="tbisDetailsImageModal.tabSelected='quan_ly'">
                 <md-content>
-                    Quản lý hình ảnh
+                    <tbis-details-image-quan-ly-tab tab-selected="{{tbisDetailsImageModal.tabSelected}}" tab-mode-selected="tbisDetailsImageModal.tabModeSelected" new-image-model="tbisDetailsImageModal.newImage"></tbis-details-image-quan-ly-tab>
                 </md-content>
             </md-tab>
         </md-tabs>
     </md-dialog-content>
-    <md-dialog-actions layout="row" ng-if="tbisDetailsImageModal.tabSelected==='quan_ly'">
-        <md-button ng-click="tbisDetailsImageModal.reset()" aria-label="Reset">Reset</md-button>
+    <md-dialog-actions layout="row" ng-if="tbisDetailsImageModal.tabSelected==='quan_ly' && tbisDetailsImageModal.tabModeSelected==='addNew'">
+        <md-button ng-click="tbisDetailsImageModal.resetNewImage()" aria-label="Reset">Reset</md-button>
         <span flex></span>
-        <md-button style="margin-right:20px;" ng-click="tbisDetailsImageModal.save()" aria-label="Cập nhật">Cập nhật</md-button>
+        <md-button style="margin-right:20px;" ng-click="tbisDetailsImageModal.addNewImage()" aria-label="Thêm hình ảnh">Thêm hình ảnh</md-button>
+    </md-dialog-actions>
+    <md-dialog-actions layout="row" ng-if="tbisDetailsImageModal.tabSelected==='quan_ly' && tbisDetailsImageModal.tabModeSelected==='update'">
+        <md-button ng-click="tbisDetailsImageModal.resetImages()" aria-label="Reset">Reset</md-button>
+        <span flex></span>
+        <md-button style="margin-right:20px;" ng-click="tbisDetailsImageModal.updateImages()" aria-label="Cập nhật">Cập nhật</md-button>
     </md-dialog-actions>
 </md-dialog>

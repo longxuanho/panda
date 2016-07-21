@@ -1,0 +1,59 @@
+<form style="margin: 16px;">
+    <md-radio-group id="select-options-mode" ng-model="tbisDetailsImageQuanLyTab.tabModeSelected">
+        <md-radio-button value="addNew">Thêm hình ảnh mới</md-radio-button>
+        <md-radio-button value="update">Cập nhật hình ảnh</md-radio-button>
+    </md-radio-group>
+</form>
+<div id="add-new-image-form" ng-show="tbisDetailsImageQuanLyTab.tabModeSelected==='addNew'">
+    <md-divider></md-divider>
+    <p style="padding: 16px;" class="md-body-1">Vui lòng điền các thông tin vào mẫu phiếu dưới đây để thêm hình ảnh cho thiết bị:</p>
+    <form name="tbisDetailsImageQuanLyTab.addNewImageForm" style="margin: 16px;">
+        <div layout="column" layout-fill>
+            <div layout="row">
+                <md-input-container class="md-block" flex="50">
+                    <label>Tiêu đề</label>
+                    <input name="tieu_de" ng-model="tbisDetailsImageQuanLyTab.newImageModel.tieu_de">
+                </md-input-container>
+                <md-input-container class="md-block" flex="50">
+                    <label>Tên file</label>
+                    <input name="ten_file" ng-model="tbisDetailsImageQuanLyTab.newImageModel.ten_file">
+                </md-input-container>
+            </div>
+            <div layout="row">
+                <md-input-container class="md-block" flex="100">
+                    <label>Liên kết tới hình ảnh</label>
+                    <input name="url" ng-model="tbisDetailsImageQuanLyTab.newImageModel.url">
+                </md-input-container>
+            </div>
+            <div layout="row">
+                <md-input-container class="md-block" flex="100">
+                    <label>Liên kết tới thumnail</label>
+                    <input name="thumb" ng-model="tbisDetailsImageQuanLyTab.newImageModel.thumb">
+                </md-input-container>
+            </div>
+
+            <div layout="row">
+                <md-input-container class="md-block" flex>
+                    <label>Span row</label>
+                    <input type="number" name="span_row" ng-model="tbisDetailsImageQuanLyTab.newImageModel.span_row">
+                </md-input-container>
+                <md-input-container class="md-block" flex>
+                    <label>Span column</label>
+                    <input type="number" name="span_column" ng-model="tbisDetailsImageQuanLyTab.newImageModel.span_column">
+                </md-input-container>
+                <md-input-container class="md-block" flex>
+                    <label>Class</label>
+                    <input name="class" ng-model="tbisDetailsImageQuanLyTab.newImageModel.class">
+                </md-input-container>
+            </div>
+            <!--<div layout="row">-->
+                <!--<md-checkbox ng-model="tbisDetailsImageQuanLyTab.newImageModel.isDefault" aria-label="Đặt làm mặc định">-->
+                    <!--Đặt làm mặc định-->
+                <!--</md-checkbox>-->
+            <!--</div>-->
+        </div>
+    </form>
+</div>
+<pre>
+    {{tbisDetailsImageQuanLyTab.newImageModel | json}}
+</pre>
