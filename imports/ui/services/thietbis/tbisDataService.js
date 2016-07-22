@@ -71,7 +71,7 @@ class TbisDataService {
             throw Error('Chưa có thông tin về đơn vị sở hữu');
     }
 
-    validateNewImageInputData(image) {
+    validateImageInputData(image) {
         if (!image._id)
             throw Error('Chưa có mã _id cho hình ảnh');
         if (!image.tieu_de)
@@ -180,12 +180,19 @@ class TbisDataService {
         let defer = this.$q.defer();
         let hinh_anh = angular.copy(this.selectedThietBi.hinh_anh);
 
+        if (newImage.isDefault) {
+            _.each(hinh_anh.collections, (item) => {
+                item.isDefault = false;
+            });
+            hinh_anh.default = angular.copy(newImage);
+        }
+
         hinh_anh.collections.push(newImage);
         ThietBis.update({
             _id: this.selectedThietBi._id
         }, {
             $set: {
-                'hinh_anh.collections': hinh_anh.collections
+                'hinh_anh': hinh_anh
             }
         }, (error) => {
             if (error)
@@ -196,13 +203,51 @@ class TbisDataService {
         return defer.promise;
     }
 
-    updateImages(thietbi) {
+    updateSelectedImage(image) {
         let defer = this.$q.defer();
+        image.ngay_cap_nhat = new Date();
+        let hinh_anh = angular.copy(this.selectedThietBi.hinh_anh);
+
+        _.each(hinh_anh.collections, (item, index) => {
+            if (item._id === image._id)
+                hinh_anh.collections[index] = angular.copy(image);
+        });
+
+        if (image.isDefault) {
+            _.each(hinh_anh.collections, (item) => {
+                item.isDefault = (item._id === image._id);
+            });
+            hinh_anh.default = angular.copy(image);
+        }
+
         ThietBis.update({
-            _id: this.thietbi._id
+            _id: this.selectedThietBi._id
         }, {
             $set: {
-                'hinh_anh.collections': thietbi.hinh_anh.collections
+                'hinh_anh': hinh_anh
+            }
+        }, (error) => {
+            if (error)
+                defer.reject(error);
+            else
+                defer.resolve();
+        });
+        return defer.promise;
+    }
+
+    removeSelectedImage(image) {
+        let defer = this.$q.defer();
+        let hinh_anh = angular.copy(this.selectedThietBi.hinh_anh);
+        if (image.isDefault)
+            hinh_anh.default = {};
+        hinh_anh.collections = _.reject(hinh_anh.collections, (item) => {
+            return item._id === image._id;
+        });
+        ThietBis.update({
+            _id: this.selectedThietBi._id
+        }, {
+            $set: {
+                'hinh_anh': hinh_anh
             }
         }, (error) => {
             if (error)
@@ -228,7 +273,7 @@ class TbisDataService {
 
     getSelectedThongSoKyThuatGroupBy(data) {
         if (data)
-            return _.groupBy(data, 'nhom');;
+            return _.groupBy(data, 'nhom');
     }
 }
 

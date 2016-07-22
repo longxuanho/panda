@@ -1,0 +1,46 @@
+<form name="tbisDetailsImageInputForm.ImageInputForm" style="margin: 16px;">
+    <div layout="column" layout-fill>
+        <div layout="row">
+            <md-input-container class="md-block" flex="50">
+                <label>Tiêu đề</label>
+                <input name="tieu_de" ng-model="tbisDetailsImageInputForm.viewModel.tieu_de">
+            </md-input-container>
+            <md-input-container class="md-block" flex="50">
+                <label>Tên file</label>
+                <input name="ten_file" ng-model="tbisDetailsImageInputForm.viewModel.ten_file">
+            </md-input-container>
+        </div>
+        <div layout="row">
+            <md-input-container class="md-block" flex="100">
+                <label>Liên kết tới hình ảnh</label>
+                <input name="url" ng-model="tbisDetailsImageInputForm.viewModel.url">
+            </md-input-container>
+        </div>
+        <div layout="row">
+            <md-input-container class="md-block" flex="100">
+                <label>Liên kết tới thumnail</label>
+                <input name="thumb" ng-model="tbisDetailsImageInputForm.viewModel.thumb">
+            </md-input-container>
+        </div>
+
+        <div layout="row">
+            <md-input-container class="md-block" flex>
+                <label>Span row</label>
+                <input type="number" name="span_row" ng-model="tbisDetailsImageInputForm.viewModel.span_row">
+            </md-input-container>
+            <md-input-container class="md-block" flex>
+                <label>Span column</label>
+                <input type="number" name="span_column" ng-model="tbisDetailsImageInputForm.viewModel.span_column">
+            </md-input-container>
+            <md-input-container class="md-block" flex>
+                <label>Class</label>
+                <input name="class" ng-model="tbisDetailsImageInputForm.viewModel.class">
+            </md-input-container>
+        </div>
+        <div layout="row">
+            <md-checkbox ng-model="tbisDetailsImageInputForm.viewModel.isDefault" aria-label="Đặt làm mặc định">
+                Đặt làm mặc định
+            </md-checkbox>
+        </div>
+    </div>
+</form>
