@@ -36,8 +36,8 @@
     <md-dialog-actions layout="row" ng-if="tbisDetailsImageModal.tabSelected==='quan_ly' && tbisDetailsImageModal.tabModeSelected==='update'">
         <md-button ng-click="tbisDetailsImageModal.resetSelectedImage()" aria-label="Reset">Reset</md-button>
         <span flex></span>
-        <md-button ng-click="tbisDetailsImageModal.removeImage()" aria-label="Reset">Gỡ bỏ</md-button>
+        <md-button ng-show="tbisDetailsImageModal.selectedImage._id" ng-click="tbisDetailsImageModal.removeImage()" aria-label="Reset">Gỡ bỏ</md-button>
         <span flex></span>
-        <md-button style="margin-right:20px;" ng-click="tbisDetailsImageModal.updateSelectedImage()" aria-label="Cập nhật">Cập nhật</md-button>
+        <md-button style="margin-right:20px;" ng-show="tbisDetailsImageModal.selectedImage._id" ng-click="tbisDetailsImageModal.updateSelectedImage()" aria-label="Cập nhật">Cập nhật</md-button>
     </md-dialog-actions>
 </md-dialog>
