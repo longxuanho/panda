@@ -3,8 +3,8 @@ import angularMeteor from 'angular-meteor';
 
 import ngMessages from 'angular-messages';
 
-import fabTemplate from './tbisDetailsUpdateMiniFab.html';
-import modalTemplate from './tbisDetailsUpdateModal.html';
+import fabTemplate from './tbisDetailsViewHoSoViewUpdateMiniFab.html';
+import modalTemplate from './tbisDetailsViewHoSoViewUpdateModal.html';
 
 import { name as MetadataService } from '../../../services/common/metadataService';
 import { name as TbisListMajorInputForm } from '../tbisListMajorInputForm/tbisListMajorInputForm';
@@ -15,7 +15,7 @@ import { name as NotificationService } from '../../../services/common/notificati
 import { name as TsktThongSoKyThuatDataService } from '../../../services/thietbis/tsktThongSoKyThuatDataService';
 
 
-class TbisDetailsUpdateMiniFab {
+class TbisDetailsViewHoSoViewUpdateMiniFab {
     constructor($mdDialog, $mdMedia, $timeout) {
         'ngInject';
 
@@ -139,7 +139,7 @@ class TbisDetailsUpdateMiniFab {
 
 
             },
-            controllerAs: 'tbisDetailsUpdateModal',
+            controllerAs: 'tbisDetailsViewHoSoViewUpdateModal',
             template: modalTemplate,
             targetEvent: event,
             parent: angular.element(document.body),
@@ -149,7 +149,7 @@ class TbisDetailsUpdateMiniFab {
     }
 }
 
-const name = 'tbisDetailsUpdateMiniFab';
+const name = 'tbisDetailsViewHoSoViewUpdateMiniFab';
 
 // create a module
 export default angular.module(name, [
@@ -165,5 +165,5 @@ export default angular.module(name, [
 ]).component(name, {
     template: fabTemplate,
     controllerAs: name,
-    controller: TbisDetailsUpdateMiniFab
+    controller: TbisDetailsViewHoSoViewUpdateMiniFab
 });

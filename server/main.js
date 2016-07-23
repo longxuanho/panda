@@ -7,5 +7,6 @@ import '../imports/api/demo/parties';
 import '../imports/api/thietbis/tbis';
 import '../imports/api/thietbis/tbisHelpers';
 import '../imports/api/thietbis/tsktHelpers';
+import '../imports/api/thietbis/tbisReports';
 
 import '../imports/api/users/users';

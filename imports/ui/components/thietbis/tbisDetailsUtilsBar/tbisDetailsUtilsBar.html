@@ -3,17 +3,17 @@
         <!--Category-->
         <h3>{{tbisDetailsUtilsBar.title}}</h3>
         <span flex></span>
-        <h3 ng-show="tbisDetailsUtilsBar.hasOptions">{{tbisDetailsUtilsBar.settings.category}}</h3>
+        <h3 ng-show="tbisDetailsUtilsBar.hasOptions">{{tbisDetailsUtilsBar.componentOptions.category}}</h3>
         <md-menu ng-show="tbisDetailsUtilsBar.hasOptions" md-position-mode="target-right target">
             <md-button class="md-icon-button" aria-label="Chọn mục" ng-click="tbisDetailsUtilsBar.openFilterMenu($mdOpenMenu, $event)">
-                <md-icon md-svg-icon="{{tbisDetailsUtilsBar.utilsBarIconsOptions.categories[tbisDetailsUtilsBar.settings.category]}}"></md-icon>
+                <md-icon md-svg-icon="{{tbisDetailsUtilsBar.utilsBarIconsOptions.categories[tbisDetailsUtilsBar.componentOptions.category]}}"></md-icon>
             </md-button>
             <md-menu-content width="3">
                 <md-menu-item ng-repeat="item in tbisDetailsUtilsBar.categoryOptions">
                     <md-button ng-click="tbisDetailsUtilsBar.setCategory(item.value)">
                         <div layout="row" flex>
                             <p flex>{{item.text}}</p>
-                            <md-icon md-svg-icon="{{item.icon}}" ng-class="{'md-accent': item.value==tbisDetailsUtilsBar.settings.category}" style="margin: auto 3px auto 0;"></md-icon>
+                            <md-icon md-svg-icon="{{item.icon}}" ng-class="{'md-accent': item.value==tbisDetailsUtilsBar.componentOptions.category}" style="margin: auto 3px auto 0;"></md-icon>
                         </div>
                     </md-button>
                 </md-menu-item>

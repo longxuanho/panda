@@ -10,25 +10,35 @@ import { name as Login } from '../layout/login/login';
 import { name as Register } from '../layout/register/register';
 import { name as Password } from '../layout/password/password';
 
+import { name as CurrentUserService } from '../../services/common/currentUserService';
+import { name as UserLocalSettingsService } from '../../services/common/userLocalSettingsService';
+
 const name = 'auth';
 
 class Auth {
-    constructor($scope, $reactive) {
+    constructor($scope, $reactive, currentUserService, userLocalSettingsService) {
         'ngInject';
 
         $reactive(this).attach($scope);
+
+        this.currentUserService = currentUserService;
+        this.userLocalSettingsService = userLocalSettingsService;
 
         this.helpers({
             isLoggedIn() {
                 return !!Meteor.userId();
             },
             currentUser() {
+                this.currentUserService.setCurrentUser(Meteor.user());
+                this.userLocalSettingsService.initCurrentUserLocalSettings(this.currentUserService.getCurrentUser());
                 return Meteor.user();
             }
         });
     }
 
     logout() {
+        this.currentUserService.setCurrentUser({});
+        this.userLocalSettingsService.initDefaultCurrentUserLocalSettings();
         Accounts.logout();
     }
 }
@@ -39,7 +49,9 @@ export default angular.module(name, [
     DisplayNameFilter,
     Login,
     Register,
-    Password
+    Password,
+    CurrentUserService,
+    UserLocalSettingsService
 ]).component(name, {
     template,
     controllerAs: name,

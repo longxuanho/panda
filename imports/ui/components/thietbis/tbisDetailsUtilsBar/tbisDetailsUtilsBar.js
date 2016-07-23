@@ -2,17 +2,18 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
 import template from './tbisDetailsUtilsBar.html';
-import { name as TbisDetailsViewPageSettingsService } from '../../../services/thietbis/tbisDetailsViewPageSettingsService';
+import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
 
 class TbisDetailsUtilsBar {
-    constructor(tbisDetailsViewPageSettingsService) {
+    constructor(userLocalSettingsService) {
         'ngInject';
 
         this.utilsBarIconsOptions = this.initUtilsBarIconsOptions();
 
         this.categoryOptions = this.initCategoryOptions();
 
-        this.settings = tbisDetailsViewPageSettingsService.getPageSettings();
+        this.componentOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisDetails').utilsBar;
+        console.log('utils bar componentOptions: ', this.componentOptions);
     }
 
     initUtilsBarIconsOptions() {
@@ -47,7 +48,7 @@ class TbisDetailsUtilsBar {
     }
 
     setCategory(mode) {
-        this.settings.category = mode;
+        this.componentOptions.category = mode;
     }
 }
 
@@ -56,7 +57,7 @@ const name = 'tbisDetailsUtilsBar';
 // create a module
 export default angular.module(name, [
     angularMeteor,
-    TbisDetailsViewPageSettingsService
+    UserLocalSettingsService
 ]).component(name, {
     template,
     bindings: {

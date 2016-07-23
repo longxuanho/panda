@@ -1,0 +1,58 @@
+<md-dialog id="tbis-details-update-modal" aria-label="Cập nhật thiết bị" ng-cloak>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Cập nhật thiết bị {{tbisDetailsViewHoSoViewUpdateModal.thietbi.ma_thiet_bi.keyId}}</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="tbisDetailsViewHoSoViewUpdateModal.close()">
+                <md-icon md-svg-src="img/icons/common/close.svg" aria-label="Đóng hộp thoại"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content layout-fill>
+        <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="Tổng quan" md-on-select="tbisDetailsViewHoSoViewUpdateModal.tabSelected='tong_quan'">
+                <md-content>
+                    <p class="md-body-1" style="padding: 16px 16px 0px 16px;">Vui lòng cập nhật các thông tin thiết bị theo mẫu phiếu dưới đây:</p>
+                    <tbis-list-major-input-form view-model="tbisDetailsViewHoSoViewUpdateModal.thietbi"></tbis-list-major-input-form>
+                </md-content>
+            </md-tab>
+            <md-tab label="Thông số" md-on-select="tbisDetailsViewHoSoViewUpdateModal.tabSelected='thong_so'">
+                <md-content>
+                    <tbis-details-update-thong-so-tab   tab-mode-selected="tbisDetailsViewHoSoViewUpdateModal.tabModeSelected"
+                                                        thietbi="tbisDetailsViewHoSoViewUpdateModal.thietbi" view-model="tbisDetailsViewHoSoViewUpdateModal.newThongSo"
+                                                        thongsokythuats="tbisDetailsViewHoSoViewUpdateModal.thongsokythuats"
+                                                        toggle-remove-thong-so-ky-thuat="tbisDetailsViewHoSoViewUpdateModal.toggleRemoveThongSoKyThuat(thongsokythuat)"
+                    ></tbis-details-update-thong-so-tab>
+                </md-content>
+            </md-tab>
+            <md-tab label="Vị trí" md-on-select="tbisDetailsViewHoSoViewUpdateModal.tabSelected='vi_tri'">
+                <md-content class="md-padding">
+                    <tbis-details-update-vi-tri-tab     view-model="tbisDetailsViewHoSoViewUpdateModal.thietbi.dia_diem.toa_do"
+                                                        tab-selected="{{tbisDetailsViewHoSoViewUpdateModal.tabSelected}}"></tbis-details-update-vi-tri-tab>
+                </md-content>
+            </md-tab>
+        </md-tabs>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" ng-if="tbisDetailsViewHoSoViewUpdateModal.tabSelected==='tong_quan'">
+        <md-button ng-click="tbisDetailsViewHoSoViewUpdateModal.reset()" aria-label="Reset">Reset</md-button>
+        <span flex></span>
+        <md-button style="margin-right:20px;" ng-click="tbisDetailsViewHoSoViewUpdateModal.save()" aria-label="Cập nhật">Cập nhật</md-button>
+    </md-dialog-actions>
+    <md-dialog-actions layout="row" ng-if="tbisDetailsViewHoSoViewUpdateModal.tabSelected==='thong_so' && tbisDetailsViewHoSoViewUpdateModal.tabModeSelected==='thong_so_hoat_dong'">
+        <md-button ng-click="tbisDetailsViewHoSoViewUpdateModal.reset()" aria-label="Reset">Reset</md-button>
+        <span flex></span>
+        <md-button style="margin-right:20px;" ng-click="tbisDetailsViewHoSoViewUpdateModal.saveThongSo()" aria-label="Cập nhật">Cập nhật</md-button>
+    </md-dialog-actions>
+    <md-dialog-actions layout="row" ng-if="tbisDetailsViewHoSoViewUpdateModal.tabSelected==='thong_so' && tbisDetailsViewHoSoViewUpdateModal.tabModeSelected==='thong_so_ky_thuat'">
+        <md-button ng-click="tbisDetailsViewHoSoViewUpdateModal.reset()" aria-label="Reset">Reset</md-button>
+        <span flex></span>
+        <md-button ng-click="tbisDetailsViewHoSoViewUpdateModal.addNewThongSo()" aria-label="Reset">Thêm thông số</md-button>
+        <span flex></span>
+        <md-button style="margin-right:20px;" ng-click="tbisDetailsViewHoSoViewUpdateModal.saveThongSo()" aria-label="Cập nhật">Lưu thay đổi</md-button>
+    </md-dialog-actions>
+    <md-dialog-actions layout="row" ng-if="tbisDetailsViewHoSoViewUpdateModal.tabSelected==='vi_tri'">
+        <md-button ng-click="tbisDetailsViewHoSoViewUpdateModal.reset()" aria-label="Reset">Reset</md-button>
+        <span flex></span>
+        <md-button style="margin-right:20px;" ng-click="tbisDetailsViewHoSoViewUpdateModal.saveLocation()" aria-label="Cập nhật">Cập nhật</md-button>
+    </md-dialog-actions>
+</md-dialog>

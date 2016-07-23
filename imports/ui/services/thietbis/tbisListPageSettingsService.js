@@ -8,8 +8,6 @@ class TbisListPageSettingsService {
         this.settings = initPageSettings();
     }
 
-
-
     getPageSettings() {
         return this.settings;
     }

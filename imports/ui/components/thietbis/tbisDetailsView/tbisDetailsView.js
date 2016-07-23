@@ -8,16 +8,20 @@ import template from './tbisDetailsView.html';
 import { ThietBis } from '../../../../api/thietbis/tbis';
 import { name as TbisDetailsUtilsBar } from '../tbisDetailsUtilsBar/tbisDetailsUtilsBar';
 import { name as TbisDetailsViewHoSoView } from '../tbisDetailsViewHoSoView/tbisDetailsViewHoSoView';
-import { name as TbisDetailsViewFabMenu } from '../tbisDetailsViewFabMenu/tbisDetailsViewFabMenu';
+import { name as TbisDetailsViewReportView } from '../tbisDetailsViewReportView/tbisDetailsViewReportView';
+import { name as TbisDetailsViewHoSoViewFabMenu } from '../tbisDetailsViewHoSoViewFabMenu/tbisDetailsViewHoSoViewFabMenu';
 import { name as TbisDataSerivce } from '../../../services/thietbis/tbisDataService';
+import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
 
 class TbisDetailsView {
-    constructor($stateParams, $scope, $reactive, tbisDataService) {
+    constructor($stateParams, $scope, $reactive, tbisDataService, userLocalSettingsService) {
         'ngInject';
 
         $reactive(this).attach($scope);
 
         this.thietbiId = $stateParams.thietbiId;
+        this.componentOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisDetails');
+        console.log('details Component Options: ', this.componentOptions);
 
         this.subscribe('thietbis');
 
@@ -53,8 +57,10 @@ export default angular.module(name, [
     uiRouter,
     TbisDetailsUtilsBar,
     TbisDetailsViewHoSoView,
-    TbisDetailsViewFabMenu,
-    TbisDataSerivce
+    TbisDetailsViewReportView,
+    TbisDetailsViewHoSoViewFabMenu,
+    TbisDataSerivce,
+    UserLocalSettingsService
 ]).component(name, {
     template,
     controllerAs: name,
