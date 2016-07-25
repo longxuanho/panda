@@ -1,0 +1,12 @@
+<md-list>
+    <md-subheader class="md-no-sticky" style="margin-top: -10px; padding-top: 0;">Đang xem 10/10 thông báo đang mở</md-subheader>
+    <md-list-item class="md-2-line" ng-click="null" ng-repeat="tbisreport in tbisDetailsViewReportViewOpenTab.tbisReports">
+        <div class="md-list-item-text" layout="row" flex>
+            <tbis-details-view-report-view-icon-display status="{{tbisreport.comments.length ? 'open_conversation' : 'open_issue'}}" count="{{tbisreport.comments.length}}"></tbis-details-view-report-view-icon-display>
+            <div flex>
+                <h3>{{tbisreport.tieu_de}}</h3>
+                <h4>{{tbisreport.metadata.thoi_gian.tao_moi.ngay_tao_date}} bởi {{tbisreport.metadata.user.nguoi_tao}}</h4>
+            </div>
+        </div>
+    </md-list-item>
+</md-list>

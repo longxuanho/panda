@@ -12,10 +12,7 @@ class TbisDataService {
 
         this.$q = $q;
 
-        // this.thietbis = queryThietBis();
         this.selectedThietBi = {};
-        this.selectedThongSoKyThuat = {};
-        this.errors = [];
     }
 
     query(selector, options) {
@@ -256,11 +253,6 @@ class TbisDataService {
                 defer.resolve();
         });
         return defer.promise;
-    }
-
-
-    getAllThietBis() {
-        return this.thietbis;
     }
 
     getSelectedThietBi() {

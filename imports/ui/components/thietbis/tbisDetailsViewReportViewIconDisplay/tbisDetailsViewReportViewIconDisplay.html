@@ -1,0 +1,7 @@
+<div ng-if="tbisDetailsViewReportViewIconDisplay.status === 'open_issue'" style="position: relative;margin-right: 15px;">
+    <md-icon md-svg-src="/img/icons/common/error_outline.svg" class="no-margin" aria-label="Tạo mới"></md-icon>
+</div>
+<div ng-if="tbisDetailsViewReportViewIconDisplay.status === 'open_conversation'" style="position: relative;margin-right: 15px;">
+    <md-icon md-svg-src="/img/icons/common/chat_bubble_outline.svg" class="no-margin" aria-label="Tạo mới"></md-icon>
+    <span style="position: absolute;top: 0;right: 4px;font-size: small;">{{tbisDetailsViewReportViewIconDisplay.count}}</span>
+</div>

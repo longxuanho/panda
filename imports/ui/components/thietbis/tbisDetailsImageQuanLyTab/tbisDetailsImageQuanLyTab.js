@@ -4,7 +4,7 @@ import { Random } from 'meteor/random';
 
 import template from './tbisDetailsImageQuanLyTab.html';
 import { name as TbisDetailsImageInputForm } from '../tbisDetailsImageInputForm/tbisDetailsImageInputForm';
-import { name as DisplayRelativeTime } from '../../../filters/common/displayRelativeTime';
+import { name as DisplayRelativeTimeFilter } from '../../../filters/common/displayRelativeTimeFilter';
 
 // import { name as TsktThongSoKyThuatDataService } from '../../../services/thietbis/tsktThongSoKyThuatDataService';
 
@@ -24,7 +24,7 @@ const name = 'tbisDetailsImageQuanLyTab';
 export default angular.module(name, [
     angularMeteor,
     TbisDetailsImageInputForm,
-    DisplayRelativeTime
+    DisplayRelativeTimeFilter
 ]).component(name, {
     template,
     controllerAs: name,

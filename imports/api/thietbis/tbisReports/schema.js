@@ -30,25 +30,14 @@ Schema.TbisReport = new SimpleSchema({
         type: Object
     },
         'tham_chieu.phan_loai': {
-            type: Object
+            type: Object,
+            blackbox: true
         },
-            'tham_chieu.phan_loai.nhom': {
-                type: Object,
-                blackbox: true
-            },
-            'tham_chieu.phan_loai.chung_loai': {
-                type: Object,
-                blackbox: true
-            },
-            'tham_chieu.phan_loai.loai': {
-                type: Object,
-                blackbox: true
-            },
         'tham_chieu.ma_thiet_bi': {
             type: Object,
             blackbox: true
         },
-        'tham_chieu.don_vi': {
+        'tham_chieu.don_vi_van_hanh': {
             type: Object,
             optional: true,
             blackbox: true

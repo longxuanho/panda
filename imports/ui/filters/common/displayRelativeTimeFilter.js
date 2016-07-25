@@ -2,10 +2,10 @@ import angular from 'angular';
 
 import moment from 'moment';
 
-const name = 'displayRelativeTime';
+const name = 'displayRelativeTimeFilter';
 
 
-function DisplayRelativeTime(time) {
+function DisplayRelativeTimeFilter(time) {
     if (!time) {
         return '';
     }
@@ -16,5 +16,5 @@ function DisplayRelativeTime(time) {
 // create a module
 export default angular.module(name, [])
     .filter(name, () => {
-        return DisplayRelativeTime;
+        return DisplayRelativeTimeFilter;
     });

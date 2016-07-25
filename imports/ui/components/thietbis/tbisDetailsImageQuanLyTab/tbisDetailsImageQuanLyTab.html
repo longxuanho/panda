@@ -18,7 +18,7 @@
             <img ng-src="{{item.thumb}}?{{$index}}" class="md-avatar" alt="{{item.tieu_de}}" />
             <div class="md-list-item-text" layout="column">
                 <h3 ng-class="{'hightlight': item._id === tbisDetailsImageQuanLyTab.hinhAnhs.default._id}">{{ item.tieu_de }}</h3>
-                <h4>{{ item.ngay_tao | displayRelativeTime }}</h4>
+                <h4>{{ item.ngay_tao | displayRelativeTimeFilter }}</h4>
                 <h4>{{ item.url }}</h4>
             </div>
         </md-list-item>
