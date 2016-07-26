@@ -7,6 +7,10 @@ function DisplayNameFilter(user) {
         return '';
     }
 
+    // Display user in metadata
+    if (user.name || user.email)
+        return user.name || user.email;
+
     if (user.profile && user.profile.name) {
         return user.profile.name;
     }

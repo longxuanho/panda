@@ -16,7 +16,7 @@ import { name as TsktThongSoKyThuatDataService } from '../../../services/thietbi
 
 
 class TbisDetailsViewHoSoViewUpdateMiniFab {
-    constructor($mdDialog, $mdMedia, $timeout) {
+    constructor($mdDialog, $mdMedia) {
         'ngInject';
 
         this.$mdDialog = $mdDialog;

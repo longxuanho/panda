@@ -158,7 +158,7 @@ function queryTbisReports() {
             metadata: {
                 "thoi_gian" : {
                     "tao_moi" : {
-                        "ngay_tao_date" : moment("2016-08-13T07:00:45.084Z").toDate(),
+                        "ngay_tao_date" : moment("2016-06-13T07:00:45.084Z").toDate(),
                         "ngay_tao_string" : "2016-07-13, 02:00:45",
                         "nam" : "2016",
                         "thang" : "07",
@@ -232,7 +232,7 @@ function queryTbisReports() {
             metadata: {
                 "thoi_gian" : {
                     "tao_moi" : {
-                        "ngay_tao_date" : moment("2016-08-13T07:00:45.084Z").toDate(),
+                        "ngay_tao_date" : moment("2016-05-13T07:00:45.084Z").toDate(),
                         "ngay_tao_string" : "2016-07-13, 02:00:45",
                         "nam" : "2016",
                         "thang" : "07",
@@ -243,7 +243,7 @@ function queryTbisReports() {
                 "user" : {
                     "nguoi_tao" : {
                         "keyId" : "Bpd9Berm4DbTR2eqb",
-                        "name" : "Creator 1",
+                        "name" : "Creator 2",
                         "email" : "creator1@gmail.com"
                     }
                 }
@@ -282,7 +282,7 @@ function queryTbisReports() {
             metadata: {
                 "thoi_gian" : {
                     "tao_moi" : {
-                        "ngay_tao_date" : moment("2016-08-13T07:00:45.084Z").toDate(),
+                        "ngay_tao_date" : moment("2016-07-25T07:00:45.084Z").toDate(),
                         "ngay_tao_string" : "2016-07-13, 02:00:45",
                         "nam" : "2016",
                         "thang" : "07",
