@@ -4,7 +4,7 @@ import angularMeteor from 'angular-meteor';
 import _ from 'underscore';
 import moment from 'moment';
 
-// import { ThietBis } from '../../../api/thietbis/tbis';
+import { TbisReports } from '../../../api/thietbis/tbisReports';
 
 class TbisReportsDataService {
 
@@ -22,46 +22,51 @@ class TbisReportsDataService {
     }
 
 
-    initNewTbisReportsData() {
+    initNewTbisReportsData(thietbi) {
         return {
-            // ma_thiet_bi: {},
-            // phan_loai: {},
-            // trang_thai: 'Đang hoạt động',
-            // nguon_goc: {},
-            // dia_diem: {},
-            // phan_quyen: {
-            //     quan_ly: {},
-            //     so_huu: {},
-            //     van_hanh: {},
-            //     doi_van_hanh: {}
-            // },
-            // ho_so: {},
-            // bao_hanh: {},
-            // tags: [],
-            // thong_so_ky_thuat: [],
-            // thong_so_hoat_dong: {},
-            // isActive: true,
-            // metadata: {}
+            status: 'open',
+            isActive: true,
+            tieu_de: '',
+            noi_dung: '',
+            tham_chieu: {
+                _id: thietbi._id,
+                phan_loai: thietbi.phan_loai,
+                ma_thiet_bi: thietbi.ma_thiet_bi,
+                don_vi_van_hanh: thietbi.phan_quyen.van_hanh,
+                doi_van_hanh: thietbi.phan_quyen.doi_van_hanh
+            },
+            comments: [],
+            actions: [],
+            thong_ke: {
+                openWhen: new Date(),
+                openHours: 0,
+                commentsCount: 0,
+                actionsCount: 0
+            },
+            metadata: {}
         }
     }
 
     validateTbisReportsInputData(data) {
-        // if (!data.ma_thiet_bi.keyId)
-        //     throw Error('Chưa có thông tin về mã thiết bị');
-        // if (!data.phan_loai.nhom)
-        //     throw Error('Chưa có thông tin về nhóm thiết bị');
-        // if (!data.phan_loai.chung_loai)
-        //     throw Error('Chưa có thông tin về chủng loại thiết bị');
-        // if (!data.phan_loai.loai)
-        //     throw Error('Chưa có thông tin về loại thiết bị');
-        // if (!data.nguon_goc.hang_san_xuat)
-        //     throw Error('Chưa có thông tin về hãng sản xuất');
-        // if (_.isEmpty(data.dia_diem.khu_vuc))
-        //     throw Error('Chưa có thông tin về khu vực hoạt động');
-        // if (_.isEmpty(data.phan_quyen.quan_ly))
-        //     throw Error('Chưa có thông tin về đơn vị quản lý');
-        // if (_.isEmpty(data.phan_quyen.so_huu))
-        //     throw Error('Chưa có thông tin về đơn vị sở hữu');
+        if (!data.status || !data.isActive || _.isEmpty(data.thong_ke) || _.isEmpty(data.tham_chieu))
+            throw Error('Có lỗi khi khởi tạo. Vui lòng đóng hộp thoại, kiểm tra đăng nhập và thử lại sau.');
+        if (!data.tham_chieu._id || _.isEmpty(data.tham_chieu.phan_loai) || _.isEmpty(data.tham_chieu.ma_thiet_bi))
+            throw Error('Thiết bị không tồn tại. Vui lòng thử lại sau.');
+        if (!data.tieu_de)
+            throw Error('Chưa có thông tin về tiêu đề thông báo');
+        if (!data.noi_dung)
+            throw Error('Chưa có thông tin về nội dung thông báo');
+    }
+
+    addNew(data) {
+        let defer = this.$q.defer();
+        TbisReports.insert(data, (error) => {
+            if (error)
+                defer.reject(error);
+            else
+                defer.resolve();
+        });
+        return defer.promise;
     }
 }
 

@@ -17,11 +17,6 @@ class TbisListFabMenu {
         });
     }
 
-    $onInit() {
-        console.log('tbisListFabMenu!');
-    }
-
-
     goUp() {
         $("body").velocity("scroll", {
             duration: 1000,

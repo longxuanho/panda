@@ -20,6 +20,19 @@ Schema.TbisComment = new SimpleSchema({
     }
 });
 
+Schema.TbisAction = new SimpleSchema({
+    _id: {
+       type: String
+    },
+    action: {
+       type: String
+    },
+    metadata: {
+        type: Object,
+        blackbox: true
+    }
+});
+
 Schema.TbisReport = new SimpleSchema({
     status: {
         type: String,
@@ -29,6 +42,9 @@ Schema.TbisReport = new SimpleSchema({
     tham_chieu: {
         type: Object
     },
+        'tham_chieu._id': {
+            type: String
+        },
         'tham_chieu.phan_loai': {
             type: Object,
             blackbox: true
@@ -61,6 +77,10 @@ Schema.TbisReport = new SimpleSchema({
         type: [Schema.TbisComment],
         defaultValue: []
     },
+    actions: {
+        type: [Schema.TbisAction],
+        defaultValue: []
+    },
     thong_ke: {
         type: Object
     },
@@ -78,6 +98,10 @@ Schema.TbisReport = new SimpleSchema({
             defaultValue: 0
         },
         'thong_ke.commentsCount': {
+            type: Number,
+            defaultValue: 0
+        },
+        'thong_ke.actionsCount': {
             type: Number,
             defaultValue: 0
         },

@@ -1,0 +1,38 @@
+<md-dialog id="tbis-details-update-modal" aria-label="Cập nhật thiết bị" ng-cloak>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Thông báo mới cho LB01_HP</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="tbisDetailsViewReportViewAddNewModal.close()">
+                <md-icon md-svg-src="img/icons/common/close.svg" aria-label="Đóng hộp thoại"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content layout-fill>
+        <p class="md-body-1" style="padding: 16px 16px 0px 16px;">Bạn có thể thông báo các tình trạng, vấn đề với thiết bị đang vận hành theo mẫu phiếu dưới đây.</p>
+        <md-list class="md-dense" flex>
+            <md-list-item class="md-2-line">
+                <img ng-src="{{todos[0].face}}?20" class="md-avatar" alt="{{todos[0].who}}" />
+                <div class="md-list-item-text">
+                    <h3>Hữu Toàn</h3>
+                    <p>Xí Nghiệp Cơ Giới</p>
+                </div>
+            </md-list-item>
+        </md-list>
+        <form id="tbis-details-view-report-view-add-new-form" flex style="margin: 0 16px;">
+            <md-input-container class="md-block" flex>
+                <label>Tiêu đề</label>
+                <input ng-model="tbisDetailsViewReportViewAddNewModal.newTbisReport.tieu_de">
+            </md-input-container>
+            <div ng-if="tbisDetailsViewReportViewAddNewModal.isModalOpen">
+                <textarea kendo-editor k-options="tbisDetailsViewReportViewAddNewModal.kendoEditorOptions" k-ng-model="tbisDetailsViewReportViewAddNewModal.newTbisReport.noi_dung"></textarea>
+            </div>
+        </form>
+        <pre>{{tbisDetailsViewReportViewAddNewModal.newTbisReport | json}}</pre>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <md-button ng-click="tbisDetailsViewReportViewAddNewModal.reset()" aria-label="Reset">Reset</md-button>
+        <span flex></span>
+        <md-button style="margin-right:20px;" ng-click="tbisDetailsViewReportViewAddNewModal.addNew()" aria-label="Tạo mới">Tạo mới</md-button>
+    </md-dialog-actions>
+</md-dialog>
