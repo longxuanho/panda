@@ -71,8 +71,14 @@ Schema.TbisReport = new SimpleSchema({
         type: String
     },
     noi_dung: {
-        type: String
+        type: Object
     },
+        'noi_dung.html': {
+            type: String
+        },
+        'noi_dung.text': {
+            type: String
+        },
     comments: {
         type: [Schema.TbisComment],
         defaultValue: []

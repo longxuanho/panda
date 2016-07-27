@@ -16,7 +16,6 @@ class TbisDataService {
     }
 
     query(selector, options) {
-        console.log('data ',ThietBis.find({}).fetch());
         if (_.isEmpty(selector))
             return ThietBis.find({}).fetch();
         return ThietBis.find(selector, options).fetch();

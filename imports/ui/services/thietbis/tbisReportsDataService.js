@@ -18,7 +18,14 @@ class TbisReportsDataService {
     }
 
     query(selector, options) {
-        return this.tbisReports;
+        // return this.tbisReports;
+        if (_.isEmpty(selector))
+            return TbisReports.find({}).fetch();
+        return TbisReports.find(selector, options).fetch();
+    }
+
+    queryOne(tbisReportId) {
+        return TbisReports.findOne({_id: tbisReportId});
     }
 
 
@@ -27,7 +34,10 @@ class TbisReportsDataService {
             status: 'open',
             isActive: true,
             tieu_de: '',
-            noi_dung: '',
+            noi_dung: {
+                html: '',
+                text: ''
+            },
             tham_chieu: {
                 _id: thietbi._id,
                 phan_loai: thietbi.phan_loai,
@@ -54,7 +64,7 @@ class TbisReportsDataService {
             throw Error('Thiết bị không tồn tại. Vui lòng thử lại sau.');
         if (!data.tieu_de)
             throw Error('Chưa có thông tin về tiêu đề thông báo');
-        if (!data.noi_dung)
+        if (!data.noi_dung.html || !data.noi_dung.text)
             throw Error('Chưa có thông tin về nội dung thông báo');
     }
 
@@ -67,6 +77,18 @@ class TbisReportsDataService {
                 defer.resolve();
         });
         return defer.promise;
+    }
+
+    setSelectedTbisReport(tbisReportId) {
+        this.selectedTbisReport = this.queryOne(tbisReportId);
+    }
+
+    getSelectedTbisReport() {
+        return this.selectedTbisReport;
+    }
+
+    clearSelectedTbisReport() {
+        this.selectedTbisReport = {};
     }
 }
 

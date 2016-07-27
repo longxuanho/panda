@@ -1,17 +1,12 @@
 <!--tbisDetailsViewReportViewOpenTabDetails-->
 <md-list flex>
-    <md-subheader class="md-no-sticky"><div style="margin-left: 56px;">Chảy dầu hộp giảm tốc xe tời · 3 trao đổi</div></md-subheader>
+    <md-subheader class="md-no-sticky"><div style="margin-left: 56px;">{{tbisDetailsViewReportViewOpenTabDetails.tbisReport.tieu_de}} · {{tbisDetailsViewReportViewOpenTabDetails.tbisReport.comments.length}} trao đổi</div></md-subheader>
     <md-list-item class="md-3-line md-long-text">
         <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
         <div class="md-list-item-text">
-            <h3>Hữu Toàn · XNCG</h3>
-            <h4 style="margin-bottom: 10px">một tuần trước · sửa</h4>
-            <div>
-                <h1>Kendo Editor</h1>
-
-                <p>Note that 'change' is triggered when the editor loses focus.
-                    <br/> That's when the Angular scope gets updated.</p>
-            </div>
+            <h3>{{tbisDetailsViewReportViewOpenTabDetails.tbisReport.metadata.user.nguoi_tao | displayNameFilter}} · XNCG</h3>
+            <h4 style="margin-bottom: 10px">{{tbisDetailsViewReportViewOpenTabDetails.tbisReport.metadata.thoi_gian.tao_moi.ngay_tao_date | displayRelativeTimeFilter}} · sửa</h4>
+            <div ng-bind-html="tbisDetailsViewReportViewOpenTabDetails.tbisReport.noi_dung.html"></div>
         </div>
     </md-list-item>
     <md-divider></md-divider>

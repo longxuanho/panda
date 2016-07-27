@@ -15,27 +15,44 @@ import { name as TbisDataService } from '../../../services/thietbis/tbisDataServ
 
 
 class TbisDetailsViewReportViewOpenTab {
-    constructor($mdDialog, $mdMedia, tbisReportsDataService) {
+    constructor($reactive, $scope, $mdDialog, $mdMedia, tbisReportsDataService) {
         'ngInject';
-        this.tbisReports = tbisReportsDataService.query();
+        $reactive(this).attach($scope);
+
+        // this.tbisReports = tbisReportsDataService.query();
         this.$mdDialog = $mdDialog;
         this.$mdMedia = $mdMedia;
+        this.tbisReportDataService = tbisReportsDataService;
 
+        this.subscribe('tbisreports');
 
-        console.log('thietbiId: ', this.thietbiId);
-
-        console.log('query data: ', this.tbisReports);
+        this.helpers({
+            tbisReports() {
+                return tbisReportsDataService.query();
+            },
+            // thietbisCount() {
+            //     return Counts.get('numberOfThietBis');
+            // },
+            // isLoggedIn() {
+            //     return !!Meteor.userId();
+            // },
+            // currentUserId() {
+            //     return Meteor.userId();
+            // }
+        });
     }
 
-    open(event) {
+    open(event, tbisReportId) {
+        this.tbisReportDataService.setSelectedTbisReport(tbisReportId);
         this.$mdDialog.show({
-            controller($mdDialog, tbisDataService) {
+            controller($mdDialog, tbisDataService, tbisReportsDataService) {
                 'ngInject';
                 this.thietbiId = tbisDataService.getSelectedThietBi().ma_thiet_bi.keyId;
                 this.isModalOpen = true;
 
                 this.close = () => {
                     this.isModalOpen = false;
+                    tbisReportsDataService.clearSelectedTbisReport();
                     $mdDialog.hide();
                 };
             },

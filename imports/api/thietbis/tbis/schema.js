@@ -107,7 +107,8 @@ Schema.ThietBi = new SimpleSchema({
             optional: true
         },
         'dia_diem.toa_do': {
-            type: Object
+            type: Object,
+            optional: true,
         },
             'dia_diem.toa_do.location': {
                 type: Object,

@@ -25,7 +25,7 @@
                 <input ng-model="tbisDetailsViewReportViewAddNewModal.newTbisReport.tieu_de">
             </md-input-container>
             <div ng-if="tbisDetailsViewReportViewAddNewModal.isModalOpen">
-                <textarea kendo-editor k-options="tbisDetailsViewReportViewAddNewModal.kendoEditorOptions" k-ng-model="tbisDetailsViewReportViewAddNewModal.newTbisReport.noi_dung"></textarea>
+                <textarea id="kEditor" kendo-editor k-options="tbisDetailsViewReportViewAddNewModal.kendoEditorOptions" k-ng-model="tbisDetailsViewReportViewAddNewModal.newTbisReport.noi_dung.html"></textarea>
             </div>
         </form>
         <pre>{{tbisDetailsViewReportViewAddNewModal.newTbisReport | json}}</pre>

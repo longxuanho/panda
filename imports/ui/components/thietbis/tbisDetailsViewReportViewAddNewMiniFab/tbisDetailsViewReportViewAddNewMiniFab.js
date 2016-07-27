@@ -42,6 +42,7 @@ class TbisDetailsViewReportViewAddNewMiniFab {
 
                 this.addNew = () => {
                     try {
+                        this.newTbisReport.noi_dung.text = $(this.newTbisReport.noi_dung.html).text() || this.newTbisReport.noi_dung.html;
                         metadataService.buildNewMetadata(this.newTbisReport, Meteor.user());
                         tbisReportsDataService.validateTbisReportsInputData(this.newTbisReport);
                         tbisReportsDataService.addNew(this.newTbisReport).then(() => {
