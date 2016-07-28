@@ -42,7 +42,7 @@ class TbisDetailsViewReportViewOpenTab {
     open(event, tbisReportId) {
         this.tbisReportDataService.setSelectedTbisReport(tbisReportId);
         this.$mdDialog.show({
-            controller($mdDialog, tbisDataService, tbisReportsDataService, notificationService, metadataService) {
+            controller($mdDialog, tbisDataService, tbisReportsDataService, notificationService, metadataService, $mdToast) {
                 'ngInject';
                 this.thietbiId = tbisDataService.getSelectedThietBi().ma_thiet_bi.keyId;
                 this.isModalOpen = true;
@@ -79,11 +79,25 @@ class TbisDetailsViewReportViewOpenTab {
                 };
 
                 this.closeSelectedTbisReport = () => {
-                    tbisReportsDataService.closeSelectedTbisReport(this.generateAction('close', Meteor.user())).then(() => {
-                        notificationService.success('Thông báo của bạn đã được đóng thành công.', 'Đóng thông báo');
-                        this.close();
-                    }).catch((err) => {
-                        notificationService.error(err.message, 'Không thể đóng mục này');
+                    $mdToast.show({
+                        hideDelay: 5000,
+                            position : 'top right',
+                            controller: ($scope) => {
+                            'ngInject';
+                            $scope.yes = () => {
+                                tbisReportsDataService.closeSelectedTbisReport(this.generateAction('close', Meteor.user())).then(() => {
+                                    notificationService.success('Thông báo của bạn đã được đóng thành công.', 'Đóng thông báo');
+                                    this.close();
+                                }).catch((err) => {
+                                    notificationService.error(err.message, 'Không thể đóng mục này');
+                                });
+                                $mdToast.hide();
+                            };
+                            $scope.no = () => {
+                                $mdToast.hide();
+                            };
+                        },
+                        template : '<md-toast><span class="md-toast-text" flex>Đóng thông báo này?<md-button class="md-highlight" ng-click="yes()">OK, đóng!</md-button><md-button ng-click="no()">Không</md-button></span></md-toast>'
                     });
                 };
 

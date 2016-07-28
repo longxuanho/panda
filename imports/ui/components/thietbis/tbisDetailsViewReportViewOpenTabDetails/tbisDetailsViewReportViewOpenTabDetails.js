@@ -28,6 +28,7 @@ class TbisDetailsViewReportViewOpenTabDetails {
             tbisReportHelper() {
                 vm.tbisReport = tbisReportsDataService.queryOne(vm.selectedTbisReportId);
                 vm.mixedCommentsAndActions = tbisReportsDataService.mixCommentsAndActions(vm.tbisReport.comments, vm.tbisReport.actions);
+                console.log('data: ', vm.mixedCommentsAndActions);
                 return true;
             }
         });

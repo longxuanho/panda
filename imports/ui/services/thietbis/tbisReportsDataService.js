@@ -128,10 +128,8 @@ class TbisReportsDataService {
     }
 
     mixCommentsAndActions(comments, actions) {
-        if (!comments || !actions) return [];
-        if (!comments.length && !actions.length) return [];
-        if (!comments.length) return actions;
-        if (!actions.length) return comments;
+        comments = comments || [];
+        actions = actions || [];
 
         _.each(comments, (comment) => {
             comment.type = 'comment'
