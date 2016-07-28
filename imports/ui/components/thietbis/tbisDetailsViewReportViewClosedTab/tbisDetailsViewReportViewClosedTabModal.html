@@ -1,0 +1,18 @@
+<md-dialog id="tbis-details-view-closed-report-modal" aria-label="Chi tiết thông báo thiết bị" ng-cloak>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>{{tbisDetailsViewReportViewClosedTabModal.thietbiId}}</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="tbisDetailsViewReportViewClosedTabModal.close()">
+                <md-icon md-svg-src="img/icons/common/close.svg" aria-label="Đóng hộp thoại"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content layout-fill>
+        <tbis-details-view-report-view-closed-tab-details mixed-comments-and-actions="tbisDetailsViewReportViewClosedTabModal.mixedCommentsAndActions" new-comment="tbisDetailsViewReportViewClosedTabModal.newComment" is-active-editor="tbisDetailsViewReportViewClosedTabModal.isModalClosed"></tbis-details-view-report-view-closed-tab-details>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button style="margin-right:20px;" ng-click="tbisDetailsViewReportViewClosedTabModal.openSelectedTbisReport()" aria-label="Mở lại">Mở lại</md-button>
+    </md-dialog-actions>
+</md-dialog>

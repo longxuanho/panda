@@ -1,0 +1,14 @@
+<md-list-item class="md-3-line md-long-text" ng-if="tbisDetailsViewReportViewCommentActionItem.viewModel.type==='comment'">
+    <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
+    <div class="md-list-item-text">
+        <h3>{{tbisDetailsViewReportViewCommentActionItem.viewModel.metadata.user.nguoi_tao | displayNameFilter}} · DVKT</h3>
+        <h4 style="margin-bottom: 10px">{{ tbisDetailsViewReportViewCommentActionItem.viewModel.metadata.thoi_gian.tao_moi.ngay_tao_date | displayRelativeTimeFilter }} </h4>
+        <div class="sky-text-bind-html" ng-bind-html="tbisDetailsViewReportViewCommentActionItem.viewModel.noi_dung.html"></div>
+    </div>
+</md-list-item>
+<md-subheader class="md-no-sticky" ng-if="tbisDetailsViewReportViewCommentActionItem.viewModel.type==='action'">
+    <div style="margin-left: 56px;">
+        {{tbisDetailsViewReportViewCommentActionItem.viewModel.metadata.user.nguoi_tao | displayNameFilter}} đã {{tbisDetailsViewReportViewCommentActionItem.viewModel.noi_dung}} chủ đề này vào {{tbisDetailsViewReportViewCommentActionItem.viewModel.metadata.thoi_gian.tao_moi.ngay_tao_date | displayRelativeTimeFilter}}
+    </div>
+</md-subheader>
+<md-divider></md-divider>

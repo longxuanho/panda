@@ -1,7 +1,8 @@
 <!--tbisDetailsViewReportViewOpenTabDetails-->
-<md-list flex>
+<md-list flex style="padding-top:0;">
     <md-subheader class="md-no-sticky"><div style="margin-left: 56px;">{{tbisDetailsViewReportViewOpenTabDetails.tbisReport.tieu_de}} · {{tbisDetailsViewReportViewOpenTabDetails.tbisReport.comments.length}} phản hồi</div></md-subheader>
-    <md-list-item class="md-3-line md-long-text">
+    <md-divider></md-divider>
+    <md-list-item class="md-3-line md-long-text" style="margin:0;padding: 16px;background-color: rgb(250, 250, 250);">
         <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
         <div class="md-list-item-text sky-text-bind-html">
             <h3>{{tbisDetailsViewReportViewOpenTabDetails.tbisReport.metadata.user.nguoi_tao | displayNameFilter}} · XNCG</h3>
@@ -10,8 +11,8 @@
         </div>
     </md-list-item>
     <md-divider></md-divider>
-    <tbis-details-view-report-view-open-tab-details-comment-action-item ng-repeat="item in tbisDetailsViewReportViewOpenTabDetails.mixedCommentsAndActions" view-model="item">
-    </tbis-details-view-report-view-open-tab-details-comment-action-item>
+    <tbis-details-view-report-view-comment-action-item ng-repeat="item in tbisDetailsViewReportViewOpenTabDetails.mixedCommentsAndActions" view-model="item">
+    </tbis-details-view-report-view-comment-action-item>
     <md-list-item class="md-3-line md-long-text">
         <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
         <div class="md-list-item-text">

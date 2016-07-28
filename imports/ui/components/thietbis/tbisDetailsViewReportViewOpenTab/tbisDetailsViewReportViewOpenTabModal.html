@@ -1,4 +1,4 @@
-<md-dialog id="tbis-details-update-modal" aria-label="Cập nhật thiết bị" ng-cloak>
+<md-dialog id="tbis-details-view-open-report-modal" aria-label="Chi tiết thông báo thiết bị" ng-cloak>
     <md-toolbar>
         <div class="md-toolbar-tools">
             <h2>{{tbisDetailsViewReportViewOpenTabModal.thietbiId}}</h2>
@@ -9,7 +9,7 @@
         </div>
     </md-toolbar>
     <md-dialog-content layout-fill>
-        <tbis-details-view-report-view-open-tab-details mixed-comments-and-actions="tbisDetailsViewReportViewOpenTabModal.mixedCommentsAndActions" new-comment="tbisDetailsViewReportViewOpenTabModal.newComment" is-active-editor="tbisDetailsViewReportViewOpenTabModal.isModalOpen"></tbis-details-view-report-view-open-tab-details>
+        <tbis-details-view-report-view-open-tab-details new-comment="tbisDetailsViewReportViewOpenTabModal.newComment" is-active-editor="tbisDetailsViewReportViewOpenTabModal.isModalOpen"></tbis-details-view-report-view-open-tab-details>
     </md-dialog-content>
     <md-dialog-actions layout="row">
         <md-button ng-click="tbisDetailsViewReportViewOpenTabModal.resetNewComment()" aria-label="Reset">Reset</md-button>
