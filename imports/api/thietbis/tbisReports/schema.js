@@ -8,8 +8,14 @@ Schema.TbisComment = new SimpleSchema({
         type: String
     },
     noi_dung: {
-        type: String
+        type: Object
     },
+        'noi_dung.html': {
+            type: String
+        },
+        'noi_dung.text': {
+            type: String
+        },
     isActive: {
         type: Boolean,
         defaultValue: true
@@ -26,6 +32,9 @@ Schema.TbisAction = new SimpleSchema({
     },
     action: {
        type: String
+    },
+    noi_dung: {
+        type: String
     },
     metadata: {
         type: Object,

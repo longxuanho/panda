@@ -1,15 +1,17 @@
 <!--tbisDetailsViewReportViewOpenTabDetails-->
 <md-list flex>
-    <md-subheader class="md-no-sticky"><div style="margin-left: 56px;">{{tbisDetailsViewReportViewOpenTabDetails.tbisReport.tieu_de}} · {{tbisDetailsViewReportViewOpenTabDetails.tbisReport.comments.length}} trao đổi</div></md-subheader>
+    <md-subheader class="md-no-sticky"><div style="margin-left: 56px;">{{tbisDetailsViewReportViewOpenTabDetails.tbisReport.tieu_de}} · {{tbisDetailsViewReportViewOpenTabDetails.tbisReport.comments.length}} phản hồi</div></md-subheader>
     <md-list-item class="md-3-line md-long-text">
         <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
-        <div class="md-list-item-text">
+        <div class="md-list-item-text sky-text-bind-html">
             <h3>{{tbisDetailsViewReportViewOpenTabDetails.tbisReport.metadata.user.nguoi_tao | displayNameFilter}} · XNCG</h3>
             <h4 style="margin-bottom: 10px">{{tbisDetailsViewReportViewOpenTabDetails.tbisReport.metadata.thoi_gian.tao_moi.ngay_tao_date | displayRelativeTimeFilter}} · sửa</h4>
             <div ng-bind-html="tbisDetailsViewReportViewOpenTabDetails.tbisReport.noi_dung.html"></div>
         </div>
     </md-list-item>
     <md-divider></md-divider>
+    <tbis-details-view-report-view-open-tab-details-comment-action-item ng-repeat="item in tbisDetailsViewReportViewOpenTabDetails.mixedCommentsAndActions" view-model="item">
+    </tbis-details-view-report-view-open-tab-details-comment-action-item>
     <md-list-item class="md-3-line md-long-text">
         <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
         <div class="md-list-item-text">
@@ -43,9 +45,12 @@
         <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
         <div class="md-list-item-text">
             <div ng-if="tbisDetailsViewReportViewOpenTabDetails.isActiveEditor">
-                <textarea kendo-editor k-tools="tbisDetailsViewReportViewOpenTabDetails.kendoEditorTools" k-ng-model="tbisDetailsViewReportViewOpenTabDetails.html"></textarea>
+                <textarea kendo-editor k-options="tbisDetailsViewReportViewOpenTabDetails.kendoEditorOptions" k-ng-model="tbisDetailsViewReportViewOpenTabDetails.newComment.noi_dung.html"></textarea>
             </div>
         </div>
     </md-list-item>
 
 </md-list>
+<pre>
+    {{tbisDetailsViewReportViewOpenTabDetails.newComment | json}}
+</pre>

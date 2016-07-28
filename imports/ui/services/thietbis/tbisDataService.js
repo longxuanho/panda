@@ -49,6 +49,7 @@ class TbisDataService {
     }
 
     validateMajorInputThietBiData(data) {
+        console.log('validating...');
         if (!data.ma_thiet_bi.keyId)
             throw Error('Chưa có thông tin về mã thiết bị');
         if (!data.phan_loai.nhom)

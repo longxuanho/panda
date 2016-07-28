@@ -145,6 +145,9 @@ Schema.ThietBi = new SimpleSchema({
             'phan_quyen.quan_ly.ten': {
                 type: String
             },
+            'phan_quyen.quan_ly.nhom': {
+                type: String
+            },
         'phan_quyen.so_huu': {
             type: Object
         },
@@ -152,6 +155,9 @@ Schema.ThietBi = new SimpleSchema({
                 type: String
             },
             'phan_quyen.so_huu.ten': {
+                type: String
+            },
+            'phan_quyen.so_huu.nhom': {
                 type: String
             },
         'phan_quyen.van_hanh': {
@@ -163,6 +169,10 @@ Schema.ThietBi = new SimpleSchema({
                 optional: true
             },
             'phan_quyen.van_hanh.ma': {
+                type: String,
+                optional: true
+            },
+            'phan_quyen.van_hanh.nhom': {
                 type: String,
                 optional: true
             },

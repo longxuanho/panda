@@ -1,17 +1,9 @@
 <tbis-details-view-report-view-search-tool></tbis-details-view-report-view-search-tool>
 <md-list>
     <md-subheader class="md-no-sticky" style="padding-top: 0;">
-        Đang xem 10/10 thông báo đang mở
+        <span ng-show="tbisDetailsViewReportViewOpenTab.tbisReports.length">Đang xem {{tbisDetailsViewReportViewOpenTab.tbisReports.length}}/10 thông báo đang mở</span>
+        <span ng-hide="tbisDetailsViewReportViewOpenTab.tbisReports.length">Không có thông báo đang mở cho thiết bị</span>
     </md-subheader>
-    <!--<md-list-item class="md-2-line" ng-click="tbisDetailsViewReportViewOpenTab.open($event)" ng-repeat="tbisreport in tbisDetailsViewReportViewOpenTab.tbisReports">-->
-        <!--<div class="md-list-item-text" layout="row" flex>-->
-            <!--<tbis-details-view-report-view-icon-display status="{{tbisreport.comments.length ? 'open_conversation' : 'open_issue'}}" count="{{tbisreport.comments.length}}"></tbis-details-view-report-view-icon-display>-->
-            <!--<div flex>-->
-                <!--<h3>{{tbisreport.tieu_de}}</h3>-->
-                <!--<h4>{{tbisreport.metadata.thoi_gian.tao_moi.ngay_tao_date | displayRelativeTimeFilter}} bởi {{tbisreport.metadata.user.nguoi_tao | displayNameFilter }}</h4>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</md-list-item>-->
     <md-list-item class="md-2-line" ng-click="tbisDetailsViewReportViewOpenTab.open($event, tbisreport._id)" ng-repeat="tbisreport in tbisDetailsViewReportViewOpenTab.tbisReports">
         <div class="md-list-item-text" layout="row" flex>
             <tbis-details-view-report-view-icon-display status="{{tbisreport.comments.length ? 'open_conversation' : 'open_issue'}}" count="{{tbisreport.comments.length}}"></tbis-details-view-report-view-icon-display>

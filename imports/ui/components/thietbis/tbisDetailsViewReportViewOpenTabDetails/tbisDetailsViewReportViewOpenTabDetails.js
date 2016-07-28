@@ -3,24 +3,32 @@ import angularMeteor from 'angular-meteor';
 
 import template from './tbisDetailsViewReportViewOpenTabDetails.html';
 
-import { name as DisplayNameFilter } from '../../../filters/common/displayNameFilter';
-import { name as DisplayRelativeTimeFilter } from '../../../filters/common/displayRelativeTimeFilter';
 import { name as TbisReportsDataService } from '../../../services/thietbis/tbisReportsDataService';
+import { name as TbisDetailsViewReportViewOpenTabDetailsCommentActionItem } from '../tbisDetailsViewReportViewOpenTabDetailsCommentActionItem/tbisDetailsViewReportViewOpenTabDetailsCommentActionItem';
 
 class TbisDetailsViewReportViewOpenTabDetails {
     constructor($reactive, $scope, tbisReportsDataService) {
         'ngInject';
         $reactive(this).attach($scope);
+        let vm = this;
 
-        this.kendoEditorTools = [
-            "formatting", "foreColor", "cleanFormatting", "bold", "italic", "underline", "insertUnorderedList", "insertOrderedList", "indent", "outdent", "insertImage", "createTable", "addRowAbove", "addRowBelow", "addColumnLeft", "addColumnRight", "deleteRow", "deleteColumn"
-        ];
-        this.selectedTbisReportId = tbisReportsDataService.getSelectedTbisReport()._id;
-        console.log('selected: ', this.selectedTbisReportId);
+        vm.kendoEditorOptions = {
+            tools: [
+                // "formatting", "foreColor",
+                "cleanFormatting", "bold", "italic", "underline", "insertUnorderedList", "insertOrderedList", "indent", "outdent", "insertImage", "createTable", "addRowAbove", "addRowBelow", "addColumnLeft", "addColumnRight", "deleteRow", "deleteColumn"
+            ],
+            serialization: {
+                entities: false,
+                scripts: true
+            }
+        };
+        vm.selectedTbisReportId = tbisReportsDataService.getSelectedTbisReport()._id;
 
-        this.helpers({
-            tbisReport() {
-                return tbisReportsDataService.queryOne(this.selectedTbisReportId);
+        vm.helpers({
+            tbisReportHelper() {
+                vm.tbisReport = tbisReportsDataService.queryOne(vm.selectedTbisReportId);
+                vm.mixedCommentsAndActions = tbisReportsDataService.mixCommentsAndActions(vm.tbisReport.comments, vm.tbisReport.actions);
+                return true;
             }
         });
     }
@@ -31,13 +39,14 @@ const name = 'tbisDetailsViewReportViewOpenTabDetails';
 // create a module
 export default angular.module(name, [
     angularMeteor,
-    DisplayNameFilter,
     TbisReportsDataService,
-    DisplayRelativeTimeFilter
+    TbisDetailsViewReportViewOpenTabDetailsCommentActionItem
 ]).component(name, {
     template,
     bindings: {
-        isActiveEditor: '<'
+        isActiveEditor: '<',
+        newComment: '=',
+        mixedCommentsAndActions: '<'
     },
     controllerAs: name,
     controller: TbisDetailsViewReportViewOpenTabDetails

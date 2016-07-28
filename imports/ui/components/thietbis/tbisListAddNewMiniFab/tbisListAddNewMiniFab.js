@@ -2,6 +2,7 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
 import ngMessages from 'angular-messages';
+import { Meteor } from 'meteor/meteor';
 
 import _ from 'underscore';
 import fabTemplate from './tbisListAddNewMiniFab.html';
@@ -28,7 +29,7 @@ class TbisListAddNewMiniFab {
 
                 this.newThietBi = tbisDataService.initNewThietBiData();
 
-                this.save = () => {
+                this.addNew = () => {
                     try {
                         metadataService.buildNewMetadata(this.newThietBi, Meteor.user());
                         tbisDataService.validateMajorInputThietBiData(this.newThietBi);

@@ -1,6 +1,8 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
+import { Meteor } from 'meteor/meteor';
+
 import template from './tbisDetailsViewReportViewAddNewMiniFab.html';
 import modalTemplate from './tbisDetailsViewReportViewAddNewModal.html';
 import { name as TbisDataService } from '../../../services/thietbis/tbisDataService';
@@ -25,13 +27,13 @@ class TbisDetailsViewReportViewAddNewMiniFab {
                 this.isModalOpen = true;
                 this.kendoEditorOptions = {
                     tools: [
-                        "formatting", "foreColor", "cleanFormatting", "bold", "italic", "underline", "insertUnorderedList", "insertOrderedList", "indent", "outdent", "insertImage", "createTable", "addRowAbove", "addRowBelow", "addColumnLeft", "addColumnRight", "deleteRow", "deleteColumn"
+                        // "formatting", "foreColor",
+                        "cleanFormatting", "bold", "italic", "underline", "insertUnorderedList", "insertOrderedList", "indent", "outdent", "insertImage", "createTable", "addRowAbove", "addRowBelow", "addColumnLeft", "addColumnRight", "deleteRow", "deleteColumn"
                     ],
                     serialization: {
                         entities: false,
                         scripts: true
                     }
-
                 };
                 this.seletedThietBi = angular.copy(tbisDataService.getSelectedThietBi());
                 this.newTbisReport = tbisReportsDataService.initNewTbisReportsData(this.seletedThietBi);
@@ -42,7 +44,7 @@ class TbisDetailsViewReportViewAddNewMiniFab {
 
                 this.addNew = () => {
                     try {
-                        this.newTbisReport.noi_dung.text = $(this.newTbisReport.noi_dung.html).text() || this.newTbisReport.noi_dung.html;
+                        this.newTbisReport.noi_dung.text = $('iframe').contents().find("body").text() || this.newTbisReport.noi_dung.html;
                         metadataService.buildNewMetadata(this.newTbisReport, Meteor.user());
                         tbisReportsDataService.validateTbisReportsInputData(this.newTbisReport);
                         tbisReportsDataService.addNew(this.newTbisReport).then(() => {
@@ -62,8 +64,6 @@ class TbisDetailsViewReportViewAddNewMiniFab {
                     this.isModalOpen = false;
                     $mdDialog.hide();
                 };
-
-
             },
             controllerAs: 'tbisDetailsViewReportViewAddNewModal',
             template: modalTemplate,

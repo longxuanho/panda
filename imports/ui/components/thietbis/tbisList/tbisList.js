@@ -68,7 +68,6 @@ class TbisList {
         
         this.helpers({
             tbishelpers() {
-                console.log('query..');
                 tbisPhanLoaiDataService.queryAll();
                 tbisNguonGocDataService.queryAll();
                 tbisPhanQuyenDataService.queryAll();

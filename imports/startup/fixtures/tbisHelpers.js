@@ -1242,134 +1242,309 @@ Meteor.startup(() => {
 
         const donvis = [
             {
-                ma: 'CP1503',
-                ten: 'CP 15-03'
+                ma: 'TCT',
+                ten: 'Tổng công ty Tân cảng Sài Gòn',
+                nhom: 'Tổng công ty'
             }, {
-                ma: 'ATPC',
-                ten: 'Phòng An Toàn Pháp Chế'
+                ma: 'QC',
+                ten: 'Quân cảng Sài Gòn',
+                nhom: 'Tổng công ty'
             }, {
-                ma: 'BENTHANH',
-                ten: 'Tân Cảng Bến Thành'
+                ma: 'VP',
+                ten: 'Văn phòng',
+                nhom: 'Tổng công ty'
             }, {
-                ma: 'CANGVU',
-                ten: 'Cảng Vụ'
+                ma: 'KHKD',
+                ten: 'Phòng Kế hoạch Kinh doanh',
+                nhom: 'Tổng công ty'
             }, {
-                ma: 'CP128',
-                ten: 'Tân Cảng 128 Hải Phòng'
+                ma: 'KHĐT',
+                ten: 'Phòng Kế hoạch Đầu tư',
+                nhom: 'Tổng công ty'
             }, {
-                ma: 'CP189',
-                ten: 'Tân Cảng 189 Hải Phòng'
+                ma: 'CTr',
+                ten: 'Phòng Chính Trị',
+                nhom: 'Tổng công ty'
             }, {
-                ma: 'CPCL',
-                ten: 'CP Cảng Cát Lái'
+                ma: 'TCh',
+                ten: 'Phòng Tài chính',
+                nhom: 'Tổng công ty'
             }, {
-                ma: 'DIAOC',
-                ten: 'Đầu Tư PT Hạ Tầng TC'
+                ma: 'TCLĐ',
+                ten: 'Phòng Tổ chức Lao động - Tiền lương',
+                nhom: 'Tổng công ty'
             }, {
-                ma: 'DIC',
-                ten: 'DIC'
-            }, {
-                ma: 'DTV',
-                ten: 'Cảng Dầu Thực Vật'
-            }, {
-                ma: 'DVHH',
-                ten: 'Dịch Vụ Hàng Hải'
-            }, {
-                ma: 'DVKT',
-                ten: 'Dịch Vụ Kỹ Thuật'
-            }, {
-                ma: 'PHC',
-                ten: 'Phòng Hậu Cần'
-            }, {
-                ma: 'HOATIEU',
-                ten: 'Hoa Tiêu Tân Cảng'
-            }, {
-                ma: 'ICDLB',
-                ten: 'ICD Long Bình'
-            }, {
-                ma: 'ICDSTH',
-                ten: 'ICD Sóng Thần'
-            }, {
-                ma: 'ITCPHH',
-                ten: 'Cảng ITC Phú Hữu'
+                ma: 'MKT',
+                ten: 'Phòng Marketing',
+                nhom: 'Tổng công ty'
             }, {
                 ma: 'KTVT',
-                ten: 'Phòng Kỹ Thuật Vật Tư'
+                ten: 'Phòng Kỹ thuật Vật tư',
+                nhom: 'Tổng công ty'
             }, {
-                ma: 'KVTC',
-                ten: 'Kho Vận Tân Cảng'
+                ma: 'QLCT',
+                ten: 'Phòng Quản lý công trình',
+                nhom: 'Tổng công ty'
+            }, {
+                ma: 'HC',
+                ten: 'Phòng Hậu cần',
+                nhom: 'Tổng công ty'
+            }, {
+                ma: 'CNTT',
+                ten: 'Phòng Công nghệ Thông tin',
+                nhom: 'Tổng công ty'
             }, {
                 ma: 'QSBV',
-                ten: 'Phòng Quân Sự Bảo Vệ'
+                ten: 'Phòng Quân sự Bảo vệ',
+                nhom: 'Tổng công ty'
             }, {
-                ma: 'TCCMR',
-                ten: 'Tân Cảng Cam Ranh'
+                ma: 'ATPC',
+                ten: 'Phòng An toàn Pháp chế',
+                nhom: 'Tổng công ty'
             }, {
-                ma: 'TCCT',
-                ten: 'Cảng Cái Mép TCCT'
+                ma: 'TTĐĐC',
+                ten: 'Trung tâm Điều độ cảng',
+                nhom: 'Đơn vị trực thuộc Tổng công ty'
             }, {
-                ma: 'TCIT',
-                ten: 'Cảng Quốc Tế Cái Mép TCIT'
+                ma: 'SNPL',
+                ten: 'Trung tâm Dịch vụ Logistics Tân Cảng',
+                nhom: 'Đơn vị trực thuộc Tổng công ty'
             }, {
-                ma: 'TCTT',
-                ten: 'Cảng Cái Mép Thị Vải TCTT'
-            }, {
-                ma: 'TCHPHC',
-                ten: 'Tân Cảng Hiệp Phước'
-            }, {
-                ma: 'TCL',
-                ten: 'Giao Nhận Vận Tải TCL'
-            }, {
-                ma: 'TCMTR',
-                ten: 'Tân Cảng Miền Trung'
-            }, {
-                ma: 'TCO',
-                ten: 'CP Dịch Vụ Biển TCO'
-            }, {
-                ma: 'TCSS',
-                ten: 'CP Vận Tải Biển TCSS'
-            }, {
-                ma: 'SNP',
-                ten: 'Tổng Cty Tân Cảng Sài Gòn'
-            }, {
-                ma: 'TVBD',
-                ten: 'Tiếp Vận Bình Dương'
-            }, {
-                ma: 'TVCL',
-                ten: 'Tiếp Vận Cát Lái'
-            }, {
-                ma: 'TVDGN',
-                ten: 'Tiếp Vận Đồng Nai'
-            }, {
-                ma: 'TVHPH',
-                ten: 'Tiếp Vận Hiệp Phước'
-            }, {
-                ma: 'TVLB',
-                ten: 'Tiếp Vận Long Bình'
-            }, {
-                ma: 'TVMB',
-                ten: 'Tiếp Vận Miền Bắc'
-            }, {
-                ma: 'TVMK',
-                ten: 'Tiếp Vận MeKong'
-            }, {
-                ma: 'TVVT',
-                ten: 'Tiếp Vận Vũng Tàu'
-            }, {
-                ma: 'VTBO',
-                ten: 'CP Vận Tải Bộ'
-            }, {
-                ma: 'VTT',
-                ten: 'CP Vận Tải Thủy'
-            }, {
-                ma: 'XDCT',
-                ten: 'Xây Dựng Công Trình'
-            }, {
-                ma: 'XDSM',
-                ten: 'CP Xây Dựng Số Một'
+                ma: 'TTYT',
+                ten: 'Trung tâm Y tế Tân cảng',
+                nhom: 'Đơn vị trực thuộc Tổng công ty'
             }, {
                 ma: 'XNCG',
-                ten: 'Xí Nghiệp Cơ Giới'
+                ten: 'Xí nghiệp Cơ giới xếp dỡ Tân cảng',
+                nhom: 'Đơn vị trực thuộc Tổng công ty'
+            }, {
+                ma: 'CV',
+                ten: 'Cảng vụ Tân cảng',
+                nhom: 'Đơn vị trực thuộc Tổng công ty'
+            }, {
+                ma: 'VPMB',
+                ten: 'Cơ quan TCT tại khu vực miền Bắc',
+                nhom: 'Đơn vị trực thuộc Tổng công ty'
+            }, {
+                ma: 'VPMT',
+                ten: 'Cơ quan TCT tại khu vực miền Trung',
+                nhom: 'Đơn vị trực thuộc Tổng công ty'
+            }, {
+                ma: 'VPCT',
+                ten: 'Cơ quan TCT tại khu vực ĐB SCL',
+                nhom: 'Đơn vị trực thuộc Tổng công ty'
+            }, {
+                ma: 'TCTT',
+                ten: 'TNHH MTV cảng Tân cảng - Cái Mép Thị Vải',
+                nhom: 'Công ty 100% vốn của Tổng công ty'
+            }, {
+                ma: 'HT',
+                ten: 'TNHH MTV Hoa tiêu Tân cảng',
+                nhom: 'Công ty 100% vốn của Tổng công ty'
+            }, {
+                ma: 'XDCT',
+                ten: 'TNHH MTV Xây dựng công trình TC',
+                nhom: 'Công ty 100% vốn của Tổng công ty'
+            }, {
+                ma: 'TCCT',
+                ten: 'CP Tân cảng - Cái Mép',
+                nhom: 'Công ty >= 50% vốn của Tổng công ty'
+            }, {
+                ma: 'TCHP',
+                ten: 'CP Cảng Tân cảng Hiệp Phước',
+                nhom: 'Công ty >= 50% vốn của Tổng công ty'
+            }, {
+                ma: 'TCPC',
+                ten: 'TNHH Tân cảng - Petro Cam Ranh',
+                nhom: 'Công ty >= 50% vốn của Tổng công ty'
+            }, {
+                ma: 'TCMT',
+                ten: 'CP Tân cảng - Miền Trung',
+                nhom: 'Công ty >= 50% vốn của Tổng công ty'
+            }, {
+                ma: 'HICT',
+                ten: 'TNHH Cảng container quốc tế Hải Phòng',
+                nhom: 'Công ty >= 50% vốn của Tổng công ty'
+            }, {
+                ma: 'TCL',
+                ten: 'CP Đại lý Giao nhận vận tải',
+                nhom: 'Công ty >= 50% vốn của Tổng công ty'
+            }, {
+                ma: 'KVTC',
+                ten: 'CP Kho vận Tân cảng',
+                nhom: 'Công ty >= 50% vốn của Tổng công ty'
+            }, {
+                ma: 'ICDST',
+                ten: 'TNHH MTV ICD Tân cảng Sóng Thần',
+                nhom: 'Công ty >= 50% vốn của Tổng công ty'
+            }, {
+                ma: 'ICDLB',
+                ten: 'CP ICD Tân cảng Long Bình',
+                nhom: 'Công ty >= 50% vốn của Tổng công ty'
+            }, {
+                ma: 'VTB',
+                ten: 'CP Vận tải bộ Tân cảng',
+                nhom: 'Công ty >= 50% vốn của Tổng công ty'
+            }, {
+                ma: 'VTT',
+                ten: 'CP Vận tải thủy Tân cảng',
+                nhom: 'Công ty >= 50% vốn của Tổng công ty'
+            }, {
+                ma: 'DVKT',
+                ten: 'CP Dịch vụ Kỹ thuật',
+                nhom: 'Công ty >= 50% vốn của Tổng công ty'
+            }, {
+                ma: 'DVHH',
+                ten: 'CP Dịch vụ Hàng hải',
+                nhom: 'Công ty >= 50% vốn của Tổng công ty'
+            }, {
+                ma: 'TCIS',
+                ten: 'CP Giải pháp CNTT',
+                nhom: 'Công ty >= 50% vốn của Tổng công ty'
+            }, {
+                ma: 'TCIDI',
+                ten: 'CP Đầu tư phát triển hạ tầng Tân cảng',
+                nhom: 'Công ty >= 50% vốn của Tổng công ty'
+            }, {
+                ma: 'STC',
+                ten: 'TNHH PT Nguồn nhân lực Tân cảng - STC',
+                nhom: 'Công ty >= 50% vốn của Tổng công ty'
+            }, {
+                ma: 'CLL',
+                ten: 'CP Cảng Cát Lái',
+                nhom: 'Công ty < 50% vốn, liên doanh, liên kết của Tổng công ty'
+            }, {
+                ma: 'TCPH',
+                ten: 'CP Tân cảng - Phú Hữu',
+                nhom: 'Công ty < 50% vốn, liên doanh, liên kết của Tổng công ty'
+            }, {
+                ma: 'TCIT',
+                ten: 'TNHH Cảng quốc tế TC - Cái Mép',
+                nhom: 'Công ty < 50% vốn, liên doanh, liên kết của Tổng công ty'
+            }, {
+                ma: 'TC189',
+                ten: 'CP Tân cảng 189 Hải Phòng',
+                nhom: 'Công ty < 50% vốn, liên doanh, liên kết của Tổng công ty'
+            }, {
+                ma: 'TCO',
+                ten: 'CP Dịch vụ biển Tân cảng',
+                nhom: 'Công ty < 50% vốn, liên doanh, liên kết của Tổng công ty'
+            }, {
+                ma: 'TCSM',
+                ten: 'CP Xây dựng Tân cảng Số Một',
+                nhom: 'Công ty < 50% vốn, liên doanh, liên kết của Tổng công ty'
+            }, {
+                ma: 'DTV',
+                ten: 'CP Cảng container Dầu thực vật Tân cảng',
+                nhom: 'Công ty con, liên doanh, liên kết của các công ty thành viên'
+            }, {
+                ma: 'TCBT',
+                ten: 'CP Tân cảng - Bến Thành',
+                nhom: 'Công ty con, liên doanh, liên kết của các công ty thành viên'
+            }, {
+                ma: 'SITC',
+                ten: 'TNHH SITC Tân cảng',
+                nhom: 'Công ty con, liên doanh, liên kết của các công ty thành viên'
+            }, {
+                ma: 'TCHL',
+                ten: 'CP Tân cảng - Hiệp Lực',
+                nhom: 'Công ty con, liên doanh, liên kết của các công ty thành viên'
+            }, {
+                ma: 'TC128',
+                ten: 'CP Tân cảng 128 Hải Phòng',
+                nhom: 'Công ty con, liên doanh, liên kết của các công ty thành viên'
+            }, {
+                ma: 'TCASC',
+                ten: 'CP Tân cảng - Asaco',
+                nhom: 'Công ty con, liên doanh, liên kết của các công ty thành viên'
+            }, {
+                ma: 'TVTL',
+                ten: 'CP Tiếp vận Thành Long',
+                nhom: 'Công ty con, liên doanh, liên kết của các công ty thành viên'
+            }, {
+                ma: 'UNLOG',
+                ten: 'CP Unithai Logistics',
+                nhom: 'Công ty con, liên doanh, liên kết của các công ty thành viên'
+            }, {
+                ma: 'TVSN',
+                ten: 'CP Tiếp vận Suối Nắng',
+                nhom: 'Công ty con, liên doanh, liên kết của các công ty thành viên'
+            }, {
+                ma: 'TVCL',
+                ten: 'CP Tiếp vận Cát Lái',
+                nhom: 'Công ty con, liên doanh, liên kết của các công ty thành viên'
+            }, {
+                ma: 'TVQT',
+                ten: 'CP Tiếp vận Quốc tế cảng Cát Lái',
+                nhom: 'Công ty con, liên doanh, liên kết của các công ty thành viên'
+            }, {
+                ma: 'TVHP',
+                ten: 'CP Tiếp vận Tân cảng - Hiệp Phước',
+                nhom: 'Công ty con, liên doanh, liên kết của các công ty thành viên'
+            }, {
+                ma: 'TVBD',
+                ten: 'CP Tiếp vận Tân cảng - Bình Dương',
+                nhom: 'Công ty con, liên doanh, liên kết của các công ty thành viên'
+            }, {
+                ma: 'TVLB',
+                ten: 'CP Tiếp vận Tân cảng - Long Bình',
+                nhom: 'Công ty con, liên doanh, liên kết của các công ty thành viên'
+            }, {
+                ma: 'TVĐN',
+                ten: 'CP Tiếp vận Tân cảng - Đồng Nai',
+                nhom: 'Công ty con, liên doanh, liên kết của các công ty thành viên'
+            }, {
+                ma: 'TVVT',
+                ten: 'CP Tiếp vận Tân cảng - Vũng Tàu',
+                nhom: 'Công ty con, liên doanh, liên kết của các công ty thành viên'
+            }, {
+                ma: 'TVMK',
+                ten: 'CP Tiếp vận Tân cảng - Mekong',
+                nhom: 'Công ty con, liên doanh, liên kết của các công ty thành viên'
+            }, {
+                ma: 'TVMT',
+                ten: 'CP Tiếp vận Tân cảng - Miền Trung',
+                nhom: 'Công ty con, liên doanh, liên kết của các công ty thành viên'
+            }, {
+                ma: 'TVĐAN',
+                ten: 'CP Tiếp vận Tân cảng - Đà Nẵng',
+                nhom: 'Công ty con, liên doanh, liên kết của các công ty thành viên'
+            }, {
+                ma: 'TVMB',
+                ten: 'CP Tiếp vận Tân cảng - Miền Bắc',
+                nhom: 'Công ty con, liên doanh, liên kết của các công ty thành viên'
+            }, {
+                ma: 'NPC',
+                ten: 'CP Tân cảng - Cypress',
+                nhom: 'Công ty con, liên doanh, liên kết của các công ty thành viên'
+            }, {
+                ma: 'NPL',
+                ten: 'CP Vận tải biển Tân cảng',
+                nhom: 'Công ty con, liên doanh, liên kết của các công ty thành viên'
+            }, {
+                ma: 'TCTS',
+                ten: 'TNHH Dịch vụ lai dắt TC - Cái Mép',
+                nhom: 'Công ty con, liên doanh, liên kết của các công ty thành viên'
+            }, {
+                ma: 'DIC',
+                ten: 'CP DIC - Tân cảng Cái Mép',
+                nhom: 'Công ty con, liên doanh, liên kết của các công ty thành viên'
+            }, {
+                ma: 'TCDVL',
+                ten: 'CP Dịch vụ container lạnh Tân cảng',
+                nhom: 'Công ty con, liên doanh, liên kết của các công ty thành viên'
+            }, {
+                ma: 'TCNL',
+                ten: 'CP Nhiên liệu Tân cảng',
+                nhom: 'Công ty con, liên doanh, liên kết của các công ty thành viên'
+            }, {
+                ma: 'TKSM',
+                ten: 'CP Tư vấn Thiết kế Số Một',
+                nhom: 'Công ty con, liên doanh, liên kết của các công ty thành viên'
+            }, {
+                ma: 'TCOTS',
+                ten: 'CP Bay và Du lịch biển Tân cảng',
+                nhom: 'Công ty con, liên doanh, liên kết của các công ty thành viên'
             }
         ];
 
