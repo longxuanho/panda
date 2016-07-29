@@ -5,6 +5,8 @@ import template from './tbisDetailsViewReportViewOpenTabDetails.html';
 
 import { name as TbisReportsDataService } from '../../../services/thietbis/tbisReportsDataService';
 import { name as TbisDetailsViewReportViewCommentActionItem } from '../tbisDetailsViewReportViewCommentActionItem/tbisDetailsViewReportViewCommentActionItem';
+import { name as TbisDetailsViewReportViewMainReportDisplay } from '../tbisDetailsViewReportViewMainReportDisplay/tbisDetailsViewReportViewMainReportDisplay';
+
 
 class TbisDetailsViewReportViewOpenTabDetails {
     constructor($reactive, $scope, tbisReportsDataService) {
@@ -26,9 +28,9 @@ class TbisDetailsViewReportViewOpenTabDetails {
 
         vm.helpers({
             tbisReportHelper() {
-                vm.tbisReport = tbisReportsDataService.queryOne(vm.selectedTbisReportId);
+                tbisReportsDataService.setSelectedTbisReport(vm.selectedTbisReportId);
+                vm.tbisReport = tbisReportsDataService.getSelectedTbisReport();
                 vm.mixedCommentsAndActions = tbisReportsDataService.mixCommentsAndActions(vm.tbisReport.comments, vm.tbisReport.actions);
-                console.log('resolve: ', vm.mixedCommentsAndActions);
                 return true;
             }
         });
@@ -41,7 +43,8 @@ const name = 'tbisDetailsViewReportViewOpenTabDetails';
 export default angular.module(name, [
     angularMeteor,
     TbisReportsDataService,
-    TbisDetailsViewReportViewCommentActionItem
+    TbisDetailsViewReportViewCommentActionItem,
+    TbisDetailsViewReportViewMainReportDisplay
 ]).component(name, {
     template,
     bindings: {

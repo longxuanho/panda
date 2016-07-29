@@ -34,7 +34,9 @@ class TbisDetailsViewReportViewOpenTab {
 
         vm.helpers({
             tbisReports() {
-                return tbisReportsDataService.query();
+                return tbisReportsDataService.query({
+                    status: 'open'
+                });
             }
         });
     }
@@ -85,7 +87,7 @@ class TbisDetailsViewReportViewOpenTab {
                             controller: ($scope) => {
                             'ngInject';
                             $scope.yes = () => {
-                                tbisReportsDataService.closeSelectedTbisReport(this.generateAction('close', Meteor.user())).then(() => {
+                                tbisReportsDataService.closeSelectedTbisReport(metadataService.generateNewAction('close', Meteor.user())).then(() => {
                                     notificationService.success('Thông báo của bạn đã được đóng thành công.', 'Đóng thông báo');
                                     this.close();
                                 }).catch((err) => {
@@ -99,22 +101,6 @@ class TbisDetailsViewReportViewOpenTab {
                         },
                         template : '<md-toast><span class="md-toast-text" flex>Đóng thông báo này?<md-button class="md-highlight" ng-click="yes()">OK, đóng!</md-button><md-button ng-click="no()">Không</md-button></span></md-toast>'
                     });
-                };
-
-                this.generateAction = (actionName, user) => {
-                    let actionRef = {
-                        close: 'đóng',
-                        open: 'mở',
-                        delete: 'xóa',
-                        update: 'thay đổi'
-                    };
-                    let newAction =  {
-                        _id: Random.id(),
-                        action: actionName,
-                        noi_dung: actionRef[actionName]
-                    };
-                    metadataService.buildNewMetadata(newAction, user);
-                    return newAction;
                 };
 
                 this.resetNewComment = () => {

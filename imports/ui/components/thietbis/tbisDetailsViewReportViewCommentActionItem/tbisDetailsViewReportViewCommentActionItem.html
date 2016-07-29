@@ -7,6 +7,8 @@
     </div>
 </md-list-item>
 <md-subheader class="md-no-sticky" ng-if="tbisDetailsViewReportViewCommentActionItem.viewModel.type==='action'">
+    <md-icon ng-show="tbisDetailsViewReportViewCommentActionItem.viewModel.action==='reopen'" style="float: left;color: rgba(0, 0, 0, 0.54);" md-svg-src="/img/icons/common/info_outline.svg" class="no-margin" aria-label="Tạo mới"></md-icon>
+    <md-icon ng-show="tbisDetailsViewReportViewCommentActionItem.viewModel.action==='close'" style="float: left;color: rgba(0, 0, 0, 0.54);" md-svg-src="/img/icons/common/done.svg" class="no-margin" aria-label="Tạo mới"></md-icon>
     <div style="margin-left: 56px;">
         {{tbisDetailsViewReportViewCommentActionItem.viewModel.metadata.user.nguoi_tao | displayNameFilter}} đã {{tbisDetailsViewReportViewCommentActionItem.viewModel.noi_dung}} chủ đề này vào {{tbisDetailsViewReportViewCommentActionItem.viewModel.metadata.thoi_gian.tao_moi.ngay_tao_date | displayRelativeTimeFilter}}
     </div>

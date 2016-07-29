@@ -1,6 +1,8 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
+import { Random } from 'meteor/random';
+
 import moment from 'moment';
 
 class MetadataService {
@@ -39,6 +41,23 @@ class MetadataService {
         object.metadata.user.nguoi_cap_nhat_cuoi = buildUserStamp(user);
         object.metadata.statistics.isModified = true;
         object.metadata.statistics.modifyCount++;
+    }
+
+    generateNewAction(actionName, user) {
+        let actionRef = {
+            open: 'mở',
+            close: 'đóng',
+            reopen: 'mở lại',
+            delete: 'xóa',
+            update: 'thay đổi'
+        };
+        let newAction =  {
+            _id: Random.id(),
+            action: actionName,
+            noi_dung: actionRef[actionName]
+        };
+        this.buildNewMetadata(newAction, user);
+        return newAction;
     }
 }
 

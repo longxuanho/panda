@@ -70,7 +70,7 @@ class TbisReportsDataService {
         if ((!data._id) || !data.isActive || _.isEmpty(data.metadata.user.nguoi_tao))
             throw Error('Có lỗi khi khởi tạo. Vui lòng đóng hộp thoại, kiểm tra đăng nhập của bạn và thử lại sau.');
         if (!data.noi_dung.html || !data.noi_dung.text.trim())
-            throw Error('Chưa có nội dung bình luận');
+            throw Error('Chưa có nội dung thảo luận');
     }
 
     addNew(data) {
@@ -127,6 +127,46 @@ class TbisReportsDataService {
         return defer.promise;
     }
 
+    reopenSelectedTbisReport(newAction) {
+        let defer = this.$q.defer();
+        TbisReports.update({
+            _id: this.selectedTbisReport._id
+        }, {
+            $set: {
+                'status': 'open'
+            },
+            $addToSet: {
+                'actions': newAction
+            },
+            $inc: {
+                'thong_ke.actionsCount': 1
+            }
+        }, (error) => {
+            if (error)
+                defer.reject(error);
+            else
+                defer.resolve();
+        });
+        return defer.promise;
+    }
+
+    updateNoiDungSelectedTbisReport(newNoiDungObj) {
+        let defer = this.$q.defer();
+        TbisReports.update({
+            _id: this.selectedTbisReport._id
+        }, {
+            $set: {
+                'noi_dung': newNoiDungObj
+            }
+        }, (error) => {
+            if (error)
+                defer.reject(error);
+            else
+                defer.resolve();
+        });
+        return defer.promise;
+    }
+
     mixCommentsAndActions(comments, actions) {
         comments = comments || [];
         actions = actions || [];
@@ -141,6 +181,8 @@ class TbisReportsDataService {
             return item.metadata.thoi_gian.tao_moi.ngay_tao_date;
         });
     }
+
+
 
     setSelectedTbisReport(tbisReportId) {
         this.selectedTbisReport = this.queryOne(tbisReportId);

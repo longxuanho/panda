@@ -1,12 +1,16 @@
 <!--tbisDetailsViewReportViewClosedTabDetails-->
 <md-list flex style="padding-top:0;">
-    <md-subheader class="md-no-sticky"><div style="margin-left: 56px;">{{tbisDetailsViewReportViewClosedTabDetails.tbisReport.tieu_de}} · {{tbisDetailsViewReportViewClosedTabDetails.tbisReport.comments.length}} phản hồi</div></md-subheader>
+    <md-subheader class="md-no-sticky">
+        <md-icon style="float: left;color: rgba(0, 0, 0, 0.54);" md-svg-src="/img/icons/common/error_outline.svg" class="no-margin" aria-label="Tạo mới"></md-icon>
+        <div style="margin-left: 56px;">
+            {{tbisDetailsViewReportViewClosedTabDetails.tbisReport.tieu_de}} · {{tbisDetailsViewReportViewClosedTabDetails.tbisReport.comments.length}} phản hồi</div>
+    </md-subheader>
     <md-divider></md-divider>
     <md-list-item class="md-3-line md-long-text" style="margin:0;padding: 16px;background-color: rgb(250, 250, 250);">
         <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
         <div class="md-list-item-text sky-text-bind-html">
             <h3>{{tbisDetailsViewReportViewClosedTabDetails.tbisReport.metadata.user.nguoi_tao | displayNameFilter}} · XNCG</h3>
-            <h4 style="margin-bottom: 10px">{{tbisDetailsViewReportViewClosedTabDetails.tbisReport.metadata.thoi_gian.tao_moi.ngay_tao_date | displayRelativeTimeFilter}} · sửa</h4>
+            <h4 style="margin-bottom: 10px">{{tbisDetailsViewReportViewClosedTabDetails.tbisReport.metadata.thoi_gian.tao_moi.ngay_tao_date | displayRelativeTimeFilter}}</h4>
             <div ng-bind-html="tbisDetailsViewReportViewClosedTabDetails.tbisReport.noi_dung.html"></div>
         </div>
     </md-list-item>

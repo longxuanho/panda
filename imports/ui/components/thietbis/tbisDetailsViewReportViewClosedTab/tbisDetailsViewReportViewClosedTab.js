@@ -34,7 +34,9 @@ class TbisDetailsViewReportViewClosedTab {
 
         vm.helpers({
             tbisReports() {
-                return tbisReportsDataService.query();
+                return tbisReportsDataService.query({
+                    status: 'closed'
+                });
             }
         });
     }
@@ -67,7 +69,7 @@ class TbisDetailsViewReportViewClosedTab {
                         controller: ($scope) => {
                             'ngInject';
                             $scope.yes = () => {
-                                tbisReportsDataService.reopenSelectedTbisReport(this.generateAction('reopen', Meteor.user())).then(() => {
+                                tbisReportsDataService.reopenSelectedTbisReport(metadataService.generateNewAction('reopen', Meteor.user())).then(() => {
                                     notificationService.success('Thông báo của bạn đã được mở lại thành công.', 'Mở lại thông báo');
                                     this.close();
                                 }).catch((err) => {
@@ -81,23 +83,6 @@ class TbisDetailsViewReportViewClosedTab {
                         },
                         template : '<md-toast><span class="md-toast-text" flex>Mở lại thông báo này?<md-button class="md-highlight" ng-click="yes()">OK, mở!</md-button><md-button ng-click="no()">Không</md-button></span></md-toast>'
                     });
-                };
-
-                this.generateAction = (actionName, user) => {
-                    let actionRef = {
-                        open: 'mở',
-                        close: 'đóng',
-                        reopen: 'mở lại',
-                        delete: 'xóa',
-                        update: 'thay đổi'
-                    };
-                    let newAction =  {
-                        _id: Random.id(),
-                        action: actionName,
-                        noi_dung: actionRef[actionName]
-                    };
-                    metadataService.buildNewMetadata(newAction, user);
-                    return newAction;
                 };
 
                 this.resetNewComment = () => {
