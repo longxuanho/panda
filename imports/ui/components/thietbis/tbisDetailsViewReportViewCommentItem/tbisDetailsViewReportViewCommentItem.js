@@ -8,6 +8,7 @@ import { name as DisplayRelativeTimeFilter } from '../../../filters/common/displ
 import { name as CurrentUserService } from '../../../services/common/currentUserService';
 import { name as TbisReportsDataService } from '../../../services/thietbis/tbisReportsDataService';
 import { name as NotificationService } from '../../../services/common/notificationService';
+import { name as TbisDetailsViewKendoEditor } from '../tbisDetailsViewKendoEditor/tbisDetailsViewKendoEditor';
 
 class TbisDetailsViewReportViewCommentItem {
     constructor(currentUserService, tbisReportsDataService, notificationService) {
@@ -15,17 +16,6 @@ class TbisDetailsViewReportViewCommentItem {
         this.tbisReportsDataService = tbisReportsDataService;
         this.notificationService = notificationService;
         this.currentUserId = currentUserService.getCurrentUser()._id;
-
-        this.kendoEditorOptions = {
-            tools: [
-                // "formatting", "foreColor",
-                "cleanFormatting", "bold", "italic", "underline", "insertUnorderedList", "insertOrderedList", "indent", "outdent", "insertImage", "createTable", "addRowAbove", "addRowBelow", "addColumnLeft", "addColumnRight", "deleteRow", "deleteColumn"
-            ],
-            serialization: {
-                entities: false,
-                scripts: true
-            }
-        }
     }
 
     setEditMode() {
@@ -68,7 +58,8 @@ export default angular.module(name, [
     DisplayRelativeTimeFilter,
     TbisReportsDataService,
     NotificationService,
-    CurrentUserService
+    CurrentUserService,
+    TbisDetailsViewKendoEditor
 ]).component(name, {
     template,
     bindings: {

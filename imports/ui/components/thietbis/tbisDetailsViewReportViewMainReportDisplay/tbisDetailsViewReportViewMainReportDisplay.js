@@ -6,6 +6,7 @@ import { name as DisplayNameFilter } from '../../../filters/common/displayNameFi
 import { name as DisplayRelativeTimeFilter } from '../../../filters/common/displayRelativeTimeFilter';
 import { name as TbisReportsDataService } from '../../../services/thietbis/tbisReportsDataService';
 import { name as NotificationService } from '../../../services/common/notificationService';
+import { name as TbisDetailsViewKendoEditor } from '../tbisDetailsViewKendoEditor/tbisDetailsViewKendoEditor';
 
 class TbisDetailsViewReportViewMainReportDisplay {
     constructor($scope, $reactive, tbisReportsDataService, notificationService, metadataService) {
@@ -23,19 +24,6 @@ class TbisDetailsViewReportViewMainReportDisplay {
                 return Meteor.userId();
             }
         });
-
-
-
-        this.kendoEditorOptions = {
-            tools: [
-                // "formatting", "foreColor",
-                "cleanFormatting", "bold", "italic", "underline", "insertUnorderedList", "insertOrderedList", "indent", "outdent", "insertImage", "createTable", "addRowAbove", "addRowBelow", "addColumnLeft", "addColumnRight", "deleteRow", "deleteColumn"
-            ],
-            serialization: {
-                entities: false,
-                scripts: true
-            }
-        }
     }
 
     setEditMode() {
@@ -75,7 +63,8 @@ export default angular.module(name, [
     DisplayNameFilter,
     DisplayRelativeTimeFilter,
     TbisReportsDataService,
-    NotificationService
+    NotificationService,
+    TbisDetailsViewKendoEditor
 ]).component(name, {
     template,
     controllerAs: name,

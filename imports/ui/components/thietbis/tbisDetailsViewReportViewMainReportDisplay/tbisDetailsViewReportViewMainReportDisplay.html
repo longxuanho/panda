@@ -10,8 +10,9 @@
             </span>
         </h4>
         <div ng-hide="tbisDetailsViewReportViewMainReportDisplay.isEditMode" ng-bind-html="tbisDetailsViewReportViewMainReportDisplay.noiDung"></div>
-        <div ng-if="tbisDetailsViewReportViewMainReportDisplay.isEditMode">
-            <textarea kendo-editor k-options="tbisDetailsViewReportViewMainReportDisplay.kendoEditorOptions" k-ng-model="tbisDetailsViewReportViewMainReportDisplay.newNoiDung"></textarea>
-        </div>
+        <!--<div ng-if="tbisDetailsViewReportViewMainReportDisplay.isEditMode">-->
+            <!--<textarea kendo-editor k-options="tbisDetailsViewReportViewMainReportDisplay.kendoEditorOptions" k-ng-model="tbisDetailsViewReportViewMainReportDisplay.newNoiDung"></textarea>-->
+        <!--</div>-->
+        <tbis-details-view-kendo-editor ng-if="tbisDetailsViewReportViewMainReportDisplay.isEditMode" view-model="tbisDetailsViewReportViewMainReportDisplay.newNoiDung"></tbis-details-view-kendo-editor>
     </div>
 </md-list-item>

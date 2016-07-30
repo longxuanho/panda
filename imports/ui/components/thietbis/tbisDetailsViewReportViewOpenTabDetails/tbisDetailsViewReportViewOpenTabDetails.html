@@ -21,9 +21,7 @@
     <md-list-item class="md-3-line md-long-text">
         <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
         <div class="md-list-item-text">
-            <div ng-if="tbisDetailsViewReportViewOpenTabDetails.isActiveEditor">
-                <textarea kendo-editor k-options="tbisDetailsViewReportViewOpenTabDetails.kendoEditorOptions" k-ng-model="tbisDetailsViewReportViewOpenTabDetails.newComment.noi_dung.html"></textarea>
-            </div>
+            <tbis-details-view-kendo-editor ng-if="tbisDetailsViewReportViewOpenTabDetails.isActiveEditor" view-model="tbisDetailsViewReportViewOpenTabDetails.newComment.noi_dung.html"></tbis-details-view-kendo-editor>
         </div>
     </md-list-item>
 </md-list>

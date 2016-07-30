@@ -7,7 +7,5 @@
                 <a  ng-show="tbisDetailsViewReportViewCommentItem.isEditMode" class="sky-action-hover" ng-click="tbisDetailsViewReportViewCommentItem.updateSelectedComment()"> · cập nhật</a>
             </span></h4>
     <div ng-hide="tbisDetailsViewReportViewCommentItem.isEditMode" class="sky-text-bind-html" ng-bind-html="tbisDetailsViewReportViewCommentItem.comment.noi_dung.html"></div>
-    <div ng-if="tbisDetailsViewReportViewCommentItem.isEditMode">
-        <textarea kendo-editor k-options="tbisDetailsViewReportViewCommentItem.kendoEditorOptions" k-ng-model="tbisDetailsViewReportViewCommentItem.newNoiDung"></textarea>
-    </div>
+    <tbis-details-view-kendo-editor ng-if="tbisDetailsViewReportViewCommentItem.isEditMode" view-model="tbisDetailsViewReportViewCommentItem.newNoiDung"></tbis-details-view-kendo-editor>
 </div>

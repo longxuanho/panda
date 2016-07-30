@@ -7,6 +7,7 @@ import { name as TbisReportsDataService } from '../../../services/thietbis/tbisR
 import { name as TbisDetailsViewReportViewCommentActionItem } from '../tbisDetailsViewReportViewCommentActionItem/tbisDetailsViewReportViewCommentActionItem';
 import { name as TbisDetailsViewReportViewMainReportDisplay } from '../tbisDetailsViewReportViewMainReportDisplay/tbisDetailsViewReportViewMainReportDisplay';
 import { name as TbisDetailsViewReportViewMainReportTitle } from '../tbisDetailsViewReportViewMainReportTitle/tbisDetailsViewReportViewMainReportTitle';
+import { name as TbisDetailsViewKendoEditor } from '../tbisDetailsViewKendoEditor/tbisDetailsViewKendoEditor';
 
 
 class TbisDetailsViewReportViewOpenTabDetails {
@@ -15,16 +16,6 @@ class TbisDetailsViewReportViewOpenTabDetails {
         $reactive(this).attach($scope);
         let vm = this;
 
-        vm.kendoEditorOptions = {
-            tools: [
-                // "formatting", "foreColor",
-                "cleanFormatting", "bold", "italic", "underline", "insertUnorderedList", "insertOrderedList", "indent", "outdent", "insertImage", "createTable", "addRowAbove", "addRowBelow", "addColumnLeft", "addColumnRight", "deleteRow", "deleteColumn"
-            ],
-            serialization: {
-                entities: false,
-                scripts: true
-            }
-        };
         vm.selectedTbisReportId = tbisReportsDataService.getSelectedTbisReport()._id;
 
         vm.helpers({
@@ -46,7 +37,8 @@ export default angular.module(name, [
     TbisReportsDataService,
     TbisDetailsViewReportViewCommentActionItem,
     TbisDetailsViewReportViewMainReportDisplay,
-    TbisDetailsViewReportViewMainReportTitle
+    TbisDetailsViewReportViewMainReportTitle,
+    TbisDetailsViewKendoEditor
 ]).component(name, {
     template,
     bindings: {
