@@ -1,10 +1,6 @@
 <md-list-item class="md-3-line md-long-text" ng-if="tbisDetailsViewReportViewCommentActionItem.viewModel.type==='comment'">
     <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
-    <div class="md-list-item-text">
-        <h3>{{tbisDetailsViewReportViewCommentActionItem.viewModel.metadata.user.nguoi_tao | displayNameFilter}} · DVKT</h3>
-        <h4 style="margin-bottom: 10px">{{ tbisDetailsViewReportViewCommentActionItem.viewModel.metadata.thoi_gian.tao_moi.ngay_tao_date | displayRelativeTimeFilter }} </h4>
-        <div class="sky-text-bind-html" ng-bind-html="tbisDetailsViewReportViewCommentActionItem.viewModel.noi_dung.html"></div>
-    </div>
+    <tbis-details-view-report-view-comment-item is-editable="true" comment="tbisDetailsViewReportViewCommentActionItem.viewModel"></tbis-details-view-report-view-comment-item>
 </md-list-item>
 <md-subheader class="md-no-sticky" ng-if="tbisDetailsViewReportViewCommentActionItem.viewModel.type==='action'">
     <md-icon ng-show="tbisDetailsViewReportViewCommentActionItem.viewModel.action==='reopen'" style="float: left;color: rgba(0, 0, 0, 0.54);" md-svg-src="/img/icons/common/info_outline.svg" class="no-margin" aria-label="Tạo mới"></md-icon>

@@ -6,6 +6,7 @@ import template from './tbisDetailsViewReportViewOpenTabDetails.html';
 import { name as TbisReportsDataService } from '../../../services/thietbis/tbisReportsDataService';
 import { name as TbisDetailsViewReportViewCommentActionItem } from '../tbisDetailsViewReportViewCommentActionItem/tbisDetailsViewReportViewCommentActionItem';
 import { name as TbisDetailsViewReportViewMainReportDisplay } from '../tbisDetailsViewReportViewMainReportDisplay/tbisDetailsViewReportViewMainReportDisplay';
+import { name as TbisDetailsViewReportViewMainReportTitle } from '../tbisDetailsViewReportViewMainReportTitle/tbisDetailsViewReportViewMainReportTitle';
 
 
 class TbisDetailsViewReportViewOpenTabDetails {
@@ -44,7 +45,8 @@ export default angular.module(name, [
     angularMeteor,
     TbisReportsDataService,
     TbisDetailsViewReportViewCommentActionItem,
-    TbisDetailsViewReportViewMainReportDisplay
+    TbisDetailsViewReportViewMainReportDisplay,
+    TbisDetailsViewReportViewMainReportTitle
 ]).component(name, {
     template,
     bindings: {

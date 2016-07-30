@@ -167,6 +167,40 @@ class TbisReportsDataService {
         return defer.promise;
     }
 
+    updateNoiDungSelectedComment(commentId, newNoiDungObj) {
+        let defer = this.$q.defer();
+
+        Meteor.call('updateSelectedTbisReportComment', this.selectedTbisReport._id, commentId, newNoiDungObj,
+            (error) => {
+                if (error) {
+                    defer.reject(error);
+                } else {
+                    defer.resolve();
+                }
+            }
+        );
+        return defer.promise;
+    }
+
+    updateTieuDeSelectedTbisReport(newTieuDe) {
+        let defer = this.$q.defer();
+        TbisReports.update({
+            _id: this.selectedTbisReport._id
+        }, {
+            $set: {
+                'tieu_de': newTieuDe
+            }
+        }, (error) => {
+            if (error)
+                defer.reject(error);
+            else
+                defer.resolve();
+        });
+        return defer.promise;
+    }
+
+
+
     mixCommentsAndActions(comments, actions) {
         comments = comments || [];
         actions = actions || [];

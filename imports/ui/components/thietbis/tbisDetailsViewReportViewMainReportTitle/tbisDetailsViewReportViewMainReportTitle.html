@@ -1,0 +1,13 @@
+<div style="margin-left: 56px;">
+    <span ng-hide="tbisDetailsViewReportViewMainReportTitle.isEditMode">{{tbisDetailsViewReportViewMainReportTitle.title}}<br/></span>
+    <md-input-container ng-show="tbisDetailsViewReportViewMainReportTitle.isEditMode" class="md-block" style="margin-bottom: 0">
+        <label>Tiêu đề</label>
+        <input ng-model="tbisDetailsViewReportViewMainReportTitle.newTitle" name="newTitle">
+    </md-input-container>
+    {{tbisDetailsViewReportViewMainReportTitle.commentsLength}} phản hồi
+    <span style="margin-top: -35px;" ng-if="tbisDetailsViewReportViewMainReportTitle.isEditable && tbisDetailsViewReportViewMainReportTitle.currentUserId===tbisDetailsViewReportViewMainReportTitle.metadata.user.nguoi_tao.keyId ">
+        <a  ng-hide="tbisDetailsViewReportViewMainReportTitle.isEditMode" class="sky-action-hover" ng-click="tbisDetailsViewReportViewMainReportTitle.setEditMode()"> · sửa</a>
+        <a  ng-show="tbisDetailsViewReportViewMainReportTitle.isEditMode" class="sky-action-hover" ng-click="tbisDetailsViewReportViewMainReportTitle.cancelEdit()"> · hủy bỏ</a>
+        <a  ng-show="tbisDetailsViewReportViewMainReportTitle.isEditMode" class="sky-action-hover" ng-click="tbisDetailsViewReportViewMainReportTitle.updateTitle()"> · cập nhật</a>
+    </span>
+</div>
