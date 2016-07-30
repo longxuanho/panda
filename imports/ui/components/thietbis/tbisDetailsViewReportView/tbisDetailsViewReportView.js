@@ -7,11 +7,8 @@ import { name as TbisDetailsViewReportViewClosedTab } from '../tbisDetailsViewRe
 import { name as TbisDetailsViewReportViewFabMenu } from '../tbisDetailsViewReportViewFabMenu/tbisDetailsViewReportViewFabMenu';
 
 
-// import { name as TbisDetailsViewHoSoViewThongSoTabView } from '../tbisDetailsViewHoSoViewThongSoTabView/tbisDetailsViewHoSoViewThongSoTabView';
-// import { name as TbisDetailsViewHoSoViewViTriTabView } from '../tbisDetailsViewHoSoViewViTriTabView/tbisDetailsViewHoSoViewViTriTabView';
-
 class TbisDetailsViewReportView {
-    constructor($mdMedia, $stateParams) {
+    constructor($mdMedia) {
         'ngInject';
         this.$mdMedia = $mdMedia;
 
@@ -28,8 +25,6 @@ export default angular.module(name, [
     TbisDetailsViewReportViewOpenTab,
     TbisDetailsViewReportViewClosedTab,
     TbisDetailsViewReportViewFabMenu
-    // TbisDetailsViewHoSoViewThongSoTabView,
-    // TbisDetailsViewHoSoViewViTriTabView
 ]).component(name, {
     template,
     controllerAs: name,

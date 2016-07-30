@@ -9,6 +9,7 @@ import { ThietBis } from '../../../../api/thietbis/tbis';
 import { name as TbisDetailsUtilsBar } from '../tbisDetailsUtilsBar/tbisDetailsUtilsBar';
 import { name as TbisDetailsViewHoSoView } from '../tbisDetailsViewHoSoView/tbisDetailsViewHoSoView';
 import { name as TbisDetailsViewReportView } from '../tbisDetailsViewReportView/tbisDetailsViewReportView';
+import { name as TbisDetailsViewHistoryView } from '../tbisDetailsViewHistoryView/tbisDetailsViewHistoryView';
 import { name as TbisDetailsViewHoSoViewFabMenu } from '../tbisDetailsViewHoSoViewFabMenu/tbisDetailsViewHoSoViewFabMenu';
 import { name as TbisDataSerivce } from '../../../services/thietbis/tbisDataService';
 import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
@@ -58,6 +59,7 @@ export default angular.module(name, [
     TbisDetailsUtilsBar,
     TbisDetailsViewHoSoView,
     TbisDetailsViewReportView,
+    TbisDetailsViewHistoryView,
     TbisDetailsViewHoSoViewFabMenu,
     TbisDataSerivce,
     UserLocalSettingsService

@@ -3,6 +3,8 @@ import {TbisReports} from './collection';
 
 let Schema = {};
 
+
+
 Schema.TbisComment = new SimpleSchema({
     _id: {
         type: String
