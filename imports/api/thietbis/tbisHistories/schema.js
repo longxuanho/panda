@@ -8,6 +8,7 @@ Schema.TbisHistory = new SimpleSchema({
         type: String,
         allowedValues: ['ongoing', 'done']
     },
+
     tham_chieu: {
         type: Object
     },
@@ -31,6 +32,18 @@ Schema.TbisHistory = new SimpleSchema({
             type: Object,
             optional: true,
             blackbox: true
+        },
+    phan_loai: {
+        type: Object
+    },
+        'phan_loai.nhom': {
+            type: String,
+            allowedValues: ['SCN', 'SCL', 'SCC', 'BD', 'ĐT']
+        },
+        'phan_loai.loai': {
+            type: String,
+            allowedValues: ['ĐX', 'KH'],
+            optional: true
         },
     noi_dung: {
         type: String

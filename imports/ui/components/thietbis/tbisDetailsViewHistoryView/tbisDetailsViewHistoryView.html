@@ -1,6 +1,19 @@
-tbisDetailsViewHistoryView.html<br/>
-tbisDetailsViewHistoryView.html<br/>
-tbisDetailsViewHistoryView.html<br/>
-tbisDetailsViewHistoryView.html<br/>
-tbisDetailsViewHistoryView.html<br/>
-tbisDetailsViewHistoryView.html<br/>
+<div class="sky-margin-top-{{tbisDetailsViewHistoryView.$mdMedia('gt-sm') ? '64' : '56'}}"></div>
+<md-tabs md-dynamic-height md-border-bottom>
+    <md-tab label="Thống kê" md-on-select="tbisDetailsViewHistoryView.tabSelected='thong_ke'">
+        <md-content>
+            Thong Ke Tab
+        </md-content>
+    </md-tab>
+    <md-tab label="Lượt SCN" md-on-select="tbisDetailsViewHistoryView.tabSelected='luot_scn'">
+        <md-content>
+            SCN
+        </md-content>
+    </md-tab>
+    <md-tab label="Khác" md-on-select="tbisDetailsViewHistoryView.tabSelected='khac'">
+        <md-content>
+            Khac
+        </md-content>
+    </md-tab>
+</md-tabs>
+<tbis-details-view-report-view-fab-menu></tbis-details-view-report-view-fab-menu>
