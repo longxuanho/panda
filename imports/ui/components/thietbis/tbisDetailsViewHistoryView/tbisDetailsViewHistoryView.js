@@ -2,9 +2,9 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
 import template from './tbisDetailsViewHistoryView.html';
-// import { name as TbisDetailsViewReportViewOpenTab } from '../tbisDetailsViewReportViewOpenTab/tbisDetailsViewReportViewOpenTab';
-// import { name as TbisDetailsViewReportViewClosedTab } from '../tbisDetailsViewReportViewClosedTab/tbisDetailsViewReportViewClosedTab';
-// import { name as TbisDetailsViewReportViewFabMenu } from '../tbisDetailsViewReportViewFabMenu/tbisDetailsViewReportViewFabMenu';
+import { name as TbisDetailsViewHistoryViewThongKeTab } from '../tbisDetailsViewHistoryViewThongKeTab/tbisDetailsViewHistoryViewThongKeTab';
+import { name as TbisDetailsViewHistoryViewLuotScnTab } from '../tbisDetailsViewHistoryViewLuotScnTab/tbisDetailsViewHistoryViewLuotScnTab';
+import { name as TbisDetailsViewHistoryViewKhacTab } from '../tbisDetailsViewHistoryViewKhacTab/tbisDetailsViewHistoryViewKhacTab';
 
 class TbisDetailsViewHistoryView {
     constructor($mdMedia) {
@@ -21,9 +21,9 @@ const name = 'tbisDetailsViewHistoryView';
 // create a module
 export default angular.module(name, [
     angularMeteor,
-    // TbisDetailsViewReportViewOpenTab,
-    // TbisDetailsViewReportViewClosedTab,
-    // TbisDetailsViewReportViewFabMenu
+    TbisDetailsViewHistoryViewThongKeTab,
+    TbisDetailsViewHistoryViewLuotScnTab,
+    TbisDetailsViewHistoryViewKhacTab
 ]).component(name, {
     template,
     controllerAs: name,

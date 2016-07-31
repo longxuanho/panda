@@ -1,0 +1,23 @@
+<tbis-details-view-history-view-duration-toolbar></tbis-details-view-history-view-duration-toolbar>
+
+<md-list flex style="padding-top:0;">
+    <md-divider></md-divider>
+    <md-subheader class="md-no-sticky">
+        Hệ số kỹ thuật: 0.93<br/>
+        <span class="md-body-1">từ ngày 19/4 đến 30/4</span>
+    </md-subheader>
+    <md-list-item class="md-2-line" style="padding: 0;" >
+        <div id="thongKeGrid" kendo-grid="tbisDetailsViewHistoryViewThongKeTab.thongKeGrid" k-options="tbisDetailsViewHistoryViewThongKeTab.thongKeKendoGridOptions" class="md-body-1">
+        </div>
+    </md-list-item>
+    <md-subheader class="md-no-sticky">Thiết lập người dùng</md-subheader>
+    <md-list-item>
+        <p>Tùy chọn khoảng thời gian</p>
+        <md-checkbox class="md-secondary" ng-model="tbisDetailsViewHistoryViewThongKeTab.isDurationSelectByUser"></md-checkbox>
+    </md-list-item>
+    <md-list-item>
+        <p>Tính HSKT theo thời gian SCN</p>
+        <md-checkbox class="md-secondary" ng-model="topping.wanted"></md-checkbox>
+    </md-list-item>
+    <div style="margin-bottom: 30px;"></div>
+</md-list>

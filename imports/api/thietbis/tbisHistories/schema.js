@@ -38,11 +38,11 @@ Schema.TbisHistory = new SimpleSchema({
     },
         'phan_loai.nhom': {
             type: String,
-            allowedValues: ['SCN', 'SCL', 'SCC', 'BD', 'ĐT']
+            allowedValues: ['Sửa chữa nhỏ', 'Sửa chữa lớn', 'Sửa chữa cụm', 'Bảo dưỡng', 'Đại tu']
         },
         'phan_loai.loai': {
             type: String,
-            allowedValues: ['ĐX', 'KH'],
+            allowedValues: ['Đột xuất', 'Kế hoạch'],
             optional: true
         },
     noi_dung: {

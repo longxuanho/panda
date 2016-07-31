@@ -1,0 +1,51 @@
+<tbis-details-view-history-view-duration-toolbar></tbis-details-view-history-view-duration-toolbar>
+<div layout="row" style="padding: 0 16px;" flex >
+    <md-input-container class="md-block" flex="60" style="margin-bottom: 0;">
+        <label>Tìm kiếm</label>
+        <input ng-model="user.firstName">
+    </md-input-container>
+    <md-input-container flex="40">
+        <label>Sắp xếp</label>
+        <md-select ng-model="ctrl.userState">
+            <md-option value="1">Mới nhất</md-option>
+            <md-option value="-1">Cũ nhất</md-option>
+        </md-select>
+    </md-input-container>
+</div>
+<md-list flex class="md-dense" style="padding-top:0;">
+    <md-divider></md-divider>
+    <md-subheader class="md-no-sticky">
+        Có 3 ghi chép trong khoảng thời gian đã chọn
+    </md-subheader>
+    <md-divider></md-divider>
+    <md-list-item class="md-3-line" layout="row">
+        <div style="margin: 24px 15px 0 0;">
+            <md-icon md-svg-src="/img/icons/common/error_outline.svg" class="no-margin" aria-label="Tạo mới"></md-icon>
+        </div>
+        <div class="md-list-item-text" layout="column">
+            <h3>Tắt nguồn đột ngột khi làm hàng · 3 giờ 15 phút · 179504</h3>
+            <p>từ 08:30, thứ Hai, 21-07-2016</p>
+            <p>đến 09:45, thứ Ba, 22-07-2016</p>
+        </div>
+    </md-list-item>
+    <md-list-item class="md-3-line" layout="row">
+        <div style="margin: 24px 15px 0 0;">
+            <md-icon md-svg-src="/img/icons/common/error_outline.svg" class="no-margin" aria-label="Tạo mới"></md-icon>
+        </div>
+        <div class="md-list-item-text" layout="column">
+            <h3>Thay bóng đèn taplo · ? · 179604</h3>
+            <p>từ 10:30, Chủ Nhật, 21-07-2016</p>
+            <p>chưa kết thúc</p>
+        </div>
+    </md-list-item>
+    <md-list-item class="md-3-line" layout="row">
+        <div style="margin: 24px 15px 0 0;">
+            <md-icon md-svg-src="/img/icons/common/playlist_add_check.svg" class="no-margin" aria-label="Tạo mới"></md-icon>
+        </div>
+        <div class="md-list-item-text" layout="column">
+            <h3>Kiểm tra thay cảm biến nhiên liệu · 1 giờ 15 phút · 179504</h3>
+            <p>từ 08:30, thứ Năm, 21-07-2016</p>
+            <p>đến 13:45, thứ Bảy, 30-07-2016</p>
+        </div>
+    </md-list-item>
+    </md-list>

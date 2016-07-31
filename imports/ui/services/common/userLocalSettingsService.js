@@ -2,6 +2,7 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
 import _ from 'underscore';
+import moment from 'moment';
 
 class UserLocalSettingsService {
 
@@ -49,50 +50,7 @@ export default angular.module(name, [
     .service(name, UserLocalSettingsService);
 
 function queryAllLocalSettings() {
-    return [{
-        _id: "Npd6Berm4DbTR2eqe",
-        user: {
-            _id: "Mpd9Berm4DbTR2eqb",
-            email: "longxuanho@gmail.com",
-            name: "Long Hồ"
-        },
-        settings: [
-            {
-                _id: "Ahd6Berm4DbTR2ews",
-                module: "thietbis",
-                page: "tbisList",
-                options: {
-                    utilsBar: {
-                        category: 'Tất cả',
-                        viewMode: 'list',
-                    },
-                    searchFilter: {
-                        mode: 'search', // Available options: search, filter, search_filter
-                        searchText: '',
-                        searchBy: 'searchField',
-                        filterText: '',
-                        filterBy: '',
-                    },
-                    subscribe: {
-                        page: '',
-                        sort: {
-                        }
-                    }
-                }
-            },
-            {
-                _id: "Bmd6Berm4DbTR2ewk",
-                module: "thietbis",
-                page: "tbisDetails",
-                options: {
-                    utilsBar: {
-                        category: "Tin tức"
-                    }
-                }
-            }
-        ],
-
-    }]
+    return []
 }
 
 function queryDefaultSettings() {
@@ -121,14 +79,29 @@ function queryDefaultSettings() {
                     }
                 }
             }
-        },
-        {
+        }, {
             _id: "Bmd6Berm4DbTR2ewk",
             module: "thietbis",
             page: "tbisDetails",
             options: {
                 utilsBar: {
                     category: "Hồ sơ"
+                },
+                modules: {
+                    tbisHistories: {
+                        durationToolbar: {
+                            mode: 'default',
+                            default: {
+                                duration: '7_days',
+                                fromDate: moment().subtract(7, 'days').toDate(),
+                                toDate: new Date()
+                            },
+                            selectByUser: {
+                                fromDate: moment().subtract(7, 'days').toDate(),
+                                toDate: new Date(),
+                            }
+                        }
+                    }
                 }
             }
         }
