@@ -3,11 +3,9 @@ import angularMeteor from 'angular-meteor';
 
 import template from './tbisDetailsViewReportViewFabMenu.html';
 import { name as TbisDetailsViewReportViewAddNewMiniFab } from '../tbisDetailsViewReportViewAddNewMiniFab/tbisDetailsViewReportViewAddNewMiniFab';
-// import { name as TbisDetailsImageMiniFab } from '../tbisDetailsImageMiniFab/tbisDetailsImageMiniFab';
-// import { name as TbisListAddNewMiniFab } from '../tbisListAddNewMiniFab/tbisListAddNewMiniFab';
 
 class TbisDetailsViewReportViewFabMenu {
-    constructor($scope, $timeout) {
+    constructor() {
         'ngInject';
         this.clickIcon = 'menu';
         this.isOpen = false;
@@ -30,10 +28,7 @@ const name = 'tbisDetailsViewReportViewFabMenu';
 export default angular.module(name, [
     angularMeteor,
     TbisDetailsViewReportViewAddNewMiniFab,
-    // TbisDetailsViewHoSoViewUpdateMiniFab,
-    // TbisDetailsImageMiniFab
-    // TbisListPageNavigationMiniFab,
-    // TbisListAddNewMiniFab
+
 ]).component(name, {
     template,
     controllerAs: name,

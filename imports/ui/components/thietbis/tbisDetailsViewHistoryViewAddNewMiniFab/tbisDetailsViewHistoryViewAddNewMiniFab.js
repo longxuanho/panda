@@ -3,16 +3,15 @@ import angularMeteor from 'angular-meteor';
 
 import { Meteor } from 'meteor/meteor';
 
-import template from './tbisDetailsViewReportViewAddNewMiniFab.html';
-import modalTemplate from './tbisDetailsViewReportViewAddNewModal.html';
+import template from './tbisDetailsViewHistoryViewAddNewMiniFab.html';
+import modalTemplate from './tbisDetailsViewHistoryViewAddNewModal.html';
 import { name as TbisDataService } from '../../../services/thietbis/tbisDataService';
-import { name as TbisReportDataService } from '../../../services/thietbis/tbisReportsDataService';
+import { name as TbisHistoriesDataService } from '../../../services/thietbis/tbisHistoriesDataService';
 import { name as MetaDataService } from '../../../services/common/metadataService';
 import { name as NotificationService } from '../../../services/common/notificationService';
-import { name as TbisDetailsViewKendoEditor } from '../tbisDetailsViewKendoEditor/tbisDetailsViewKendoEditor';
 
 
-class TbisDetailsViewReportViewAddNewMiniFab {
+class TbisDetailsViewHistoryViewAddNewMiniFab {
     constructor($mdDialog, $mdMedia) {
         'ngInject';
 
@@ -22,24 +21,28 @@ class TbisDetailsViewReportViewAddNewMiniFab {
 
     open(event) {
         this.$mdDialog.show({
-            controller($mdDialog, tbisReportsDataService, tbisDataService, metadataService, notificationService) {
+            controller($scope, $mdDialog, tbisHistoriesDataService, tbisDataService, metadataService, notificationService) {
                 'ngInject';
+
+
 
                 this.isModalOpen = true;
                 this.seletedThietBi = angular.copy(tbisDataService.getSelectedThietBi());
-                this.newTbisReport = tbisReportsDataService.initNewTbisReportsData(this.seletedThietBi);
+                this.newTbisHistory = tbisHistoriesDataService.initNewTbisHistoryData(this.seletedThietBi);
 
                 this.reset = () => {
-                    this.newTbisReport = tbisReportsDataService.initNewTbisReportsData(this.seletedThietBi);
+                    this.newTbisHistory = tbisHistoriesDataService.initNewTbisHistoryData(this.seletedThietBi);
                 };
 
                 this.addNew = () => {
                     try {
-                        this.newTbisReport.noi_dung.text = $('iframe').contents().find("body").text() || this.newTbisReport.noi_dung.html;
-                        metadataService.buildNewMetadata(this.newTbisReport, Meteor.user());
-                        tbisReportsDataService.validateTbisReportsInputData(this.newTbisReport);
-                        tbisReportsDataService.addNew(this.newTbisReport).then(() => {
-                            notificationService.success('Thông báo của bạn đã được ghi nhận vào Skynet.', 'Tạo mới thành công');
+                        if (this.newTbisHistory.ghi_chu.html)
+                            this.newTbisHistory.ghi_chu.text = $('#tbis-details-add-new-history-modal iframe').contents().find("body").text() || this.newTbisHistory.ghi_chu.html;
+                        metadataService.buildNewMetadata(this.newTbisHistory, Meteor.user());
+                        tbisHistoriesDataService.solveStatistics(this.newTbisHistory);
+                        tbisHistoriesDataService.validateTbisHistoryInputData(this.newTbisHistory);
+                        tbisHistoriesDataService.addNew(this.newTbisHistory).then(() => {
+                            notificationService.success('Nhật ký sửa chữa của bạn đã được ghi nhận vào Skynet.', 'Tạo mới thành công');
                             this.reset();
                             this.close();
                         }).catch((err) => {
@@ -55,8 +58,13 @@ class TbisDetailsViewReportViewAddNewMiniFab {
                     this.isModalOpen = false;
                     $mdDialog.hide();
                 };
+
+                $scope.$watch(() => this.newTbisHistory.isDone, (newVal, oldVal) => {
+                    if (!newVal && oldVal)
+                        this.newTbisHistory.thoi_gian.ket_thuc = {};
+                });
             },
-            controllerAs: 'tbisDetailsViewReportViewAddNewModal',
+            controllerAs: 'tbisDetailsViewHistoryViewAddNewModal',
             template: modalTemplate,
             targetEvent: event,
             parent: angular.element(document.body),
@@ -67,18 +75,17 @@ class TbisDetailsViewReportViewAddNewMiniFab {
 
 }
 
-const name = 'tbisDetailsViewReportViewAddNewMiniFab';
+const name = 'tbisDetailsViewHistoryViewAddNewMiniFab';
 
 // create a module
 export default angular.module(name, [
     angularMeteor,
     TbisDataService,
-    TbisReportDataService,
+    TbisHistoriesDataService,
     MetaDataService,
-    NotificationService,
-    TbisDetailsViewKendoEditor
+    NotificationService
 ]).component(name, {
     template,
     controllerAs: name,
-    controller: TbisDetailsViewReportViewAddNewMiniFab
+    controller: TbisDetailsViewHistoryViewAddNewMiniFab
 });

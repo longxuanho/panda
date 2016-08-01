@@ -64,12 +64,20 @@ class TbisDetailsViewHistoryViewThongKeTab {
                 attributes: {
                     "class": "table-cell",
                     style: "text-align: center;"
+                },
+                headerAttributes: {
+                    "class": "table-header-cell",
+                    style: "text-align: center;"
                 }
             }, {
                 field: "duration",
                 title: "Thời gian",
                 attributes: {
                     "class": "table-cell",
+                    style: "text-align: center;"
+                },
+                headerAttributes: {
+                    "class": "table-header-cell",
                     style: "text-align: center;"
                 }
             }]

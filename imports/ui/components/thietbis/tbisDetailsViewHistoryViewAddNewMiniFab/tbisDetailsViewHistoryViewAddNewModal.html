@@ -1,0 +1,82 @@
+<md-dialog id="tbis-details-add-new-history-modal" aria-label="Thêm nhật ký sửa chữa" ng-cloak>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Thêm nhật ký sửa chữa</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="tbisDetailsViewHistoryViewAddNewModal.close()">
+                <md-icon md-svg-src="img/icons/common/close.svg" aria-label="Đóng hộp thoại"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content layout-fill>
+        <p class="md-body-1" style="padding: 16px 16px 0px 16px;">Vui lòng điền các thông tin về nhật ký sửa chữa thiết bị theo mẫu phiếu dưới đây:</p>
+        <md-list>
+            <md-list-item class="md-2-line">
+                <img ng-src="{{todos[0].face}}?20" class="md-avatar" alt="{{todos[0].who}}" />
+                <div class="md-list-item-text">
+                    <h3>Hữu Toàn</h3>
+                    <p>Xí Nghiệp Cơ Giới</p>
+                </div>
+            </md-list-item>
+            <md-list-item>
+                <p> Đã sửa chữa xong </p>
+                <md-checkbox class="md-secondary" ng-model="tbisDetailsViewHistoryViewAddNewModal.newTbisHistory.isDone" ng-change="tbisDetailsViewHistoryViewAddNewModal.validateThoiGianKetThucTextBox()"></md-checkbox>
+            </md-list-item>
+            <md-list-item>
+                <md-input-container flex="50">
+                    <label>Nhóm sửa chữa</label>
+                    <md-select ng-model="tbisDetailsViewHistoryViewAddNewModal.newTbisHistory.phan_loai.nhom">
+                        <md-option>Sửa chữa nhỏ</md-option>
+                        <md-option>Sửa chữa lớn</md-option>
+                        <md-option>Sửa chữa cụm</md-option>
+                        <md-option>Bảo dưỡng</md-option>
+                        <md-option>Đại tu</md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container flex="50">
+                    <label>Loại sửa chữa</label>
+                    <md-select ng-model="tbisDetailsViewHistoryViewAddNewModal.newTbisHistory.phan_loai.loai">
+                        <md-option>Đột xuất</md-option>
+                        <md-option>Kế hoạch</md-option>
+                    </md-select>
+                </md-input-container>
+            </md-list-item>
+            <md-list-item>
+                <md-input-container class="md-block" flex="100">
+                    <label>Nội dung</label>
+                    <input ng-model="tbisDetailsViewHistoryViewAddNewModal.newTbisHistory.noi_dung">
+                </md-input-container>
+            </md-list-item>
+            <md-list-item layout="column" layout-gt-sm="row">
+                <md-input-container class="md-input-has-placeholder md-input-for-kendo" flex="100" flex-gt-sm="50" style="width: 100%;margin-bottom: 40px;">
+                    <label>Bắt đầu</label>
+                    <input kendo-date-time-picker k-interval="15" k-format="'yyyy-MM-dd, HH:mm tt'" k-time-format="'HH:mm tt'"
+                           ng-model="tbisDetailsViewHistoryViewAddNewModal.newTbisHistory.thoi_gian.bat_dau.refString"
+                           k-ng-model="tbisDetailsViewHistoryViewAddNewModal.newTbisHistory.thoi_gian.bat_dau.refDate"
+                           style="width: 100%;"/>
+                </md-input-container>
+                <md-input-container ng-show="tbisDetailsViewHistoryViewAddNewModal.newTbisHistory.isDone" class="md-input-has-placeholder md-input-for-kendo" flex="100" flex-gt-sm="50" style="width: 100%;margin-bottom: 40px;">
+                    <label>Kết thúc</label>
+                    <input kendo-date-time-picker k-interval="15" k-format="'yyyy-MM-dd, HH:mm tt'" k-time-format="'HH:mm tt'"
+                           ng-model="tbisDetailsViewHistoryViewAddNewModal.newTbisHistory.thoi_gian.ket_thuc.refString"
+                           k-ng-model="tbisDetailsViewHistoryViewAddNewModal.newTbisHistory.thoi_gian.ket_thuc.refDate"
+                           style="width: 100%;"/>
+                </md-input-container>
+            </md-list-item>
+            <md-list-item>
+                <md-input-container class="md-block md-input-has-placeholder" flex="100">
+                    <label>Ghi chú</label>
+                    <tbis-details-view-kendo-editor ng-if="tbisDetailsViewHistoryViewAddNewModal.isModalOpen" view-model="tbisDetailsViewHistoryViewAddNewModal.newTbisHistory.ghi_chu.html"></tbis-details-view-kendo-editor>
+                </md-input-container>
+            </md-list-item>
+
+        </md-list>
+        <pre>{{tbisDetailsViewHistoryViewAddNewModal.newTbisHistory | json}}</pre>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <md-button ng-click="tbisDetailsViewHistoryViewAddNewModal.reset()" aria-label="Reset">Reset</md-button>
+        <span flex></span>
+        <md-button style="margin-right:20px;" ng-click="tbisDetailsViewHistoryViewAddNewModal.addNew()" aria-label="Tạo mới">Tạo mới</md-button>
+    </md-dialog-actions>
+</md-dialog>
+

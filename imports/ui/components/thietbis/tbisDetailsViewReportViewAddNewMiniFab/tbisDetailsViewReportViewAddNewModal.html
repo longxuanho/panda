@@ -24,9 +24,7 @@
                 <label>Tiêu đề</label>
                 <input ng-model="tbisDetailsViewReportViewAddNewModal.newTbisReport.tieu_de">
             </md-input-container>
-            <div ng-if="tbisDetailsViewReportViewAddNewModal.isModalOpen">
-                <textarea id="kEditor" kendo-editor k-options="tbisDetailsViewReportViewAddNewModal.kendoEditorOptions" k-ng-model="tbisDetailsViewReportViewAddNewModal.newTbisReport.noi_dung.html"></textarea>
-            </div>
+            <tbis-details-view-kendo-editor ng-if="tbisDetailsViewReportViewAddNewModal.isModalOpen" view-model="tbisDetailsViewReportViewAddNewModal.newTbisReport.noi_dung.html"></tbis-details-view-kendo-editor>
         </form>
         <pre>{{tbisDetailsViewReportViewAddNewModal.newTbisReport | json}}</pre>
     </md-dialog-content>

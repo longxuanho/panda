@@ -4,11 +4,9 @@ import {TbisHistories} from './collection';
 let Schema = {};
 
 Schema.TbisHistory = new SimpleSchema({
-    status: {
-        type: String,
-        allowedValues: ['ongoing', 'done']
+    isDone: {
+        type: Boolean
     },
-
     tham_chieu: {
         type: Object
     },
@@ -48,10 +46,6 @@ Schema.TbisHistory = new SimpleSchema({
     noi_dung: {
         type: String
     },
-    ghi_chu: {
-        type: Object,
-        defaultValue: {}
-    },
     thoi_gian: {
         type: Object
     },
@@ -76,6 +70,18 @@ Schema.TbisHistory = new SimpleSchema({
                 type: String,
                 optional: true
             },
+    ghi_chu: {
+        type: Object,
+        defaultValue: {}
+    },
+        'ghi_chu.html': {
+            type: Object,
+            optional: true
+        },
+        'ghi_chu.text': {
+            type: String,
+            optional: true
+        },
     thong_ke: {
        type: Object
     },
@@ -95,6 +101,10 @@ Schema.TbisHistory = new SimpleSchema({
                 type: Number,
                 optional: true
             },
+    isActive: {
+        type: Boolean,
+        defaultValue: true
+    },
     metadata: {
         type: Object,
         optional: true,
