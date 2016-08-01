@@ -31,6 +31,10 @@ Schema.TbisHistory = new SimpleSchema({
             optional: true,
             blackbox: true
         },
+        'tham_chieu.refMaximo': {
+            type: String,
+            optional: true
+        },
     phan_loai: {
         type: Object
     },
@@ -75,7 +79,7 @@ Schema.TbisHistory = new SimpleSchema({
         defaultValue: {}
     },
         'ghi_chu.html': {
-            type: Object,
+            type: String,
             optional: true
         },
         'ghi_chu.text': {

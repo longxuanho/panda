@@ -96,6 +96,13 @@ class TbisHistoriesDataService {
         }
     }
 
+    buildTimeString(data) {
+        if (data.thoi_gian.bat_dau.refDate)
+            data.thoi_gian.bat_dau.refString = moment(data.thoi_gian.bat_dau.refDate).format('YYYY-MM-DD, HH:mm:ss');
+        if (data.thoi_gian.ket_thuc.refDate)
+            data.thoi_gian.ket_thuc.refString = moment(data.thoi_gian.ket_thuc.refDate).format('YYYY-MM-DD, HH:mm:ss');
+    }
+
     addNew(data) {
         let defer = this.$q.defer();
         TbisHistories.insert(data, (error) => {

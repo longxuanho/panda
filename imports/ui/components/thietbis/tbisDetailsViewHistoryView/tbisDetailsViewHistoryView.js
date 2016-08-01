@@ -8,13 +8,14 @@ import { name as TbisDetailsViewHistoryViewKhacTab } from '../tbisDetailsViewHis
 import { name as TbisDetailsViewHistoryViewFabMenu } from '../tbisDetailsViewHistoryViewFabMenu/tbisDetailsViewHistoryViewFabMenu';
 
 class TbisDetailsViewHistoryView {
-    constructor($mdMedia) {
+    constructor($reactive, $scope, $mdMedia) {
         'ngInject';
+        $reactive(this).attach($scope);
+
         this.$mdMedia = $mdMedia;
 
+        this.subscribe('tbishistories');
     }
-
-
 }
 
 const name = 'tbisDetailsViewHistoryView';

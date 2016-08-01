@@ -15,37 +15,9 @@
 <md-list flex class="md-dense" style="padding-top:0;">
     <md-divider></md-divider>
     <md-subheader class="md-no-sticky">
-        Có 3 ghi chép trong khoảng thời gian đã chọn
+        Có {{tbisDetailsViewHistoryViewLuotScnTab.tbisHistories.length}} ghi chép trong khoảng thời gian đã chọn
     </md-subheader>
     <md-divider></md-divider>
-    <md-list-item class="md-3-line" layout="row">
-        <div style="margin: 24px 15px 0 0;">
-            <md-icon md-svg-src="/img/icons/common/error_outline.svg" class="no-margin" aria-label="Tạo mới"></md-icon>
-        </div>
-        <div class="md-list-item-text" layout="column">
-            <h3>Tắt nguồn đột ngột khi làm hàng · 3 giờ 15 phút · 179504</h3>
-            <p>từ 08:30, thứ Hai, 21-07-2016</p>
-            <p>đến 09:45, thứ Ba, 22-07-2016</p>
-        </div>
-    </md-list-item>
-    <md-list-item class="md-3-line" layout="row">
-        <div style="margin: 24px 15px 0 0;">
-            <md-icon md-svg-src="/img/icons/common/error_outline.svg" class="no-margin" aria-label="Tạo mới"></md-icon>
-        </div>
-        <div class="md-list-item-text" layout="column">
-            <h3>Thay bóng đèn taplo · ? · 179604</h3>
-            <p>từ 10:30, Chủ Nhật, 21-07-2016</p>
-            <p>chưa kết thúc</p>
-        </div>
-    </md-list-item>
-    <md-list-item class="md-3-line" layout="row">
-        <div style="margin: 24px 15px 0 0;">
-            <md-icon md-svg-src="/img/icons/common/playlist_add_check.svg" class="no-margin" aria-label="Tạo mới"></md-icon>
-        </div>
-        <div class="md-list-item-text" layout="column">
-            <h3>Kiểm tra thay cảm biến nhiên liệu · 1 giờ 15 phút · 179504</h3>
-            <p>từ 08:30, thứ Năm, 21-07-2016</p>
-            <p>đến 13:45, thứ Bảy, 30-07-2016</p>
-        </div>
-    </md-list-item>
+    <tbis-details-view-history-view-tbis-history-item ng-repeat="tbisHistory in tbisDetailsViewHistoryViewLuotScnTab.tbisHistories"
+            view-model="tbisHistory"></tbis-details-view-history-view-tbis-history-item>
     </md-list>

@@ -24,11 +24,11 @@ class TbisDetailsViewHistoryViewAddNewMiniFab {
             controller($scope, $mdDialog, tbisHistoriesDataService, tbisDataService, metadataService, notificationService) {
                 'ngInject';
 
-
-
                 this.isModalOpen = true;
                 this.seletedThietBi = angular.copy(tbisDataService.getSelectedThietBi());
                 this.newTbisHistory = tbisHistoriesDataService.initNewTbisHistoryData(this.seletedThietBi);
+
+                this.now = new Date();
 
                 this.reset = () => {
                     this.newTbisHistory = tbisHistoriesDataService.initNewTbisHistoryData(this.seletedThietBi);
@@ -39,6 +39,7 @@ class TbisDetailsViewHistoryViewAddNewMiniFab {
                         if (this.newTbisHistory.ghi_chu.html)
                             this.newTbisHistory.ghi_chu.text = $('#tbis-details-add-new-history-modal iframe').contents().find("body").text() || this.newTbisHistory.ghi_chu.html;
                         metadataService.buildNewMetadata(this.newTbisHistory, Meteor.user());
+                        tbisHistoriesDataService.buildTimeString(this.newTbisHistory);
                         tbisHistoriesDataService.solveStatistics(this.newTbisHistory);
                         tbisHistoriesDataService.validateTbisHistoryInputData(this.newTbisHistory);
                         tbisHistoriesDataService.addNew(this.newTbisHistory).then(() => {
@@ -62,6 +63,16 @@ class TbisDetailsViewHistoryViewAddNewMiniFab {
                 $scope.$watch(() => this.newTbisHistory.isDone, (newVal, oldVal) => {
                     if (!newVal && oldVal)
                         this.newTbisHistory.thoi_gian.ket_thuc = {};
+                });
+
+                $scope.$watch(() => this.newTbisHistory.phan_loai.nhom, (newVal) => {
+                    if (newVal != 'Sửa chữa nhỏ')
+                        this.newTbisHistory.phan_loai.loai = '';
+                });
+
+                $scope.$watch(() => this.newTbisHistory.thoi_gian.bat_dau.refDate, (newVal) => {
+                    if (this.newTbisHistory.isDone && this.kDateTimePickerEndDate)
+                        this.kDateTimePickerEndDate.min(newVal);
                 });
             },
             controllerAs: 'tbisDetailsViewHistoryViewAddNewModal',

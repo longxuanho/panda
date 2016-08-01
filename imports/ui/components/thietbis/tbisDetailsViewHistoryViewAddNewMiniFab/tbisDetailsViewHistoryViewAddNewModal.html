@@ -50,17 +50,24 @@
             <md-list-item layout="column" layout-gt-sm="row">
                 <md-input-container class="md-input-has-placeholder md-input-for-kendo" flex="100" flex-gt-sm="50" style="width: 100%;margin-bottom: 40px;">
                     <label>Bắt đầu</label>
-                    <input kendo-date-time-picker k-interval="15" k-format="'yyyy-MM-dd, HH:mm tt'" k-time-format="'HH:mm tt'"
+                    <input kendo-date-time-picker k-interval="15" k-format="'yyyy-MM-dd, HH:mm tt'" k-time-format="'HH:mm tt'" k-max="tbisDetailsViewHistoryViewAddNewModal.now"
                            ng-model="tbisDetailsViewHistoryViewAddNewModal.newTbisHistory.thoi_gian.bat_dau.refString"
                            k-ng-model="tbisDetailsViewHistoryViewAddNewModal.newTbisHistory.thoi_gian.bat_dau.refDate"
                            style="width: 100%;"/>
                 </md-input-container>
+                <div ng-hide="tbisDetailsViewHistoryViewAddNewModal.newTbisHistory.isDone" flex="100" flex-gt-sm="50"></div>
                 <md-input-container ng-show="tbisDetailsViewHistoryViewAddNewModal.newTbisHistory.isDone" class="md-input-has-placeholder md-input-for-kendo" flex="100" flex-gt-sm="50" style="width: 100%;margin-bottom: 40px;">
                     <label>Kết thúc</label>
-                    <input kendo-date-time-picker k-interval="15" k-format="'yyyy-MM-dd, HH:mm tt'" k-time-format="'HH:mm tt'"
+                    <input kendo-date-time-picker="tbisDetailsViewHistoryViewAddNewModal.kDateTimePickerEndDate" k-interval="15" k-format="'yyyy-MM-dd, HH:mm tt'" k-time-format="'HH:mm tt'"
                            ng-model="tbisDetailsViewHistoryViewAddNewModal.newTbisHistory.thoi_gian.ket_thuc.refString"
                            k-ng-model="tbisDetailsViewHistoryViewAddNewModal.newTbisHistory.thoi_gian.ket_thuc.refDate"
                            style="width: 100%;"/>
+                </md-input-container>
+            </md-list-item>
+            <md-list-item flex="">
+                <md-input-container class="md-block" flex="50">
+                    <label>Tham chiếu Maximo</label>
+                    <input ng-model="tbisDetailsViewHistoryViewAddNewModal.newTbisHistory.tham_chieu.refMaximo">
                 </md-input-container>
             </md-list-item>
             <md-list-item>
