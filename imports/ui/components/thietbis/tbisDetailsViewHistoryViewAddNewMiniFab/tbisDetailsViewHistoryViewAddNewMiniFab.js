@@ -5,11 +5,13 @@ import { Meteor } from 'meteor/meteor';
 
 import template from './tbisDetailsViewHistoryViewAddNewMiniFab.html';
 import modalTemplate from './tbisDetailsViewHistoryViewAddNewModal.html';
+
 import { name as TbisDataService } from '../../../services/thietbis/tbisDataService';
 import { name as TbisHistoriesDataService } from '../../../services/thietbis/tbisHistoriesDataService';
 import { name as MetaDataService } from '../../../services/common/metadataService';
 import { name as NotificationService } from '../../../services/common/notificationService';
 
+import  { name as TbisDetailsViewHistoryViewTbisHistoryInputForm } from '../tbisDetailsViewHistoryViewTbisHistoryInputForm/tbisDetailsViewHistoryViewTbisHistoryInputForm';
 
 class TbisDetailsViewHistoryViewAddNewMiniFab {
     constructor($mdDialog, $mdMedia) {
@@ -28,7 +30,6 @@ class TbisDetailsViewHistoryViewAddNewMiniFab {
                 this.seletedThietBi = angular.copy(tbisDataService.getSelectedThietBi());
                 this.newTbisHistory = tbisHistoriesDataService.initNewTbisHistoryData(this.seletedThietBi);
 
-                this.now = new Date();
 
                 this.reset = () => {
                     this.newTbisHistory = tbisHistoriesDataService.initNewTbisHistoryData(this.seletedThietBi);
@@ -60,20 +61,7 @@ class TbisDetailsViewHistoryViewAddNewMiniFab {
                     $mdDialog.hide();
                 };
 
-                $scope.$watch(() => this.newTbisHistory.isDone, (newVal, oldVal) => {
-                    if (!newVal && oldVal)
-                        this.newTbisHistory.thoi_gian.ket_thuc = {};
-                });
 
-                $scope.$watch(() => this.newTbisHistory.phan_loai.nhom, (newVal) => {
-                    if (newVal != 'Sửa chữa nhỏ')
-                        this.newTbisHistory.phan_loai.loai = '';
-                });
-
-                $scope.$watch(() => this.newTbisHistory.thoi_gian.bat_dau.refDate, (newVal) => {
-                    if (this.newTbisHistory.isDone && this.kDateTimePickerEndDate)
-                        this.kDateTimePickerEndDate.min(newVal);
-                });
             },
             controllerAs: 'tbisDetailsViewHistoryViewAddNewModal',
             template: modalTemplate,
@@ -94,7 +82,8 @@ export default angular.module(name, [
     TbisDataService,
     TbisHistoriesDataService,
     MetaDataService,
-    NotificationService
+    NotificationService,
+    TbisDetailsViewHistoryViewTbisHistoryInputForm
 ]).component(name, {
     template,
     controllerAs: name,

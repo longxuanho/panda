@@ -2,22 +2,27 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
 import template from './tbisDetailsViewHistoryViewLuotScnTab.html';
+import modalTemplate from './tbisDetailsViewHistoryViewLuotScnTabModal.html';
 
 import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
 import { name as TbisDataService } from '../../../services/thietbis/tbisDataService';
 import { name as TbisHistoriesDataService } from '../../../services/thietbis/tbisHistoriesDataService';
 import { name as TbisDetailsViewHistoryViewDurationToolbar } from '../tbisDetailsViewHistoryViewDurationToolbar/tbisDetailsViewHistoryViewDurationToolbar';
 import { name as TbisDetailsViewHistoryViewTbisHistoryItem } from '../tbisDetailsViewHistoryViewTbisHistoryItem/tbisDetailsViewHistoryViewTbisHistoryItem';
+import { name as TbisDetailsViewHistoryViewTbisHistoryInputForm } from '../tbisDetailsViewHistoryViewTbisHistoryInputForm/tbisDetailsViewHistoryViewTbisHistoryInputForm';
 
 import { name as MetadataService } from '../../../services/common/metadataService';
 import { name as NotificationService } from '../../../services/common/notificationService';
 
 class TbisDetailsViewHistoryViewLuotScnTab {
-    constructor($reactive, $scope, userLocalSettingsService, tbisHistoriesDataService) {
+    constructor($reactive, $scope, $mdDialog, $mdMedia, userLocalSettingsService, tbisHistoriesDataService) {
         'ngInject';
         $reactive(this).attach($scope);
 
         this.durationToolbarOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisDetails').modules.tbisHistories.durationToolbar;
+        this.tbisHistoriesDataService = tbisHistoriesDataService;
+        this.$mdDialog = $mdDialog;
+        this.$mdMedia = $mdMedia;
 
         this.helpers({
             tbisHistories() {
@@ -30,37 +35,39 @@ class TbisDetailsViewHistoryViewLuotScnTab {
     }
 
     open(event, tbisHistoryId) {
-        this.tbisReportDataService.setSelectedTbisReport(tbisHistoryId);
+        this.tbisHistoriesDataService.setSelectedTbisHistory(tbisHistoryId);
+
         this.$mdDialog.show({
             controller($mdDialog, tbisDataService, tbisHistoriesDataService, notificationService, metadataService, $mdToast) {
                 'ngInject';
                 this.thietbiId = tbisDataService.getSelectedThietBi().ma_thiet_bi.keyId;
+                this.selectedTbisHistory = angular.copy(tbisHistoriesDataService.getSelectedTbisHistory());
                 this.isModalOpen = true;
-
-                this.newComment = {
-                    _id: Random.id(),
-                    noi_dung: {},
-                    isActive: true,
-                    metadata: {}
-                };
 
                 this.close = () => {
                     this.isModalOpen = false;
-                    tbisHistoriesDataService.clearSelectedTbisReport();
+                    tbisHistoriesDataService.clearSelectedTbisHistory();
                     $mdDialog.hide();
                 };
 
-                this.addNewComment = () => {
+                this.updateSelectedTbisHistory = () => {
                     try {
-                        this.newComment.noi_dung.text = $('iframe').contents().find("body").text() || this.newComment.noi_dung.html;
-                        metadataService.buildNewMetadata(this.newComment, Meteor.user());
-                        tbisHistoriesDataService.validateCommentInputData(this.newComment);
-                        console.log('preparing: ', this.newComment);
-                        tbisHistoriesDataService.addNewComment(this.newComment).then(() => {
-                            notificationService.success('Bình luận của bạn đã được ghi nhận vào Skynet.', 'Gửi đi thành công');
-                            this.resetNewComment();
+                        if (this.selectedTbisHistory.ghi_chu.html)
+                            this.selectedTbisHistory.ghi_chu.text = $('#tbis-details-view-tbis-history-update-modal iframe').contents().find("body").text() || this.selectedTbisHistory.ghi_chu.html;
+                        metadataService.buildNewMetadata(this.selectedTbisHistory, Meteor.user());
+                        tbisHistoriesDataService.buildTimeString(this.selectedTbisHistory);
+                        tbisHistoriesDataService.solveStatistics(this.selectedTbisHistory);
+
+                        if(this.selectedTbisHistory.phan_loai.nhom != 'Sửa chữa nhỏ')
+                            throw Error('Bạn không thể chuyển đổi nhóm sửa chữa của mục này.');
+
+                        tbisHistoriesDataService.validateTbisHistoryInputData(this.selectedTbisHistory);
+                        tbisHistoriesDataService.updateSelectedTbisHistory(this.selectedTbisHistory).then(() => {
+                            notificationService.success('Nhật ký sửa chữa đã được cập nhật vào Skynet.', 'Cập nhật thành công');
+                            this.reset();
+                            this.close();
                         }).catch((err) => {
-                            notificationService.error(err.message, 'Gửi đi thất bại');
+                            notificationService.error(err.message, 'Cập nhật thất bại');
                         });
                     }
                     catch (error) {
@@ -68,7 +75,7 @@ class TbisDetailsViewHistoryViewLuotScnTab {
                     }
                 };
 
-                this.closeSelectedTbisReport = () => {
+                this.removeSelectedTbisHistory = () => {
                     $mdToast.show({
                         hideDelay: 5000,
                         position : 'top right',
@@ -91,16 +98,13 @@ class TbisDetailsViewHistoryViewLuotScnTab {
                     });
                 };
 
-                this.resetNewComment = () => {
-                    this.newComment = {
-                        _id: Random.id(),
-                        noi_dung: {},
-                        isActive: true,
-                        metadata: {}
-                    };
+                this.reset = () => {
+                    // Không cần thiết câu lệnh này do ta đóng modal sau khi update thành công
+                    // tbisHistoriesDataService.setSelectedTbisHistory(this.selectedTbisHistory._id);
+                    this.selectedTbisHistory = angular.copy(tbisHistoriesDataService.getSelectedTbisHistory());
                 };
             },
-            controllerAs: 'tbisDetailsViewReportViewOpenTabModal',
+            controllerAs: 'tbisDetailsViewHistoryViewLuotScnTabModal',
             template: modalTemplate,
             targetEvent: event,
             parent: angular.element(document.body),
@@ -121,7 +125,8 @@ export default angular.module(name, [
     MetadataService,
     NotificationService,
     TbisDetailsViewHistoryViewDurationToolbar,
-    TbisDetailsViewHistoryViewTbisHistoryItem
+    TbisDetailsViewHistoryViewTbisHistoryItem,
+    TbisDetailsViewHistoryViewTbisHistoryInputForm
 ]).component(name, {
     template,
     controllerAs: name,

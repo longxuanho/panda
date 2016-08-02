@@ -5,44 +5,6 @@
         Có 4 ghi chép trong khoảng thời gian đã chọn
     </md-subheader>
     <md-divider></md-divider>
-    <md-list-item class="md-3-line" layout="row">
-        <div style="margin: 24px 15px 0 0;">
-            <md-icon md-svg-src="/img/icons/common/not_interested.svg" class="no-margin" aria-label="Sửa chữa lớn"></md-icon>
-        </div>
-        <div class="md-list-item-text" layout="column">
-            <h3>Sửa chữa lớn phương tiện · 5 ngày 7 giờ 15 phút · 179504</h3>
-            <p>từ 08:30, thứ Hai, 21-07-2016</p>
-            <p>đến 09:45, thứ Ba, 22-07-2016</p>
-        </div>
-    </md-list-item>
-    <md-list-item class="md-3-line" layout="row">
-        <div style="margin: 24px 15px 0 0;">
-            <md-icon md-svg-src="/img/icons/common/sync_problem.svg" class="no-margin" aria-label="Sửa chữa cụm"></md-icon>
-        </div>
-        <div class="md-list-item-text" layout="column">
-            <h3>Sửa chữa cụm chi tiết · ? · 179604</h3>
-            <p>từ 10:30, Chủ Nhật, 21-07-2016</p>
-            <p>chưa kết thúc</p>
-        </div>
-    </md-list-item>
-    <md-list-item class="md-3-line" layout="row">
-        <div style="margin: 24px 15px 0 0;">
-            <md-icon md-svg-src="/img/icons/common/event.svg" class="no-margin" aria-label="Bảo dưỡng"></md-icon>
-        </div>
-        <div class="md-list-item-text" layout="column">
-            <h3>Bảo dưỡng 2500 giờ · ? · 179504</h3>
-            <p>từ 08:30, thứ Năm, 21-07-2016</p>
-            <p>chưa kết thúc</p>
-        </div>
-    </md-list-item>
-    <md-list-item class="md-3-line" layout="row">
-        <div style="margin: 24px 15px 0 0;">
-            <md-icon md-svg-src="/img/icons/common/exit_to_app.svg" class="no-margin" aria-label="Đại tu"></md-icon>
-        </div>
-        <div class="md-list-item-text" layout="column">
-            <h3>Đại tu, cải hoán xe bus · 130 ngày 5 giờ 11 phút· 179504</h3>
-            <p>từ 08:30, thứ Năm, 21-07-2016</p>
-            <p>đến 13:45, thứ Bảy, 30-07-2016</p>
-        </div>
-    </md-list-item>
+    <tbis-details-view-history-view-tbis-history-item ng-click="tbisDetailsViewHistoryViewKhacTab.open($event, tbisHistory._id)" ng-repeat="tbisHistory in tbisDetailsViewHistoryViewKhacTab.tbisHistories"
+                                                      view-model="tbisHistory"></tbis-details-view-history-view-tbis-history-item>
 </md-list>

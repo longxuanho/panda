@@ -114,30 +114,20 @@ class TbisHistoriesDataService {
         return defer.promise;
     }
 
-    updateGhiChuSelectedTbisHistory(newGhiChuObj) {
-        let defer = this.$q.defer();
-        TbisHistories.update({
-            _id: this.selectedTbisHistory._id
-        }, {
-            $set: {
-                'ghi_chu': newGhiChuObj
-            }
-        }, (error) => {
-            if (error)
-                defer.reject(error);
-            else
-                defer.resolve();
-        });
-        return defer.promise;
-    }
 
-    updateSelectedTbisHistory(newTbisHistory) {
+    updateSelectedTbisHistory(tbisHistory) {
         let defer = this.$q.defer();
         TbisHistories.update({
             _id: this.selectedTbisHistory._id
         }, {
             $set: {
-                'noi_dung': newTbisHistory.noi_dung
+                'phan_loai.loai': tbisHistory.phan_loai.loai,
+                'noi_dung': tbisHistory.noi_dung,
+                'thoi_gian': tbisHistory.thoi_gian,
+                'tham_chieu.refMaximo': tbisHistory.tham_chieu.refMaximo,
+                'thong_ke': tbisHistory.thong_ke,
+                'ghi_chu': tbisHistory.ghi_chu,
+                'metadata': tbisHistory.metadata
             }
         }, (error) => {
             if (error)

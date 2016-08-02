@@ -1,0 +1,19 @@
+<md-dialog id="tbis-details-view-tbis-history-update-modal" aria-label="Cập nhật nhật ký thiết bị" ng-cloak>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>{{tbisDetailsViewHistoryViewLuotScnTabModal.thietbiId}}</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="tbisDetailsViewHistoryViewLuotScnTabModal.close()">
+                <md-icon md-svg-src="img/icons/common/close.svg" aria-label="Đóng hộp thoại"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content layout-fill>
+        <tbis-details-view-history-view-tbis-history-input-form is-editor-active="tbisDetailsViewHistoryViewLuotScnTabModal.isModalOpen" view-model="tbisDetailsViewHistoryViewLuotScnTabModal.selectedTbisHistory"></tbis-details-view-history-view-tbis-history-input-form>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <md-button ng-click="tbisDetailsViewHistoryViewLuotScnTabModal.reset()" aria-label="Reset">Reset</md-button>
+        <span flex></span>
+        <md-button style="margin-right:20px;" ng-click="tbisDetailsViewHistoryViewLuotScnTabModal.updateSelectedTbisHistory()" aria-label="Cập nhật">Cập nhật</md-button>
+    </md-dialog-actions>
+</md-dialog>
