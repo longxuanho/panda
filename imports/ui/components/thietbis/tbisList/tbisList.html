@@ -5,16 +5,17 @@
         <tbis-filter-form ng-hide="tbisList.settings.searchFilterMode=='search'"></tbis-filter-form>
         <a ui-sref="tbisDetailsView({thietbiId: 'mYJ24ciaPQ6HNaKNm'})">Go!</a>
         <tbis-display-list-view thietbis="tbisList.thietbis" total-count="tbisList.thietbisCount"></tbis-display-list-view>
-        <div layout="column" layout-padding>
+        <!--<div layout="column" layout-padding>-->
 
-            <!--Them thiet bi moi-->
-            <div layout="column">
-            <pre>
-                {{tbisList.settings |json}}
-            </pre>
-            </div>
-        </div>
+            <!--&lt;!&ndash;Them thiet bi moi&ndash;&gt;-->
+            <!--<div layout="column">-->
+            <!--<pre>-->
+                <!--{{tbisList.settings |json}}-->
+            <!--</pre>-->
+            <!--</div>-->
+        <!--</div>-->
     </div>
 </md-content>
 <tbis-list-fab-menu></tbis-list-fab-menu>
+
 

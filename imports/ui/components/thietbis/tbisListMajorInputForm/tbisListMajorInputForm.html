@@ -148,21 +148,22 @@
         <md-list-item>
             <div layout="column" layout-fill>
                 <div layout="row">
-                    <md-input-container class="md-block" flex="50">
-                        <label>Quản lý</label>
-                        <md-select name="phan_quyen_quan_ly" ng-model="tbisListMajorInputForm.viewModel.phan_quyen.quan_ly" ng-model-options="{trackBy: '$value.ten'}">
-                            <md-option ng-value="dvquanly" ng-repeat="dvquanly in tbisListMajorInputForm.selectOptions.donvis | orderBy:'ten'" ng-bind="dvquanly.ten"></md-option>
-                        </md-select>
-                        <div class="errors" ng-messages="tbisListMajorInputForm.addNewThietBiForm.phan_quyen_quan_ly.$error">
-                            <div ng-message="required">Thông tin bắt buộc.</div>
-                        </div>
-                    </md-input-container>
+
                     <md-input-container class="md-block" flex="50">
                         <label>Sở hữu</label>
                         <md-select name="phan_quyen_so_huu" ng-model="tbisListMajorInputForm.viewModel.phan_quyen.so_huu" ng-model-options="{trackBy: '$value.ten'}">
                             <md-option ng-value="dvsohuu" ng-repeat="dvsohuu in tbisListMajorInputForm.selectOptions.donvis | orderBy:'ten'" ng-bind="dvsohuu.ten"></md-option>
                         </md-select>
                         <div class="errors" ng-messages="tbisListMajorInputForm.addNewThietBiForm.phan_quyen_so_huu.$error">
+                            <div ng-message="required">Thông tin bắt buộc.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex="50">
+                        <label>Quản lý</label>
+                        <md-select name="phan_quyen_quan_ly" ng-model="tbisListMajorInputForm.viewModel.phan_quyen.quan_ly" ng-model-options="{trackBy: '$value.ten'}">
+                            <md-option ng-value="dvquanly" ng-repeat="dvquanly in tbisListMajorInputForm.selectOptions.donvis | orderBy:'ten'" ng-bind="dvquanly.ten"></md-option>
+                        </md-select>
+                        <div class="errors" ng-messages="tbisListMajorInputForm.addNewThietBiForm.phan_quyen_quan_ly.$error">
                             <div ng-message="required">Thông tin bắt buộc.</div>
                         </div>
                     </md-input-container>
@@ -178,7 +179,7 @@
                     <md-input-container class="md-block" flex="50">
                         <label>Đội vận hành</label>
                         <md-select name="phan_quyen_doi_van_hanh" ng-model="tbisListMajorInputForm.viewModel.phan_quyen.doi_van_hanh" ng-model-options="{trackBy: '$value.ten'}">
-                            <md-option ng-value="doivanhanh" ng-repeat="doivanhanh in tbisListMajorInputForm.selectOptions.doivanhanhs[tbisListMajorInputForm.viewModel.phan_quyen.van_hanh.ten] | orderBy:'ten'">{{doivanhanh.ten}}</md-option>
+                            <md-option ng-value="doivanhanh" ng-repeat="doivanhanh in tbisListMajorInputForm.selectOptions.doivanhanhs[tbisListMajorInputForm.viewModel.phan_quyen.van_hanh.ma] | orderBy:'ten'">{{doivanhanh.ten}}</md-option>
                         </md-select>
                     </md-input-container>
                 </div>

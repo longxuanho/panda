@@ -24,7 +24,7 @@ class TbisListAddNewMiniFab {
 
     open(event) {
         this.$mdDialog.show({
-            controller($scope, $mdDialog, tbisDataService, metadataService, notificationService) {
+            controller($scope, $mdDialog, tbisDataService, metadataService, notificationService, $timeout) {
                 'ngInject';
 
                 this.newThietBi = tbisDataService.initNewThietBiData();
@@ -46,8 +46,10 @@ class TbisListAddNewMiniFab {
                 };
 
                 this.reset = () => {
-                    $scope.$broadcast('reset-tbis-list-major-input-form');
-                    this.newThietBi = tbisDataService.initNewThietBiData();
+                    $timeout(() => {
+                        this.newThietBi = tbisDataService.initNewThietBiData();
+                        $scope.$broadcast('reset-tbis-list-major-input-form');
+                    }, 1000);
                 };
 
                 this.close = () => {

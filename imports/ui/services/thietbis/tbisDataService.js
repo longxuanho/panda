@@ -26,6 +26,7 @@ class TbisDataService {
     }
 
     initNewThietBiData() {
+        console.log('starting init...');
         return {
             ma_thiet_bi: {},
             phan_loai: {},

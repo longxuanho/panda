@@ -100,7 +100,7 @@ Meteor.startup(() => {
                 ma: 'DTV',
                 ten: 'Dầu Thực Vật'
             }, {
-                ma: 'GLNG',
+                ma: 'GILNG',
                 ten: 'Giao Long'
             }, {
                 ma: 'HLUC',
@@ -109,7 +109,7 @@ Meteor.startup(() => {
                 ma: 'HPHC',
                 ten: 'Hiệp Phước'
             }, {
-                ma: 'LBNH',
+                ma: 'LB',
                 ten: 'Long Bình'
             }, {
                 ma: 'MTHO',
@@ -121,10 +121,10 @@ Meteor.startup(() => {
                 ma: 'NHTR',
                 ten: 'Nhơn Trạch'
             }, {
-                ma: 'PHHU',
+                ma: 'PHHUU',
                 ten: 'Phú Hữu'
             }, {
-                ma: 'SDEC',
+                ma: 'SADEC',
                 ten: 'Sa Đéc'
             }, {
                 ma: 'STHN',
@@ -1554,35 +1554,35 @@ Meteor.startup(() => {
                 ten: 'Đội Cơ Giới 1',
                 don_vi: {
                     ma: 'XNCG',
-                    ten: 'Xí Nghiệp Cơ Giới'
+                    ten: 'Xí nghiệp Cơ giới xếp dỡ Tân cảng'
                 }
             }, {
                 ma: 'CG2',
                 ten: 'Đội Cơ Giới 2',
                 don_vi: {
                     ma: 'XNCG',
-                    ten: 'Xí Nghiệp Cơ Giới'
+                    ten: 'Xí nghiệp Cơ giới xếp dỡ Tân cảng'
                 }
             }, {
                 ma: 'CG3',
                 ten: 'Đội Cơ Giới 3',
                 don_vi: {
                     ma: 'XNCG',
-                    ten: 'Xí Nghiệp Cơ Giới'
+                    ten: 'Xí nghiệp Cơ giới xếp dỡ Tân cảng'
                 }
             }, {
                 ma: 'CG4',
                 ten: 'Đội Cơ Giới 4',
                 don_vi: {
                     ma: 'XNCG',
-                    ten: 'Xí Nghiệp Cơ Giới'
+                    ten: 'Xí nghiệp Cơ giới xếp dỡ Tân cảng'
                 }
             }, {
                 ma: 'CG5',
                 ten: 'Đội Cơ Giới 5',
                 don_vi: {
                     ma: 'XNCG',
-                    ten: 'Xí Nghiệp Cơ Giới'
+                    ten: 'Xí nghiệp Cơ giới xếp dỡ Tân cảng'
                 }
             }
         ];

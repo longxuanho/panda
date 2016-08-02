@@ -74,7 +74,8 @@ function buildDoiVanHanhOptions(doivanhanhs) {
     "use strict";
     try {
         let result = _.groupBy(doivanhanhs, (doivanhanh) => {
-            return doivanhanh.don_vi.ten;
+            // return doivanhanh.don_vi.ten;
+            return doivanhanh.don_vi.ma;
         });
         return _.mapObject(result, function(val, key) {
             return _.map(val, (doivanhanh) => {
