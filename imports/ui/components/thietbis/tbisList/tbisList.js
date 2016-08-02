@@ -8,24 +8,22 @@ import { Counts } from 'meteor/tmeasday:publish-counts';
 
 import template from './tbisList.html';
 
-import { name as TbisListPageSettingsService } from '../../../services/thietbis/tbisListPageSettingsService';
+
 import { name as TbisDataService } from '../../../services/thietbis/tbisDataService';
 import { name as TbisUtilsBar } from '../tbisUtilsBar/tbisUtilsBar';
 import { name as TbisSearchForm } from '../tbisSearchForm/tbisSearchForm';
 import { name as TbisFilterForm } from '../tbisFilterForm/tbisFilterForm';
-import { name as TbisDisplayListView } from '../tbisDisplayListView/tbisDisplayListView';
 import { name as TbisListFabMenu } from '../tbisListFabMenu/tbisListFabMenu';
 
-import { name as TbisPhanLoaiDataService } from '../../../services/thietbis/tbisPhanLoaiDataService';
-import { name as TbisNguonGocDataService } from '../../../services/thietbis/tbisNguonGocDataService';
-import { name as TbisPhanQuyenDataService } from '../../../services/thietbis/tbisPhanQuyenDataService';
-import { name as TbisDiaDiemDataSerivce } from '../../../services/thietbis/tbisDiaDiemDataService';
-import { name as TbisReferenceDataService } from '../../../services/thietbis/tbisReferenceDataService';
+import { name as TbisDisplayListView } from '../tbisDisplayListView/tbisDisplayListView';
+import { name as TbisDisplayGridView } from '../tbisDisplayGridView/tbisDisplayGridView';
 
-import { name as TsktThongSoKyThuatDataService } from '../../../services/thietbis/tbisReferenceDataService';
+import { name as TbisListPageSettingsService } from '../../../services/thietbis/tbisListPageSettingsService';
+import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
+
 
 class TbisList {
-    constructor($scope, $reactive, tbisListPageSettingsService, tbisDataService,
+    constructor($scope, $reactive, userLocalSettingsService, tbisDataService,
                 tbisPhanLoaiDataService, tbisNguonGocDataService, tbisPhanQuyenDataService,
                 tbisDiaDiemDataService, tbisReferenceDataService,
                 tsktThongSoKyThuatDataService) {
@@ -33,26 +31,10 @@ class TbisList {
 
         $reactive(this).attach($scope);
 
-        this.settings = tbisListPageSettingsService.getPageSettings();
-        // this.thietbis = tbisDataService.getAllThietBis();
+        this.componentOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').utilsBar;
 
-        console.log('thietbis: ', this.thietbis);
-        
-        this.isSearchMode = true;
-        this.perPage = 10;
-        this.page = 1;
-        this.sort = {
-            'ma_thiet_bi.keyId': 1
-        };
         this.searchText = '';
-
-        this.topDirections = ['left', 'up'];
-        this.bottomDirections = ['down', 'right'];
         this.isOpen = false;
-        this.availableModes = ['md-fling', 'md-scale'];
-        this.selectedMode = 'md-fling';
-        this.availableDirections = ['up', 'down', 'left', 'right'];
-        this.selectedDirection = 'up';
 
         this.subscribe('thietbis', () => [
             {
@@ -82,13 +64,7 @@ class TbisList {
             },
             thietbisCount() {
                 return Counts.get('numberOfThietBis');
-            },
-            // isLoggedIn() {
-            //     return !!Meteor.userId();
-            // },
-            // currentUserId() {
-            //     return Meteor.userId();
-            // }
+            }
         });
     }
 
@@ -98,16 +74,6 @@ class TbisList {
 
     sortChanged(sort) {
         this.sort = sort;
-    }
-
-    submit() {
-        console.log('test!');
-        // ThietBis.insert(this.newThietBi);
-        this.reset();
-    }
-
-    reset() {
-        this.newThietBi = {};
     }
 }
 
@@ -122,18 +88,14 @@ export default angular.module(name, [
     TbisUtilsBar,
     TbisSearchForm,
     TbisFilterForm,
-    TbisDisplayListView,
-    TbisListPageSettingsService,
     TbisDataService,
     TbisListFabMenu,
 
-    TbisPhanLoaiDataService,
-    TbisNguonGocDataService,
-    TbisPhanQuyenDataService,
-    TbisDiaDiemDataSerivce,
-    TbisReferenceDataService,
+    TbisDisplayListView,
+    TbisDisplayGridView,
 
-    TsktThongSoKyThuatDataService
+    TbisListPageSettingsService,
+    UserLocalSettingsService,
 ]).component(name, {
     template,
     controllerAs: name,

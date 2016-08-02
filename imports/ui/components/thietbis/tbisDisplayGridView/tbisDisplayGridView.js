@@ -1,23 +1,23 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
-import template from './tbisDisplayListView.html';
-import { name as TbisDisplayListItem } from '../tbisDisplayListItem/tbisDisplayListItem';
+import template from './tbisDisplayGridView.html';
+import { name as TbisListGridViewKendoGrid } from '../tbisListGridViewKendoGrid/tbisListGridViewKendoGrid';
 // import { name as TbisDataService } from '../../../services/tbis/tbisDataService';
 
-class TbisDisplayListView {
+class TbisDisplayGridView {
     constructor() {
         'ngInject';
-        
+
     }
 }
 
-const name = 'tbisDisplayListView';
+const name = 'tbisDisplayGridView';
 
 // create a module
 export default angular.module(name, [
     angularMeteor,
-    TbisDisplayListItem
+    TbisListGridViewKendoGrid
 ]).component(name, {
     template,
     controllerAs: name,
@@ -25,5 +25,5 @@ export default angular.module(name, [
         thietbis: '<',
         totalCount: '<'
     },
-    controller: TbisDisplayListView
+    controller: TbisDisplayGridView
 });

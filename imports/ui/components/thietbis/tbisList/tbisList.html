@@ -1,19 +1,17 @@
 <md-content layout="column">
     <tbis-utils-bar></tbis-utils-bar>
     <div>
-        <tbis-search-form ng-hide="tbisList.settings.searchFilterMode=='filter'"></tbis-search-form>
-        <tbis-filter-form ng-hide="tbisList.settings.searchFilterMode=='search'"></tbis-filter-form>
-        <a ui-sref="tbisDetailsView({thietbiId: 'mYJ24ciaPQ6HNaKNm'})">Go!</a>
-        <tbis-display-list-view thietbis="tbisList.thietbis" total-count="tbisList.thietbisCount"></tbis-display-list-view>
-        <!--<div layout="column" layout-padding>-->
-
-            <!--&lt;!&ndash;Them thiet bi moi&ndash;&gt;-->
-            <!--<div layout="column">-->
-            <!--<pre>-->
-                <!--{{tbisList.settings |json}}-->
-            <!--</pre>-->
-            <!--</div>-->
-        <!--</div>-->
+        <tbis-search-form ng-hide="tbisList.componentOptions.searchFilterMode=='filter'"></tbis-search-form>
+        <tbis-filter-form ng-hide="tbisList.componentOptions.searchFilterMode=='search'"></tbis-filter-form>
+        <tbis-display-list-view ng-if="tbisList.componentOptions.viewMode==='list'" thietbis="tbisList.thietbis" total-count="tbisList.thietbisCount"></tbis-display-list-view>
+        <tbis-display-grid-view ng-if="tbisList.componentOptions.viewMode==='grid'" thietbis="tbisList.thietbis" total-count="tbisList.thietbisCount"></tbis-display-grid-view>
+        <div layout="column" layout-padding>
+            <div layout="column">
+            <pre>
+                {{tbisList.componentOptions |json}}
+            </pre>
+            </div>
+        </div>
     </div>
 </md-content>
 <tbis-list-fab-menu></tbis-list-fab-menu>

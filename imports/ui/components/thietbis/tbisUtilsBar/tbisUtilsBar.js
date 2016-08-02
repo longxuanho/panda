@@ -3,9 +3,10 @@ import angularMeteor from 'angular-meteor';
 
 import template from './tbisUtilsBar.html';
 import { name as TbisListPageSettingsService } from '../../../services/thietbis/tbisListPageSettingsService';
+import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
 
 class TbisUtilsBar {
-    constructor(tbisListPageSettingsService, $timeout) {
+    constructor(userLocalSettingsService) {
         'ngInject';
 
         this.utilsBarIconsOptions = this.initUtilsBarIconsOptions();
@@ -14,9 +15,8 @@ class TbisUtilsBar {
         this.viewModeOptions = this.initViewModeOptions();
         this.searchFilterOptions = this.initSearchFilterOptions();
 
-        this.settings = tbisListPageSettingsService.getPageSettings();
+        this.componentOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').utilsBar;
 
-        this.$timeout = $timeout;
     }
 
     $postLink() {
@@ -116,23 +116,19 @@ class TbisUtilsBar {
 
     openFilterMenu($mdOpenMenu, ev) {
         $mdOpenMenu(ev);
-        // Fix lỗi khi mở menu -> mất trạng thái sticky của thank TbisUtilsBar nếu đang scroll
-        // if (angular.element(window).scrollTop() > 64)
-        //     this.$timeout(() => {$('tbis-utils-bar').addClass("sky-sticky")}, 10);;
-
     }
 
     setCategory(mode) {
-        this.settings.category = mode;
+        this.componentOptions.category = mode;
     }
 
     setSearchFilterMode(mode) {
-        this.settings.searchFilterMode = mode;
+        this.componentOptions.searchFilterMode = mode;
         
     }
 
     setViewMode(mode) {
-        this.settings.viewMode = mode;
+        this.componentOptions.viewMode = mode;
     }
 }
 
@@ -141,7 +137,8 @@ const name = 'tbisUtilsBar';
 // create a module
 export default angular.module(name, [
     angularMeteor,
-    TbisListPageSettingsService
+    TbisListPageSettingsService,
+    UserLocalSettingsService
 ]).component(name, {
     template,
     controllerAs: name,
