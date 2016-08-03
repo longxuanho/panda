@@ -7,15 +7,18 @@ import { name as UserLocalSettingsService } from '../../../services/common/userL
 // import { name as TbisDataService } from '../../../services/tbis/tbisDataService';
 
 class TbisListGridViewKendoGrid {
-    constructor(userLocalSettingsService) {
+    constructor(userLocalSettingsService, $timeout) {
         'ngInject';
 
         let vm = this;
+        this.$timeout = $timeout;
         this.tbisListPageOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').utilsBar;
 
         this.kendoGridDataSource = new kendo.data.DataSource({
             data: [],
-            pageSize: this.tbisListPageOptions.pageSize
+            pageSize: 10,
+            schema: {
+            }
         });
 
         this.kendoGridOptions = {
@@ -40,14 +43,15 @@ class TbisListGridViewKendoGrid {
                 title: "Loại thiết bị"
             }],
             dataBound: function(e) {
-                vm.tbisListPageOptions.page = vm.kendoGridDataSource.page();
-                vm.tbisListPageOptions.pageSize = vm.kendoGridDataSource.pageSize();
             }
         }
     }
 
     refreshDataSource() {
-        this.kendoGridDataSource.data(this.thietbis);
+        this.onReload();
+        this.$timeout(() => {
+            this.kendoGridDataSource.data(this.thietbis);
+        }, 1000);
     }
 }
 
@@ -61,7 +65,8 @@ export default angular.module(name, [
     template,
     controllerAs: name,
     bindings: {
-        thietbis: '<'
+        thietbis: '<',
+        onReload: '&'
     },
     controller: TbisListGridViewKendoGrid
 });

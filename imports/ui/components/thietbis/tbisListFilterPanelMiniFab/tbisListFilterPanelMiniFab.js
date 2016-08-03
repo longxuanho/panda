@@ -1,10 +1,10 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
-import fabTemplate from './tbisListPageNavigationMiniFab.html';
-import modalTemplate from './tbisListPageNavigationModal.html';
+import fabTemplate from './tbisListFilterPanelMiniFab.html';
+import modalTemplate from './tbisListFilterPanelModal.html';
 
-class TbisListPageNavigationMiniFab {
+class TbisListFilterPanelMiniFab {
     constructor($mdDialog, $mdMedia) {
         'ngInject';
 
@@ -21,7 +21,7 @@ class TbisListPageNavigationMiniFab {
                     $mdDialog.hide();
                 }
             },
-            controllerAs: 'tbisListPageNavigationModal',
+            controllerAs: 'tbisListFilterPanelModal',
             template: modalTemplate,
             targetEvent: event,
             parent: angular.element(document.body),
@@ -31,7 +31,7 @@ class TbisListPageNavigationMiniFab {
     }
 }
 
-const name = 'tbisListPageNavigationMiniFab';
+const name = 'tbisListFilterPanelMiniFab';
 
 // create a module
 export default angular.module(name, [
@@ -39,5 +39,5 @@ export default angular.module(name, [
 ]).component(name, {
     template: fabTemplate,
     controllerAs: name,
-    controller: TbisListPageNavigationMiniFab
+    controller: TbisListFilterPanelMiniFab
 });

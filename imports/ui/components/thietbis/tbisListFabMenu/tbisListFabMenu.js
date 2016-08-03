@@ -2,7 +2,7 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
 import template from './tbisListFabMenu.html';
-import { name as TbisListPageNavigationMiniFab } from '../tbisListPageNavigationMiniFab/tbisListPageNavigationMiniFab';
+import { name as TbisListFilterPanelMiniFab } from '../tbisListFilterPanelMiniFab/tbisListFilterPanelMiniFab';
 import { name as TbisListAddNewMiniFab } from '../tbisListAddNewMiniFab/tbisListAddNewMiniFab';
 
 class TbisListFabMenu {
@@ -31,7 +31,7 @@ const name = 'tbisListFabMenu';
 // create a module
 export default angular.module(name, [
     angularMeteor,
-    TbisListPageNavigationMiniFab,
+    TbisListFilterPanelMiniFab,
     TbisListAddNewMiniFab
 ]).component(name, {
     template,

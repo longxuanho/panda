@@ -8,11 +8,8 @@ import { Counts } from 'meteor/tmeasday:publish-counts';
 
 import template from './tbisList.html';
 
-
-import { name as TbisDataService } from '../../../services/thietbis/tbisDataService';
 import { name as TbisUtilsBar } from '../tbisUtilsBar/tbisUtilsBar';
-import { name as TbisSearchForm } from '../tbisSearchForm/tbisSearchForm';
-import { name as TbisFilterForm } from '../tbisFilterForm/tbisFilterForm';
+
 import { name as TbisListFabMenu } from '../tbisListFabMenu/tbisListFabMenu';
 
 import { name as TbisDisplayListView } from '../tbisDisplayListView/tbisDisplayListView';
@@ -23,7 +20,7 @@ import { name as UserLocalSettingsService } from '../../../services/common/userL
 
 
 class TbisList {
-    constructor($scope, $reactive, userLocalSettingsService, tbisDataService,
+    constructor($scope, $reactive, userLocalSettingsService,
                 tbisPhanLoaiDataService, tbisNguonGocDataService, tbisPhanQuyenDataService,
                 tbisDiaDiemDataService, tbisReferenceDataService,
                 tsktThongSoKyThuatDataService) {
@@ -32,18 +29,7 @@ class TbisList {
         $reactive(this).attach($scope);
 
         this.componentOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').utilsBar;
-
-        this.searchText = '';
         this.isOpen = false;
-
-        this.subscribe('thietbis', () => [
-            {
-                limit: parseInt(this.perPage),
-                skip: parseInt((this.getReactively('page') - 1) * this.perPage),
-                sort: this.getReactively('sort')
-            },
-            this.getReactively('searchText')
-        ]);
 
         this.subscribe('tbishelpers');
         this.subscribe('tskthelpers');
@@ -58,22 +44,8 @@ class TbisList {
             },
             tskthelpers() {
                 tsktThongSoKyThuatDataService.queryAll();
-            },
-            thietbis() {
-                return tbisDataService.query();
-            },
-            thietbisCount() {
-                return Counts.get('numberOfThietBis');
             }
         });
-    }
-
-    pageChanged(newPage) {
-        this.page = newPage;
-    }
-
-    sortChanged(sort) {
-        this.sort = sort;
     }
 }
 
@@ -86,9 +58,6 @@ export default angular.module(name, [
     ngMdIcons,
     utilsPagination,
     TbisUtilsBar,
-    TbisSearchForm,
-    TbisFilterForm,
-    TbisDataService,
     TbisListFabMenu,
 
     TbisDisplayListView,

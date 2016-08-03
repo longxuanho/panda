@@ -1,10 +1,8 @@
 <md-content layout="column">
     <tbis-utils-bar></tbis-utils-bar>
     <div>
-        <tbis-search-form ng-hide="tbisList.componentOptions.searchFilterMode=='filter'"></tbis-search-form>
-        <tbis-filter-form ng-hide="tbisList.componentOptions.searchFilterMode=='search'"></tbis-filter-form>
-        <tbis-display-list-view ng-if="tbisList.componentOptions.viewMode==='list'" thietbis="tbisList.thietbis" total-count="tbisList.thietbisCount"></tbis-display-list-view>
-        <tbis-display-grid-view ng-if="tbisList.componentOptions.viewMode==='grid'" thietbis="tbisList.thietbis" total-count="tbisList.thietbisCount"></tbis-display-grid-view>
+        <tbis-display-list-view ng-if="tbisList.componentOptions.viewMode==='list'"></tbis-display-list-view>
+        <tbis-display-grid-view ng-if="tbisList.componentOptions.viewMode==='grid'"></tbis-display-grid-view>
         <div layout="column" layout-padding>
             <div layout="column">
             <pre>

@@ -1,6 +1,6 @@
-tbisListGridViewKendoGrid.html
-<div kendo-grid="tbisListGridViewKendoGrid.kendoGrid" options="tbisListGridViewKendoGrid.kendoGridOptions"></div>
+<div kendo-grid="tbisListGridViewKendoGrid.kendoGrid" options="tbisListGridViewKendoGrid.kendoGridOptions" style="border-left-width: 0;border-right-width: 0;border-top-width: 0;"></div>
 <button ng-click="tbisListGridViewKendoGrid.refreshDataSource()">refresh</button>
 <pre>
-    {{tbisListGridViewKendoGrid.tbisListPageOptions | json}}
+    tbisLength: {{tbisListGridViewKendoGrid.thietbis.length}}<br/>
+    tbisTotal: {{tbisListGridViewKendoGrid.totalCount}}
 </pre>

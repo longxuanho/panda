@@ -2,13 +2,49 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
 import template from './tbisDisplayListView.html';
+
+import { name as TbisSearchForm } from '../tbisSearchForm/tbisSearchForm';
+import { name as TbisFilterForm } from '../tbisFilterForm/tbisFilterForm';
+
 import { name as TbisDisplayListItem } from '../tbisDisplayListItem/tbisDisplayListItem';
-// import { name as TbisDataService } from '../../../services/tbis/tbisDataService';
+import { name as TbisDataService } from '../../../services/thietbis/tbisDataService';
+import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
 
 class TbisDisplayListView {
-    constructor() {
+    constructor($reactive, $scope, userLocalSettingsService, tbisDataService) {
         'ngInject';
+        $reactive(this).attach($scope);
+
+        this.componentOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').utilsBar;
+
+        this.searchText = '';
+
+        this.subscribe('thietbis', () => [
+            {
+                limit: parseInt(this.getReactively('componentOptions.pageSize')),
+                skip: parseInt((this.getReactively('componentOptions.page') - 1) * this.componentOptions.pageSize),
+                sort: this.getReactively('sort')
+            },
+            this.getReactively('searchText')
+        ]);
+
+        this.helpers({
+            thietbis() {
+                return tbisDataService.query();
+            },
+            thietbisCount() {
+                return Counts.get('numberOfThietBis');
+            }
+        });
         
+    }
+
+    pageChanged(newPage) {
+        this.componentOptions.page = newPage;
+    }
+
+    sortChanged(sort) {
+        this.componentOptions.sort = sort;
     }
 }
 
@@ -17,13 +53,15 @@ const name = 'tbisDisplayListView';
 // create a module
 export default angular.module(name, [
     angularMeteor,
-    TbisDisplayListItem
+    TbisSearchForm,
+    TbisFilterForm,
+    TbisDisplayListItem,
+    TbisDataService,
+    UserLocalSettingsService
 ]).component(name, {
     template,
     controllerAs: name,
     bindings: {
-        thietbis: '<',
-        totalCount: '<'
     },
     controller: TbisDisplayListView
 });

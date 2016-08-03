@@ -64,14 +64,14 @@ function queryDefaultSettings() {
             options: {
                 utilsBar: {
                     category: 'Tất cả',
-                    viewMode: 'grid',
+                    viewMode: 'list',
                     filterText: '',
                     filterBy: '',
                     searchText: '',
                     searchBy: 'searchField',
                     searchFilterMode: 'search',     // Available options: search, filter, search_filter
                     page: 1,
-                    pageSize: 10,
+                    pageSize: 5,
                     sort: {
                     }
                 },
