@@ -5,9 +5,27 @@ import _ from 'underscore';
 
 class TbisFilterPanelSolverService {
 
-    constructor() {
+    constructor($q) {
         'ngInject';
+        this.$q = $q;
+        this.queryFilterOptions();
 
+    }
+
+    queryFilterOptions() {
+        Meteor.call('getTbisSourceForPanelFilter', (error, result) => {
+                if (error) {
+                    defer.reject(error);
+                } else {
+                    this.tbisFilterOptions = result;
+                    console.log('query done');
+                }
+            }
+        );
+    }
+
+    getFilterOptions() {
+        return this.tbisFilterOptions;
     }
 
 }

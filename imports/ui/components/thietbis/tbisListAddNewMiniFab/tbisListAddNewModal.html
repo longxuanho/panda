@@ -1,25 +1,25 @@
 <md-dialog aria-label="Tạo mới" ng-cloak>
-        <md-toolbar>
-            <div class="md-toolbar-tools">
-                <h2>Tạo mới thiết bị</h2>
-                <span flex></span>
-                <md-button class="md-icon-button" ng-click="tbisListAddNewModal.close()">
-                    <md-icon md-svg-src="img/icons/common/close.svg" aria-label="Đóng hộp thoại"></md-icon>
-                </md-button>
-            </div>
-        </md-toolbar>
-        <md-dialog-content>
-            <!-- <div class="md-dialog-content"> -->
-                <p class="md-body-1" style="padding: 16px 16px 0px 16px;">Vui lòng điền các thông tin thiết bị vào mẫu phiếu dưới đây:</p>
-                <tbis-list-major-input-form view-model="tbisListAddNewModal.newThietBi"></tbis-list-major-input-form>
-            <pre>
-                {{ tbisListAddNewModal.newThietBi | json }}
-            </pre>
-            <!-- </div> -->
-        </md-dialog-content>
-        <md-dialog-actions layout="row">
-            <md-button ng-click="tbisListAddNewModal.reset()" aria-label="Reset">Reset</md-button>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Tạo mới thiết bị</h2>
             <span flex></span>
-            <md-button style="margin-right:20px;" ng-click="tbisListAddNewModal.addNew()" aria-label="Tạo mới">Tạo mới</md-button>
-        </md-dialog-actions>
+            <md-button class="md-icon-button" ng-click="tbisListAddNewModal.close()">
+                <md-icon md-svg-src="img/icons/common/close.svg" aria-label="Đóng hộp thoại"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <!-- <div class="md-dialog-content"> -->
+            <p class="md-body-1" style="padding: 16px 16px 0px 16px;">Vui lòng điền các thông tin thiết bị vào mẫu phiếu dưới đây:</p>
+            <tbis-list-major-input-form view-model="tbisListAddNewModal.newThietBi"></tbis-list-major-input-form>
+        <pre>
+            {{ tbisListAddNewModal.newThietBi | json }}
+        </pre>
+        <!-- </div> -->
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <md-button ng-click="tbisListAddNewModal.reset()" aria-label="Reset">Reset</md-button>
+        <span flex></span>
+        <md-button style="margin-right:20px;" ng-click="tbisListAddNewModal.addNew()" aria-label="Tạo mới">Tạo mới</md-button>
+    </md-dialog-actions>
 </md-dialog>

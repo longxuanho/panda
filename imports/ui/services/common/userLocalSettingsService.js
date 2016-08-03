@@ -73,6 +73,14 @@ function queryDefaultSettings() {
                     page: 1,
                     pageSize: 5,
                     sort: {
+                    },
+                    filters: {
+                        chungloais: [],
+                        loais: [],
+                        khuvucs: [],
+                        hangsanxuats: [],
+                        dvsohuus: [],
+                        dvquanlies: []
                     }
                 },
                 searchFilter: {

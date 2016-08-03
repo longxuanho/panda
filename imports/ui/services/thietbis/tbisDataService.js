@@ -16,8 +16,10 @@ class TbisDataService {
     }
 
     query(selector, options) {
-        if (_.isEmpty(selector))
+        if (!selector)
             return ThietBis.find({}).fetch();
+        if (!options)
+            return ThietBis.find(selector).fetch();
         return ThietBis.find(selector, options).fetch();
     }
 
@@ -26,7 +28,6 @@ class TbisDataService {
     }
 
     initNewThietBiData() {
-        console.log('starting init...');
         return {
             ma_thiet_bi: {},
             phan_loai: {},

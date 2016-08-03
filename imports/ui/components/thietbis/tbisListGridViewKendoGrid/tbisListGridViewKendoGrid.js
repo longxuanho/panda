@@ -4,7 +4,6 @@ import angularMeteor from 'angular-meteor';
 import template from './tbisListGridViewKendoGrid.html';
 
 import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
-// import { name as TbisDataService } from '../../../services/tbis/tbisDataService';
 
 class TbisListGridViewKendoGrid {
     constructor(userLocalSettingsService, $timeout) {
