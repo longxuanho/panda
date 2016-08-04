@@ -36,8 +36,8 @@
                 </md-menu-item>
             </md-menu-content>
         </md-menu>
-        <!--Search / Filter Select Mode-->
-        <md-menu>
+        <!--Search / Filter Select Mode !not in Grid Mode -->
+        <md-menu ng-show="tbisUtilsBar.componentOptions.viewMode!=='grid'">
             <md-button aria-label="Chọn chế độ tìm kiếm / lọc" class="md-icon-button"
                        ng-click="tbisUtilsBar.openFilterMenu($mdOpenMenu, $event)">
                 <md-icon md-menu-origin md-svg-icon="{{tbisUtilsBar.utilsBarIconsOptions.searchFilterMode[tbisUtilsBar.componentOptions.searchFilterMode]}}"></md-icon>
@@ -45,6 +45,21 @@
             <md-menu-content width="4">
                 <md-menu-item ng-repeat="item in tbisUtilsBar.searchFilterOptions">
                     <md-button ng-click="tbisUtilsBar.setSearchFilterMode(item.value)">
+                        <md-icon ng-class="{'md-accent': item.value==tbisUtilsBar.componentOptions.searchFilterMode}" md-svg-icon="{{item.icon}}" md-menu-align-target></md-icon>
+                        {{item.text}}
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+        <!-- Toggle Search/Filter KGrid !for Grid Mode -->
+        <md-menu ng-show="tbisUtilsBar.componentOptions.viewMode==='grid'">
+            <md-button aria-label="Chọn chế độ tìm kiếm / lọc" class="md-icon-button"
+                       ng-click="tbisUtilsBar.openFilterMenu($mdOpenMenu, $event)">
+                <md-icon md-menu-origin md-svg-icon="{{tbisUtilsBar.utilsBarIconsOptions.searchFilterMode[tbisUtilsBar.componentOptions.searchFilterMode]}}"></md-icon>
+            </md-button>
+            <md-menu-content width="4">
+                <md-menu-item ng-repeat="item in tbisUtilsBar.searchFilterOptions">
+                    <md-button ng-click="tbisUtilsBar.setGridSearchFilterMode(item.value)">
                         <md-icon ng-class="{'md-accent': item.value==tbisUtilsBar.componentOptions.searchFilterMode}" md-svg-icon="{{item.icon}}" md-menu-align-target></md-icon>
                         {{item.text}}
                     </md-button>

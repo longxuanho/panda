@@ -128,6 +128,23 @@ class TbisUtilsBar {
         
     }
 
+    setGridSearchFilterMode(mode) {
+        if (mode==='search') {
+            $('#myGrid').data("kendoGrid").setOptions({
+                filterable: {
+                    mode: "row"
+                }
+            });
+        }
+        if (mode==='filter') {
+            $('#myGrid').data("kendoGrid").setOptions({
+                filterable: {
+                    mode: "menu"
+                }
+            });
+        }
+    }
+
     setViewMode(mode) {
         this.componentOptions.viewMode = mode;
     }
