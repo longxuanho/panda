@@ -29,6 +29,7 @@ class TbisList {
         $reactive(this).attach($scope);
 
         this.componentOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').utilsBar;
+        this.filterPanelOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').tbisFilterPanel;
         this.isOpen = false;
 
         this.subscribe('tbishelpers');
@@ -77,6 +78,15 @@ function config($stateProvider) {
     $stateProvider
         .state('thietbis', {
             url: '/thiet-bi',
-            template: '<tbis-list></tbis-list>'
+            template: '<tbis-list></tbis-list>',
+            resolve: {
+                currentUser($q) {
+                    if (Meteor.userId() === null) {
+                        return $q.reject('AUTH_REQUIRED');
+                    } else {
+                        return $q.resolve();
+                    }
+                }
+            }
         });
 }

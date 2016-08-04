@@ -21,14 +21,14 @@ class TbisListFilterPanelMiniFab {
 
     open(event) {
         this.$mdDialog.show({
-            controller($mdDialog, $scope, userLocalSettingsService) {
+            controller($mdDialog, userLocalSettingsService) {
                 'ngInject';
 
                 this.filterOptions = {};
                 this.componentOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').tbisFilterPanel;
 
                 this.refreshTriggerToken = () => {
-                    // Trigger thay đổi trong subcribe() hoặc getReactive() này bằng cách set lại _token của filter
+                    console.log('trigger token...');
                     this.componentOptions._token = Random.id();
                 };
 
@@ -39,7 +39,7 @@ class TbisListFilterPanelMiniFab {
 
                 this.reset = () => {
                     _.each(_.keys(this.componentOptions.filters), (key) => {
-                            this.componentOptions.filters[key] = [];
+                        this.componentOptions.filters[key] = [];
                     });
                     this.refreshTriggerToken();
                 };

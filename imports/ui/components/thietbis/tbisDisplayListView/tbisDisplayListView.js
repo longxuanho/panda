@@ -17,10 +17,6 @@ class TbisDisplayListView {
 
         this.componentOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').utilsBar;
         this.filterPanelOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').tbisFilterPanel;
-        console.log('this: ', this.filterPanelOptions);
-        $scope.$watch('tbisDisplayListView.filterPanelOptions._token', (newValue) => {
-            console.log('change triggered, ', newValue);
-        });
 
         this.searchText = '';
 

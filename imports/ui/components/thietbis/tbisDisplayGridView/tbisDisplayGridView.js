@@ -11,10 +11,17 @@ class TbisDisplayGridView {
         'ngInject';
         $reactive(this).attach($scope);
 
-        this.componentOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').utilsBar;
+        this.filterPanelOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').tbisFilterPanel;
         this.tbisDataService = tbisDataService;
 
-        this.subscribe('thietbis');
+        this.subscribe('thietbis', () => [
+            {},
+            '',
+            {
+                _token: this.getReactively('filterPanelOptions._token'),
+                filters: this.filterPanelOptions.filters
+            }
+        ]);
 
         $timeout(() => {
             this.thietbis = tbisDataService.query();

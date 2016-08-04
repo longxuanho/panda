@@ -8,13 +8,12 @@ class UserLocalSettingsService {
 
     constructor() {
         'ngInject';
-        this.settings = [];
-        this.defaultSettings = queryDefaultSettings();
+        this.settings = queryDefaultSettings();
     }
 
     initDefaultCurrentUserLocalSettings() {
         // console.log('initDefaultCurrentUserLocalSettings');
-        this.settings = angular.copy(this.defaultSettings);
+        this.settings = queryDefaultSettings();
     }
 
     initCurrentUserLocalSettings(user) {
@@ -24,8 +23,9 @@ class UserLocalSettingsService {
             let foundSetting = _.find(allSettings, (setting) => {
                 return setting.user._id === user._id;
             });
-            if (_.isEmpty(foundSetting))
-                this.initDefaultCurrentUserLocalSettings();
+            if (_.isEmpty(foundSetting)) {
+                // this.initDefaultCurrentUserLocalSettings();
+            }
             else
                 this.settings = foundSetting.settings;
         } else

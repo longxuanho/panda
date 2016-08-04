@@ -17,6 +17,7 @@ class TbisUtilsBar {
 
         this.componentOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').utilsBar;
 
+
     }
 
     $postLink() {

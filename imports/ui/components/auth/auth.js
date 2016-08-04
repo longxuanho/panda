@@ -24,6 +24,7 @@ class Auth {
         this.currentUserService = currentUserService;
         this.userLocalSettingsService = userLocalSettingsService;
 
+
         this.helpers({
             isLoggedIn() {
                 return !!Meteor.userId();
