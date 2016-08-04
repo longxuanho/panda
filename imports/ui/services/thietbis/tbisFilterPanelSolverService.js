@@ -8,24 +8,28 @@ class TbisFilterPanelSolverService {
     constructor($q) {
         'ngInject';
         this.$q = $q;
-        this.queryFilterOptions();
-
     }
 
     queryFilterOptions() {
+        let defer = this.$q.defer();
         Meteor.call('getTbisSourceForPanelFilter', (error, result) => {
                 if (error) {
                     defer.reject(error);
                 } else {
-                    this.tbisFilterOptions = result;
                     console.log('query done');
+                    defer.resolve(result);
                 }
             }
         );
+        return defer.promise;
     }
 
     getFilterOptions() {
         return this.tbisFilterOptions;
+    }
+
+    setFilterOptions(options) {
+        this.tbisFilterOptions = angular.copy(options);
     }
 
 }

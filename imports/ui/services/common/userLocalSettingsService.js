@@ -73,6 +73,14 @@ function queryDefaultSettings() {
                     page: 1,
                     pageSize: 5,
                     sort: {
+                    }
+                },
+                tbisFilterPanel: {
+                    _token: 'default_token',  // Token này sẽ reactive trong subscribe hoặc getReactive để trigger truy vấn CSDL khi token được set.
+                    display: {
+                        isPhanLoaiPanel: true,
+                        isHoSoTBPanel: true,
+                        isPhanQuyenPanel: true
                     },
                     filters: {
                         chungloais: [],

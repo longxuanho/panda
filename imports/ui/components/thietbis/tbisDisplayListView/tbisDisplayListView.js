@@ -16,6 +16,11 @@ class TbisDisplayListView {
         $reactive(this).attach($scope);
 
         this.componentOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').utilsBar;
+        this.filterPanelOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').tbisFilterPanel;
+        console.log('this: ', this.filterPanelOptions);
+        $scope.$watch('tbisDisplayListView.filterPanelOptions._token', (newValue) => {
+            console.log('change triggered, ', newValue);
+        });
 
         this.searchText = '';
 
@@ -25,7 +30,11 @@ class TbisDisplayListView {
                 skip: parseInt((this.getReactively('componentOptions.page') - 1) * this.componentOptions.pageSize),
                 sort: this.getReactively('sort')
             },
-            this.getReactively('searchText')
+            this.getReactively('searchText'),
+            {
+                _token: this.getReactively('filterPanelOptions._token'),
+                filters: this.filterPanelOptions.filters
+            }
         ]);
 
         this.helpers({

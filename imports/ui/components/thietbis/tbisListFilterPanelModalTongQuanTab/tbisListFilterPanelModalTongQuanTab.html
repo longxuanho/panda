@@ -1,82 +1,90 @@
 <md-list>
     <!--Section: Phân loại-->
-    <div ng-if="!tbisListFilterPanelModalTongQuanTab.filterOptions">
+    <div ng-if="!tbisListFilterPanelModalTongQuanTab.filterOptions.chungloais">
         <p class="md-body-1" style="padding: 16px 16px 0px 16px;">
-            Để bắt đầu, vui lòng khởi tạo danh mục truy vấn và lọc dữ liệu của bạn tại đây:
+            Để bắt đầu, xin hãy chờ trong giây lát để chúng tôi có thể khởi tạo các danh mục tại đây:
         </p>
-        <md-button ng-hide="tbisListFilterPanelModalTongQuanTab.isKhoiTaoLoading" class="md-accent" style="margin-left:10px;margin-bottom: 20px;" ng-click="tbisListFilterPanelModalTongQuanTab.getFilterOptions()" aria-label="Khởi tạo">Khởi tạo danh mục</md-button>
         <md-progress-circular ng-if="tbisListFilterPanelModalTongQuanTab.isKhoiTaoLoading" class="md-accent" md-diameter="40" style="margin-left: 16px;"></md-progress-circular>
     </div>
-    <div ng-if="tbisListFilterPanelModalTongQuanTab.filterOptions">
+    <div ng-if="tbisListFilterPanelModalTongQuanTab.filterOptions.chungloais">
+        <p class="md-body-1" style="padding: 16px;">
+            Chế độ giới hạn dữ liệu cho phép truy xuất nhanh dữ liệu thông qua các bộ lọc thông minh. Vui lòng chọn các tham số theo bảng dưới đây để bắt đầu:
+        </p>
+        <md-divider></md-divider>
         <md-subheader class="md-no-sticky" style="margin-bottom: 20px;">Phân loại</md-subheader>
-        <md-list-item>
-            <div style="width:100%; padding-bottom: 10px;">
-                <label class="md-body-1">Chủng loại</label>
-                <select  kendo-multi-select k-auto-close="false"
-                         k-data-source="tbisListFilterPanelModalTongQuanTab.filterOptions.chungloais"
-                         k-value-primitive="true"
-                         k-ng-model="tbisListFilterPanelModalTongQuanTab.tbisListPageOptions.filters.chungloais">
-                </select>
-            </div>
-        </md-list-item>
-        <md-list-item>
-            <div style="width:100%; padding-bottom: 20px;">
-                <label class="md-body-1">Loại</label>
-                <select  kendo-multi-select k-auto-close="false"
-                         k-data-source="tbisListFilterPanelModalTongQuanTab.filterOptions.loais"
-                         k-value-primitive="true"
-                         k-ng-model="tbisListFilterPanelModalTongQuanTab.tbisListPageOptions.filters.loais">
-                </select>
-            </div>
-        </md-list-item>
+        <div ng-show="tbisListFilterPanelModalTongQuanTab.filterPanelOptions.display.isPhanLoaiPanel">
+            <md-list-item >
+                <div style="width:100%; padding-bottom: 10px;">
+                    <label class="md-body-1">Chủng loại</label>
+                    <select  kendo-multi-select k-auto-close="false"
+                             k-data-source="tbisListFilterPanelModalTongQuanTab.filterOptions.chungloais"
+                             k-value-primitive="true"
+                             k-ng-model="tbisListFilterPanelModalTongQuanTab.filterPanelOptions.filters.chungloais">
+                    </select>
+                </div>
+            </md-list-item>
+            <md-list-item>
+                <div style="width:100%; padding-bottom: 20px;">
+                    <label class="md-body-1">Loại</label>
+                    <select  kendo-multi-select k-auto-close="false"
+                             k-data-source="tbisListFilterPanelModalTongQuanTab.filterOptions.loais"
+                             k-value-primitive="true"
+                             k-ng-model="tbisListFilterPanelModalTongQuanTab.filterPanelOptions.filters.loais">
+                    </select>
+                </div>
+            </md-list-item>
+        </div>
+
         <!--Section: Phân loại-->
         <md-divider></md-divider>
         <md-subheader class="md-no-sticky" style="margin-bottom: 20px;">Hồ sơ TB</md-subheader>
-        <md-list-item>
-            <div style="width:100%; padding-bottom: 3px;">
-                <label class="md-body-1">Khu vực</label>
-                <select  kendo-multi-select k-auto-close="false"
-                         k-data-source="tbisListFilterPanelModalTongQuanTab.filterOptions.khuvucs"
-                         k-value-primitive="true"
-                         k-ng-model="tbisListFilterPanelModalTongQuanTab.tbisListPageOptions.filters.khuvucs">
-                </select>
-            </div>
-        </md-list-item>
-        <md-list-item>
-            <div style="width:100%; padding-bottom: 30px;">
-                <label class="md-body-1">Hãng sản xuất</label>
-                <select  kendo-multi-select k-auto-close="false"
-                         k-data-source="tbisListFilterPanelModalTongQuanTab.filterOptions.hangsanxuats"
-                         k-value-primitive="true"
-                         k-ng-model="tbisListFilterPanelModalTongQuanTab.tbisListPageOptions.filters.hangsanxuats">
-                </select>
-            </div>
-        </md-list-item>
+        <div ng-show="tbisListFilterPanelModalTongQuanTab.filterPanelOptions.display.isHoSoTBPanel">
+            <md-list-item>
+                <div style="width:100%; padding-bottom: 3px;">
+                    <label class="md-body-1">Khu vực</label>
+                    <select  kendo-multi-select k-auto-close="false"
+                             k-data-source="tbisListFilterPanelModalTongQuanTab.filterOptions.khuvucs"
+                             k-value-primitive="true"
+                             k-ng-model="tbisListFilterPanelModalTongQuanTab.filterPanelOptions.filters.khuvucs">
+                    </select>
+                </div>
+            </md-list-item>
+            <md-list-item>
+                <div style="width:100%; padding-bottom: 30px;">
+                    <label class="md-body-1">Hãng sản xuất</label>
+                    <select  kendo-multi-select k-auto-close="false"
+                             k-data-source="tbisListFilterPanelModalTongQuanTab.filterOptions.hangsanxuats"
+                             k-value-primitive="true"
+                             k-ng-model="tbisListFilterPanelModalTongQuanTab.filterPanelOptions.filters.hangsanxuats">
+                    </select>
+                </div>
+            </md-list-item>
+        </div>
+
         <!--Section: Phân quyền-->
         <md-divider></md-divider>
         <md-subheader class="md-no-sticky" style="margin-bottom: 20px;">Phân quyền</md-subheader>
-        <md-list-item>
-            <div style="width:100%; padding-bottom: 3px;">
-                <label class="md-body-1">Sở hữu</label>
-                <select  kendo-multi-select k-auto-close="false"
-                         k-data-source="tbisListFilterPanelModalTongQuanTab.filterOptions.dvsohuus"
-                         k-value-primitive="true"
-                         k-ng-model="tbisListFilterPanelModalTongQuanTab.tbisListPageOptions.filters.dvsohuus">
-                </select>
-            </div>
-        </md-list-item>
-        <md-list-item>
-            <div style="width:100%; padding-bottom: 30px;">
-                <label class="md-body-1">Quản lý</label>
-                <select  kendo-multi-select k-auto-close="false"
-                         k-data-source="tbisListFilterPanelModalTongQuanTab.filterOptions.dvquanlies"
-                         k-value-primitive="true"
-                         k-ng-model="tbisListFilterPanelModalTongQuanTab.tbisListPageOptions.filters.dvquanlies">
-                </select>
-            </div>
-        </md-list-item>
+        <div ng-show="tbisListFilterPanelModalTongQuanTab.filterPanelOptions.display.isPhanQuyenPanel">
+            <md-list-item>
+                <div style="width:100%; padding-bottom: 3px;">
+                    <label class="md-body-1">Sở hữu</label>
+                    <select  kendo-multi-select k-auto-close="false"
+                             k-data-source="tbisListFilterPanelModalTongQuanTab.filterOptions.dvsohuus"
+                             k-value-primitive="true"
+                             k-ng-model="tbisListFilterPanelModalTongQuanTab.filterPanelOptions.filters.dvsohuus">
+                    </select>
+                </div>
+            </md-list-item>
+            <md-list-item>
+                <div style="width:100%; padding-bottom: 30px;">
+                    <label class="md-body-1">Quản lý</label>
+                    <select  kendo-multi-select k-auto-close="false"
+                             k-data-source="tbisListFilterPanelModalTongQuanTab.filterOptions.dvquanlies"
+                             k-value-primitive="true"
+                             k-ng-model="tbisListFilterPanelModalTongQuanTab.filterPanelOptions.filters.dvquanlies">
+                    </select>
+                </div>
+            </md-list-item>
+        </div>
     </div>
 </md-list>
-<pre>
-    {{tbisListFilterPanelModalTongQuanTab.tbisListPageOptions | json}}
-</pre>

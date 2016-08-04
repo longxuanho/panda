@@ -1,0 +1,24 @@
+<md-list>
+    <p class="md-body-1" style="padding: 16px;">
+        Các thiết lập cho bộ lọc dữ liệu được thay đổi tại đây. Để đơn giản hóa bảng giới hạn dữ liệu, bạn có thể ẩn đi những panel không cần thiết.
+    </p>
+    <md-divider></md-divider>
+    <md-subheader class="md-no-sticky">Các bộ lọc hiển thị</md-subheader>
+    <md-list-item ng-click="null">
+        <p> Bộ lọc Phân loại </p>
+        <md-switch class="md-secondary" ng-model="tbisListFilterPanelModalThietLapTab.filterPanelOptions.display.isPhanLoaiPanel"></md-switch>
+    </md-list-item>
+    <md-list-item ng-click="null">
+        <p> Bộ lọc Hồ sơ TB </p>
+        <md-switch class="md-secondary" ng-model="tbisListFilterPanelModalThietLapTab.filterPanelOptions.display.isHoSoTBPanel"></md-switch>
+    </md-list-item>
+    <md-list-item ng-click="null">
+        <p> Bộ lọc Phân quyền </p>
+        <md-switch class="md-secondary" ng-model="tbisListFilterPanelModalThietLapTab.filterPanelOptions.display.isPhanQuyenPanel"></md-switch>
+    </md-list-item>
+    <md-divider></md-divider>
+    <md-subheader class="md-no-sticky" style="margin-bottom: 10px;">Refresh dữ liệu</md-subheader>
+    <md-button ng-hide="tbisListFilterPanelModalThietLapTab.isKhoiTaoLoading" class="md-accent" style="margin-left:10px;margin-bottom: 20px;" ng-click="tbisListFilterPanelModalThietLapTab.solveFilterOptions()" aria-label="Khởi tạo">Làm mới danh mục</md-button>
+    <md-progress-circular ng-if="tbisListFilterPanelModalThietLapTab.isKhoiTaoLoading" class="md-accent" md-diameter="40" style="margin-left: 16px;"></md-progress-circular>
+    <div style="width:100%;height:20px;" ></div>
+</md-list>

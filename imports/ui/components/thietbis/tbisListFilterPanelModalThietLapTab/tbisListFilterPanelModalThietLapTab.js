@@ -1,21 +1,16 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
-import template from './tbisListFilterPanelModalTongQuanTab.html';
+import template from './tbisListFilterPanelModalThietLapTab.html';
 import { name as TbisFilterPanelSolverService } from '../../../services/thietbis/tbisFilterPanelSolverService';
 
-class TbisListFilterPanelModalTongQuanTab {
-    constructor(tbisFilterPanelSolverService, $timeout) {
+class tbisListFilterPanelModalThietLapTab {
+    constructor(tbisFilterPanelSolverService, $timeout, $mdToast) {
         'ngInject';
         this.$timeout = $timeout;
-        this.tbisFilterPanelSolverService = tbisFilterPanelSolverService;
+        this.$mdToast = $mdToast;
         this.isKhoiTaoLoading = false;
-
-
-
-        this.filterOptions = tbisFilterPanelSolverService.getFilterOptions();
-        if(!this.filterOptions)
-            this.solveFilterOptions();
+        this.tbisFilterPanelSolverService = tbisFilterPanelSolverService;
     }
 
     solveFilterOptions() {
@@ -24,18 +19,23 @@ class TbisListFilterPanelModalTongQuanTab {
             this.filterOptions = result;
             this.isKhoiTaoLoading = false;
             this.tbisFilterPanelSolverService.setFilterOptions(result);
+            this.$mdToast.show({
+                hideDelay: 5000,
+                position : 'top right',
+                template : '<md-toast><span class="md-toast-text" flex>Đồng bộ danh mục dữ liệu thành công!</span></md-toast>'
+            });
         }).catch((error) => {
             console.log('Có lỗi xảy ra khi truy vấn danh mục', error.message);
         });
     }
 }
 
-const name = 'tbisListFilterPanelModalTongQuanTab';
+const name = 'tbisListFilterPanelModalThietLapTab';
 
 // create a module
 export default angular.module(name, [
     angularMeteor,
-    TbisFilterPanelSolverService,
+    TbisFilterPanelSolverService
 ]).component(name, {
     template: template,
     bindings: {
@@ -43,5 +43,5 @@ export default angular.module(name, [
         filterPanelOptions: '='
     },
     controllerAs: name,
-    controller: TbisListFilterPanelModalTongQuanTab
+    controller: tbisListFilterPanelModalThietLapTab
 });
