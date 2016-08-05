@@ -12,10 +12,15 @@ import { name as TbisUtilsBar } from '../tbisUtilsBar/tbisUtilsBar';
 
 import { name as TbisListFabMenu } from '../tbisListFabMenu/tbisListFabMenu';
 
+import { name as TbisPhanLoaiDataService } from '../../../services/thietbis/tbisPhanLoaiDataService';
+import { name as TbisNguonGocDataService } from '../../../services/thietbis/tbisNguonGocDataService';
+import { name as TbisPhanQuyenDataService } from '../../../services/thietbis/tbisPhanQuyenDataService';
+import { name as TbisDiaDiemDataService } from '../../../services/thietbis/tbisDiaDiemDataService';
+import { name as TbisReferenceDataService } from '../../../services/thietbis/tbisReferenceDataService';
+
 import { name as TbisDisplayListView } from '../tbisDisplayListView/tbisDisplayListView';
 import { name as TbisDisplayGridView } from '../tbisDisplayGridView/tbisDisplayGridView';
 
-import { name as TbisListPageSettingsService } from '../../../services/thietbis/tbisListPageSettingsService';
 import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
 
 
@@ -64,8 +69,13 @@ export default angular.module(name, [
     TbisDisplayListView,
     TbisDisplayGridView,
 
-    TbisListPageSettingsService,
     UserLocalSettingsService,
+
+    TbisPhanLoaiDataService,
+    TbisNguonGocDataService,
+    TbisPhanQuyenDataService,
+    TbisDiaDiemDataService,
+    TbisReferenceDataService
 ]).component(name, {
     template,
     controllerAs: name,
@@ -77,7 +87,7 @@ function config($stateProvider) {
     'ngInject';
     $stateProvider
         .state('thietbis', {
-            url: '/thiet-bi',
+            url: '/quan-ly/thiet-bi',
             template: '<tbis-list></tbis-list>',
             resolve: {
                 currentUser($q) {

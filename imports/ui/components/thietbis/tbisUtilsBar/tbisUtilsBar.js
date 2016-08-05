@@ -2,7 +2,6 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
 import template from './tbisUtilsBar.html';
-import { name as TbisListPageSettingsService } from '../../../services/thietbis/tbisListPageSettingsService';
 import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
 
 class TbisUtilsBar {
@@ -155,7 +154,6 @@ const name = 'tbisUtilsBar';
 // create a module
 export default angular.module(name, [
     angularMeteor,
-    TbisListPageSettingsService,
     UserLocalSettingsService
 ]).component(name, {
     template,

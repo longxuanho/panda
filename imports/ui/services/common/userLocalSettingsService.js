@@ -97,14 +97,10 @@ function queryDefaultSettings() {
                     searchBy: 'searchField',
                     filterText: '',
                     filterBy: '',
-                },
-                subscribe: {
-                    page: '',
-                    sort: {
-                    }
                 }
             }
-        }, {
+        },
+        {
             _id: "Bmd6Berm4DbTR2ewk",
             module: "thietbis",
             page: "tbisDetails",
@@ -127,6 +123,93 @@ function queryDefaultSettings() {
                             }
                         }
                     }
+                }
+            }
+        },
+        {
+            _id: "Ryt6Berm4DbTR2eom",
+            module: "tbisrepList",
+            page: "tbisrepList",
+            options: {
+                utilsBar: {
+                    durationModal: {
+                        mode: 'default',
+                        default: {
+                            duration: '7_days',
+                            fromDate: moment().subtract(7, 'days').toDate(),
+                            toDate: new Date()
+                        },
+                        selectByUser: {
+                            fromDate: moment().subtract(7, 'days').toDate(),
+                            toDate: new Date(),
+                        }
+                    }
+                },
+                tbisFilterPanel: {
+                    _token: 'default_tbisrep_token',  // Token này sẽ reactive trong subscribe hoặc getReactive để trigger truy vấn CSDL khi token được set.
+                    display: {
+                        isPhanLoaiPanel: true,
+                        isHoSoTBPanel: true,
+                        isPhanQuyenPanel: true
+                    },
+                    filters: {
+                        chungloais: [],
+                        loais: [],
+                        khuvucs: [],
+                        hangsanxuats: [],
+                        dvsohuus: [],
+                        dvquanlies: []
+                    }
+                },
+                searchFilter: {
+                    mode: 'search', // Available options: search, filter, search_filter
+                    searchText: '',
+                    searchBy: 'searchField',
+                    filterText: '',
+                    filterBy: '',
+                }
+            }
+        },
+        {
+            _id: "Uit6Berm4FghR2eok",
+            module: "tbishisList",
+            page: "tbishisList",
+            options: {
+                utilsBar: {
+                    category: 'Tất cả',
+                    viewMode: 'list',
+                    filterText: '',
+                    filterBy: '',
+                    searchText: '',
+                    searchBy: 'searchField',
+                    searchFilterMode: 'search',     // Available options: search, filter, search_filter
+                    page: 1,
+                    pageSize: 5,
+                    sort: {
+                    }
+                },
+                tbisFilterPanel: {
+                    _token: 'default_tbishis_token',  // Token này sẽ reactive trong subscribe hoặc getReactive để trigger truy vấn CSDL khi token được set.
+                    display: {
+                        isPhanLoaiPanel: true,
+                        isHoSoTBPanel: true,
+                        isPhanQuyenPanel: true
+                    },
+                    filters: {
+                        chungloais: [],
+                        loais: [],
+                        khuvucs: [],
+                        hangsanxuats: [],
+                        dvsohuus: [],
+                        dvquanlies: []
+                    }
+                },
+                searchFilter: {
+                    mode: 'search', // Available options: search, filter, search_filter
+                    searchText: '',
+                    searchBy: 'searchField',
+                    filterText: '',
+                    filterBy: '',
                 }
             }
         }

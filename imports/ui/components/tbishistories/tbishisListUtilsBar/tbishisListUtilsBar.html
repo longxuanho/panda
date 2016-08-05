@@ -1,0 +1,25 @@
+<md-toolbar class="md-hue-2 md-whiteframe-2dp">
+    <div class="md-toolbar-tools">
+        <!--Category-->
+        <h3>Nhật ký thiết bị</h3>
+        <span flex></span>
+        <md-menu md-position-mode="target-right target">
+            <md-button class="md-icon-button" aria-label="Chọn mục" ng-click="tbishisListUtilsBar.openFilterMenu($mdOpenMenu, $event)">
+                <md-icon md-svg-icon="{{tbishisListUtilsBar.utilsBarIconsOptions.categories[tbishisListUtilsBar.componentOptions.category]}}"></md-icon>
+            </md-button>
+            <md-menu-content width="3">
+                <md-menu-item ng-repeat="item in tbishisListUtilsBar.categoryOptions">
+                    <md-button ng-click="tbishisListUtilsBar.setCategory(item.value)">
+                        <div layout="row" flex>
+                            <p flex>{{item.text}}</p>
+                            <md-icon md-svg-icon="{{item.icon}}" ng-class="{'md-accent': item.value==tbishisListUtilsBar.componentOptions.category}" style="margin: auto 3px auto 0;"></md-icon>
+                        </div>
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+        <md-button class="md-icon-button" aria-label="Cài đặt thanh tiện ích">
+            <md-icon md-svg-icon="img/icons/common/settings.svg"></md-icon>
+        </md-button>
+    </div>
+</md-toolbar>

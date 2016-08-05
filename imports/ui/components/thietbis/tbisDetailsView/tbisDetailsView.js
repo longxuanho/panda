@@ -74,7 +74,7 @@ function config($stateProvider) {
     'ngInject';
 
     $stateProvider.state('tbisDetailsView', {
-        url: '/thiet-bi/chi-tiet/:thietbiId',
+        url: '/quan-ly/thiet-bi/:thietbiId',
         template: '<tbis-details-view></tbis-details-view>',
         resolve: {
             currentUser($q) {
