@@ -23,13 +23,11 @@ class TbisDetailsViewReportViewMainReportTitle {
     }
 
     setEditMode() {
-        console.log('set!')
         this.newTitle = this.tbisReportsDataService.getSelectedTbisReport().tieu_de;
         this.isEditMode = true;
     }
 
     cancelEdit() {
-        console.log('cancel');
         this.isEditMode = false;
     }
 

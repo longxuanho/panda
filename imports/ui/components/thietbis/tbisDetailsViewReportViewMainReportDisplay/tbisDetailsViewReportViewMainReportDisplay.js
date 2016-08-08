@@ -8,6 +8,8 @@ import { name as TbisReportsDataService } from '../../../services/thietbis/tbisR
 import { name as NotificationService } from '../../../services/common/notificationService';
 import { name as TbisDetailsViewKendoEditor } from '../tbisDetailsViewKendoEditor/tbisDetailsViewKendoEditor';
 
+import { name as UserName } from '../../../directives/common/userName';
+
 class TbisDetailsViewReportViewMainReportDisplay {
     constructor($scope, $reactive, tbisReportsDataService, notificationService, metadataService) {
         'ngInject';
@@ -64,7 +66,8 @@ export default angular.module(name, [
     DisplayRelativeTimeFilter,
     TbisReportsDataService,
     NotificationService,
-    TbisDetailsViewKendoEditor
+    TbisDetailsViewKendoEditor,
+    UserName
 ]).component(name, {
     template,
     controllerAs: name,

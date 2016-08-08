@@ -12,6 +12,8 @@ import { name as TbisDetailsViewReportViewSearchTool } from '../tbisDetailsViewR
 import { name as TbisDetailsViewReportViewIconDisplay } from '../tbisDetailsViewReportViewIconDisplay/tbisDetailsViewReportViewIconDisplay';
 
 import { name as TbisDetailsViewReportViewOpenTabDetails } from '../tbisDetailsViewReportViewOpenTabDetails/tbisDetailsViewReportViewOpenTabDetails';
+import { name as UserName } from '../../../directives/common/userName';
+
 import { name as DisplayNameFilter } from '../../../filters/common/displayNameFilter';
 import { name as DisplayRelativeTimeFilter } from '../../../filters/common/displayRelativeTimeFilter';
 import { name as TbisDataService } from '../../../services/thietbis/tbisDataService';
@@ -135,6 +137,7 @@ export default angular.module(name, [
     MetadataService,
     NotificationService,
     DisplayNameFilter,
+    UserName,
     DisplayRelativeTimeFilter
 ]).component(name, {
     template,

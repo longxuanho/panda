@@ -1,7 +1,8 @@
 <md-list-item class="md-3-line md-long-text" style="margin:0;padding: 16px;background-color: rgb(250, 250, 250);">
     <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
     <div class="md-list-item-text sky-text-bind-html">
-        <h3>{{tbisDetailsViewReportViewMainReportDisplay.metadata.user.nguoi_tao | displayNameFilter}} · XNCG</h3>
+        <!--<h3>{{tbisDetailsViewReportViewMainReportDisplay.metadata.user.nguoi_tao | displayNameFilter}} · XNCG</h3>-->
+        <h3><span user-name mode="ten&maDonVi" user-id="{{tbisDetailsViewReportViewMainReportDisplay.metadata.user.nguoi_tao.keyId}}"></span></h3>
         <h4 style="margin-bottom: 10px">{{tbisDetailsViewReportViewMainReportDisplay.metadata.thoi_gian.tao_moi.ngay_tao_date | displayRelativeTimeFilter}}
             <span ng-if="tbisDetailsViewReportViewMainReportDisplay.isEditable && tbisDetailsViewReportViewMainReportDisplay.currentUserId===tbisDetailsViewReportViewMainReportDisplay.metadata.user.nguoi_tao.keyId ">
                 <a  ng-hide="tbisDetailsViewReportViewMainReportDisplay.isEditMode" class="sky-action-hover" ng-click="tbisDetailsViewReportViewMainReportDisplay.setEditMode()"> · sửa</a>

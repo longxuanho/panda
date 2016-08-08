@@ -3,12 +3,14 @@ import angularMeteor from 'angular-meteor';
 
 import template from './tbisDetailsViewReportViewCommentItem.html';
 
-import { name as DisplayNameFilter } from '../../../filters/common/displayNameFilter';
+// import { name as DisplayNameFilter } from '../../../filters/common/displayNameFilter';
 import { name as DisplayRelativeTimeFilter } from '../../../filters/common/displayRelativeTimeFilter';
 import { name as CurrentUserService } from '../../../services/common/currentUserService';
 import { name as TbisReportsDataService } from '../../../services/thietbis/tbisReportsDataService';
 import { name as NotificationService } from '../../../services/common/notificationService';
 import { name as TbisDetailsViewKendoEditor } from '../tbisDetailsViewKendoEditor/tbisDetailsViewKendoEditor';
+
+import { name as UserName } from '../../../directives/common/userName';
 
 class TbisDetailsViewReportViewCommentItem {
     constructor(currentUserService, tbisReportsDataService, notificationService) {
@@ -54,12 +56,12 @@ const name = 'tbisDetailsViewReportViewCommentItem';
 // create a module
 export default angular.module(name, [
     angularMeteor,
-    DisplayNameFilter,
     DisplayRelativeTimeFilter,
     TbisReportsDataService,
     NotificationService,
     CurrentUserService,
-    TbisDetailsViewKendoEditor
+    TbisDetailsViewKendoEditor,
+    UserName
 ]).component(name, {
     template,
     bindings: {

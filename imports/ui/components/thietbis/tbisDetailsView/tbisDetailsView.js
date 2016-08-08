@@ -25,6 +25,7 @@ class TbisDetailsView {
         console.log('details Component Options: ', this.componentOptions);
 
         this.subscribe('thietbis');
+        this.subscribe('users');
 
         this.helpers({
             thietbi() {

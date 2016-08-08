@@ -9,6 +9,7 @@ import { Counts } from 'meteor/tmeasday:publish-counts';
 import template from './tbisrepList.html';
 
 import { name as TbisrepListUtilsBar } from '../tbisrepListUtilsBar/tbisrepListUtilsBar';
+import { name as TbisrepListListView } from '../tbisrepListListView/tbisrepListListView';
 
 // import { name as TbisrepListFabMenu } from '../tbisListFabMenu/tbisListFabMenu';
 
@@ -47,6 +48,7 @@ export default angular.module(name, [
     ngMdIcons,
     utilsPagination,
     TbisrepListUtilsBar,
+    TbisrepListListView,
     UserLocalSettingsService
 ]).component(name, {
     template,

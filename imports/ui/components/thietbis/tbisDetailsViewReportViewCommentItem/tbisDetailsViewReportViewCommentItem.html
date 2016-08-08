@@ -1,5 +1,6 @@
 <div class="md-list-item-text" id="comment-{{tbisDetailsViewReportViewCommentItem.comment._id}}">
-    <h3>{{tbisDetailsViewReportViewCommentItem.comment.metadata.user.nguoi_tao | displayNameFilter}} · DVKT</h3>
+    <!--<h3>{{tbisDetailsViewReportViewCommentItem.comment.metadata.user.nguoi_tao | displayNameFilter}} · DVKT</h3>-->
+    <h3><span user-name mode="ten&maDonVi" user-id="{{tbisDetailsViewReportViewCommentItem.comment.metadata.user.nguoi_tao.keyId}}"></span></h3>
     <h4 style="margin-bottom: 10px">{{ tbisDetailsViewReportViewCommentItem.comment.metadata.thoi_gian.tao_moi.ngay_tao_date | displayRelativeTimeFilter }}
         <span ng-if="tbisDetailsViewReportViewCommentItem.isEditable && tbisDetailsViewReportViewCommentItem.currentUserId===tbisDetailsViewReportViewCommentItem.comment.metadata.user.nguoi_tao.keyId ">
                 <a  ng-hide="tbisDetailsViewReportViewCommentItem.isEditMode" class="sky-action-hover" ng-click="tbisDetailsViewReportViewCommentItem.setEditMode()"> · sửa</a>

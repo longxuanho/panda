@@ -241,6 +241,9 @@ Meteor.startup(() => {
                 ma: 'HUUTOAN',
                 ten: 'Hữu Toàn'
             }, {
+                ma: 'HYSTER',
+                ten: 'Hyster'
+            }, {
                 ma: 'HUYNDAI',
                 ten: 'Huyndai'
             }, {
