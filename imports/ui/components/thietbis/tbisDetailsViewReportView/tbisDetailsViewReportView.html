@@ -1,13 +1,13 @@
 <div class="sky-margin-top-{{tbisDetailsViewReportView.$mdMedia('gt-sm') ? '64' : '56'}}"></div>
 <md-tabs md-dynamic-height md-border-bottom>
-    <md-tab label="13 đang mở" md-on-select="tbisDetailsViewReportView.tabSelected='open'">
+    <md-tab label="13 đang mở" md-on-select="tbisDetailsViewReportView.subscribeOptions.status='open'">
         <md-content>
-            <tbis-details-view-report-view-open-tab></tbis-details-view-report-view-open-tab>
+            <tbis-details-view-report-view-tab mode="open" ng-if="tbisDetailsViewReportView.subscribeOptions.status==='open'"></tbis-details-view-report-view-tab>
         </md-content>
     </md-tab>
-    <md-tab label="64 đã đóng" md-on-select="tbisDetailsViewReportView.tabSelected='close'">
+    <md-tab label="13 đang đóng" md-on-select="tbisDetailsViewReportView.subscribeOptions.status='closed'">
         <md-content>
-            <tbis-details-view-report-view-closed-tab></tbis-details-view-report-view-closed-tab>
+            <tbis-details-view-report-view-tab mode="closed" ng-if="tbisDetailsViewReportView.subscribeOptions.status==='closed'"></tbis-details-view-report-view-tab>
         </md-content>
     </md-tab>
 </md-tabs>

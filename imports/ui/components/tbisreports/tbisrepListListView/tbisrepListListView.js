@@ -9,8 +9,6 @@ import template from './tbisrepListListView.html';
 // import { name as TbisrepListFabMenu } from '../tbisListFabMenu/tbisListFabMenu';
 
 import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
-import { name as TbisDetailsViewReportViewOpenTab } from '../../thietbis/tbisDetailsViewReportViewOpenTab/tbisDetailsViewReportViewOpenTab';
-import { name as TbisDetailsViewReportViewClosedTab } from '../../thietbis/tbisDetailsViewReportViewClosedTab/tbisDetailsViewReportViewClosedTab';
 
 
 class TbisrepListListView {
@@ -34,8 +32,6 @@ const name = 'tbisrepListListView';
 export default angular.module(name, [
     angularMeteor,
     utilsPagination,
-    TbisDetailsViewReportViewOpenTab,
-    TbisDetailsViewReportViewClosedTab,
     UserLocalSettingsService
 ]).component(name, {
     template,

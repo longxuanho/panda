@@ -16,6 +16,14 @@ class TbisDetailsViewKendoEditor {
             serialization: {
                 entities: false,
                 scripts: true
+            },
+            pasteCleanup: {
+                all: true,
+                css: true,
+                keepNewLines: true,
+                msAllFormatting: true,
+                msConvertLists: true,
+                msTags: true
             }
         };
     }

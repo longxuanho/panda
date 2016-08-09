@@ -1,0 +1,27 @@
+<md-list flex style="padding-top:0;">
+    <md-subheader class="md-no-sticky">
+        <md-icon style="float: left;color: rgba(0, 0, 0, 0.54);" md-svg-src="/img/icons/common/error_outline.svg" class="no-margin" aria-label="Tạo mới"></md-icon>
+        <tbis-details-view-report-view-main-report-title
+                is-editable="true"
+                title="{{tbisDetailsViewReportViewTabDetails.tbisReport.tieu_de}}"
+                comments-length="{{tbisDetailsViewReportViewTabDetails.tbisReport.comments.length}}"
+                metadata="tbisDetailsViewReportViewTabDetails.tbisReport.metadata">
+        </tbis-details-view-report-view-main-report-title>
+    </md-subheader>
+    <md-divider></md-divider>
+    <tbis-details-view-report-view-main-report-display
+            is-editable="true"
+            noi-dung="{{tbisDetailsViewReportViewTabDetails.tbisReport.noi_dung.html}}"
+            metadata="tbisDetailsViewReportViewTabDetails.tbisReport.metadata">
+    </tbis-details-view-report-view-main-report-display>
+    <md-divider></md-divider>
+    <tbis-details-view-report-view-comment-action-item ng-repeat="item in tbisDetailsViewReportViewTabDetails.mixedCommentsAndActions" is-editable="true" view-model="item">
+    </tbis-details-view-report-view-comment-action-item>
+    <div style="margin-top: 50px;"></div>
+    <md-list-item class="md-3-line md-long-text">
+        <img user-avatar user-id="{{tbisDetailsViewReportViewTabDetails.tbisReport.metadata.user.nguoi_tao.keyId}}" class="md-avatar"/>
+        <div class="md-list-item-text">
+            <tbis-details-view-kendo-editor ng-if="tbisDetailsViewReportViewTabDetails.isActiveEditor" view-model="tbisDetailsViewReportViewTabDetails.newComment.noi_dung.html"></tbis-details-view-kendo-editor>
+        </div>
+    </md-list-item>
+</md-list>

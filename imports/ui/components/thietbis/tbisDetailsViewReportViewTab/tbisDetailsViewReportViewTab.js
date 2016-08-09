@@ -4,24 +4,24 @@ import angularMeteor from 'angular-meteor';
 import { Meteor } from 'meteor/meteor';
 import { Random } from 'meteor/random';
 
-import template from './tbisDetailsViewReportViewOpenTab.html';
-import modalTemplate from './tbisDetailsViewReportViewOpenTabModal.html';
+import template from './tbisDetailsViewReportViewTab.html';
+import modalTemplate from './tbisDetailsViewReportViewTabModal.html';
 
 import { name as TbisReportsDataService } from '../../../services/thietbis/tbisReportsDataService';
 import { name as TbisDetailsViewReportViewSearchTool } from '../tbisDetailsViewReportViewSearchTool/tbisDetailsViewReportViewSearchTool';
 import { name as TbisDetailsViewReportViewIconDisplay } from '../tbisDetailsViewReportViewIconDisplay/tbisDetailsViewReportViewIconDisplay';
 
-import { name as TbisDetailsViewReportViewOpenTabDetails } from '../tbisDetailsViewReportViewOpenTabDetails/tbisDetailsViewReportViewOpenTabDetails';
-import { name as UserName } from '../../../directives/common/userName';
-
+import { name as TbisDetailsViewReportViewTabDetails } from '../tbisDetailsViewReportViewTabDetails/tbisDetailsViewReportViewTabDetails';
 import { name as DisplayRelativeTimeFilter } from '../../../filters/common/displayRelativeTimeFilter';
 import { name as TbisDataService } from '../../../services/thietbis/tbisDataService';
 
 import { name as MetadataService } from '../../../services/common/metadataService';
 import { name as NotificationService } from '../../../services/common/notificationService';
 
+import { name as UserName } from '../../../directives/common/userName';
 
-class TbisDetailsViewReportViewOpenTab {
+
+class TbisDetailsViewReportViewTab {
     constructor($reactive, $scope, $mdDialog, $mdMedia, tbisReportsDataService) {
         'ngInject';
         $reactive(this).attach($scope);
@@ -31,13 +31,9 @@ class TbisDetailsViewReportViewOpenTab {
         vm.$mdMedia = $mdMedia;
         vm.tbisReportDataService = tbisReportsDataService;
 
-        vm.subscribe('tbisreports');
-
         vm.helpers({
             tbisReports() {
-                return tbisReportsDataService.query({
-                    status: 'open'
-                });
+                return tbisReportsDataService.query();
             }
         });
     }
@@ -84,8 +80,8 @@ class TbisDetailsViewReportViewOpenTab {
                 this.closeSelectedTbisReport = () => {
                     $mdToast.show({
                         hideDelay: 5000,
-                            position : 'top right',
-                            controller: ($scope) => {
+                        position : 'top right',
+                        controller: ($scope) => {
                             'ngInject';
                             $scope.yes = () => {
                                 tbisReportsDataService.closeSelectedTbisReport(metadataService.generateNewAction('close', Meteor.user())).then(() => {
@@ -104,6 +100,29 @@ class TbisDetailsViewReportViewOpenTab {
                     });
                 };
 
+                this.reopenSelectedTbisReport = () => {
+                    $mdToast.show({
+                        hideDelay: 5000,
+                        position : 'top right',
+                        controller: ($scope) => {
+                            'ngInject';
+                            $scope.yes = () => {
+                                tbisReportsDataService.reopenSelectedTbisReport(metadataService.generateNewAction('reopen', Meteor.user())).then(() => {
+                                    notificationService.success('Thông báo của bạn đã được mở lại thành công.', 'Mở lại thông báo');
+                                    this.close();
+                                }).catch((err) => {
+                                    notificationService.error(err.message, 'Không thể mở mục này');
+                                });
+                                $mdToast.hide();
+                            };
+                            $scope.no = () => {
+                                $mdToast.hide();
+                            };
+                        },
+                        template : '<md-toast><span class="md-toast-text" flex>Mở lại thông báo này?<md-button class="md-highlight" ng-click="yes()">OK, mở!</md-button><md-button ng-click="no()">Không</md-button></span></md-toast>'
+                    });
+                };
+
                 this.resetNewComment = () => {
                     this.newComment = {
                         _id: Random.id(),
@@ -113,7 +132,11 @@ class TbisDetailsViewReportViewOpenTab {
                     };
                 };
             },
-            controllerAs: 'tbisDetailsViewReportViewOpenTabModal',
+            locals: {
+                mode: this.mode
+            },
+            bindToController: true,
+            controllerAs: 'tbisDetailsViewReportViewTabModal',
             template: modalTemplate,
             targetEvent: event,
             parent: angular.element(document.body),
@@ -123,14 +146,14 @@ class TbisDetailsViewReportViewOpenTab {
     }
 }
 
-const name = 'tbisDetailsViewReportViewOpenTab';
+const name = 'tbisDetailsViewReportViewTab';
 
 // create a module
 export default angular.module(name, [
     angularMeteor,
     TbisDetailsViewReportViewSearchTool,
     TbisDetailsViewReportViewIconDisplay,
-    TbisDetailsViewReportViewOpenTabDetails,
+    TbisDetailsViewReportViewTabDetails,
     TbisReportsDataService,
     TbisDataService,
     MetadataService,
@@ -140,5 +163,8 @@ export default angular.module(name, [
 ]).component(name, {
     template,
     controllerAs: name,
-    controller: TbisDetailsViewReportViewOpenTab
+    bindings: {
+        mode: '@'
+    },
+    controller: TbisDetailsViewReportViewTab
 });

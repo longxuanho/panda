@@ -1,7 +1,7 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
-import template from './tbisDetailsViewReportViewOpenTabDetails.html';
+import template from './tbisDetailsViewReportViewTabDetails.html';
 
 import { name as TbisReportsDataService } from '../../../services/thietbis/tbisReportsDataService';
 import { name as TbisDetailsViewReportViewCommentActionItem } from '../tbisDetailsViewReportViewCommentActionItem/tbisDetailsViewReportViewCommentActionItem';
@@ -12,7 +12,7 @@ import { name as TbisDetailsViewKendoEditor } from '../tbisDetailsViewKendoEdito
 import { name as UserAvatar } from '../../../directives/common/userAvatar';
 
 
-class TbisDetailsViewReportViewOpenTabDetails {
+class TbisDetailsViewReportViewTabDetails {
     constructor($reactive, $scope, tbisReportsDataService) {
         'ngInject';
         $reactive(this).attach($scope);
@@ -24,14 +24,15 @@ class TbisDetailsViewReportViewOpenTabDetails {
             tbisReportHelper() {
                 tbisReportsDataService.setSelectedTbisReport(vm.selectedTbisReportId);
                 vm.tbisReport = tbisReportsDataService.getSelectedTbisReport();
-                vm.mixedCommentsAndActions = tbisReportsDataService.mixCommentsAndActions(vm.tbisReport.comments, vm.tbisReport.actions);
+                if (vm.tbisReport)
+                    vm.mixedCommentsAndActions = tbisReportsDataService.mixCommentsAndActions(vm.tbisReport.comments, vm.tbisReport.actions);
                 return true;
             }
         });
     }
 }
 
-const name = 'tbisDetailsViewReportViewOpenTabDetails';
+const name = 'tbisDetailsViewReportViewTabDetails';
 
 // create a module
 export default angular.module(name, [
@@ -46,9 +47,8 @@ export default angular.module(name, [
     template,
     bindings: {
         isActiveEditor: '<',
-        newComment: '=',
-        // mixedCommentsAndActions: '<'
+        newComment: '='
     },
     controllerAs: name,
-    controller: TbisDetailsViewReportViewOpenTabDetails
+    controller: TbisDetailsViewReportViewTabDetails
 });

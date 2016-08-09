@@ -128,45 +128,24 @@ function queryDefaultSettings() {
         },
         {
             _id: "Ryt6Berm4DbTR2eom",
-            module: "tbisrepList",
+            module: "tbisreports",
             page: "tbisrepList",
             options: {
-                utilsBar: {
-                    durationModal: {
-                        mode: 'default',
-                        default: {
-                            duration: '7_days',
-                            fromDate: moment().subtract(7, 'days').toDate(),
-                            toDate: new Date()
-                        },
-                        selectByUser: {
-                            fromDate: moment().subtract(7, 'days').toDate(),
-                            toDate: new Date(),
-                        }
-                    }
-                },
-                tbisFilterPanel: {
-                    _token: 'default_tbisrep_token',  // Token này sẽ reactive trong subscribe hoặc getReactive để trigger truy vấn CSDL khi token được set.
-                    display: {
-                        isPhanLoaiPanel: true,
-                        isHoSoTBPanel: true,
-                        isPhanQuyenPanel: true
-                    },
-                    filters: {
-                        chungloais: [],
-                        loais: [],
-                        khuvucs: [],
-                        hangsanxuats: [],
-                        dvsohuus: [],
-                        dvquanlies: []
-                    }
-                },
                 searchFilter: {
                     mode: 'search', // Available options: search, filter, search_filter
                     searchText: '',
                     searchBy: 'searchField',
                     filterText: '',
                     filterBy: '',
+                },
+                suscribe: {
+                    status: 'open',
+                    page: 1,
+                    pageSize: 10,
+                    searchText: '',
+                    sort: {
+
+                    }
                 }
             }
         },

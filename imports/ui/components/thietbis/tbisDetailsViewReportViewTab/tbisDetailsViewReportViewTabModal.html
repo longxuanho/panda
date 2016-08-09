@@ -1,0 +1,28 @@
+<md-dialog id="tbis-details-view-report-modal" aria-label="Chi tiết thông báo thiết bị" ng-cloak>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>{{tbisDetailsViewReportViewTabModal.thietbiId}}</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="tbisDetailsViewReportViewTabModal.close()">
+                <md-icon md-svg-src="img/icons/common/close.svg" aria-label="Đóng hộp thoại"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content layout-fill>
+        <tbis-details-view-report-view-tab-details new-comment="tbisDetailsViewReportViewTabModal.newComment" is-active-editor="tbisDetailsViewReportViewTabModal.isModalOpen"></tbis-details-view-report-view-tab-details>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <div ng-if="tbisDetailsViewReportViewTabModal.mode==='open'">
+            <md-button ng-click="tbisDetailsViewReportViewTabModal.resetNewComment()" aria-label="Reset">Reset</md-button>
+            <span flex></span>
+            <md-button style="margin-right:20px;" ng-click="tbisDetailsViewReportViewTabModal.closeSelectedTbisReport()" aria-label="Đóng thông báo">Đóng thông báo</md-button>
+            <span flex></span>
+            <md-button style="margin-right:20px;" ng-click="tbisDetailsViewReportViewTabModal.addNewComment()" aria-label="Gửi ý kiến">Gửi</md-button>
+        </div>
+        <div ng-if="tbisDetailsViewReportViewTabModal.mode==='closed'">
+            <span flex></span>
+            <md-button style="margin-right:20px;" ng-click="tbisDetailsViewReportViewTabModal.reopenSelectedTbisReport()" aria-label="Mở lại">Mở lại</md-button>
+        </div>
+
+    </md-dialog-actions>
+</md-dialog>

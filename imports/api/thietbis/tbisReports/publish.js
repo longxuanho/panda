@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { TbisReports } from './collection';
 
 if (Meteor.isServer) {
-    Meteor.publish('tbisreports', function(options, searchString) {
+    Meteor.publish('tbisreports', function(options, searchString, status) {
         const selector = {
         };
 
@@ -12,6 +12,10 @@ if (Meteor.isServer) {
                 $regex: `.*${searchString}.*`,
                 $options : 'i'
             };
+        }
+
+        if (typeof status === 'string' && status.length) {
+            selector.status = status;
         }
 
         return TbisReports.find(selector, options);
