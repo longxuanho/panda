@@ -8,8 +8,8 @@ class TbisrepListUtilsBar {
     constructor(userLocalSettingsService) {
         'ngInject';
 
-        this.componentOptions = userLocalSettingsService.getPageSettings('tbisrepList', 'tbisrepList').utilsBar;
-        console.log('utils bar componentOptions: ', this.componentOptions);
+        // this.componentOptions = userLocalSettingsService.getPageSettings('tbisreports', 'tbisrepList').utilsBar;
+        // console.log('utils bar componentOptions: ', this.componentOptions);
     }
 
 

@@ -101,6 +101,10 @@ Schema.TbisReport = new SimpleSchema({
     thong_ke: {
         type: Object
     },
+        'thong_ke.searchField': {
+            type: String,
+            defaultValue: ''
+        },
         'thong_ke.openWhen': {
             type: Date,
             defaultValue: new Date()

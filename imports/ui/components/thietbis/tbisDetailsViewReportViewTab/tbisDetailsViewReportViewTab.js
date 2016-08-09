@@ -15,6 +15,7 @@ import { name as TbisDetailsViewReportViewTabDetails } from '../tbisDetailsViewR
 import { name as DisplayRelativeTimeFilter } from '../../../filters/common/displayRelativeTimeFilter';
 import { name as TbisDataService } from '../../../services/thietbis/tbisDataService';
 
+import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
 import { name as MetadataService } from '../../../services/common/metadataService';
 import { name as NotificationService } from '../../../services/common/notificationService';
 
@@ -22,10 +23,17 @@ import { name as UserName } from '../../../directives/common/userName';
 
 
 class TbisDetailsViewReportViewTab {
-    constructor($reactive, $scope, $mdDialog, $mdMedia, tbisReportsDataService) {
+    constructor($reactive, $scope, $mdDialog, $mdMedia, tbisReportsDataService, userLocalSettingsService) {
         'ngInject';
         $reactive(this).attach($scope);
         let vm = this;
+
+        this.clientSortOrder = '-metadata.thoi_gian.tao_moi.ngay_tao_string';
+        this.searchFilterBarOptions = userLocalSettingsService.getPageSettings('tbisreports', 'tbisrepList').searchFilterBar;
+        $scope.$watch('tbisDetailsViewReportViewTab.searchFilterBarOptions.sort', (newVal) => {
+            this.clientSortOrder = (newVal === '-1') ? '-metadata.thoi_gian.tao_moi.ngay_tao_string' : 'metadata.thoi_gian.tao_moi.ngay_tao_string';
+        });
+
 
         vm.$mdDialog = $mdDialog;
         vm.$mdMedia = $mdMedia;
@@ -156,6 +164,7 @@ export default angular.module(name, [
     TbisDetailsViewReportViewTabDetails,
     TbisReportsDataService,
     TbisDataService,
+    UserLocalSettingsService,
     MetadataService,
     NotificationService,
     UserName,
@@ -164,7 +173,8 @@ export default angular.module(name, [
     template,
     controllerAs: name,
     bindings: {
-        mode: '@'
+        mode: '@',
+        isMaThietBi: '<'
     },
     controller: TbisDetailsViewReportViewTab
 });

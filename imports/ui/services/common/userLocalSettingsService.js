@@ -131,12 +131,11 @@ function queryDefaultSettings() {
             module: "tbisreports",
             page: "tbisrepList",
             options: {
-                searchFilter: {
+                searchFilterBar: {
                     mode: 'search', // Available options: search, filter, search_filter
                     searchText: '',
-                    searchBy: 'searchField',
-                    filterText: '',
-                    filterBy: '',
+                    searchBy: 'thong_ke.searchField',
+                    sort: -1
                 },
                 suscribe: {
                     status: 'open',
@@ -144,7 +143,7 @@ function queryDefaultSettings() {
                     pageSize: 10,
                     searchText: '',
                     sort: {
-
+                        'metadata.thoi_gian.tao_moi.ngay_tao_string': -1
                     }
                 }
             }

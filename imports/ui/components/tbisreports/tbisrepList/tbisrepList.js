@@ -12,29 +12,15 @@ import { name as TbisrepListUtilsBar } from '../tbisrepListUtilsBar/tbisrepListU
 import { name as TbisrepListListView } from '../tbisrepListListView/tbisrepListListView';
 
 // import { name as TbisrepListFabMenu } from '../tbisListFabMenu/tbisListFabMenu';
-
 // import { name as TbisDisplayListView } from '../tbisDisplayListView/tbisDisplayListView';
-
-import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
 
 
 class TbisrepList {
-    constructor($scope, $reactive, userLocalSettingsService) {
+    constructor($scope, $reactive) {
         'ngInject';
 
         $reactive(this).attach($scope);
-
-        this.componentOptions = userLocalSettingsService.getPageSettings('tbisrepList', 'tbisrepList').utilsBar;
-        this.filterPanelOptions = userLocalSettingsService.getPageSettings('tbisrepList', 'tbisrepList').tbisFilterPanel;
-
-        console.log('componentOptions: ', this.componentOptions);
-        console.log('filterPanelOptions: ', this.filterPanelOptions);
-        this.isOpen = false;
-
-        this.subscribe('tbisreports');
-
         this.helpers({
-
         });
     }
 }
@@ -48,8 +34,7 @@ export default angular.module(name, [
     ngMdIcons,
     utilsPagination,
     TbisrepListUtilsBar,
-    TbisrepListListView,
-    UserLocalSettingsService
+    TbisrepListListView
 ]).component(name, {
     template,
     controllerAs: name,

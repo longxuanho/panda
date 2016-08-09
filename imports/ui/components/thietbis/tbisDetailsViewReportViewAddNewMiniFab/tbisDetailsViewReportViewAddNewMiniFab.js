@@ -38,6 +38,7 @@ class TbisDetailsViewReportViewAddNewMiniFab {
                         this.newTbisReport.noi_dung.text = $('iframe').contents().find("body").text() || this.newTbisReport.noi_dung.html;
                         metadataService.buildNewMetadata(this.newTbisReport, Meteor.user());
                         tbisReportsDataService.validateTbisReportsInputData(this.newTbisReport);
+                        tbisReportsDataService.buildSearchField(this.newTbisReport);
                         tbisReportsDataService.addNew(this.newTbisReport).then(() => {
                             notificationService.success('Thông báo của bạn đã được ghi nhận vào Skynet.', 'Tạo mới thành công');
                             this.reset();

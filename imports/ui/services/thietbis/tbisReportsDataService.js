@@ -46,6 +46,7 @@ class TbisReportsDataService {
             comments: [],
             actions: [],
             thong_ke: {
+                searchField: '',
                 openWhen: new Date(),
                 openHours: 0,
                 commentsCount: 0,
@@ -184,11 +185,17 @@ class TbisReportsDataService {
 
     updateTieuDeSelectedTbisReport(newTieuDe) {
         let defer = this.$q.defer();
+
+        let selectedTbisReport = angular.copy(this.selectedTbisReport);
+        selectedTbisReport.tieu_de = newTieuDe;
+        this.buildSearchField(selectedTbisReport);
+
         TbisReports.update({
             _id: this.selectedTbisReport._id
         }, {
             $set: {
-                'tieu_de': newTieuDe
+                'tieu_de': newTieuDe,
+                'thong_ke.searchField': selectedTbisReport.thong_ke.searchField
             }
         }, (error) => {
             if (error)
@@ -216,8 +223,6 @@ class TbisReportsDataService {
         });
     }
 
-
-
     setSelectedTbisReport(tbisReportId) {
         this.selectedTbisReport = this.queryOne(tbisReportId);
     }
@@ -228,6 +233,10 @@ class TbisReportsDataService {
 
     clearSelectedTbisReport() {
         this.selectedTbisReport = {};
+    }
+
+    buildSearchField(data) {
+        data.thong_ke.searchField = `${data.tham_chieu.phan_loai.nhom}: ${data.tham_chieu.phan_loai.chung_loai}: ${data.tham_chieu.phan_loai.loai}: ${data.tham_chieu._id}: ${data.tham_chieu.ma_thiet_bi.keyId}: ${data.metadata.user.nguoi_tao.email}: ${data.tieu_de}`
     }
 }
 

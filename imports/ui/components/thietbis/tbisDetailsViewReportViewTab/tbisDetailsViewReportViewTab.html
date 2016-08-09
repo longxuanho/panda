@@ -4,11 +4,11 @@
         <span ng-show="tbisDetailsViewReportViewTab.tbisReports.length">Đang xem {{tbisDetailsViewReportViewTab.tbisReports.length}}/10 thông báo đang mở</span>
         <span ng-hide="tbisDetailsViewReportViewTab.tbisReports.length">Không có thông báo đang mở cho thiết bị</span>
     </md-subheader>
-    <md-list-item class="md-2-line" ng-click="tbisDetailsViewReportViewTab.open($event, tbisreport._id)" ng-repeat="tbisreport in tbisDetailsViewReportViewTab.tbisReports">
+    <md-list-item class="md-2-line"  ng-repeat="tbisreport in tbisDetailsViewReportViewTab.tbisReports | orderBy: tbisDetailsViewReportViewTab.clientSortOrder" ng-click="tbisDetailsViewReportViewTab.open($event, tbisreport._id)">
         <div class="md-list-item-text" layout="row" flex>
             <tbis-details-view-report-view-icon-display status="{{tbisreport.comments.length ? 'open_conversation' : 'open_issue'}}" count="{{tbisreport.comments.length}}"></tbis-details-view-report-view-icon-display>
             <div flex>
-                <h3>{{tbisreport.tieu_de}}</h3>
+                <h3><span class="sky-typo-strong" ng-show="tbisDetailsViewReportViewTab.isMaThietBi">{{tbisreport.tham_chieu.ma_thiet_bi.keyId}}: </span>{{tbisreport.tieu_de}}</h3>
                 <h4>{{tbisreport.metadata.thoi_gian.tao_moi.ngay_tao_date | displayRelativeTimeFilter}} bởi <span user-name user-id="{{tbisreport.metadata.user.nguoi_tao.keyId}}"></span></h4>
             </div>
         </div>
