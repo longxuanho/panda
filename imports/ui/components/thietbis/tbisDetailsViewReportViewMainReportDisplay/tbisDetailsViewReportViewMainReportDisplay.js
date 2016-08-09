@@ -9,6 +9,7 @@ import { name as NotificationService } from '../../../services/common/notificati
 import { name as TbisDetailsViewKendoEditor } from '../tbisDetailsViewKendoEditor/tbisDetailsViewKendoEditor';
 
 import { name as UserName } from '../../../directives/common/userName';
+import { name as UserAvatar } from '../../../directives/common/userAvatar';
 
 class TbisDetailsViewReportViewMainReportDisplay {
     constructor($scope, $reactive, tbisReportsDataService, notificationService, metadataService) {
@@ -67,7 +68,8 @@ export default angular.module(name, [
     TbisReportsDataService,
     NotificationService,
     TbisDetailsViewKendoEditor,
-    UserName
+    UserName,
+    UserAvatar
 ]).component(name, {
     template,
     controllerAs: name,

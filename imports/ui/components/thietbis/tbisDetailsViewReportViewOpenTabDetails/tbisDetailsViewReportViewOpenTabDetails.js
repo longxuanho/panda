@@ -9,6 +9,8 @@ import { name as TbisDetailsViewReportViewMainReportDisplay } from '../tbisDetai
 import { name as TbisDetailsViewReportViewMainReportTitle } from '../tbisDetailsViewReportViewMainReportTitle/tbisDetailsViewReportViewMainReportTitle';
 import { name as TbisDetailsViewKendoEditor } from '../tbisDetailsViewKendoEditor/tbisDetailsViewKendoEditor';
 
+import { name as UserAvatar } from '../../../directives/common/userAvatar';
+
 
 class TbisDetailsViewReportViewOpenTabDetails {
     constructor($reactive, $scope, tbisReportsDataService) {
@@ -38,7 +40,8 @@ export default angular.module(name, [
     TbisDetailsViewReportViewCommentActionItem,
     TbisDetailsViewReportViewMainReportDisplay,
     TbisDetailsViewReportViewMainReportTitle,
-    TbisDetailsViewKendoEditor
+    TbisDetailsViewKendoEditor,
+    UserAvatar
 ]).component(name, {
     template,
     bindings: {

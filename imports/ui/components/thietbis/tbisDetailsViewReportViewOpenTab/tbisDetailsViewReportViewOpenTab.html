@@ -9,7 +9,6 @@
             <tbis-details-view-report-view-icon-display status="{{tbisreport.comments.length ? 'open_conversation' : 'open_issue'}}" count="{{tbisreport.comments.length}}"></tbis-details-view-report-view-icon-display>
             <div flex>
                 <h3>{{tbisreport.tieu_de}}</h3>
-                <!--<h4>{{tbisreport.metadata.thoi_gian.tao_moi.ngay_tao_date | displayRelativeTimeFilter}} bởi {{tbisreport.metadata.user.nguoi_tao | displayNameFilter }}</h4>-->
                 <h4>{{tbisreport.metadata.thoi_gian.tao_moi.ngay_tao_date | displayRelativeTimeFilter}} bởi <span user-name user-id="{{tbisreport.metadata.user.nguoi_tao.keyId}}"></span></h4>
             </div>
         </div>
