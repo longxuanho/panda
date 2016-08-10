@@ -140,7 +140,7 @@ function queryDefaultSettings() {
                 suscribe: {
                     status: 'open',
                     page: 1,
-                    pageSize: 10,
+                    pageSize: 5,
                     searchText: '',
                     sort: {
                         'metadata.thoi_gian.tao_moi.ngay_tao_string': -1

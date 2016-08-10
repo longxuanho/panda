@@ -13,7 +13,6 @@ import { name as TbisDetailsViewReportViewIconDisplay } from '../tbisDetailsView
 
 import { name as TbisDetailsViewReportViewTabDetails } from '../tbisDetailsViewReportViewTabDetails/tbisDetailsViewReportViewTabDetails';
 import { name as DisplayRelativeTimeFilter } from '../../../filters/common/displayRelativeTimeFilter';
-import { name as TbisDataService } from '../../../services/thietbis/tbisDataService';
 
 import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
 import { name as MetadataService } from '../../../services/common/metadataService';
@@ -49,9 +48,9 @@ class TbisDetailsViewReportViewTab {
     open(event, tbisReportId) {
         this.tbisReportDataService.setSelectedTbisReport(tbisReportId);
         this.$mdDialog.show({
-            controller($mdDialog, tbisDataService, tbisReportsDataService, notificationService, metadataService, $mdToast) {
+            controller($mdDialog, tbisReportsDataService, notificationService, metadataService, $mdToast) {
                 'ngInject';
-                this.thietbiId = tbisDataService.getSelectedThietBi().ma_thiet_bi.keyId;
+                this.thietbiId = tbisReportsDataService.getSelectedTbisReport().tham_chieu.ma_thiet_bi.keyId;
                 this.isModalOpen = true;
 
                 this.newComment = {
@@ -163,7 +162,6 @@ export default angular.module(name, [
     TbisDetailsViewReportViewIconDisplay,
     TbisDetailsViewReportViewTabDetails,
     TbisReportsDataService,
-    TbisDataService,
     UserLocalSettingsService,
     MetadataService,
     NotificationService,
@@ -174,7 +172,8 @@ export default angular.module(name, [
     controllerAs: name,
     bindings: {
         mode: '@',
-        isMaThietBi: '<'
+        isMaThietBi: '<',
+        module: '@'
     },
     controller: TbisDetailsViewReportViewTab
 });

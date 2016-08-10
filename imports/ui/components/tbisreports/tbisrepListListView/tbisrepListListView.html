@@ -1,12 +1,12 @@
 <md-tabs md-dynamic-height md-border-bottom>
     <md-tab label="13 đang mở" md-on-select="tbisrepListListView.subscribeOptions.status='open'">
         <md-content>
-            <tbis-details-view-report-view-tab ng-if="tbisrepListListView.subscribeOptions.status==='open'" mode="open" is-ma-thiet-bi="true"></tbis-details-view-report-view-tab>
+            <tbis-details-view-report-view-tab ng-if="tbisrepListListView.subscribeOptions.status==='open'" mode="open" is-ma-thiet-bi="true" module="tbisreports"></tbis-details-view-report-view-tab>
         </md-content>
     </md-tab>
     <md-tab label="13 đang đóng" md-on-select="tbisrepListListView.subscribeOptions.status='closed'">
         <md-content>
-            <tbis-details-view-report-view-tab mode="closed" ng-if="tbisrepListListView.subscribeOptions.status==='closed'" is-ma-thiet-bi="true"></tbis-details-view-report-view-tab>
+            <tbis-details-view-report-view-tab mode="closed" ng-if="tbisrepListListView.subscribeOptions.status==='closed'" is-ma-thiet-bi="true" module="tbisreports"></tbis-details-view-report-view-tab>
         </md-content>
     </md-tab>
 </md-tabs>
