@@ -23,8 +23,8 @@ class TbishisList {
 
         $reactive(this).attach($scope);
 
-        this.componentOptions = userLocalSettingsService.getPageSettings('tbishisList', 'tbishisList').utilsBar;
-        this.filterPanelOptions = userLocalSettingsService.getPageSettings('tbishisList', 'tbishisList').tbisFilterPanel;
+        // this.componentOptions = userLocalSettingsService.getPageSettings('tbishisList', 'tbishisList').utilsBar;
+        // this.filterPanelOptions = userLocalSettingsService.getPageSettings('tbishisList', 'tbishisList').tbisFilterPanel;
 
         console.log('componentOptions: ', this.componentOptions);
         console.log('filterPanelOptions: ', this.filterPanelOptions);

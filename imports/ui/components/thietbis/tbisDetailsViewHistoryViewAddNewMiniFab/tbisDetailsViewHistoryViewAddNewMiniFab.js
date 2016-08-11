@@ -23,7 +23,7 @@ class TbisDetailsViewHistoryViewAddNewMiniFab {
 
     open(event) {
         this.$mdDialog.show({
-            controller($scope, $mdDialog, tbisHistoriesDataService, tbisDataService, metadataService, notificationService) {
+            controller($mdDialog, tbisHistoriesDataService, tbisDataService, metadataService, notificationService) {
                 'ngInject';
 
                 this.isModalOpen = true;

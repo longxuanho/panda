@@ -16,7 +16,7 @@ class TbisDetailsViewHistoryViewThongKeTab {
 
         vm.durationToolbarOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisDetails').modules.tbisHistories.durationToolbar;
         $scope.$watch(() => this.isDurationSelectByUser, (newVal) => {
-            vm.durationToolbarOptions.mode= (newVal) ? 'selectByUser' : 'default';
+            vm.durationToolbarOptions.mode = (newVal) ? 'selectByUser' : 'default';
         });
 
         vm.thongKeKendoGridOptions = {

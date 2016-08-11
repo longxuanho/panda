@@ -20,9 +20,6 @@ class TbisDetailsViewReportViewMainReportDisplay {
         this.metadataService = metadataService;
 
         this.helpers({
-            isLoggedIn() {
-                return !!Meteor.userId();
-            },
             currentUserId() {
                 return Meteor.userId();
             }

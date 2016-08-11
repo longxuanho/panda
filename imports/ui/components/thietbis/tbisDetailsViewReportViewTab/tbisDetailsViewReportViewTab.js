@@ -172,8 +172,7 @@ export default angular.module(name, [
     controllerAs: name,
     bindings: {
         mode: '@',
-        isMaThietBi: '<',
-        module: '@'
+        isMaThietBi: '<'
     },
     controller: TbisDetailsViewReportViewTab
 });

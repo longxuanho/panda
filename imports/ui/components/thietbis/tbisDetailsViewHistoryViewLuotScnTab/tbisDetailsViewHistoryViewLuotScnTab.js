@@ -76,26 +76,26 @@ class TbisDetailsViewHistoryViewLuotScnTab {
                 };
 
                 this.removeSelectedTbisHistory = () => {
-                    $mdToast.show({
-                        hideDelay: 5000,
-                        position : 'top right',
-                        controller: ($scope) => {
-                            'ngInject';
-                            $scope.yes = () => {
-                                tbisHistoriesDataService.closeSelectedTbisReport(metadataService.generateNewAction('close', Meteor.user())).then(() => {
-                                    notificationService.success('Thông báo của bạn đã được đóng thành công.', 'Đóng thông báo');
-                                    this.close();
-                                }).catch((err) => {
-                                    notificationService.error(err.message, 'Không thể đóng mục này');
-                                });
-                                $mdToast.hide();
-                            };
-                            $scope.no = () => {
-                                $mdToast.hide();
-                            };
-                        },
-                        template : '<md-toast><span class="md-toast-text" flex>Đóng thông báo này?<md-button class="md-highlight" ng-click="yes()">OK, đóng!</md-button><md-button ng-click="no()">Không</md-button></span></md-toast>'
-                    });
+                    // $mdToast.show({
+                    //     hideDelay: 5000,
+                    //     position : 'top right',
+                    //     controller: ($scope) => {
+                    //         'ngInject';
+                    //         $scope.yes = () => {
+                    //             tbisHistoriesDataService.closeSelectedTbisReport(metadataService.generateNewAction('close', Meteor.user())).then(() => {
+                    //                 notificationService.success('Thông báo của bạn đã được đóng thành công.', 'Đóng thông báo');
+                    //                 this.close();
+                    //             }).catch((err) => {
+                    //                 notificationService.error(err.message, 'Không thể đóng mục này');
+                    //             });
+                    //             $mdToast.hide();
+                    //         };
+                    //         $scope.no = () => {
+                    //             $mdToast.hide();
+                    //         };
+                    //     },
+                    //     template : '<md-toast><span class="md-toast-text" flex>Đóng thông báo này?<md-button class="md-highlight" ng-click="yes()">OK, đóng!</md-button><md-button ng-click="no()">Không</md-button></span></md-toast>'
+                    // });
                 };
 
                 this.reset = () => {

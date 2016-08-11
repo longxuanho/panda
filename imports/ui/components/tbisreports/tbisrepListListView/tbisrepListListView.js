@@ -18,7 +18,6 @@ class TbisrepListListView {
 
         $reactive(this).attach($scope);
         this.subscribeOptions = userLocalSettingsService.getPageSettings('tbisreports', 'tbisrepList').suscribe;
-        this.searchFilterBarOptions = userLocalSettingsService.getPageSettings('tbisreports', 'tbisrepList').searchFilterBar;
 
         this.subscribe('tbisreports', () => [
             {

@@ -13,9 +13,6 @@ class TbisDetailsViewReportViewMainReportTitle {
         this.notificationService = notificationService;
 
         this.helpers({
-            isLoggedIn() {
-                return !!Meteor.userId();
-            },
             currentUserId() {
                 return Meteor.userId();
             }

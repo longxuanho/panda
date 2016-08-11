@@ -166,22 +166,6 @@ function queryDefaultSettings() {
                     sort: {
                     }
                 },
-                tbisFilterPanel: {
-                    _token: 'default_tbishis_token',  // Token này sẽ reactive trong subscribe hoặc getReactive để trigger truy vấn CSDL khi token được set.
-                    display: {
-                        isPhanLoaiPanel: true,
-                        isHoSoTBPanel: true,
-                        isPhanQuyenPanel: true
-                    },
-                    filters: {
-                        chungloais: [],
-                        loais: [],
-                        khuvucs: [],
-                        hangsanxuats: [],
-                        dvsohuus: [],
-                        dvquanlies: []
-                    }
-                },
                 searchFilter: {
                     mode: 'search', // Available options: search, filter, search_filter
                     searchText: '',
