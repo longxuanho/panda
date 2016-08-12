@@ -23,6 +23,8 @@ import { name as TbisDetailsView } from '../thietbis/tbisDetailsView/tbisDetails
 import { name as TbisrepList } from '../tbisreports/tbisrepList/tbisrepList';
 import { name as TbishisList } from '../tbishistories/tbishisList/tbishisList';
 
+import { name as UserDetails } from '../users/userDetails/userDetails';
+
 import { name as Auth } from '../auth/auth';
 
 
@@ -45,6 +47,7 @@ export default angular.module(name, [
     TbisDetailsView,
     TbisrepList,
     TbishisList,
+    UserDetails,
     PartiesList,
     PartyDetails,
     Auth,

@@ -1,0 +1,21 @@
+<md-tabs md-dynamic-height md-border-bottom>
+    <md-tab label="Thông tin chung" md-on-select="userDetailsView.tabSelected='thong_tin_chung'">
+        <md-content>
+            Thông tin chung:
+            <pre>
+                {{userDetailsView.userDetails|json}}
+            </pre>
+        </md-content>
+    </md-tab>
+    <md-tab label="Quyền hạn" md-on-select="userDetailsView.tabSelected='quyen_han'">
+        <md-content>
+            Quyền hạn
+        </md-content>
+    </md-tab>
+    <md-tab label="Thiết lập" md-on-select="userDetailsView.tabSelected='thiet_lap'">
+        <md-content>
+            Thiết lập
+        </md-content>
+    </md-tab>
+</md-tabs>
+<a ui-sref="thietbis">thietbis</a>

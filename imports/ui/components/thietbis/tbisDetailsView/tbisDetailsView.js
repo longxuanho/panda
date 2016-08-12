@@ -22,7 +22,6 @@ class TbisDetailsView {
 
         this.thietbiId = $stateParams.thietbiId;
         this.componentOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisDetails');
-        console.log('details Component Options: ', this.componentOptions);
 
         this.subscribe('thietbis');
         this.subscribe('users');

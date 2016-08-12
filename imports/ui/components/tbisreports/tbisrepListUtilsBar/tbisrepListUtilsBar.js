@@ -15,7 +15,6 @@ class TbisrepListUtilsBar {
 
     openFilterMenu($mdOpenMenu, ev) {
         $mdOpenMenu(ev);
-
     }
 }
 
