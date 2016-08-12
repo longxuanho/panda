@@ -14,6 +14,7 @@ import { name as TbishisListUtilsBar } from '../tbishisListUtilsBar/tbishisListU
 
 // import { name as TbisDisplayListView } from '../tbisDisplayListView/tbisDisplayListView';
 
+import { name as TbishisListListView } from '../tbishisListListView/tbishisListListView';
 import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
 
 
@@ -26,8 +27,8 @@ class TbishisList {
         // this.componentOptions = userLocalSettingsService.getPageSettings('tbishisList', 'tbishisList').utilsBar;
         // this.filterPanelOptions = userLocalSettingsService.getPageSettings('tbishisList', 'tbishisList').tbisFilterPanel;
 
-        console.log('componentOptions: ', this.componentOptions);
-        console.log('filterPanelOptions: ', this.filterPanelOptions);
+        // console.log('componentOptions: ', this.componentOptions);
+        // console.log('filterPanelOptions: ', this.filterPanelOptions);
 
         this.isOpen = false;
 
@@ -48,6 +49,7 @@ export default angular.module(name, [
     ngMdIcons,
     utilsPagination,
     TbishisListUtilsBar,
+    TbishisListListView,
     UserLocalSettingsService
 ]).component(name, {
     template,

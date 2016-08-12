@@ -8,12 +8,12 @@ class TbishisListUtilsBar {
     constructor(userLocalSettingsService) {
         'ngInject';
 
-        this.utilsBarIconsOptions = this.initUtilsBarIconsOptions();
-
-        this.categoryOptions = this.initCategoryOptions();
-
-        this.componentOptions = userLocalSettingsService.getPageSettings('tbishisList', 'tbishisList').utilsBar;
-        console.log('utils bar componentOptions: ', this.componentOptions);
+        // this.utilsBarIconsOptions = this.initUtilsBarIconsOptions();
+        //
+        // this.categoryOptions = this.initCategoryOptions();
+        //
+        // this.componentOptions = userLocalSettingsService.getPageSettings('tbishisList', 'tbishisList').utilsBar;
+        // console.log('utils bar componentOptions: ', this.componentOptions);
     }
 
     initUtilsBarIconsOptions() {

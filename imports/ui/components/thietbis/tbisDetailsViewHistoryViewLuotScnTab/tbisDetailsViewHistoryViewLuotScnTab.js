@@ -5,7 +5,6 @@ import template from './tbisDetailsViewHistoryViewLuotScnTab.html';
 import modalTemplate from './tbisDetailsViewHistoryViewLuotScnTabModal.html';
 
 import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
-import { name as TbisDataService } from '../../../services/thietbis/tbisDataService';
 import { name as TbisHistoriesDataService } from '../../../services/thietbis/tbisHistoriesDataService';
 import { name as TbisDetailsViewHistoryViewDurationToolbar } from '../tbisDetailsViewHistoryViewDurationToolbar/tbisDetailsViewHistoryViewDurationToolbar';
 import { name as TbisDetailsViewHistoryViewTbisHistoryItem } from '../tbisDetailsViewHistoryViewTbisHistoryItem/tbisDetailsViewHistoryViewTbisHistoryItem';
@@ -38,10 +37,11 @@ class TbisDetailsViewHistoryViewLuotScnTab {
         this.tbisHistoriesDataService.setSelectedTbisHistory(tbisHistoryId);
 
         this.$mdDialog.show({
-            controller($mdDialog, tbisDataService, tbisHistoriesDataService, notificationService, metadataService, $mdToast) {
+            controller($mdDialog, tbisHistoriesDataService, notificationService, metadataService, $mdToast) {
                 'ngInject';
-                this.thietbiId = tbisDataService.getSelectedThietBi().ma_thiet_bi.keyId;
+
                 this.selectedTbisHistory = angular.copy(tbisHistoriesDataService.getSelectedTbisHistory());
+                this.thietbiId = this.selectedTbisHistory.tham_chieu.ma_thiet_bi.keyId;
                 this.isModalOpen = true;
 
                 this.close = () => {
@@ -58,7 +58,7 @@ class TbisDetailsViewHistoryViewLuotScnTab {
                         tbisHistoriesDataService.buildTimeString(this.selectedTbisHistory);
                         tbisHistoriesDataService.solveStatistics(this.selectedTbisHistory);
 
-                        if(this.selectedTbisHistory.phan_loai.nhom != 'Sửa chữa nhỏ')
+                        if(this.selectedTbisHistory.phan_loai.nhom != tbisHistoriesDataService.getSelectedTbisHistory().phan_loai.nhom)
                             throw Error('Bạn không thể chuyển đổi nhóm sửa chữa của mục này.');
 
                         tbisHistoriesDataService.validateTbisHistoryInputData(this.selectedTbisHistory);
@@ -120,7 +120,6 @@ const name = 'tbisDetailsViewHistoryViewLuotScnTab';
 export default angular.module(name, [
     angularMeteor,
     UserLocalSettingsService,
-    TbisDataService,
     TbisHistoriesDataService,
     MetadataService,
     NotificationService,

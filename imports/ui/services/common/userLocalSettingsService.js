@@ -150,7 +150,7 @@ function queryDefaultSettings() {
         },
         {
             _id: "Uit6Berm4FghR2eok",
-            module: "tbishisList",
+            module: "tbishistories",
             page: "tbishisList",
             options: {
                 utilsBar: {
@@ -166,12 +166,14 @@ function queryDefaultSettings() {
                     sort: {
                     }
                 },
-                searchFilter: {
-                    mode: 'search', // Available options: search, filter, search_filter
+                suscribe: {
+                    nhom: 'Sửa chữa nhỏ',
+                    page: 1,
+                    pageSize: 5,
                     searchText: '',
-                    searchBy: 'searchField',
-                    filterText: '',
-                    filterBy: '',
+                    sort: {
+                        'metadata.thoi_gian.tao_moi.ngay_tao_string': -1
+                    }
                 }
             }
         }

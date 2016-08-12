@@ -1,0 +1,19 @@
+<md-tabs md-dynamic-height md-border-bottom>
+    <md-tab label="Lượt SCN" md-on-select="tbisDetailsViewHistoryView.tabSelected='luot_scn'">
+        <md-content>
+            <tbis-details-view-history-view-luot-scn-tab></tbis-details-view-history-view-luot-scn-tab>
+        </md-content>
+    </md-tab>
+    <md-tab label="Khác" md-on-select="tbisDetailsViewHistoryView.tabSelected='khac'">
+        <md-content>
+            <tbis-details-view-history-view-khac-tab></tbis-details-view-history-view-khac-tab>
+        </md-content>
+    </md-tab>
+    <md-tab label="Tất cả" md-on-select="tbisDetailsViewHistoryView.tabSelected='tat_ca'">
+        <md-content>
+            <tbis-details-view-history-view-thong-ke-tab></tbis-details-view-history-view-thong-ke-tab>
+        </md-content>
+    </md-tab>
+</md-tabs>
+<a ui-sref="thietbis">thietbis</a>
+<!--<tbis-details-view-history-view-fab-menu ng-show="tbisDetailsViewHistoryView.tabSelected!=='thong_ke'"></tbis-details-view-history-view-fab-menu>-->

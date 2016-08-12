@@ -1,24 +1,6 @@
 <md-list-item class="md-3-line" layout="row" ng-click="null">
     <div style="margin: 0 15px 0 0;">
-        <md-icon ng-if="tbisDetailsViewHistoryViewTbisHistoryItem.viewModel.phan_loai.nhom==='Sửa chữa nhỏ'
-                        && tbisDetailsViewHistoryViewTbisHistoryItem.viewModel.phan_loai.loai==='Đột xuất'"
-                 md-svg-src="/img/icons/common/error_outline.svg" class="no-margin" aria-label="Đột xuất">
-        </md-icon>
-        <md-icon ng-if="tbisDetailsViewHistoryViewTbisHistoryItem.viewModel.phan_loai.nhom==='Sửa chữa nhỏ'
-                        && tbisDetailsViewHistoryViewTbisHistoryItem.viewModel.phan_loai.loai==='Kế hoạch'"
-                 md-svg-src="/img/icons/common/playlist_add_check.svg" class="no-margin" aria-label="Kế hoạch">
-        </md-icon>
-        <md-icon ng-if="tbisDetailsViewHistoryViewTbisHistoryItem.viewModel.phan_loai.nhom==='Sửa chữa lớn'"
-                 md-svg-src="/img/icons/common/not_interested.svg" class="no-margin" aria-label="Sửa chữa lớn">
-        </md-icon>
-        <md-icon ng-if="tbisDetailsViewHistoryViewTbisHistoryItem.viewModel.phan_loai.nhom==='Sửa chữa cụm'"
-                 md-svg-src="/img/icons/common/widgets.svg" class="no-margin" aria-label="Sửa chữa cụm">
-        </md-icon>
-        <md-icon ng-if="tbisDetailsViewHistoryViewTbisHistoryItem.viewModel.phan_loai.nhom==='Bảo dưỡng'"
-                 md-svg-src="/img/icons/common/event.svg" class="no-margin" aria-label="Bảo dưỡng">
-        </md-icon>
-        <md-icon ng-if="tbisDetailsViewHistoryViewTbisHistoryItem.viewModel.phan_loai.nhom==='Đại tu'"
-                 md-svg-src="/img/icons/common/exit_to_app.svg" class="no-margin" aria-label="Đại tu">
+        <md-icon md-svg-src="/img/icons/common/{{tbisDetailsViewHistoryViewTbisHistoryItem.displayIcon}}" class="no-margin" aria-label="Icon">
         </md-icon>
     </div>
     <div class="md-list-item-text" layout="column">

@@ -10,6 +10,8 @@ import { name as TbisHistoriesDataService } from '../../../services/thietbis/tbi
 class TbisDetailsViewHistoryViewTbisHistoryItem {
     constructor() {
         'ngInject';
+
+        this.displayIcon = resolveDisplayIcon(this.viewModel.phan_loai);
     }
 }
 
@@ -29,3 +31,21 @@ export default angular.module(name, [
     controllerAs: name,
     controller: TbisDetailsViewHistoryViewTbisHistoryItem
 });
+
+function resolveDisplayIcon(phanLoai) {
+    if (phanLoai.nhom != 'Sửa chữa nhỏ') {
+        let mapIcons = {
+            'Sửa chữa lớn': 'not_interested.svg',
+            'Sửa chữa cụm': 'widgets.svg',
+            'Bảo dưỡng': 'event.svg',
+            'Đại tu': 'exit_to_app.svg'
+        };
+        return mapIcons[phanLoai.nhom];
+    } else {
+        let mapIcons = {
+            'Đột xuất': 'error_outline.svg',
+            'Kế hoạch': 'playlist_add_check.svg'
+        };
+        return mapIcons[phanLoai.loai];
+    }
+}
