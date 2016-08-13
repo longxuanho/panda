@@ -35,7 +35,6 @@ class UsersDataService {
             gioi_tinh: 'Nam'
         };
         profile.bien_che = {
-            chuc_danh: '',
             cong_ty: '',
             don_vi: '',
             to: '',
@@ -55,8 +54,6 @@ class UsersDataService {
             throw Error('Chưa có thông tin về tên người dùng');
         if (!profile.ho_so.ho_ten_dem)
             throw Error('Chưa có thông tin về họ tên đệm người dùng');
-        if (!profile.bien_che.chuc_danh)
-            throw Error('Chưa có thông tin về chức danh người dùng');
         if (!profile.bien_che.cong_ty || !profile.bien_che.don_vi)
             throw Error('Chưa có thông tin về biên chế người dùng');
     }

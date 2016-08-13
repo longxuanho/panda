@@ -2,6 +2,7 @@
 @import "../demo/partyDetails/partyDetails.less";
 @import "../thietbis/tbisList/tbisList.less";
 @import "../thietbis/tbisDetailsView/tbisDetailsView.less";
+@import "../users/userDetails/userDetails.less";
 
 pandora {
   display: block;
@@ -16,6 +17,28 @@ body.md-dialog-is-showing {
 }
 
 .sky {
+  &-user-status {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid #ffffff;
+    &-container {
+      position: relative;
+    }
+    &-success {
+      background: #7cb342;
+    }
+    &-danger {
+      background: #e53935;
+    }
+    &-warning {
+      background: #ffa000;
+    }
+
+  }
   &-hidden {
     display: none;
   }

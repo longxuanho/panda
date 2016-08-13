@@ -4,6 +4,8 @@ import angularMeteor from 'angular-meteor';
 import template from './userDetailsLabel.html';
 
 // import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
+import { name as UserName } from '../../../directives/common/userName';
+import { name as UserAvatar } from '../../../directives/common/userAvatar';
 
 
 class UserDetailsLabel {
@@ -20,10 +22,12 @@ const name = 'userDetailsLabel';
 // create a module
 export default angular.module(name, [
     angularMeteor,
+    UserName,
+    UserAvatar
 ]).component(name, {
     template,
     bindings: {
-        userDetails: '<'
+        userDetails: '<',
     },
     controllerAs: name,
     controller: UserDetailsLabel

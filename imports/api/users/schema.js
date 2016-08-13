@@ -4,60 +4,64 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 let Schema = {};
 
 Schema.UserProfile = new SimpleSchema({
-    name: {
-        type: String,
-        optional: true
+    'name': {
+        type: String
     },
-    firstName: {
-        type: String,
-        optional: true
+    'ho_so': {
+        type: Object
     },
-    lastName: {
-        type: String,
-        optional: true
+        'ho_so.ten': {
+            type: String
+        },
+        'ho_so.ho_ten_dem': {
+            type: String
+        },
+        'ho_so.gioi_tinh': {
+            type: String
+        },
+    'bien_che': {
+        type: Object
     },
-    birthday: {
-        type: Date,
-        optional: true
+        'bien_che.ma_bien_che': {
+            type: String
+        },
+        'bien_che.cong_ty': {
+            type: String
+        },
+        'bien_che.don_vi': {
+            type: String
+        },
+        'bien_che.ban': {
+            type: String,
+            optional: true
+        },
+        'bien_che.to': {
+            type: String,
+            optional: true
+        },
+        'bien_che.doi': {
+            type: String,
+            optional: true
+        },
+    'lien_he': {
+        type: Object
     },
-    contact: {
+        'lien_he.dien_thoai': {
+            type: String,
+            optional: true
+        },
+        'lien_he.email': {
+            type: String,
+            optional: true
+        },
+    'tham_chieu': {
         type: Object,
-        optional: true
+        blackbox: true
     },
-        'contact.phone': {
-            type: String,
-            optional: true
-        },
-        'contact.emailAtWork': {
-            type: String,
-            optional: true
-        },
-    gender: {
-        type: String,
-        allowedValues: ['Male', 'Female'],
-        optional: true
-    },
-    department: {
+    'searchField': {
         type: String,
         optional: true
     },
-    organization : {
-        type: String,
-        optional: true
-    },
-    website: {
-        type: String,
-        regEx: SimpleSchema.RegEx.Url,
-        optional: true
-    },
-    bio: {
-        type: String,
-        optional: true
-    },
-    searchField: {
-        type: String,
-        optional: true
-    }
 });
 
 Schema.User = new SimpleSchema({
