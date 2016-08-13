@@ -22,7 +22,7 @@ Schema.UserProfile = new SimpleSchema({
     'bien_che': {
         type: Object
     },
-        'bien_che.ma_bien_che': {
+        'bien_che.ma': {
             type: String
         },
         'bien_che.cong_ty': {
@@ -58,6 +58,18 @@ Schema.UserProfile = new SimpleSchema({
         type: Object,
         blackbox: true
     },
+    'avatar': {
+        type: Object,
+        defaultValue: {}
+    },
+        'avatar.url': {
+            type: String,
+            optional: true
+        },
+        'avatar.original': {
+            type: String,
+            optional: true
+        },
     'searchField': {
         type: String,
         optional: true

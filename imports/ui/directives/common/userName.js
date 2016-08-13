@@ -9,6 +9,7 @@ class UserName {
         $scope.helpers({
             user() {
                 // console.log('begin helpers..', $scope.userId);
+
                 $scope.maDonVi = 'UFO';
 
                 if (!$scope.userId)
@@ -19,12 +20,12 @@ class UserName {
                     return;
                 }
 
-                let foundUser = Meteor.users.findOne($scope.userId);
+                let foundUser = Meteor.users.findOne({_id: $scope.userId}, {fields: {'profile.name': 1 , 'profile.bien_che.ma': 1, 'emails': 1}});
 
                 if (foundUser) {
                     if (foundUser.profile && foundUser.profile.name) {
-                        if (foundUser.profile.don_vi && foundUser.profile.don_vi.ma)
-                            $scope.maDonVi = foundUser.profile.don_vi.ma;
+                        if (foundUser.profile.bien_che && foundUser.profile.bien_che.ma)
+                            $scope.maDonVi = foundUser.profile.bien_che.ma;
                         $scope.userName = foundUser.profile.name;
                         return;
                     }
@@ -32,6 +33,7 @@ class UserName {
                         $scope.userName = foundUser.emails[0].address;
                         return;
                     }
+
                 }
                 $scope.userName = 'Vô danh';
                 return '';

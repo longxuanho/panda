@@ -29,7 +29,8 @@ import { name as Auth } from '../auth/auth';
 
 
 
-class Pandora {}
+class Pandora {
+}
 
 const name = 'pandora';
 

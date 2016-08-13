@@ -4,11 +4,12 @@
 <md-list style="padding-bottom: 0">
     <md-list-item class="md-2-line" style="margin:0;padding: 16px;background-color: rgb(250, 250, 250);" layout="row">
         <div class="sky-user-status-container">
-            <span class="sky-user-status sky-user-status-success"></span>
-            <img user-avatar user-id="{{userDetailsLabel.userDetails._id}}" class="md-avatar"/>
+            <!--<span class="sky-user-status sky-user-status-success"></span>-->
+            <span class="sky-user-status" user-status user-id="{{userDetailsLabel.userId}}"></span>
+            <img user-avatar user-id="{{userDetailsLabel.userId}}" class="md-avatar"/>
         </div>
         <div class="md-list-item-text" flex>
-            <h3><span user-name user-id="{{userDetailsLabel.userDetails._id}}"></span></h3>
+            <h3><span user-name user-id="{{userDetailsLabel.userId}}"></span></h3>
             <p>{{userDetailsLabel.userDetails.profile.tham_chieu.don_vi.ten}}</p>
         </div>
     </md-list-item>

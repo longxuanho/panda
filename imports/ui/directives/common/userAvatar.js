@@ -15,7 +15,7 @@ class UserAvatar {
                 if (!$scope.userId)
                     return;
 
-                let foundUser = Meteor.users.findOne($scope.userId);
+                let foundUser = Meteor.users.findOne($scope.userId, {fields: {'profile.avatar': 1}});
                 // console.log('found: ', foundUser);
 
                 if (foundUser) {
