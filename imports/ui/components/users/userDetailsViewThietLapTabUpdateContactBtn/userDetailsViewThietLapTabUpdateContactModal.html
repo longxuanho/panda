@@ -1,0 +1,39 @@
+<md-dialog id="tbis-details-add-new-history-modal" aria-label="Thêm nhật ký sửa chữa" ng-cloak>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Cập nhật thông tin liên lạc</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="userDetailsViewThietLapTabUpdateContactModal.close()">
+                <md-icon md-svg-src="img/icons/common/close.svg" aria-label="Đóng hộp thoại"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content layout-fill>
+        <div class="md-padding">
+            <md-list flex>
+                <md-subheader class="md-no-sticky" style="margin-bottom: 48px;">Xin vui lòng cập nhật thông tin liên lạc của bạn theo mẫu phiếu sau đây:</md-subheader>
+                <md-list-item class="md-2-line" flex>
+                    <img ng-src="/img/icons/users/mailbox.svg" class="md-avatar sky-reset-border-radius" />
+                    <md-input-container class="md-block" flex="100">
+                        <label>Email</label>
+                        <input ng-model="tbisDetailsViewHistoryViewTbisHistoryInputForm.viewModel.tham_chieu.refMaximo">
+                    </md-input-container>
+                </md-list-item>
+            </md-list>
+            <md-list flex>
+                <md-list-item class="md-2-line" flex>
+                    <img ng-src="/img/icons/users/smartphone.svg" class="md-avatar sky-reset-border-radius" />
+                    <md-input-container class="md-block" flex="100">
+                        <label>Số điện thoại</label>
+                        <input ng-model="tbisDetailsViewHistoryViewTbisHistoryInputForm.viewModel.tham_chieu.refMaximo">
+                    </md-input-container>
+                </md-list-item>
+            </md-list>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <md-button ng-click="userDetailsViewThietLapTabUpdateContactModal.close()" aria-label="Reset">Hủy bỏ</md-button>
+        <span flex></span>
+        <md-button style="margin-right:20px;" ng-click="userDetailsViewThietLapTabUpdateContactModal.addNew()" aria-label="Tạo mới">Đổi mật khẩu</md-button>
+    </md-dialog-actions>
+</md-dialog>

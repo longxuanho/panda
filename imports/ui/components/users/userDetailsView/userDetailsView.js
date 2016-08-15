@@ -4,6 +4,7 @@ import angularMeteor from 'angular-meteor';
 import template from './userDetailsView.html';
 import { name as UserDetailsViewThongTinChungTab } from '../userDetailsViewThongTinChungTab/userDetailsViewThongTinChungTab';
 import { name as UserDetailsViewQuyenHanTab } from '../userDetailsViewQuyenHanTab/userDetailsViewQuyenHanTab';
+import { name as UserDetailsViewThietLapTab } from '../userDetailsViewThietLapTab/userDetailsViewThietLapTab';
 // import { name as TbisDetailsViewReportViewFabMenu } from '../tbisDetailsViewReportViewFabMenu/tbisDetailsViewReportViewFabMenu';
 import { name as UsersDataService } from '../../../services/users/usersDataService';
 
@@ -22,7 +23,8 @@ export default angular.module(name, [
     angularMeteor,
     UsersDataService,
     UserDetailsViewThongTinChungTab,
-    UserDetailsViewQuyenHanTab
+    UserDetailsViewQuyenHanTab,
+    UserDetailsViewThietLapTab
     // TbisDetailsViewReportViewFabMenu,
 ]).component(name, {
     template,
