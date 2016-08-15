@@ -43,6 +43,10 @@ Schema.UserProfile = new SimpleSchema({
             type: String,
             optional: true
         },
+        'bien_che.chuc_danh': {
+            type: String,
+            optional: true
+        },
     'lien_he': {
         type: Object
     },

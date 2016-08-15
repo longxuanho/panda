@@ -1,0 +1,87 @@
+<md-list flex>
+    <md-subheader class="md-no-sticky">Hồ sơ</md-subheader>
+    <md-list-item class="md-2-line" ng-click="null">
+        <img ng-src="/img/icons/users/id-card.svg" class="md-avatar sky-reset-border-radius" alt="Họ tên" />
+        <div class="md-list-item-text">
+            <h3>Họ tên</h3>
+            <p>{{userDetailsViewThongTinChungTab.userDetails.profile.ho_so.ho_ten_dem}} {{userDetailsViewThongTinChungTab.userDetails.profile.ho_so.ten}}</p>
+        </div>
+    </md-list-item>
+    <md-list-item class="md-2-line" ng-click="null">
+        <img ng-src="/img/icons/users/balloons.svg" class="md-avatar sky-reset-border-radius" alt="Ngày sinh" />
+        <div class="md-list-item-text">
+            <h3>Ngày sinh</h3>
+            <p>15/08/2016 (25 tuổi)</p>
+        </div>
+    </md-list-item>
+    <md-list-item class="md-2-line" ng-click="null">
+        <img ng-show="userDetailsViewThongTinChungTab.userDetails.profile.ho_so.gioi_tinh==='Nam'" ng-src="/img/icons/users/man.svg" class="md-avatar" alt="Giới tính" />
+        <img ng-show="userDetailsViewThongTinChungTab.userDetails.profile.ho_so.gioi_tinh==='Nữ'" ng-src="/img/icons/users/girl.svg" class="md-avatar" alt="Giới tính" />
+        <div class="md-list-item-text">
+            <h3>Giới tính</h3>
+            <p>{{userDetailsViewThongTinChungTab.userDetails.profile.ho_so.gioi_tinh}}</p>
+        </div>
+    </md-list-item>
+    <md-subheader class="md-no-sticky">Biên chế</md-subheader>
+    <md-list-item class="md-2-line" ng-click="null">
+        <img ng-src="/img/icons/users/office.svg" class="md-avatar sky-reset-border-radius" alt="Công ty" />
+        <div class="md-list-item-text">
+            <h3>Công ty</h3>
+            <p>{{userDetailsViewThongTinChungTab.userDetails.profile.bien_che.cong_ty}}</p>
+        </div>
+    </md-list-item>
+    <md-list-item class="md-2-line" ng-click="null">
+        <img ng-src="/img/icons/users/diagram.svg" class="md-avatar sky-reset-border-radius" alt="Đơn vị" />
+        <div class="md-list-item-text">
+            <h3>Đơn vị</h3>
+            <p>{{userDetailsViewThongTinChungTab.userDetails.profile.bien_che.don_vi}}</p>
+        </div>
+    </md-list-item>
+    <md-list-item class="md-2-line" ng-click="null" ng-if="userDetailsViewThongTinChungTab.userDetails.profile.bien_che.ban">
+        <img ng-src="/img/icons/users/folder.svg" class="md-avatar sky-reset-border-radius" alt="Ban" />
+        <div class="md-list-item-text">
+            <h3>Ban</h3>
+            <p>{{userDetailsViewThongTinChungTab.userDetails.profile.bien_che.ban}}</p>
+        </div>
+    </md-list-item>
+    <md-list-item class="md-2-line" ng-click="null" ng-if="userDetailsViewThongTinChungTab.userDetails.profile.bien_che.to">
+        <img ng-src="/img/icons/users/folder.svg" class="md-avatar sky-reset-border-radius" alt="Tổ" />
+        <div class="md-list-item-text">
+            <h3>Tổ</h3>
+            <p>{{userDetailsViewThongTinChungTab.userDetails.profile.bien_che.to}}</p>
+        </div>
+    </md-list-item>
+    <md-list-item class="md-2-line" ng-click="null" ng-if="userDetailsViewThongTinChungTab.userDetails.profile.bien_che.doi">
+        <img ng-src="/img/icons/users/folder.svg" class="md-avatar sky-reset-border-radius" alt="Đội" />
+        <div class="md-list-item-text">
+            <h3>Đội</h3>
+            <p>{{userDetailsViewThongTinChungTab.userDetails.profile.bien_che.doi}}</p>
+        </div>
+    </md-list-item>
+    <md-list-item class="md-2-line" ng-click="null" ng-if="userDetailsViewThongTinChungTab.userDetails.profile.bien_che.chuc_danh">
+        <img ng-src="/img/icons/users/id-card_2.svg" class="md-avatar sky-reset-border-radius" alt="Chức danh" />
+        <div class="md-list-item-text">
+            <h3>Chức danh</h3>
+            <p>{{userDetailsViewThongTinChungTab.userDetails.profile.bien_che.chuc_danh}}</p>
+        </div>
+    </md-list-item>
+    <md-subheader class="md-no-sticky">Liên hệ</md-subheader>
+    <md-list-item class="md-2-line" ng-click="null">
+        <img ng-src="/img/icons/users/mailbox.svg" class="md-avatar" alt="Mail" />
+        <div class="md-list-item-text">
+            <h3>Email</h3>
+            <p>{{userDetailsViewThongTinChungTab.userDetails.profile.lien_he.email}}</p>
+        </div>
+    </md-list-item>
+    <md-list-item class="md-2-line" ng-click="null">
+        <img ng-src="/img/icons/users/smartphone.svg" class="md-avatar" alt="Phone" />
+        <div class="md-list-item-text">
+            <h3>Điện thoại</h3>
+            <p>{{userDetailsViewThongTinChungTab.userDetails.profile.lien_he.dien_thoai}}</p>
+        </div>
+    </md-list-item>
+    <md-subheader class="md-no-sticky">
+        <span ng-hide="userDetailsViewThongTinChungTab.userDetails.emails[0].verified" md-colors="{color: 'red'}">Tài khoản chưa xác thực<br/></span>
+        Lần đăng nhập cuối vào {{userDetailsViewThongTinChungTab.userDetails.status.lastLogin.date | displayRelativeTimeFilter}}
+    </md-subheader>
+</md-list>
