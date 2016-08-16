@@ -19,6 +19,9 @@ Schema.UserProfile = new SimpleSchema({
         'ho_so.gioi_tinh': {
             type: String
         },
+        'ho_so.ngay_sinh': {
+            type: Date
+        },
     'bien_che': {
         type: Object
     },

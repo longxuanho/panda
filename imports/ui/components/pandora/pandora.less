@@ -21,6 +21,29 @@ body.md-dialog-is-showing {
   &-reset-border-radius {
     border-radius: initial!important;
   }
+  &-fix-ui-md-date-picker {
+    .md-datepicker-button {
+      display: none !important;
+    }
+    .md-datepicker-input-container {
+      margin-left: 0 !important;
+      width: 100%;
+      padding-bottom: 2px;
+    }
+    .md-datepicker-input {
+      padding-left: 3px;
+      font-size: 16px;
+      font-weight: 400;
+      color: rgba(0,0,0,0.38);
+
+    }
+  }
+  &-img {
+    //border-radius: 50%;
+    box-sizing: content-box;
+    width: 40px;
+    height: 40px;
+  }
   &-user-status {
     position: absolute;
     right: 12px;
@@ -72,5 +95,7 @@ body.md-dialog-is-showing {
     z-index: 2;
   }
 }
+
+
 
 @import "./pandora-kendo-restyle.less";

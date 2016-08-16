@@ -1,74 +1,123 @@
 <md-content layout="row" layout-align="center start" layout-fill layout-margin>
-
     <md-whiteframe layout="column" flex flex-md="50" flex-lg="50" flex-gt-lg="33" class="md-whiteframe-z2" layout-fill>
-
         <md-toolbar class="md-primary md-tall" layout="column" layout-align="end" layout-fill>
             <div layout="row" class="md-toolbar-tools md-toolbar-tools-bottom">
-                <h3 class="md-display-1">
-                    Sign in
-                </h3>
+                <h3 class="md-display-1" flex>
+                    Đăng nhập</h3>
+                <img src="img/icons/common/clouds.svg" class="sky-img"/>
             </div>
         </md-toolbar>
-
         <div layout="column" layout-fill layout-margin layout-padding>
-            <div layout="row" layout-fill layout-margin>
-                <p class="md-body-2">
-                    Use existing account</p>
-            </div>
-            <div layout="row" layout-fill layout-margin layout-padding layout-wrap>
-                <md-button class="md-raised">
+            <form name="loginForm" layout="column" >
+                <div layout="row" layout-fill>
+                    <p class="md-body-2">
+                        Đăng nhập Skynet bằng tài khoản của tôi
+                    </p>
+                </div>
 
-                    <md-icon md-svg-icon="content:ic_clear_24px" style="color: #DC4A38;"></md-icon>
-                    <!--<md-icon md-svg-icon="social:ic_google_24px" style="color: #DC4A38;"></md-icon>-->
-          <span>
-            Google</span>
-                </md-button>
-                <md-button class="md-raised">
-                    <md-icon md-svg-icon="social:ic_facebook_24px" style="color: #3F62B4;"></md-icon>
-          <span>Facebook
-          </span>
-                </md-button>
-                <md-button class="md-raised">
-                    <md-icon md-svg-icon="social:ic_twitter_24px" style="color: #27AAE2;"></md-icon>
-          <span>Twitter
-          </span>
-                </md-button>
-            </div>
-            <md-divider class="inset"></md-divider>
-
-            <div layout="row" layout-fill layout-margin>
-                <p class="md-body-2">
-                    Sign in with your email</p>
-            </div>
-
-            <form name="loginForm" layout="column" layout-fill layout-padding layout-margin>
                 <md-input-container>
-                    <label>
-                        Email
-                    </label>
+                    <label> Email đăng ký</label>
                     <input type="text" ng-model="login.credentials.email" aria-label="email" required/>
                 </md-input-container>
                 <md-input-container>
-                    <label>
-                        Password
-                    </label>
+                    <label>Mật khẩu của tôi</label>
                     <input type="password" ng-model="login.credentials.password" aria-label="password" required/>
                 </md-input-container>
+
+                <md-divider class="inset" style="margin-left: -8px; margin-right: -8px; padding-left: 0; padding-right: 0"></md-divider>
                 <div layout="row" layout-align="space-between center">
-                    <a class="md-button" href="/password">Forgot password?</a>
-                    <md-button class="md-raised md-primary" ng-click="login.login()" aria-label="login" ng-disabled="login.loginForm.$invalid()">Sign In
-                    </md-button>
+                    <a class="md-button" href="/password">Quên mật khẩu?</a>
+                    <md-button class="md-raised md-primary" ng-click="login.login()" aria-label="login" ng-disabled="login.loginForm.$invalid()">Đăng nhập</md-button>
                 </div>
             </form>
+
+
+
             <md-toolbar ng-show="login.error" class="md-warn" layout="row" layout-fill layout-padding layout-margin>
                 <p class="md-body-1">{{ login.error }}</p>
             </md-toolbar>
+
             <md-divider></md-divider>
             <div layout="row" layout-align="center">
-                <a class="md-button" href="/register">Need an account?</a>
+                <a class="md-button" href="/register">Đã có tài khoản?</a>
             </div>
 
         </div>
-
     </md-whiteframe>
 </md-content>
+
+
+<!--<md-content layout="row" layout-align="center start" layout-fill layout-margin>-->
+
+    <!--<md-whiteframe layout="column" flex flex-md="50" flex-lg="50" flex-gt-lg="33" class="md-whiteframe-z2" layout-fill>-->
+
+        <!--<md-toolbar class="md-primary md-tall" layout="column" layout-align="end" layout-fill>-->
+            <!--<div layout="row" class="md-toolbar-tools md-toolbar-tools-bottom">-->
+                <!--<h3 class="md-display-1">-->
+                    <!--Sign in-->
+                <!--</h3>-->
+            <!--</div>-->
+        <!--</md-toolbar>-->
+
+        <!--<div layout="column" layout-fill layout-margin layout-padding>-->
+            <!--<div layout="row" layout-fill layout-margin>-->
+                <!--<p class="md-body-2">-->
+                    <!--Use existing account</p>-->
+            <!--</div>-->
+            <!--<div layout="row" layout-fill layout-margin layout-padding layout-wrap>-->
+                <!--<md-button class="md-raised">-->
+
+                    <!--<md-icon md-svg-icon="content:ic_clear_24px" style="color: #DC4A38;"></md-icon>-->
+                    <!--&lt;!&ndash;<md-icon md-svg-icon="social:ic_google_24px" style="color: #DC4A38;"></md-icon>&ndash;&gt;-->
+          <!--<span>-->
+            <!--Google</span>-->
+                <!--</md-button>-->
+                <!--<md-button class="md-raised">-->
+                    <!--<md-icon md-svg-icon="social:ic_facebook_24px" style="color: #3F62B4;"></md-icon>-->
+          <!--<span>Facebook-->
+          <!--</span>-->
+                <!--</md-button>-->
+                <!--<md-button class="md-raised">-->
+                    <!--<md-icon md-svg-icon="social:ic_twitter_24px" style="color: #27AAE2;"></md-icon>-->
+          <!--<span>Twitter-->
+          <!--</span>-->
+                <!--</md-button>-->
+            <!--</div>-->
+            <!--<md-divider class="inset"></md-divider>-->
+
+            <!--<div layout="row" layout-fill layout-margin>-->
+                <!--<p class="md-body-2">-->
+                    <!--Sign in with your email</p>-->
+            <!--</div>-->
+
+            <!--<form name="loginForm" layout="column" layout-fill layout-padding layout-margin>-->
+                <!--<md-input-container>-->
+                    <!--<label>-->
+                        <!--Email-->
+                    <!--</label>-->
+                    <!--<input type="text" ng-model="login.credentials.email" aria-label="email" required/>-->
+                <!--</md-input-container>-->
+                <!--<md-input-container>-->
+                    <!--<label>-->
+                        <!--Password-->
+                    <!--</label>-->
+                    <!--<input type="password" ng-model="login.credentials.password" aria-label="password" required/>-->
+                <!--</md-input-container>-->
+                <!--<div layout="row" layout-align="space-between center">-->
+                    <!--<a class="md-button" href="/password">Forgot password?</a>-->
+                    <!--<md-button class="md-raised md-primary" ng-click="login.login()" aria-label="login" ng-disabled="login.loginForm.$invalid()">Sign In-->
+                    <!--</md-button>-->
+                <!--</div>-->
+            <!--</form>-->
+            <!--<md-toolbar ng-show="login.error" class="md-warn" layout="row" layout-fill layout-padding layout-margin>-->
+                <!--<p class="md-body-1">{{ login.error }}</p>-->
+            <!--</md-toolbar>-->
+            <!--<md-divider></md-divider>-->
+            <!--<div layout="row" layout-align="center">-->
+                <!--<a class="md-button" href="/register">Need an account?</a>-->
+            <!--</div>-->
+
+        <!--</div>-->
+
+    <!--</md-whiteframe>-->
+<!--</md-content>-->

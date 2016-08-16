@@ -4,6 +4,7 @@ import angularMeteor from 'angular-meteor';
 import template from './userDetailsLabel.html';
 
 // import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
+
 import { name as UserName } from '../../../directives/common/userName';
 import { name as UserAvatar } from '../../../directives/common/userAvatar';
 import { name as UserStatus } from '../../../directives/common/userStatus';

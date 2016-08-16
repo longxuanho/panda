@@ -1,9 +1,12 @@
 <md-list flex>
     <md-subheader class="md-no-sticky">Bạn đang xem danh sách {{usersListListView.users.length}}/{{usersListListView.usersCount}} người dùng trên hệ thống Skynet</md-subheader>
     <md-list-item class="md-2-line" ng-click="null" ng-repeat="user in usersListListView.users">
-        <img user-avatar user-id="12345" class="md-avatar" />
+        <div class="sky-user-status-container">
+            <span class="sky-user-status" user-status user-id="{{user._id}}"></span>
+            <img user-avatar user-id="{{user._id}}" class="md-avatar" />
+        </div>
         <div class="md-list-item-text">
-            <h3>{{user.profile.name}}</h3>
+            <h3><span user-name user-id="{{user._id}}"></h3>
             <p>{{user.profile.tham_chieu.don_vi.ten}}</p>
         </div>
     </md-list-item>
