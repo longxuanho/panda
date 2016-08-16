@@ -60,7 +60,7 @@ Schema.UserProfile = new SimpleSchema({
         },
     'tham_chieu': {
         type: Object,
-        blackbox: true
+        blackbox: true          // tham_chieu > don_vi > { ten, ma, nhom }
     },
     'avatar': {
         type: Object,

@@ -4,8 +4,6 @@ import uiRouter from 'angular-ui-router';
 import utilsPagination from 'angular-utils-pagination';
 import ngMdIcons from 'angular-material-icons';
 
-import { Counts } from 'meteor/tmeasday:publish-counts';
-
 import template from './tbisList.html';
 
 import { name as TbisUtilsBar } from '../tbisUtilsBar/tbisUtilsBar';

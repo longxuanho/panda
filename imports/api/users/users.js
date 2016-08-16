@@ -1,4 +1,6 @@
 import { Meteor } from 'meteor/meteor';
+import { Counts } from 'meteor/tmeasday:publish-counts';
+
 import './schema';
 import _ from 'underscore';
 
@@ -35,6 +37,11 @@ if (Meteor.isServer) {
                 $options : 'i'
             };
         }
+
+        Counts.publish(this, 'numberOfUsers', Meteor.users.find(selector), {
+            noReady: true
+        });
+
         return Meteor.users.find(selector, options);
     });
 }
