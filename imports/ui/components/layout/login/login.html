@@ -8,7 +8,7 @@
             </div>
         </md-toolbar>
         <div layout="column" layout-fill layout-margin layout-padding>
-            <form name="loginForm" layout="column" >
+            <form name="login.loginForm" layout="column">
                 <div layout="row" layout-fill>
                     <p class="md-body-2">
                         Đăng nhập Skynet bằng tài khoản của tôi
@@ -16,18 +16,25 @@
                 </div>
 
                 <md-input-container>
-                    <label> Email đăng ký</label>
-                    <input type="text" ng-model="login.credentials.email" aria-label="email" required/>
+                    <label>Email đăng ký</label>
+                    <input type="email" ng-model="login.credentials.email" name="creadentials_email" aria-label="email" required ng-pattern="/^.+@.+\..+$/"/>
+                    <div ng-messages="login.loginForm.creadentials_email.$error">
+                        <div ng-message="required">Bạn chưa nhập email đăng ký.</div>
+                        <div ng-message="pattern">Địa chỉ email đăng nhập không hợp lệ.</div>
+                    </div>
                 </md-input-container>
                 <md-input-container>
                     <label>Mật khẩu của tôi</label>
-                    <input type="password" ng-model="login.credentials.password" aria-label="password" required/>
+                    <input type="password" ng-model="login.credentials.password" name="creadentials_password" aria-label="password" required/>
+                    <div ng-messages="login.loginForm.creadentials_password.$error">
+                        <div ng-message="required">Bạn phải điền mật khẩu đăng nhập.</div>
+                    </div>
                 </md-input-container>
 
                 <md-divider class="inset" style="margin-left: -8px; margin-right: -8px; padding-left: 0; padding-right: 0"></md-divider>
                 <div layout="row" layout-align="space-between center">
                     <a class="md-button" href="/password">Quên mật khẩu?</a>
-                    <md-button class="md-raised md-primary" ng-click="login.login()" aria-label="login" ng-disabled="login.loginForm.$invalid()">Đăng nhập</md-button>
+                    <md-button type="submit" class="md-raised md-primary" ng-click="login.login()" aria-label="login" ng-disabled="login.loginForm.$invalid">Đăng nhập</md-button>
                 </div>
             </form>
 
@@ -39,7 +46,7 @@
 
             <md-divider></md-divider>
             <div layout="row" layout-align="center">
-                <a class="md-button" href="/register">Đã có tài khoản?</a>
+                <a class="md-button" href="/register">Đăng ký tài khoản mới?</a>
             </div>
 
         </div>

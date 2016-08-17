@@ -2,15 +2,18 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 
-import { Meteor } from 'meteor/meteor';
+import { name as NotificationService } from '../../../services/common/notificationService';
+import { name as AuthDataService } from '../../../services/users/authDataService';
 
 import template from './login.html';
 
 class Login {
-    constructor($scope, $reactive, $state) {
+    constructor($scope, $reactive, $state, notificationService, authDataService) {
         'ngInject';
 
         this.$state = $state;
+        this.notificationService = notificationService;
+        this.authDataService = authDataService;
 
         $reactive(this).attach($scope);
 
@@ -23,15 +26,12 @@ class Login {
     }
 
     login() {
-        Meteor.loginWithPassword(this.credentials.email, this.credentials.password,
-            this.$bindToContext((err) => {
-                if (err) {
-                    this.error = err;
-                } else {
-                    this.$state.go('parties');
-                }
-            })
-        );
+        this.authDataService.login(this.credentials).then(() => {
+            this.notificationService.success('Welcome back : )', 'Đăng nhập thành công');
+            this.$state.go('parties');
+        }).catch((err) => {
+            this.notificationService.error(err.reason, 'Đăng nhập thất bại');
+        });
     }
 }
 
@@ -40,7 +40,9 @@ const name = 'login';
 // create a module
 export default angular.module(name, [
     angularMeteor,
-    uiRouter
+    uiRouter,
+    NotificationService,
+    AuthDataService
 ])
     .component(name, {
         template,
