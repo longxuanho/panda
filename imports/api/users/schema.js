@@ -5,10 +5,12 @@ let Schema = {};
 
 Schema.UserProfile = new SimpleSchema({
     'name': {
-        type: String
+        type: String,
+        optional: true
     },
     'ho_so': {
-        type: Object
+        type: Object,
+        defaultValue: {}
     },
         'ho_so.ten': {
             type: String
@@ -23,16 +25,20 @@ Schema.UserProfile = new SimpleSchema({
             type: Date
         },
     'bien_che': {
-        type: Object
+        type: Object,
+        defaultValue: {}
     },
         'bien_che.ma': {
-            type: String
+            type: String,
+            optional: true
         },
         'bien_che.cong_ty': {
-            type: String
+            type: String,
+            optional: true
         },
         'bien_che.don_vi': {
-            type: String
+            type: String,
+            optional: true
         },
         'bien_che.ban': {
             type: String,
@@ -51,7 +57,8 @@ Schema.UserProfile = new SimpleSchema({
             optional: true
         },
     'lien_he': {
-        type: Object
+        type: Object,
+        defaultValue: {}
     },
         'lien_he.dien_thoai': {
             type: String,

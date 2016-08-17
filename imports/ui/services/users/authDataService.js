@@ -30,7 +30,7 @@ class AuthDataService {
 
     register(credentials) {
         let defer = this.$q.defer();
-        Accounts.createUser(credentials,
+        Accounts.createUser(angular.copy(credentials),
             (error) => {
                 if (error) {
                     defer.reject(error);

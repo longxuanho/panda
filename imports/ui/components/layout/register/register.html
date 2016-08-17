@@ -49,10 +49,21 @@
                     </md-input-container>
                 </div>
 
-                <div layout="row" class="sky-fix-ui-md-date-picker">
-                    <div flex="50" style="padding-top: 26px;">
-                        <md-datepicker name="profile_ngay_sinh" ng-model="register.credentials.profile.ho_so.ngay_sinh" md-placeholder="Ngày sinh *" required></md-datepicker>
-                    </div>
+                <div layout="row" class="sky-fix-kendo-date-picker">
+                    <!--<div flex="50" style="padding-top: 26px;">-->
+                        <!--<md-datepicker name="profile_ngay_sinh" ng-model="register.credentials.profile.ho_so.ngay_sinh" md-placeholder="Ngày sinh *" required></md-datepicker>-->
+                        <!--<div class="validation-messages" ng-messages="register.credentials.profile_ngay_sinh.$error">-->
+                            <!--<div ng-message="valid">Giá trị nhập vào không phải là ngày hợp lệ.</div>-->
+                            <!--<div ng-message="required">Thông tin bắt buộc.</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <md-input-container flex="50">
+                        <label>Ngày sinh</label>
+                        <input kendo-date-picker name="profile_ngay_sinh" k-format="'dd/MM/yyyy'" style="width: 100%;" k-ng-model="register.credentials.profile.ho_so.ngay_sinh" required type="date"/>
+                        <div ng-messages="register.registerForm.profile_ngay_sinh.$error">
+                            <div ng-message="required">Thông tin bắt buộc.</div>
+                        </div>
+                    </md-input-container>
                     <md-input-container flex="50">
                         <label>Giới tính</label>
                         <md-select name="profile_gioi_tinh" ng-model="register.credentials.profile.ho_so.gioi_tinh" required>
@@ -67,9 +78,8 @@
                 <div style="padding-top: 30px;">
                     <md-input-container style="width: 100%;">
                         <label>Đơn vị</label>
-                        <md-select name="profile_don_vi" ng-model="register.credentials.profile.tham_chieu.don_vi" required>
-                            <md-option value="Đơn vị 1">Đơn vị 1</md-option>
-                            <md-option value="Đơn vị 2">Đơn vị 2</md-option>
+                        <md-select name="profile_don_vi" ng-model="register.credentials.profile.tham_chieu.don_vi" required ng-model-options="{trackBy: '$value.ma'}">
+                            <md-option ng-repeat="donvi in register.donvisOptions" ng-value="donvi">{{donvi.ten}}</md-option>
                         </md-select>
                         <div ng-messages="register.registerForm.profile_don_vi.$error">
                             <div ng-message="required">Thông tin bắt buộc.</div>
@@ -86,9 +96,6 @@
 
             <pre>
                 {{register.credentials|json}}
-            </pre>
-            <pre>
-                {{register.donviesOptions|json}}
             </pre>
 
             <md-toolbar ng-show="register.error" class="md-warn" layout="row" layout-fill layout-padding layout-margin>

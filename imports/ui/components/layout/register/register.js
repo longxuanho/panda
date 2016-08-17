@@ -20,9 +20,9 @@ class Register {
         this.subscribe('tbishelpers');
 
         this.helpers({
-            donviesOptions() {
+            donvisOptions() {
                 tbisPhanQuyenDataService.queryAll();
-                return tbisPhanQuyenDataService.getSelectOptions();
+                return tbisPhanQuyenDataService.getSelectOptions().donvis;
             }
         });
 
@@ -33,7 +33,9 @@ class Register {
         this.credentials = {
             email: '',
             password: '',
-            profile: {}
+            profile: {
+                name: 'Đang chờ kiểm duyệt...'
+            }
         };
 
         this.error = '';
@@ -41,7 +43,7 @@ class Register {
 
     register() {
         this.authDataService.register(this.credentials).then(() => {
-            this.notificationService.success('Chào mừng bạn đến với Skynet : )', 'Đăng ký thành công');
+            this.notificationService.success('Chào mừng đến với Skynet!', 'Đăng ký thành công');
             this.$state.go('parties');
         }).catch((err) => {
             this.notificationService.error(err.reason, 'Đăng ký thất bại');

@@ -22,3 +22,54 @@
     border-color: rgba(0,0,0,0.12);
   }
 }
+
+.k-calendar {
+  .k-today {
+    &.k-state-hover {
+      .k-link {
+        color: #fff;
+      }
+    }
+    background-color: rgba(0,0,0,.12);
+    box-shadow: none;
+    .k-link {
+      color: #444;
+    }
+  }
+  td.k-state-selected.k-state-focused {
+    .k-link {
+      color: #444;
+    }
+    background-color: rgba(0, 0, 0, 0.12);
+    box-shadow: inset 0 0 0 1px #f35800;
+  }
+}
+
+
+.sky {
+  &-fix-kendo-date-picker {
+    .k-picker-wrap {
+      background-color: transparent;
+      border-width: 0;
+      &.k-state-hover, &.k-state-focused {
+        box-shadow: none;
+        input {
+          background-color: transparent;
+          text-indent: 0;
+          padding-bottom: 5px;
+        }
+      }
+      input {
+        background-color: transparent;
+        text-indent: 0;
+        padding-bottom: 5px;
+      }
+      .k-icon {
+        vertical-align: top;
+        margin-top: 5px;
+        opacity: 0.38;
+      }
+    }
+
+  }
+}
