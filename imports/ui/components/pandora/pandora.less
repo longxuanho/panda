@@ -18,6 +18,11 @@ body.md-dialog-is-showing {
 }
 
 .sky {
+  // Fix lỗi delay khi dùng ng-show và ng-hide trong angular
+  &-no-animate {
+    -webkit-transition: none !important;
+    transition: none !important;
+  }
   &-avatar {
     width: 34px;
     height: 34px;

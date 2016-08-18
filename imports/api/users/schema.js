@@ -80,7 +80,15 @@ Schema.UserProfile = new SimpleSchema({
             type: String,
             optional: true
         },
-        'avatar.original': {
+        'avatar.isGAvatar': {
+            type: Boolean,
+            defaultValue: false
+        },
+        'avatar.gAvatarUrl': {
+            type: String,
+            optional: true
+        },
+        'avatar.gAvatarEmail': {
             type: String,
             optional: true
         },

@@ -61,6 +61,7 @@ class UsersDataService {
     addNew(user) {
     }
 
+
     updateUserProfile(data) {
         // let defer = this.$q.defer();
         // ThietBis.update({

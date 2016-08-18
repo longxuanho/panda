@@ -5,7 +5,7 @@ import { Meteor } from 'meteor/meteor';
 
 import template from './userDetailsViewThietLapTabChangePasswordBtn.html';
 import modalTemplate from './userDetailsViewThietLapTabChangePasswordModal.html';
-import { name as UsersDataService } from '../../../services/users/usersDataService';
+import { name as AuthDataService } from '../../../services/users/authDataService';
 import { name as NotificationService } from '../../../services/common/notificationService';
 
 
@@ -19,32 +19,28 @@ class UserDetailsViewThietLapTabChangePasswordBtn {
 
     open(event) {
         this.$mdDialog.show({
-            controller($mdDialog, usersDataService, notificationService) {
+            controller($mdDialog, authDataService, notificationService) {
                 'ngInject';
 
                 this.isModalOpen = true;
 
-                this.cancel = () => {
-
-                };
-
                 this.changePassword = () => {
                     try {
-                        // this.newTbisReport.noi_dung.text = $('iframe').contents().find("body").text() || this.newTbisReport.noi_dung.html;
-                        // metadataService.buildNewMetadata(this.newTbisReport, Meteor.user());
-                        // tbisReportsDataService.validateTbisReportsInputData(this.newTbisReport);
-                        // tbisReportsDataService.buildSearchField(this.newTbisReport);
-                        // tbisReportsDataService.addNew(this.newTbisReport).then(() => {
-                        //     notificationService.success('Thông báo của bạn đã được ghi nhận vào Skynet.', 'Tạo mới thành công');
-                        //     this.reset();
-                        //     this.close();
-                        // }).catch((err) => {
-                        //     notificationService.error(err.message, 'Tạo mới thất bại');
-                        // });
+                        this.validatePasswordMatch();
+                        authDataService.changeCurrentUserPassword(this.credentials).then(() => {
+                            notificationService.success('Mật khẩu đăng nhập của bạn đã được thay đổi thành công.', 'Đổi mật khẩu thành công.');
+                            this.close();
+                        }).catch((err) => {
+                            notificationService.error(err.reason, 'Đổi mật khẩu thất bại');
+                        });
+                    } catch (error) {
+                        notificationService.error(error.message, 'Xác nhận mật khẩu');
                     }
-                    catch (error) {
-                        // notificationService.error(error.message, 'Thiếu thông tin');
-                    }
+                };
+
+                this.validatePasswordMatch = () => {
+                    if (this.credentials.repeatNewPassword !== this.credentials.newPassword)
+                        throw new Error('Xác nhận mật khẩu mới của bạn không khớp. Vui lòng thử lại.')
                 };
 
                 this.close = () => {
@@ -68,7 +64,7 @@ const name = 'userDetailsViewThietLapTabChangePasswordBtn';
 // create a module
 export default angular.module(name, [
     angularMeteor,
-    UsersDataService,
+    AuthDataService,
     NotificationService,
 ]).component(name, {
     template,

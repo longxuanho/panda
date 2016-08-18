@@ -5,8 +5,6 @@ import { Accounts } from 'meteor/accounts-base';
 
 import _ from 'underscore';
 
-
-
 class AuthDataService {
 
     constructor($q) {
@@ -66,21 +64,55 @@ class AuthDataService {
         return defer.promise;
     }
 
-    addNew(user) {
+    updateCurrentUserContactInfo(data) {
+        let defer = this.$q.defer();
+        Meteor.users.update({ _id: Meteor.userId() },
+            {
+                $set: {
+                    'profile.lien_he.dien_thoai': data.dien_thoai,
+                    'profile.lien_he.email': data.email
+                }
+            }, (error) => {
+                if (error) {
+                    defer.reject(error);
+                } else {
+                    defer.resolve();
+                }
+            }
+        );
+        return defer.promise;
     }
 
-    getSelectedUser() {
-        return this.selectedUser;
+    changeCurrentUserPassword(credentials) {
+        let defer = this.$q.defer();
+        Accounts.changePassword(credentials.oldPassword, credentials.newPassword, (error) => {
+            if (error) {
+                defer.reject(error);
+            } else {
+                defer.resolve();
+            }
+        });
+        return defer.promise;
     }
 
-    setSelectedUser(userId) {
-        this.selectedUser = this.queryOne(userId);
+    updateCurrentUserAvatar(userAvatar) {
+        let defer = this.$q.defer();
+        Meteor.users.update({ _id: Meteor.userId() },
+            {
+                $set: {
+                    'profile.avatar': userAvatar
+                }
+            }, (error) => {
+                if (error) {
+                    defer.reject(error);
+                } else {
+                    defer.resolve();
+                }
+            }
+        );
+        return defer.promise;
     }
 
-    getSelectedThongSoKyThuatGroupBy(data) {
-        if (data)
-            return _.groupBy(data, 'nhom');
-    }
 }
 
 const name = 'authDataService';

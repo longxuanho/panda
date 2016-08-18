@@ -5,7 +5,7 @@ import { Meteor } from 'meteor/meteor';
 
 import template from './userDetailsViewThietLapTabUpdateContactBtn.html';
 import modalTemplate from './userDetailsViewThietLapTabUpdateContactModal.html';
-import { name as UsersDataService } from '../../../services/users/usersDataService';
+import { name as AuthDataService } from '../../../services/users/authDataService';
 import { name as NotificationService } from '../../../services/common/notificationService';
 
 
@@ -19,32 +19,19 @@ class UserDetailsViewThietLapTabUpdateContactBtn {
 
     open(event) {
         this.$mdDialog.show({
-            controller($mdDialog, usersDataService, notificationService) {
+            controller($mdDialog, authDataService, notificationService) {
                 'ngInject';
 
                 this.isModalOpen = true;
+                this.lienHeData = angular.copy(Meteor.user().profile.lien_he);
 
-                this.cancel = () => {
-
-                };
-
-                this.changePassword = () => {
-                    try {
-                        // this.newTbisReport.noi_dung.text = $('iframe').contents().find("body").text() || this.newTbisReport.noi_dung.html;
-                        // metadataService.buildNewMetadata(this.newTbisReport, Meteor.user());
-                        // tbisReportsDataService.validateTbisReportsInputData(this.newTbisReport);
-                        // tbisReportsDataService.buildSearchField(this.newTbisReport);
-                        // tbisReportsDataService.addNew(this.newTbisReport).then(() => {
-                        //     notificationService.success('Thông báo của bạn đã được ghi nhận vào Skynet.', 'Tạo mới thành công');
-                        //     this.reset();
-                        //     this.close();
-                        // }).catch((err) => {
-                        //     notificationService.error(err.message, 'Tạo mới thất bại');
-                        // });
-                    }
-                    catch (error) {
-                        // notificationService.error(error.message, 'Thiếu thông tin');
-                    }
+                this.update = () => {
+                    authDataService.updateCurrentUserContactInfo(this.lienHeData).then(() => {
+                        notificationService.success('Thông tin liên hệ của bạn đã được ghi nhận vào Skynet.', 'Cập nhật thành công');
+                        this.close();
+                    }).catch((err) => {
+                        notificationService.error(err.reason, 'Tạo mới thất bại');
+                    });
                 };
 
                 this.close = () => {
@@ -68,7 +55,7 @@ const name = 'userDetailsViewThietLapTabUpdateContactBtn';
 // create a module
 export default angular.module(name, [
     angularMeteor,
-    UsersDataService,
+    AuthDataService,
     NotificationService,
 ]).component(name, {
     template,

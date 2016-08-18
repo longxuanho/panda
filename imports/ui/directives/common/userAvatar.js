@@ -6,25 +6,13 @@ import { Meteor } from 'meteor/meteor';
 class UserAvatar {
     constructor($scope) {
         'ngInject';
+
         $scope.imgMissingDefault = '/img/avatars/avatar_default.png';
         $scope.userAvatar =  $scope.imgMissingDefault;
 
         $scope.helpers({
             user() {
-                // console.log('begin helpers..', $scope.userId);
-                if (!$scope.userId)
-                    return;
-
-                let foundUser = Meteor.users.findOne($scope.userId, {fields: {'profile.avatar': 1}});
-                // console.log('found: ', foundUser);
-
-                if (foundUser) {
-                    if (foundUser.profile && foundUser.profile.avatar && foundUser.profile.avatar.url) {
-                        $scope.userAvatar = foundUser.profile.avatar.url;
-                        return;
-                    }
-                }
-                return '';
+                $scope.userAvatar = resolveUserAvatar($scope.userId);
             }
         });
     }
@@ -39,17 +27,32 @@ export default angular.module(name, [
     return {
         restrict: 'A',
         scope: {
-            userId: '@'
+            // Chọn một trong 2 thuộc tính để binding
+            userId: '@',
+            imgSrc: '@'
         },
         link: (scope, element) => {
             scope.$watch('userAvatar', (newValue) => {
-                // console.log('begin watcher..', newValue);
+                element.attr('src', newValue);
+            });
+            scope.$watch('imgSrc', (newValue) => {
                 element.attr('src', newValue);
             });
             element.bind('error', () => {
                 element.attr('src', scope.imgMissingDefault);
-            })
+            });
         },
         controller: UserAvatar
     }
 });
+
+function resolveUserAvatar(userId) {
+    if (!userId)
+        return '';
+
+    let foundUser = Meteor.users.findOne(userId, {fields: {'profile.avatar': 1}});
+    if (foundUser && foundUser.profile && foundUser.profile.avatar)
+        return (foundUser.profile.avatar.isGAvatar) ? foundUser.profile.avatar.gAvatarUrl : foundUser.profile.avatar.url || '';
+
+    return '';
+}
