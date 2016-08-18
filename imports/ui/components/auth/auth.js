@@ -14,18 +14,22 @@ import { name as ResetPassword } from '../layout/resetPassword/resetPassword';
 
 import { name as CurrentUserService } from '../../services/common/currentUserService';
 import { name as UserLocalSettingsService } from '../../services/common/userLocalSettingsService';
+import { name as NotificationService } from '../../services/common/notificationService';
+
+import { name as UserAvatar } from '../../directives/common/userAvatar';
 
 const name = 'auth';
 
 class Auth {
-    constructor($scope, $reactive, currentUserService, userLocalSettingsService) {
+    constructor($scope, $reactive, $state, currentUserService, userLocalSettingsService, notificationService) {
         'ngInject';
 
         $reactive(this).attach($scope);
 
         this.currentUserService = currentUserService;
         this.userLocalSettingsService = userLocalSettingsService;
-
+        this.notificationService = notificationService;
+        this.$state = $state;
 
         this.helpers({
             isLoggedIn() {
@@ -43,6 +47,8 @@ class Auth {
         this.currentUserService.setCurrentUser({});
         this.userLocalSettingsService.initDefaultCurrentUserLocalSettings();
         Accounts.logout();
+        this.$state.go('login');
+        this.notificationService.success('Bye : )', "Đăng xuất thành công");
     }
 }
 
@@ -50,12 +56,14 @@ class Auth {
 export default angular.module(name, [
     angularMeteor,
     DisplayNameFilter,
+    UserAvatar,
     Login,
     Register,
     Password,
     ResetPassword,
     CurrentUserService,
-    UserLocalSettingsService
+    UserLocalSettingsService,
+    NotificationService
 ]).component(name, {
     template,
     controllerAs: name,

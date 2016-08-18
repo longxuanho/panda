@@ -16,7 +16,7 @@
                 </div>
 
                 <md-input-container>
-                    <label>Email đăng ký</label>
+                    <label>Email của tôi</label>
                     <input type="email" ng-model="login.credentials.email" name="creadentials_email" aria-label="email" required ng-pattern="/^.+@.+\..+$/"/>
                     <div ng-messages="login.loginForm.creadentials_email.$error">
                         <div ng-message="required">Bạn chưa nhập email đăng ký.</div>
@@ -24,7 +24,7 @@
                     </div>
                 </md-input-container>
                 <md-input-container>
-                    <label>Mật khẩu của tôi</label>
+                    <label>Mật khẩu đăng nhập</label>
                     <input type="password" ng-model="login.credentials.password" name="creadentials_password" aria-label="password" required/>
                     <div ng-messages="login.loginForm.creadentials_password.$error">
                         <div ng-message="required">Bạn phải điền mật khẩu đăng nhập.</div>

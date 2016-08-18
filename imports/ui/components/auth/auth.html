@@ -1,6 +1,36 @@
 <div layout="row">
-    <md-button flex ui-sref="login" ng-hide="auth.isLoggedIn">Login</md-button>
-    <md-button flex ui-sref="register" ng-hide="auth.isLoggedIn">Sign up</md-button>
-    <md-button flex ng-click="auth.logout()" ng-show="auth.isLoggedIn">Logout</md-button>
-    <div ng-show="auth.isLoggedIn">{{ auth.currentUser | displayNameFilter }}</div>
+    <md-button ui-sref="login" ng-hide="auth.isLoggedIn">Đăng nhập</md-button>
+    <md-button ui-sref="register" ng-hide="auth.isLoggedIn">Đăng ký</md-button>
+    <!--<md-button ng-click="auth.logout()" ng-show="auth.isLoggedIn">Đăng xuất</md-button>-->
+
+    <md-menu md-position-mode="target-right target" ng-if="auth.isLoggedIn">
+        <md-button ng-show="auth.isLoggedIn" ng-click="$mdOpenMenu($event)">{{ auth.currentUser | displayNameFilter }}</md-button>
+        <md-menu-content width="4" >
+            <md-menu-item>
+                <md-button ng-click="null">
+                    <div layout="row" flex>
+                        <p flex>Bàn làm việc</p>
+                        <md-icon md-svg-icon="img/icons/common/devices.svg" style="margin: auto 3px auto 0;"></md-icon>
+                    </div>
+                </md-button>
+            </md-menu-item>
+            <md-menu-item>
+                <md-button ui-sref="usersdetails({userId: auth.currentUser._id})">
+                    <div layout="row" flex style="padding-top: 7px;">
+                        <p flex>Hồ sơ</p>
+                        <md-icon md-svg-icon="img/icons/common/person.svg" style="margin: auto 3px auto 0;"></md-icon>
+                    </div>
+                </md-button>
+            </md-menu-item>
+            <md-menu-item>
+                <md-button ng-click="auth.logout()">
+                    <div layout="row" flex>
+                        <p flex>Đăng xuất</p>
+                        <md-icon md-svg-icon="img/icons/common/exit_to_app.svg" style="margin: auto 3px auto 0;"></md-icon>
+                    </div>
+                </md-button>
+            </md-menu-item>
+        </md-menu-content>
+    </md-menu>
+    <img ng-if="auth.isLoggedIn" user-avatar user-id="auth.currentUser._id" class="sky-avatar" alt="avatar"/>
 </div>

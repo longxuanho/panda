@@ -11,7 +11,7 @@
         <img ng-src="/img/icons/users/balloons.svg" class="md-avatar sky-reset-border-radius" alt="Ngày sinh" />
         <div class="md-list-item-text">
             <h3>Ngày sinh</h3>
-            <p>15/08/2016 (25 tuổi)</p>
+            <p>{{userDetailsViewThongTinChungTab.userDetails.profile.ho_so.ngay_sinh | displayCustomDateTimeFilter:'DD/MM/YYYY'}} ({{userDetailsViewThongTinChungTab.userDetails.profile.ho_so.ngay_sinh | displayRelativeTimeFilter}})</p>
         </div>
     </md-list-item>
     <md-list-item class="md-2-line" ng-click="null">
@@ -70,14 +70,16 @@
         <img ng-src="/img/icons/users/mailbox.svg" class="md-avatar" alt="Mail" />
         <div class="md-list-item-text">
             <h3>Email</h3>
-            <p>{{userDetailsViewThongTinChungTab.userDetails.profile.lien_he.email}}</p>
+            <p ng-show="userDetailsViewThongTinChungTab.userDetails.profile.lien_he.email">{{userDetailsViewThongTinChungTab.userDetails.profile.lien_he.email}}</p>
+            <p ng-hide="userDetailsViewThongTinChungTab.userDetails.profile.lien_he.email">Chưa cập nhật</p>
         </div>
     </md-list-item>
     <md-list-item class="md-2-line" ng-click="null">
         <img ng-src="/img/icons/users/smartphone.svg" class="md-avatar" alt="Phone" />
         <div class="md-list-item-text">
             <h3>Điện thoại</h3>
-            <p>{{userDetailsViewThongTinChungTab.userDetails.profile.lien_he.dien_thoai}}</p>
+            <p ng-show="userDetailsViewThongTinChungTab.userDetails.profile.lien_he.dien_thoai">{{userDetailsViewThongTinChungTab.userDetails.profile.lien_he.dien_thoai}}</p>
+            <p ng-hide="userDetailsViewThongTinChungTab.userDetails.profile.lien_he.dien_thoai">Chưa cập nhật</p>
         </div>
     </md-list-item>
     <md-subheader class="md-no-sticky">

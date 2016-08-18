@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "meteor npm run connectdb && meteor npm run start",
     "connectdb": "SET MONGO_URL=mongodb://hatachino1:longlong@ds017205.mlab.com:17205/pandora-dev",
+    "go": "meteor --settings settings.json",
     "start": "meteor run",
     "test:watch": "meteor test --driver-package sanjo:jasmine",
     "deploy": ""

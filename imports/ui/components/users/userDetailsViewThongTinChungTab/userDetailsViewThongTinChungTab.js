@@ -4,6 +4,7 @@ import angularMeteor from 'angular-meteor';
 import template from './userDetailsViewThongTinChung.html';
 import { name as UsersDataService } from '../../../services/users/usersDataService';
 import { name as DisplayRelativeTimeFilter } from '../../../filters/common/displayRelativeTimeFilter';
+import { name as DisplayCustomDateTimeFilter } from '../../../filters/common/displayCustomDateTimeFilter';
 
 
 class UserDetailsViewThongTinChungTab {
@@ -20,7 +21,8 @@ const name = 'userDetailsViewThongTinChungTab';
 export default angular.module(name, [
     angularMeteor,
     UsersDataService,
-    DisplayRelativeTimeFilter
+    DisplayRelativeTimeFilter,
+    DisplayCustomDateTimeFilter
 ]).component(name, {
     template,
     bindings: {
