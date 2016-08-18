@@ -24,7 +24,7 @@ accounts-password@1.2.12
 dotansimha:accounts-ui-angular
 tmeasday:publish-counts
 check@1.2.3
-email@1.1.16
+email
 less@2.7.4
 aldeed:collection2
 alanning:roles
@@ -33,3 +33,4 @@ velocityjs:velocityjs
 
 chrismbeckett:toastr
 mizzao:user-status
+meteorhacks:ssr

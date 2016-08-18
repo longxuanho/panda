@@ -42,6 +42,30 @@ class AuthDataService {
         return defer.promise;
     }
 
+    forgotPassword(credentials) {
+        let defer = this.$q.defer();
+        Accounts.forgotPassword(credentials, (error) => {
+            if (error) {
+                defer.reject(error);
+            } else {
+                defer.resolve();
+            }
+        });
+        return defer.promise;
+    }
+
+    resetPassword(credentials) {
+        let defer = this.$q.defer();
+        Accounts.resetPassword(credentials.token, credentials.password, (error) => {
+            if (error) {
+                defer.reject(error);
+            } else {
+                defer.resolve();
+            }
+        });
+        return defer.promise;
+    }
+
     addNew(user) {
     }
 

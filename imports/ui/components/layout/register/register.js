@@ -2,8 +2,6 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 
-import { Accounts } from 'meteor/accounts-base';
-
 import { name as NotificationService } from '../../../services/common/notificationService';
 import { name as AuthDataService } from '../../../services/users/authDataService';
 import { name as TbisPhanQuyenDataService } from '../../../services/thietbis/tbisPhanQuyenDataService';
@@ -26,6 +24,7 @@ class Register {
             }
         });
 
+        this.isRegistering = false;
         this.$state = $state;
         this.notificationService = notificationService;
         this.authDataService = authDataService;
@@ -42,10 +41,12 @@ class Register {
     }
 
     register() {
+        this.isRegistering = true;
         this.authDataService.register(this.credentials).then(() => {
             this.notificationService.success('Chào mừng đến với Skynet!', 'Đăng ký thành công');
             this.$state.go('parties');
         }).catch((err) => {
+            this.isRegistering = false;
             this.notificationService.error(err.reason, 'Đăng ký thất bại');
         });
     }

@@ -9,6 +9,8 @@ import { name as DisplayNameFilter } from '../../filters/common/displayNameFilte
 import { name as Login } from '../layout/login/login';
 import { name as Register } from '../layout/register/register';
 import { name as Password } from '../layout/password/password';
+import { name as ResetPassword } from '../layout/resetPassword/resetPassword';
+
 
 import { name as CurrentUserService } from '../../services/common/currentUserService';
 import { name as UserLocalSettingsService } from '../../services/common/userLocalSettingsService';
@@ -51,6 +53,7 @@ export default angular.module(name, [
     Login,
     Register,
     Password,
+    ResetPassword,
     CurrentUserService,
     UserLocalSettingsService
 ]).component(name, {
