@@ -1,14 +1,21 @@
 <h3 class="md-body-1"></h3>
 <md-list class="md-dense" flex>
-    <md-subheader class="md-no-sticky">Cơ chế phân quyền người dùng quy định rõ các quyền hạn được cấp cho tài khoản người dùng của bạn trong hệ thống Skynet.</md-subheader>
+    <md-subheader class="md-no-sticky">Cơ chế phân quyền người dùng quy định rõ các quyền hạn được cấp cho tài khoản của bạn trong hệ thống Skynet.</md-subheader>
+    <md-subheader class="md-no-sticky fix-subheader" layout-fill>
+        <div layout="row" layout-align="start center">
+            <img ng-src="/img/icons/users/container.svg" style="width: 34px; height: 34px;" class="md-avatar sky-reset-border-radius"/>
+            <!--<span flex></span>-->
+            <span style="padding-left: 10px;">Module: Quản lý phương tiện</span>
+        </div>
+
+    </md-subheader>
     <md-list-item class="md-3-line md-long-text" ng-click="null">
-        <img ng-src="/img/icons/users/container.svg" class="md-avatar sky-reset-border-radius"/>
         <div class="md-list-item-text">
-            <h3>Module: Thực lực phương tiện</h3>
+            <!--<h3>Module: Thực lực phương tiện</h3>-->
             <p>
                 <ul class="list-inside-md-list-item">
                     <li>
-                        [Xem, tạo mới, cập nhật, xóa bỏ] các bản ghi thiết bị nhóm [Thiết bị nâng]
+                        [Xem, Tạo mới, Cập nhật, Xóa bỏ] các bản ghi thiết bị nhóm [Thiết bị nâng]
                     </li>
                     <li>
                         [Xem] các bản ghi thông số kỹ thuật nhóm [Thiết bị nâng] thuộc quyền sở hữu và quản lý của [Tổng công ty Tân Cảng Sài Gòn]
@@ -18,7 +25,7 @@
         </div>
     </md-list-item>
     <md-list-item class="md-2-line" ng-click="null">
-        <img ng-src="/img/icons/users/books.svg" class="md-avatar sky-reset-border-radius"/>
+        <img ng-src="/img/icons/users/books.svg" style="width: 34px; height: 34px;" class="md-avatar sky-reset-border-radius"/>
         <div class="md-list-item-text">
             <h3>Module: Câu hỏi NGB</h3>
             <p>{{userDetailsViewThongTinChungTab.userDetails.profile.ho_so.gioi_tinh}}</p>
