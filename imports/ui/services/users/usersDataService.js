@@ -47,53 +47,30 @@ class UsersDataService {
         };
     }
 
-    validateUserProfile(profile) {
-        if (!profile.name)
-            throw Error('Chưa có thông tin về tên hiển thị');
-        if (!profile.ho_so.ten)
-            throw Error('Chưa có thông tin về tên người dùng');
-        if (!profile.ho_so.ho_ten_dem)
-            throw Error('Chưa có thông tin về họ tên đệm người dùng');
-        if (!profile.bien_che.cong_ty || !profile.bien_che.don_vi)
-            throw Error('Chưa có thông tin về biên chế người dùng');
+    updateSelectedUserRoles(userId, roles) {
+        let defer = this.$q.defer();
+        Meteor.call('updateSelectedUserRoles', userId, roles, (error, result) => {
+                if (error) {
+                    defer.reject(error);
+                } else {
+                    defer.resolve(result);
+                }
+            }
+        );
+        return defer.promise;
     }
 
-    addNew(user) {
-    }
-
-
-    updateUserProfile(data) {
-        // let defer = this.$q.defer();
-        // ThietBis.update({
-        //     _id: data._id
-        // }, {
-        //     $set: {
-        //     }
-        // }, (error) => {
-        //     if (error)
-        //         defer.reject(error);
-        //     else
-        //         defer.resolve();
-        // });
-        // return defer.promise;
-    }
-
-    updateUserAvatar(data) {
-        // let defer = this.$q.defer();
-        // ThietBis.update({
-        //     _id: data._id
-        // }, {
-        //     $set: {
-        //         thong_so_ky_thuat: data.thong_so_ky_thuat,
-        //         metadata: data.metadata
-        //     }
-        // }, (error) => {
-        //     if (error)
-        //         defer.reject(error);
-        //     else
-        //         defer.resolve();
-        // });
-        // return defer.promise;
+    updateSelectedUserProfile(userId, profile) {
+        let defer = this.$q.defer();
+        Meteor.call('updateSelectedUserProfile', userId, profile, (error, result) => {
+                if (error) {
+                    defer.reject(error);
+                } else {
+                    defer.resolve(result);
+                }
+            }
+        );
+        return defer.promise;
     }
 
     getSelectedUser() {
@@ -104,10 +81,6 @@ class UsersDataService {
         this.selectedUser = this.queryOne(userId);
     }
 
-    getSelectedThongSoKyThuatGroupBy(data) {
-        if (data)
-            return _.groupBy(data, 'nhom');
-    }
 }
 
 const name = 'usersDataService';

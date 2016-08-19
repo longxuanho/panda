@@ -7,7 +7,7 @@ import template from './userDetailsViewQuanLyTabUpdateThongTinBtn.html';
 import modalTemplate from './userDetailsViewQuanLyTabUpdateThongTinModal.html';
 import { name as UsersDataService } from '../../../services/users/usersDataService';
 import { name as NotificationService } from '../../../services/common/notificationService';
-
+import { name as UserDetailsViewQuanLyTabUserLabel } from '../userDetailsViewQuanLyTabUserLabel/userDetailsViewQuanLyTabUserLabel';
 
 class UserDetailsViewQuanLyTabUpdateThongTinBtn {
     constructor($mdDialog, $mdMedia) {
@@ -22,19 +22,16 @@ class UserDetailsViewQuanLyTabUpdateThongTinBtn {
             controller($mdDialog, usersDataService, notificationService) {
                 'ngInject';
 
+                this.selectedUser = angular.copy(usersDataService.getSelectedUser());
                 this.isModalOpen = true;
 
-                this.cancel = () => {
-
-                };
-
-                this.changePassword = () => {
-                    try {
-
-                    }
-                    catch (error) {
-
-                    }
+                this.update = () => {
+                    usersDataService.updateSelectedUserProfile(this.selectedUser._id, this.selectedUser.profile).then(() => {
+                        notificationService.success('Thông tin hồ sơ người dùng được cập nhật thành công.', 'Cập nhật thành công.');
+                        this.close();
+                    }).catch((err) => {
+                        notificationService.error(err.reason, 'Cập nhật thất bại');
+                    });
                 };
 
                 this.close = () => {
@@ -60,6 +57,7 @@ export default angular.module(name, [
     angularMeteor,
     UsersDataService,
     NotificationService,
+    UserDetailsViewQuanLyTabUserLabel
 ]).component(name, {
     template,
     controllerAs: name,

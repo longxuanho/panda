@@ -8,6 +8,8 @@ import modalTemplate from './userDetailsViewQuanLyTabUpdatePhanQuyenModal.html';
 import { name as UsersDataService } from '../../../services/users/usersDataService';
 import { name as NotificationService } from '../../../services/common/notificationService';
 
+import { name as UserDetailsViewQuanLyTabUserLabel } from '../userDetailsViewQuanLyTabUserLabel/userDetailsViewQuanLyTabUserLabel';
+
 
 class UserDetailsViewQuanLyTabUpdatePhanQuyenBtn {
     constructor($mdDialog, $mdMedia) {
@@ -24,17 +26,13 @@ class UserDetailsViewQuanLyTabUpdatePhanQuyenBtn {
 
                 this.isModalOpen = true;
 
-                this.cancel = () => {
-
-                };
-
-                this.changePassword = () => {
-                    try {
-
-                    }
-                    catch (error) {
-
-                    }
+                this.update = () => {
+                    usersDataService.updateSelectedUserRoles(this.selectedUser._id, this.selectedUserRoles).then(() => {
+                        notificationService.success('Thông tin phân quyền người dùng được cập nhật thành công.', 'Cập nhật thành công.');
+                        this.close();
+                    }).catch((err) => {
+                        notificationService.error(err.reason, 'Cập nhật thất bại');
+                    });
                 };
 
                 this.close = () => {
@@ -60,6 +58,7 @@ export default angular.module(name, [
     angularMeteor,
     UsersDataService,
     NotificationService,
+    UserDetailsViewQuanLyTabUserLabel
 ]).component(name, {
     template,
     controllerAs: name,

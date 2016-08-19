@@ -30,7 +30,7 @@ export default angular.module(name, [
 ]).component(name, {
     template,
     bindings: {
-        userDetails: '<',
+        userDetails: '<'
     },
     controllerAs: name,
     controller: UserDetailsLabel

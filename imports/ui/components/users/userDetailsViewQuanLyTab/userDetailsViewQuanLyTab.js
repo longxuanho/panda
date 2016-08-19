@@ -11,8 +11,8 @@ class UserDetailsViewQuanLyTab {
     constructor($reactive, $scope) {
         'ngInject';
         $reactive(this).attach($scope);
-
     }
+
 }
 
 const name = 'userDetailsViewQuanLyTab';
@@ -26,7 +26,6 @@ export default angular.module(name, [
 ]).component(name, {
     template,
     bindings: {
-        userDetails: '<'
     },
     controllerAs: name,
     controller: UserDetailsViewQuanLyTab
