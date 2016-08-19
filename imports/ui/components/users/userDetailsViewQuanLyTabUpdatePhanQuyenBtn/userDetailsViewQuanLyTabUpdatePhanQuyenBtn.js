@@ -9,6 +9,8 @@ import { name as UsersDataService } from '../../../services/users/usersDataServi
 import { name as NotificationService } from '../../../services/common/notificationService';
 
 import { name as UserDetailsViewQuanLyTabUserLabel } from '../userDetailsViewQuanLyTabUserLabel/userDetailsViewQuanLyTabUserLabel';
+import { name as UserDetailsViewQuanLyTabUpdatePhanQuyenModalThietLapTab } from '../userDetailsViewQuanLyTabUpdatePhanQuyenModalThietLapTab/userDetailsViewQuanLyTabUpdatePhanQuyenModalThietLapTab';
+import { name as UserDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab } from '../userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab/userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab';
 
 
 class UserDetailsViewQuanLyTabUpdatePhanQuyenBtn {
@@ -58,7 +60,9 @@ export default angular.module(name, [
     angularMeteor,
     UsersDataService,
     NotificationService,
-    UserDetailsViewQuanLyTabUserLabel
+    UserDetailsViewQuanLyTabUserLabel,
+    UserDetailsViewQuanLyTabUpdatePhanQuyenModalThietLapTab,
+    UserDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab
 ]).component(name, {
     template,
     controllerAs: name,

@@ -10,27 +10,25 @@
     </md-toolbar>
     <md-dialog-content layout-fill>
         <user-details-view-quan-ly-tab-user-label></user-details-view-quan-ly-tab-user-label>
-        <md-list flex>
-            <md-subheader class="md-no-sticky" style="margin-bottom: 48px;">Bạn đang dự định cập nhật phân quyền của người dùng với _id 12345, email đăng ký example@gmail.com...</md-subheader>
-            <md-list-item class="md-2-line" flex ng-hide="userDetailsViewQuanLyTabUpdatePhanQuyenModal.setting.enabled">
-                <img ng-src="/img/icons/users/mailbox.svg" class="md-avatar sky-reset-border-radius" />
-                <md-input-container class="md-block" flex="100">
-                    <label>Liên kết tới avatar của tôi</label>
-                    <input ng-model="userDetailsViewQuanLyTabUpdatePhanQuyenModal.viewModel.tham_chieu.refMaximo">
-                </md-input-container>
-            </md-list-item>
-            <md-list-item class="md-2-line" flex ng-show="userDetailsViewQuanLyTabUpdatePhanQuyenModal.setting.enabled">
-                <img ng-src="/img/icons/users/mailbox.svg" class="md-avatar sky-reset-border-radius" />
-                <md-input-container class="md-block" flex="100">
-                    <label>Email của tôi tại GAvatar</label>
-                    <input ng-model="userDetailsViewQuanLyTabUpdatePhanQuyenModal.viewModel.tham_chieu.refMaximo">
-                </md-input-container>
-            </md-list-item>
-        </md-list>
+        <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="Thiết lập" md-on-select="userDetailsViewQuanLyTabUpdatePhanQuyenModal.tabSelected='thiet_lap'">
+                <md-content>
+                    <user-details-view-quan-ly-tab-update-phan-quyen-modal-thiet-lap-tab selected-user-roles="userDetailsViewQuanLyTabUpdatePhanQuyenModal.selectedUserRoles"></user-details-view-quan-ly-tab-update-phan-quyen-modal-thiet-lap-tab>
+                </md-content>
+            </md-tab>
+            <md-tab label="Mô tả" md-on-select="userDetailsViewQuanLyTabUpdatePhanQuyenModal.tabSelected='mo_ta'">
+                <md-content>
+                    <user-details-view-quan-ly-tab-update-phan-quyen-modal-mo-ta-tab selected-user-roles="userDetailsViewQuanLyTabUpdatePhanQuyenModal.selectedUserRoles"></user-details-view-quan-ly-tab-update-phan-quyen-modal-mo-ta-tab>
+                </md-content>
+            </md-tab>
+        </md-tabs>
+
+
+
     </md-dialog-content>
     <md-dialog-actions layout="row">
-        <md-button ng-click="userDetailsViewQuanLyTabUpdatePhanQuyenModal.close()" aria-label="Reset">Hủy bỏ</md-button>
+        <md-button ng-click="userDetailsViewQuanLyTabUpdatePhanQuyenModal.close()" aria-label="Cancel">Hủy bỏ</md-button>
         <span flex></span>
-        <md-button style="margin-right:20px;" ng-click="userDetailsViewQuanLyTabUpdatePhanQuyenModal.addNew()" aria-label="Tạo mới">Đổi mật khẩu</md-button>
+        <md-button style="margin-right:20px;" ng-click="userDetailsViewQuanLyTabUpdatePhanQuyenModal.update()" aria-label="Cập nhật">Cập nhật</md-button>
     </md-dialog-actions>
 </md-dialog>

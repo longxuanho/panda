@@ -4,7 +4,7 @@
     <!--<md-button ng-click="auth.logout()" ng-show="auth.isLoggedIn">Đăng xuất</md-button>-->
 
     <md-menu md-position-mode="target-right target" ng-if="auth.isLoggedIn">
-        <md-button ng-show="auth.isLoggedIn" ng-click="$mdOpenMenu($event)">{{ auth.currentUser | displayNameFilter }}</md-button>
+        <md-button ng-show="auth.isLoggedIn" ng-click="$mdOpenMenu($event)" aria-label="User Name">{{ auth.currentUser | displayNameFilter }}</md-button>
         <md-menu-content width="4" >
             <md-menu-item>
                 <md-button ng-click="null">

@@ -1,0 +1,40 @@
+<md-list flex style="padding-top: 0;">
+    <md-subheader class="md-no-sticky">Vui lòng cập nhật các mô tả cho phân quyền người dùng theo mẫu phiếu dưới đây. Lưu ý bạn cần xác nhận mã PIN của người quản trị trước khi cập nhật.</md-subheader>
+    <form name="userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab.thietLapForm">
+        <md-list-item class="md-2-line" flex layout="column">
+            <div layout="row" style="width: 100%">
+                <div flex></div>
+                <md-button class="md-primary">Thêm mô tả</md-button>
+            </div>
+            <div layout="row" layout-align="start center" style="width: 100%; padding: 0 16px;">
+                <md-input-container class="md-block" flex="40">
+                    <label>Tác vụ</label>
+                    <input ng-model="userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab.selectedUserRoles.rights">
+                </md-input-container>
+                <md-input-container class="md-block" flex>
+                    <label>Mô tả</label>
+                    <input ng-model="userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab.selectedUserRoles.rights">
+                </md-input-container>
+                <md-button class="md-icon-button" aria-label="Delete">
+                    <md-icon md-svg-icon="img/icons/common/close.svg"></md-icon>
+                </md-button>
+            </div>
+            <div layout="row" layout-align="start center" style="width: 100%; padding: 0 16px;">
+                <md-input-container class="md-block" flex="40">
+                    <label>Tác vụ</label>
+                    <input ng-model="userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab.selectedUserRoles.rights">
+                </md-input-container>
+                <md-input-container class="md-block" flex>
+                    <label>Mô tả</label>
+                    <input ng-model="userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab.selectedUserRoles.rights">
+                </md-input-container>
+                <md-button class="md-icon-button" aria-label="Delete">
+                    <md-icon md-svg-icon="img/icons/common/close.svg"></md-icon>
+                </md-button>
+            </div>
+        </md-list-item>
+    </form>
+    <pre>
+        {{userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab.selectedUserRoles | json}}
+    </pre>
+</md-list>

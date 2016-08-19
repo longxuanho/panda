@@ -1,0 +1,42 @@
+<md-list flex style="padding-top: 0;">
+    <md-subheader class="md-no-sticky">Vui lòng cập nhật phân quyền người dùng theo mẫu phiếu dưới đây. Lưu ý bạn cần xác nhận mã PIN của người quản trị trước khi cập nhật.</md-subheader>
+    <form name="userDetailsViewQuanLyTabUpdatePhanQuyenModalThietLapTab.thietLapForm">
+        <md-list-item class="md-2-line" flex="100" layout="column">
+            <div style="width:100%; padding-bottom: 10px;">
+                <label class="md-body-1">Rights</label>
+                <select  kendo-multi-select k-auto-close="false"
+                         k-data-source="[]"
+                         k-value-primitive="true"
+                         k-ng-model="userDetailsViewQuanLyTabUpdatePhanQuyenModalThietLapTab.selectedUserRoles.rights">
+                </select>
+            </div>
+            <div style="width:100%; padding-bottom: 10px;">
+                <label class="md-body-1">Zones</label>
+                <select  kendo-multi-select k-auto-close="false"
+                         k-data-source="[]"
+                         k-value-primitive="true"
+                         k-ng-model="userDetailsViewQuanLyTabUpdatePhanQuyenModalThietLapTab.selectedUserRoles.zones">
+                </select>
+            </div>
+            <div style="width:100%; padding-bottom: 10px;">
+                <label class="md-body-1">Assets</label>
+                <select  kendo-multi-select k-auto-close="false"
+                         k-data-source="[]"
+                         k-value-primitive="true"
+                         k-ng-model="userDetailsViewQuanLyTabUpdatePhanQuyenModalThietLapTab.selectedUserRoles.assets">
+                </select>
+            </div>
+            <div style="width:100%; padding-bottom: 10px;">
+                <label class="md-body-1">Donvies</label>
+                <select  kendo-multi-select k-auto-close="false"
+                         k-data-source="[]"
+                         k-value-primitive="true"
+                         k-ng-model="userDetailsViewQuanLyTabUpdatePhanQuyenModalThietLapTab.selectedUserRoles.donvies">
+                </select>
+            </div>
+        </md-list-item>
+    </form>
+    <pre>
+        {{userDetailsViewQuanLyTabUpdatePhanQuyenModalThietLapTab.selectedUserRoles | json}}
+    </pre>
+</md-list>
