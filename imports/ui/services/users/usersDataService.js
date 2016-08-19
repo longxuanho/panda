@@ -47,6 +47,19 @@ class UsersDataService {
         };
     }
 
+    querySelectedUserRoles(userId) {
+        let defer = this.$q.defer();
+        Meteor.call('retrieveSelectedUserRoles', userId, (error, result) => {
+                if (error) {
+                    defer.reject(error);
+                } else {
+                    defer.resolve(result);
+                }
+            }
+        );
+        return defer.promise;
+    }
+
     updateSelectedUserRoles(userId, roles) {
         let defer = this.$q.defer();
         Meteor.call('updateSelectedUserRoles', userId, roles, (error, result) => {
@@ -63,6 +76,19 @@ class UsersDataService {
     updateSelectedUserProfile(userId, profile) {
         let defer = this.$q.defer();
         Meteor.call('updateSelectedUserProfile', userId, profile, (error, result) => {
+                if (error) {
+                    defer.reject(error);
+                } else {
+                    defer.resolve(result);
+                }
+            }
+        );
+        return defer.promise;
+    }
+
+    updateSelectedUserPhanQuyenDesc(userId, phanQuyenDesc) {
+        let defer = this.$q.defer();
+        Meteor.call('updateSelectedUserPhanQuyenDesc', userId, phanQuyenDesc, (error, result) => {
                 if (error) {
                     defer.reject(error);
                 } else {

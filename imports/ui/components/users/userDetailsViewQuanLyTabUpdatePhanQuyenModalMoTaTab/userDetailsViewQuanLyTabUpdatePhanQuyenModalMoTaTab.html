@@ -4,37 +4,21 @@
         <md-list-item class="md-2-line" flex layout="column">
             <div layout="row" style="width: 100%">
                 <div flex></div>
-                <md-button class="md-primary">Thêm mô tả</md-button>
+                <md-button class="md-primary" ng-click="userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab.addNewDescription()">Thêm mô tả</md-button>
             </div>
-            <div layout="row" layout-align="start center" style="width: 100%; padding: 0 16px;">
+            <div ng-repeat="description in userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab.selectedUserPhanQuyenDesc track by $index" layout="row" layout-align="start center" style="width: 100%; padding: 0 16px;" >
                 <md-input-container class="md-block" flex="40">
                     <label>Tác vụ</label>
-                    <input ng-model="userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab.selectedUserRoles.rights">
+                    <input ng-model="description.tac_vu">
                 </md-input-container>
                 <md-input-container class="md-block" flex>
                     <label>Mô tả</label>
-                    <input ng-model="userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab.selectedUserRoles.rights">
+                    <input ng-model="description.mo_ta">
                 </md-input-container>
-                <md-button class="md-icon-button" aria-label="Delete">
-                    <md-icon md-svg-icon="img/icons/common/close.svg"></md-icon>
-                </md-button>
-            </div>
-            <div layout="row" layout-align="start center" style="width: 100%; padding: 0 16px;">
-                <md-input-container class="md-block" flex="40">
-                    <label>Tác vụ</label>
-                    <input ng-model="userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab.selectedUserRoles.rights">
-                </md-input-container>
-                <md-input-container class="md-block" flex>
-                    <label>Mô tả</label>
-                    <input ng-model="userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab.selectedUserRoles.rights">
-                </md-input-container>
-                <md-button class="md-icon-button" aria-label="Delete">
+                <md-button class="md-icon-button" aria-label="Delete" ng-click="userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab.removeSelectedDescription($index)">
                     <md-icon md-svg-icon="img/icons/common/close.svg"></md-icon>
                 </md-button>
             </div>
         </md-list-item>
     </form>
-    <pre>
-        {{userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab.selectedUserRoles | json}}
-    </pre>
 </md-list>

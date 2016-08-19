@@ -92,6 +92,18 @@ Schema.UserProfile = new SimpleSchema({
             type: String,
             optional: true
         },
+    'phan_quyen_desc': {
+        type: [Object],
+        defaultValue: []
+    },
+        'phan_quyen_desc.$.tac_vu': {
+            type: String,
+            optional: true
+        },
+        'phan_quyen_desc.$.mo_ta': {
+            type: String,
+            optional: true
+        },
     'searchField': {
         type: String,
         optional: true

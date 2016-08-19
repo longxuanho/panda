@@ -10,12 +10,7 @@ class UserDetailsViewQuanLyTabUpdatePhanQuyenModalThietLapTab {
         'ngInject';
         $reactive(this).attach($scope);
 
-        this.selectedUserRoles = {
-            rights: [],
-            zones: [],
-            assets: [],
-            donvies: []
-        }
+
     }
 }
 
@@ -28,7 +23,7 @@ export default angular.module(name, [
 ]).component(name, {
     template,
     bindings: {
-        // selectedUserRoles: '<'
+        selectedUserRoles: '<'
     },
     controllerAs: name,
     controller: UserDetailsViewQuanLyTabUpdatePhanQuyenModalThietLapTab

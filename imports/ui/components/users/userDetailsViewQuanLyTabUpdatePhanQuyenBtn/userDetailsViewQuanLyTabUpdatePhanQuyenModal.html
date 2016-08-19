@@ -18,17 +18,32 @@
             </md-tab>
             <md-tab label="Mô tả" md-on-select="userDetailsViewQuanLyTabUpdatePhanQuyenModal.tabSelected='mo_ta'">
                 <md-content>
-                    <user-details-view-quan-ly-tab-update-phan-quyen-modal-mo-ta-tab selected-user-roles="userDetailsViewQuanLyTabUpdatePhanQuyenModal.selectedUserRoles"></user-details-view-quan-ly-tab-update-phan-quyen-modal-mo-ta-tab>
+                    <user-details-view-quan-ly-tab-update-phan-quyen-modal-mo-ta-tab selected-user-phan-quyen-desc="userDetailsViewQuanLyTabUpdatePhanQuyenModal.selectedUserPhanQuyenDesc"></user-details-view-quan-ly-tab-update-phan-quyen-modal-mo-ta-tab>
                 </md-content>
             </md-tab>
         </md-tabs>
-
-
-
+        <pre>
+            {{userDetailsViewQuanLyTabUpdatePhanQuyenModal.selectedUserRoles | json}}
+        </pre>
+        <pre>
+            {{userDetailsViewQuanLyTabUpdatePhanQuyenModal.selectedUserPhanQuyenDesc | json}}
+        </pre>
+        <pre>
+            {{userDetailsViewQuanLyTabUpdatePhanQuyenModal.tabSelected}}
+        </pre>
     </md-dialog-content>
     <md-dialog-actions layout="row">
         <md-button ng-click="userDetailsViewQuanLyTabUpdatePhanQuyenModal.close()" aria-label="Cancel">Hủy bỏ</md-button>
         <span flex></span>
-        <md-button style="margin-right:20px;" ng-click="userDetailsViewQuanLyTabUpdatePhanQuyenModal.update()" aria-label="Cập nhật">Cập nhật</md-button>
+        <md-button  style="margin-right:20px;" class="no-animate"
+                    ng-show="userDetailsViewQuanLyTabUpdatePhanQuyenModal.tabSelected==='thiet_lap'"
+                    ng-click="userDetailsViewQuanLyTabUpdatePhanQuyenModal.updateSelectedUserRoles()"
+                    aria-label="Cập nhật"> Cập nhật
+        </md-button>
+        <md-button  style="margin-right:20px;" class="no-animate"
+                    ng-show="userDetailsViewQuanLyTabUpdatePhanQuyenModal.tabSelected==='mo_ta'"
+                    ng-click="userDetailsViewQuanLyTabUpdatePhanQuyenModal.updateSelectedUserPhanQuyenDesc()"
+                    aria-label="Cập nhật"> Cập nhật
+        </md-button>
     </md-dialog-actions>
 </md-dialog>

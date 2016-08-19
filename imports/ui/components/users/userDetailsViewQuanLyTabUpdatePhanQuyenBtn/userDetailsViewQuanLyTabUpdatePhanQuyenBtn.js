@@ -2,6 +2,9 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
 import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
+
+import _ from 'underscore';
 
 import template from './userDetailsViewQuanLyTabUpdatePhanQuyenBtn.html';
 import modalTemplate from './userDetailsViewQuanLyTabUpdatePhanQuyenModal.html';
@@ -27,11 +30,26 @@ class UserDetailsViewQuanLyTabUpdatePhanQuyenBtn {
                 'ngInject';
 
                 this.isModalOpen = true;
+                this.selectedUser = angular.copy(usersDataService.getSelectedUser());
+                this.selectedUserPhanQuyenDesc = angular.copy(this.selectedUser.profile.phan_quyen_desc) || [];
 
-                this.update = () => {
+                usersDataService.querySelectedUserRoles(this.selectedUser._id, this.selectedUserRoles).then((result) => {
+                    this.selectedUserRoles = result;
+                }).catch((err) => {
+                    notificationService.error(err.reason, 'Truy vấn thất bại');
+                });
+
+                this.updateSelectedUserPhanQuyenDesc = () => {
+                    usersDataService.updateSelectedUserPhanQuyenDesc(this.selectedUser._id, this.selectedUserPhanQuyenDesc).then(() => {
+                        notificationService.success('Mô tả về phân quyền người dùng được cập nhật thành công.', 'Cập nhật thành công.');
+                    }).catch((err) => {
+                        notificationService.error(err.reason, 'Cập nhật thất bại');
+                    });
+                };
+
+                this.updateSelectedUserRoles = () => {
                     usersDataService.updateSelectedUserRoles(this.selectedUser._id, this.selectedUserRoles).then(() => {
                         notificationService.success('Thông tin phân quyền người dùng được cập nhật thành công.', 'Cập nhật thành công.');
-                        this.close();
                     }).catch((err) => {
                         notificationService.error(err.reason, 'Cập nhật thất bại');
                     });
