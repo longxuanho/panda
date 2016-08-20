@@ -35,10 +35,20 @@ class Auth {
             isLoggedIn() {
                 return !!Meteor.userId();
             },
+            currentUserId() {
+                return Meteor.userId();
+            },
             currentUser() {
                 this.currentUserService.setCurrentUser(Meteor.user());
                 this.userLocalSettingsService.initCurrentUserLocalSettings(this.currentUserService.getCurrentUser());
                 return Meteor.user();
+            }
+        });
+
+        $scope.$watch('auth.currentUserId', (newVal) => {
+            // Nếu người dùng logout/bị logout khỏi hệ thống
+            if (!newVal) {
+                this.$state.go('login');
             }
         });
     }
