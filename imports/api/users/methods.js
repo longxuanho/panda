@@ -5,15 +5,14 @@ import { Roles } from 'meteor/alanning:roles';
 
 export function updateSelectedUserProfile(selectedUserId, profile) {
 
-    check(selectedUserId, String);
-    check(profile, Object);
-
+    // Validate Admin User Right here...
     if (!this.userId)
         throw new Meteor.Error(400, 'Bạn phải đăng nhập để thực hiện chức năng này!');
-
-    // Validate Admin User Right here...
     if (!Roles.userIsInRole(this.userId, 'admin', 'sky-project'))
         throw new Meteor.Error(400, 'Bạn không đủ quyền hạn để thực hiện chức năng này!');
+
+    check(selectedUserId, String);
+    check(profile, Object);
 
     Meteor.users.update({_id: selectedUserId}, {
         $set: {
@@ -25,29 +24,29 @@ export function updateSelectedUserProfile(selectedUserId, profile) {
 
 
 export function retrieveSelectedUserRoles(selectedUserId) {
-    check(selectedUserId, String);
-
-    if (!this.userId)
-        throw new Meteor.Error(400, 'Bạn phải đăng nhập để thực hiện chức năng này!');
 
     // Validate Admin User Right here...
+    if (!this.userId)
+        throw new Meteor.Error(400, 'Bạn phải đăng nhập để thực hiện chức năng này!');
     if (!Roles.userIsInRole(this.userId, 'admin', 'sky-project'))
         throw new Meteor.Error(400, 'Bạn không đủ quyền hạn để thực hiện chức năng này!');
+
+    check(selectedUserId, String);
 
     return Meteor.users.findOne({_id: selectedUserId}, { fields: { roles: 1 }}).roles;
 }
 
 
 export function updateSelectedUserRoles(selectedUserId, roles) {
-    check(selectedUserId, String);
-    check(roles, Object);
-
-    if (!this.userId)
-        throw new Meteor.Error(400, 'Bạn phải đăng nhập để thực hiện chức năng này!');
 
     // Validate Admin User Right here...
+    if (!this.userId)
+        throw new Meteor.Error(400, 'Bạn phải đăng nhập để thực hiện chức năng này!');
     if (!Roles.userIsInRole(this.userId, 'admin', 'sky-project'))
         throw new Meteor.Error(400, 'Bạn không đủ quyền hạn để thực hiện chức năng này!');
+
+    check(selectedUserId, String);
+    check(roles, Object);
 
     if (_.isArray(roles.rights))
         Roles.setUserRoles(selectedUserId, roles.rights, 'rights');
@@ -60,15 +59,15 @@ export function updateSelectedUserRoles(selectedUserId, roles) {
 }
 
 export function updateSelectedUserPhanQuyenDesc(selectedUserId, phanQuyenDesc) {
-    check(selectedUserId, String);
-    check(phanQuyenDesc, Array);
-
-    if (!this.userId)
-        throw new Meteor.Error(400, 'Bạn phải đăng nhập để thực hiện chức năng này!');
 
     // Validate Admin User Right here...
+    if (!this.userId)
+        throw new Meteor.Error(400, 'Bạn phải đăng nhập để thực hiện chức năng này!');
     if (!Roles.userIsInRole(this.userId, 'admin', 'sky-project'))
         throw new Meteor.Error(400, 'Bạn không đủ quyền hạn để thực hiện chức năng này!');
+
+    check(selectedUserId, String);
+    check(phanQuyenDesc, Array);
 
     Meteor.users.update({_id: selectedUserId}, {
         $set: {

@@ -40,11 +40,17 @@ class UserDetailsViewQuanLyTabUpdatePhanQuyenBtn {
                 });
 
                 this.updateSelectedUserPhanQuyenDesc = () => {
-                    usersDataService.updateSelectedUserPhanQuyenDesc(this.selectedUser._id, this.selectedUserPhanQuyenDesc).then(() => {
-                        notificationService.success('Mô tả về phân quyền người dùng được cập nhật thành công.', 'Cập nhật thành công.');
-                    }).catch((err) => {
-                        notificationService.error(err.reason, 'Cập nhật thất bại');
-                    });
+                    try {
+                        usersDataService.validatePhanQuyenDesc(this.selectedUserPhanQuyenDesc);
+                        usersDataService.updateSelectedUserPhanQuyenDesc(this.selectedUser._id, this.selectedUserPhanQuyenDesc).then(() => {
+                            notificationService.success('Mô tả về phân quyền người dùng được cập nhật thành công.', 'Cập nhật thành công.');
+                        }).catch((err) => {
+                            notificationService.error(err.reason, 'Cập nhật thất bại');
+                        });
+                    } catch(error) {
+                        notificationService.error(error.message, 'Thông tin không hợp lệ');
+                    }
+
                 };
 
                 this.updateSelectedUserRoles = () => {

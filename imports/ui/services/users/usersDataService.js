@@ -86,6 +86,15 @@ class UsersDataService {
         return defer.promise;
     }
 
+    validatePhanQuyenDesc(phanQuyenDesc) {
+        if (!_.isArray(phanQuyenDesc))
+            throw Error('Có lỗi trong quá trình truy vấn thông tin. Vui lòng thử lại.');
+        _.each(phanQuyenDesc, (item) => {
+            if (_.isEmpty(item) || !item.module || !item.tac_vu || !item.mo_ta)
+                throw Error('Vui lòng điền đầy đủ các trường thông tin bắt buộc.');
+        });
+    }
+
     updateSelectedUserPhanQuyenDesc(userId, phanQuyenDesc) {
         let defer = this.$q.defer();
         Meteor.call('updateSelectedUserPhanQuyenDesc', userId, phanQuyenDesc, (error, result) => {

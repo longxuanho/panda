@@ -1,24 +1,38 @@
-<md-list flex style="padding-top: 0;">
+<md-list flex style="padding-top: 0; padding-bottom: 32px;">
     <md-subheader class="md-no-sticky">Vui lòng cập nhật các mô tả cho phân quyền người dùng theo mẫu phiếu dưới đây. Lưu ý bạn cần xác nhận mã PIN của người quản trị trước khi cập nhật.</md-subheader>
     <form name="userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab.thietLapForm">
         <md-list-item class="md-2-line" flex layout="column">
             <div layout="row" style="width: 100%">
                 <div flex></div>
-                <md-button class="md-primary" ng-click="userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab.addNewDescription()">Thêm mô tả</md-button>
-            </div>
-            <div ng-repeat="description in userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab.selectedUserPhanQuyenDesc track by $index" layout="row" layout-align="start center" style="width: 100%; padding: 0 16px;" >
-                <md-input-container class="md-block" flex="40">
-                    <label>Tác vụ</label>
-                    <input ng-model="description.tac_vu">
-                </md-input-container>
-                <md-input-container class="md-block" flex>
-                    <label>Mô tả</label>
-                    <input ng-model="description.mo_ta">
-                </md-input-container>
-                <md-button class="md-icon-button" aria-label="Delete" ng-click="userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab.removeSelectedDescription($index)">
-                    <md-icon md-svg-icon="img/icons/common/close.svg"></md-icon>
+                <md-button class="md-primary"
+                           ng-disabled="userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab.phanQuyenDescForm.$invalid"
+                           ng-click="userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab.addNewDescription()"
+                           > Thêm mô tả
                 </md-button>
             </div>
+            <form name="userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab.phanQuyenDescForm">
+                                <div ng-repeat="description in userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab.selectedUserPhanQuyenDesc track by $index" layout="column" style="width: 100%; padding: 0 16px;" >
+                    <div layout="row" layout-align="start center" flex="100">
+                        <md-input-container class="md-block" flex>
+                            <label>Module</label>
+                            <input name="description_module_{{$index}}" ng-model="description.module" required>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex="50">
+                            <label>Tác vụ</label>
+                            <input name="description_tac_vu_{{$index}}" ng-model="description.tac_vu" required>
+                        </md-input-container>
+                        <md-button class="md-icon-button" aria-label="Delete" ng-click="userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab.removeSelectedDescription($index)">
+                            <md-icon md-svg-icon="img/icons/common/close.svg"></md-icon>
+                        </md-button>
+                    </div>
+                    <div layout="row" flex="100">
+                        <md-input-container class="md-block" flex>
+                            <label>Mô tả</label>
+                            <input name="description_mo_ta_{{$index}}" ng-model="description.mo_ta" required>
+                        </md-input-container>
+                    </div>
+                </div>
+            </form>
         </md-list-item>
     </form>
 </md-list>
