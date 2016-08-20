@@ -8,7 +8,6 @@ import { name as UserDetailsViewQuyenHanTab } from '../userDetailsViewQuyenHanTa
 import { name as UserDetailsViewThietLapTab } from '../userDetailsViewThietLapTab/userDetailsViewThietLapTab';
 import { name as UserDetailsViewQuanLyTab } from '../userDetailsViewQuanLyTab/userDetailsViewQuanLyTab';
 import { name as UsersDataService } from '../../../services/users/usersDataService';
-// import { name as TbisDetailsViewReportViewFabMenu } from '../tbisDetailsViewReportViewFabMenu/tbisDetailsViewReportViewFabMenu';
 
 
 
@@ -38,7 +37,6 @@ export default angular.module(name, [
     UserDetailsViewQuyenHanTab,
     UserDetailsViewThietLapTab,
     UserDetailsViewQuanLyTab
-    // TbisDetailsViewReportViewFabMenu,
 ]).component(name, {
     template,
     bindings: {

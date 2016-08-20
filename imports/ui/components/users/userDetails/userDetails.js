@@ -14,13 +14,12 @@ class UserDetails {
         $reactive(this).attach($scope);
 
         this.$mdMedia = $mdMedia;
-        // this.subscribeOptions = userLocalSettingsService.getPageSettings('tbisreports', 'tbisrepList').suscribe;
 
         this.subscribe('users');
 
         this.helpers({
             userDetails() {
-                console.log('query for change...');
+                // console.log('query for change...');
                 usersDataService.setSelectedUser($stateParams.userId);
                 return usersDataService.getSelectedUser();
             }

@@ -4,7 +4,7 @@
             <user-details-view-thong-tin-chung-tab user-details="userDetailsView.userDetails"></user-details-view-thong-tin-chung-tab>
         </md-content>
     </md-tab>
-    <md-tab label="Quyền hạn" ng-if="userDetailsView.currentUserId===userDetailsView.userDetails._id && !userDetailsView.isAuthorized" md-on-select="userDetailsView.tabSelected='quyen_han'">
+    <md-tab label="Quyền hạn" ng-if="userDetailsView.currentUserId===userDetailsView.userDetails._id || userDetailsView.isAuthorized" md-on-select="userDetailsView.tabSelected='quyen_han'">
         <md-content>
             <user-details-view-quyen-han-tab ng-if="userDetailsView.tabSelected==='quyen_han'" user-details="userDetailsView.userDetails"></user-details-view-quyen-han-tab>
         </md-content>
@@ -20,4 +20,6 @@
         </md-content>
     </md-tab>
 </md-tabs>
-<a ui-sref="thietbis">thietbis</a>
+<md-button class="md-fab md-warn" aria-label="User List" ui-sref="usersList">
+    <md-icon md-svg-src="img/icons/common/people.svg"></md-icon>
+</md-button>
