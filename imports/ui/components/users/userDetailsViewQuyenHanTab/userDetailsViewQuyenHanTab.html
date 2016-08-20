@@ -1,39 +1,18 @@
 <h3 class="md-body-1"></h3>
 <md-list flex>
     <md-subheader class="md-no-sticky">Cơ chế phân quyền người dùng quy định rõ các quyền hạn được cấp cho tài khoản của bạn trong hệ thống Skynet.</md-subheader>
-    <md-subheader class="md-no-sticky" layout-fill>
-        <div layout="row" layout-align="start center">
-            <img ng-src="/img/icons/users/container.svg" style="width: 34px; height: 34px;" class="md-avatar sky-reset-border-radius"/>
-            <!--<span flex></span>-->
-            <span style="padding-left: 10px;">Module: Quản lý phương tiện</span>
-        </div>
-
-    </md-subheader>
-    <md-list-item class="md-2-line" ng-click="null">
-        <div class="md-list-item-text">
-            <h3>Xem, Tạo mới, Cập nhật, Xóa bỏ</h3>
-            <p>Các bản ghi Thiết bị nhóm Thiết bị nâng</p>
-        </div>
-    </md-list-item>
-    <md-list-item class="md-2-line" ng-click="null">
-        <div class="md-list-item-text">
-            <h3>Xem</h3>
-            <p>Các bản ghi Thông số kỹ thuật nhóm Thiết bị nâng, thuộc quyền sở hữu và quản lý của Tổng công ty Tân Cảng Sài Gòn</p>
-        </div>
-    </md-list-item>
-    </md-list-item>
-    <md-list-item class="md-2-line" ng-click="null">
-        <img ng-src="/img/icons/users/books.svg" style="width: 34px; height: 34px;" class="md-avatar sky-reset-border-radius"/>
-        <div class="md-list-item-text">
-            <h3>Module: Câu hỏi NGB</h3>
-            <p>{{userDetailsViewThongTinChungTab.userDetails.profile.ho_so.gioi_tinh}}</p>
-        </div>
-    </md-list-item>
-    <md-list-item class="md-2-line" ng-click="null">
-        <img ng-src="/img/icons/users/hangar.svg" class="md-avatar sky-reset-border-radius"/>
-        <div class="md-list-item-text">
-            <h3>Module: Phân xưởng Ô tô (DVKT)</h3>
-            <p>{{userDetailsViewThongTinChungTab.userDetails.profile.ho_so.gioi_tinh}}</p>
-        </div>
-    </md-list-item>
+    <div ng-repeat="key in userDetailsViewQuyenHanTab.resolvedKeysUserPhanQuyenDesc">
+        <md-subheader  class="md-no-sticky" layout-fill style="background-color: #ebebeb;">
+            <div layout="row" layout-align="start center">
+                <img ng-src="{{userDetailsViewQuyenHanTab.iconRef[key]}}" style="width: 34px; height: 34px;" class="md-avatar sky-reset-border-radius"/>
+                <span style="padding-left: 10px;">{{userDetailsViewQuyenHanTab.moduleNameRef[key]}}</span>
+            </div>
+        </md-subheader>
+        <md-list-item ng-repeat="desc in userDetailsViewQuyenHanTab.resolvedUserPhanQuyenDesc[key]" class="md-2-line" ng-click="null">
+            <div class="md-list-item-text">
+                <h3>{{desc.tac_vu}}</h3>
+                <p>{{desc.mo_ta}}</p>
+            </div>
+        </md-list-item>
+    </div>
 </md-list>

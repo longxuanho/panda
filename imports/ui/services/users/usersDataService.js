@@ -88,7 +88,7 @@ class UsersDataService {
 
     validatePhanQuyenDesc(phanQuyenDesc) {
         if (!_.isArray(phanQuyenDesc))
-            throw Error('Có lỗi trong quá trình truy vấn thông tin. Vui lòng thử lại.');
+            throw Error('Có lỗi trong quá trình truy vấn thông tin. Vui lòng thử lại');
         _.each(phanQuyenDesc, (item) => {
             if (_.isEmpty(item) || !item.module || !item.tac_vu || !item.mo_ta)
                 throw Error('Vui lòng điền đầy đủ các trường thông tin bắt buộc.');
@@ -113,7 +113,7 @@ class UsersDataService {
     }
 
     setSelectedUser(userId) {
-        this.selectedUser = this.queryOne(userId);
+        this.selectedUser = Meteor.users.findOne({_id: userId});
     }
 
 }

@@ -9,17 +9,17 @@
     </md-tab>
     <md-tab label="Quyền hạn" md-on-select="userDetailsView.tabSelected='quyen_han'">
         <md-content>
-            <user-details-view-quyen-han-tab user-details="userDetailsView.userDetails"></user-details-view-quyen-han-tab>
+            <user-details-view-quyen-han-tab ng-if="userDetailsView.tabSelected==='quyen_han'" user-details="userDetailsView.userDetails"></user-details-view-quyen-han-tab>
         </md-content>
     </md-tab>
     <md-tab label="Thiết lập" md-on-select="userDetailsView.tabSelected='thiet_lap'">
         <md-content>
-            <user-details-view-thiet-lap-tab></user-details-view-thiet-lap-tab>
+            <user-details-view-thiet-lap-tab ng-if="userDetailsView.tabSelected==='thiet_lap'"></user-details-view-thiet-lap-tab>
         </md-content>
     </md-tab>
     <md-tab label="Quản lý" md-on-select="userDetailsView.tabSelected='quan_ly'">
         <md-content>
-            <user-details-view-quan-ly-tab></user-details-view-quan-ly-tab>
+            <user-details-view-quan-ly-tab ng-if="userDetailsView.tabSelected==='quan_ly'"></user-details-view-quan-ly-tab>
         </md-content>
     </md-tab>
 </md-tabs>
