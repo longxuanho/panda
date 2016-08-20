@@ -46,7 +46,7 @@ class TbisDetailsViewReportViewCommentItem {
                 this.notificationService.success('Nội dung trao đổi được cập nhật thành công.', 'Thay đổi nội dung');
                 this.isEditMode = false;
             }).catch((err) => {
-                this.notificationService.error(err.message, 'Không thể sửa đổi');
+                this.notificationService.error(err.reason, 'Không thể sửa đổi');
             });
         }
     }

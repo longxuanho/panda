@@ -20,6 +20,7 @@ class UserDetails {
 
         this.helpers({
             userDetails() {
+                console.log('query for change...');
                 usersDataService.setSelectedUser($stateParams.userId);
                 return usersDataService.getSelectedUser();
             }

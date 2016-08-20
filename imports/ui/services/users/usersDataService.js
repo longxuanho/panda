@@ -108,6 +108,45 @@ class UsersDataService {
         return defer.promise;
     }
 
+    verifySelectedUserEmail(userId) {
+        let defer = this.$q.defer();
+        Meteor.call('verifySelectedUserEmail', userId, (error, result) => {
+                if (error) {
+                    defer.reject(error);
+                } else {
+                    defer.resolve(result);
+                }
+            }
+        );
+        return defer.promise;
+    }
+
+    rejectSelectedUserEmail(userId) {
+        let defer = this.$q.defer();
+        Meteor.call('rejectSelectedUserEmail', userId, (error, result) => {
+                if (error) {
+                    defer.reject(error);
+                } else {
+                    defer.resolve(result);
+                }
+            }
+        );
+        return defer.promise;
+    }
+
+    logOutSelectedUser(userId) {
+        let defer = this.$q.defer();
+        Meteor.call('logOutSelectedUser', userId, (error, result) => {
+                if (error) {
+                    defer.reject(error);
+                } else {
+                    defer.resolve(result);
+                }
+            }
+        );
+        return defer.promise;
+    }
+
     getSelectedUser() {
         return this.selectedUser;
     }

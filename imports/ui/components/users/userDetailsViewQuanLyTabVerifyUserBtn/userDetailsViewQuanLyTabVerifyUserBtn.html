@@ -1,0 +1,18 @@
+<md-list-item   class="md-2-line"
+                ng-hide="userDetailsViewQuanLyTabVerifyUserBtn.userDetails.emails[0].verified"
+                ng-click="userDetailsViewQuanLyTabVerifyUserBtn.verifySelectedUserEmail()" >
+    <img ng-src="/img/icons/users/user_verify.svg" class="md-avatar sky-reset-border-radius" />
+    <div class="md-list-item-text">
+        <h3>Xác thực người dùng</h3>
+        <p>Xác thực người dùng trong hệ thống</p>
+    </div>
+</md-list-item>
+<md-list-item   class="md-2-line"
+                ng-show="userDetailsViewQuanLyTabVerifyUserBtn.userDetails.emails[0].verified"
+                ng-click="userDetailsViewQuanLyTabVerifyUserBtn.rejectSelectedUserEmail()" >
+    <img ng-src="/img/icons/users/user_reject.svg" class="md-avatar sky-reset-border-radius" />
+    <div class="md-list-item-text">
+        <h3>Vô hiệu người dùng</h3>
+        <p>Vô hiệu hóa người dùng trong hệ thống</p>
+    </div>
+</md-list-item>

@@ -113,6 +113,19 @@ class AuthDataService {
         return defer.promise;
     }
 
+    logOutOtherClients() {
+        let defer = this.$q.defer();
+        Meteor.logoutOtherClients((error) => {
+                if (error) {
+                    defer.reject(error);
+                } else {
+                    defer.resolve();
+                }
+            }
+        );
+        return defer.promise;
+    }
+
 }
 
 const name = 'authDataService';

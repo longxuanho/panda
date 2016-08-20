@@ -77,10 +77,68 @@ export function updateSelectedUserPhanQuyenDesc(selectedUserId, phanQuyenDesc) {
 
 }
 
+export function verifySelectedUserEmail(selectedUserId) {
+
+    // Validate Admin User Right here...
+    if (!this.userId)
+        throw new Meteor.Error(400, 'Bạn phải đăng nhập để thực hiện chức năng này!');
+    if (!Roles.userIsInRole(this.userId, 'admin', 'sky-project'))
+        throw new Meteor.Error(400, 'Bạn không đủ quyền hạn để thực hiện chức năng này!');
+
+    check(selectedUserId, String);
+
+    Meteor.users.update({_id: selectedUserId}, {
+        $set: {
+            'emails.0.verified': true
+        }
+    });
+
+}
+
+export function rejectSelectedUserEmail(selectedUserId) {
+
+    // Validate Admin User Right here...
+    if (!this.userId)
+        throw new Meteor.Error(400, 'Bạn phải đăng nhập để thực hiện chức năng này!');
+    if (!Roles.userIsInRole(this.userId, 'admin', 'sky-project'))
+        throw new Meteor.Error(400, 'Bạn không đủ quyền hạn để thực hiện chức năng này!');
+
+    check(selectedUserId, String);
+
+    Meteor.users.update({_id: selectedUserId}, {
+        $set: {
+            'emails.0.verified': false
+        }
+    });
+
+}
+
+
+export function logOutSelectedUser(selectedUserId) {
+
+    // Validate Admin User Right here...
+    if (!this.userId)
+        throw new Meteor.Error(400, 'Bạn phải đăng nhập để thực hiện chức năng này!');
+    if (!Roles.userIsInRole(this.userId, 'admin', 'sky-project'))
+        throw new Meteor.Error(400, 'Bạn không đủ quyền hạn để thực hiện chức năng này!');
+
+    check(selectedUserId, String);
+
+    Meteor.users.update({_id: selectedUserId}, {
+        $set: {
+            'services.resume.loginTokens': []
+        }
+    });
+
+}
+
 
 Meteor.methods({
     updateSelectedUserProfile,
     retrieveSelectedUserRoles,
     updateSelectedUserRoles,
-    updateSelectedUserPhanQuyenDesc
+    updateSelectedUserPhanQuyenDesc,
+    verifySelectedUserEmail,
+    rejectSelectedUserEmail,
+    logOutSelectedUser
 });
