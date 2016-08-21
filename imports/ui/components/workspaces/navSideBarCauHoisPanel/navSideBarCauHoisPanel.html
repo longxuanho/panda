@@ -1,0 +1,19 @@
+<md-toolbar layout="column" class="md-tall md-hue-2">
+    <md-list flex>
+        <img ng-src="img/icons/workspaces/container.svg" style="width: 40px;height: 40px;margin-left: 26px;margin-top: 5px;" alt="Avatar" />
+        <md-list-item class="md-2-line">
+            <div class="md-list-item-text" layout="column" style="padding-left: 10px;">
+                <h3 style="color: #E1E3F3;">CÂU HỎI NGB</h3>
+                <p style="color: rgba(255,255,255,.54)">© 2016 Skynet Saigon Newport, Inc.</p>
+            </div>
+        </md-list-item>
+    </md-list>
+</md-toolbar>
+<md-list flex>
+    <md-list-item class="md-2-line" ng-repeat="item in navSideBarCauHoisPanel.menuItems" ng-click="null">
+        <md-icon md-svg-src="{{item.icon}}"></md-icon>
+        <div class="md-list-item-text">
+            <h3>{{item.title}}</h3>
+        </div>
+    </md-list-item>
+</md-list>

@@ -7,6 +7,7 @@ import { name as AuthDataService } from '../../../services/users/authDataService
 import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
 
 import { name as NavSideBarThietBisPanel } from '../navSideBarThietBisPanel/navSideBarThietBisPanel';
+import { name as NavSideBarCauHoisPanel } from '../navSideBarCauHoisPanel/navSideBarCauHoisPanel';
 
 
 class NavSideBar {
@@ -33,6 +34,7 @@ const name = 'navSideBar';
 export default angular.module(name, [
     angularMeteor,
     NavSideBarThietBisPanel,
+    NavSideBarCauHoisPanel,
     AuthDataService,
     UserLocalSettingsService
 ]).component(name, {
