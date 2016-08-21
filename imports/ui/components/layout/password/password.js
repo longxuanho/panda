@@ -33,7 +33,7 @@ class Password {
         this.isResetting = true;
         this.authDataService.forgotPassword(this.credentials).then(() => {
             this.notificationService.success('Chúng tôi đã gửi mã token reset mật khẩu tới email của bạn.', 'Gửi token thành công');
-            this.$state.go('parties');
+            this.$state.go('login');
         }).catch((err) => {
             this.isResetting = false;
             this.notificationService.error(err.reason, 'Gửi token thất bại');

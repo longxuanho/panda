@@ -1,5 +1,6 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
+
 import _ from 'underscore';
 
 import template from './userDetailsViewQuyenHanTab.html';

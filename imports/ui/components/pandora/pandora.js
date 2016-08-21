@@ -95,3 +95,6 @@ function run($rootScope, $state) {
         }
     );
 }
+
+
+// FIX CANT'T INSTALL BCRYPT: >SET PYTHON=C:\Python27\python.exe

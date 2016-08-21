@@ -147,7 +147,13 @@ Schema.User = new SimpleSchema({
     roles: {
         type: Object,
         optional: true,
-        blackbox: true
+        blackbox: true,
+        defaultValue: {
+            rights: [],
+            zones: [],
+            assets: [],
+            donvies: []
+        }
     },
     // In order to avoid an 'Exception in setInterval callback' from Meteor
     heartbeat: {
