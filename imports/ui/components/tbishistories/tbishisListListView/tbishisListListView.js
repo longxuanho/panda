@@ -8,15 +8,9 @@ import { Counts } from 'meteor/tmeasday:publish-counts';
 
 import template from './tbishisListListView.html';
 
-// import { name as TbisrepListUtilsBar } from '../tbisrepListUtilsBar/tbisrepListUtilsBar';
-// import { name as TbisrepListListView } from '../tbisrepListListView/tbisrepListListView';
-
-// import { name as TbisrepListFabMenu } from '../tbisListFabMenu/tbisListFabMenu';
-// import { name as TbisDisplayListView } from '../tbisDisplayListView/tbisDisplayListView';
 import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
 import { name as TbisDetailsViewHistoryViewThongKeTab } from '../../thietbis/tbisDetailsViewHistoryViewThongKeTab/tbisDetailsViewHistoryViewThongKeTab';
 import { name as TbisDetailsViewHistoryViewLuotScnTab } from '../../thietbis/tbisDetailsViewHistoryViewLuotScnTab/tbisDetailsViewHistoryViewLuotScnTab';
-import { name as TbisDetailsViewHistoryViewKhacTab } from '../../thietbis/tbisDetailsViewHistoryViewKhacTab/tbisDetailsViewHistoryViewKhacTab';
 
 
 class TbishisListListView {
@@ -50,8 +44,6 @@ export default angular.module(name, [
     TbisDetailsViewHistoryViewThongKeTab,
     TbisDetailsViewHistoryViewLuotScnTab,
     TbisDetailsViewHistoryViewLuotScnTab
-    // TbisrepListUtilsBar,
-    // TbisrepListListView
 ]).component(name, {
     template,
     controllerAs: name,

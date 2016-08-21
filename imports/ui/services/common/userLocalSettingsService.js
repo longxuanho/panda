@@ -176,6 +176,16 @@ function queryDefaultSettings() {
                     }
                 }
             }
+        },
+        {
+            _id: "Uit6Bekm4FguR2eoi",
+            module: "workspaces",
+            page: "workspaces",
+            options: {
+                navSideBar: {
+                    currentMode: 'thietbis',
+                }
+            }
         }
     ]
 }

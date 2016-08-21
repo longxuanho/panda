@@ -1,8 +1,11 @@
-<div layout="column" layout-fill>
-    <navigation id="sky-navigation"></navigation>
-    <md-content>
-        <div ui-view="" class="well"></div>
-    </md-content>
+<div layout="row" flex>
+    <nav-side-bar layout="column"></nav-side-bar>
+    <div layout="column" flex>
+        <navigation id="sky-navigation"></navigation>
+        <md-content layout="column" flex>
+            <div ui-view="" class="well"></div>
+        </md-content>
+    </div>
 </div>
 
 

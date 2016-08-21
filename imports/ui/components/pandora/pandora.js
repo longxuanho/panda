@@ -15,6 +15,7 @@ import 'moment/locale/vi';
 
 import template from './pandora.html';
 import { name as Navigation } from '../layout/navigation/navigation';
+import { name as NavSideBar } from '../workspaces/navSideBar/navSideBar';
 import { name as PartiesList } from '../demo/partiesList/partiesList';
 import { name as PartyDetails } from '../demo/partyDetails/partyDetails';
 import { name as TbisList } from '../thietbis/tbisList/tbisList';
@@ -45,6 +46,7 @@ export default angular.module(name, [
     ngSanitize,
     uiRouter,
     Navigation,
+    NavSideBar,
     TbisList,
     TbisDetailsView,
     TbisrepList,
