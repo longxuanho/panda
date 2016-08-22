@@ -13,6 +13,18 @@ class WorkspacesDataService {
         this.currentNavSideBarOptions = this.queryCurrentNavSideBarOptions();
         this.navSideBarOptionsDB = queryNavSideBarOptionsDB();
 
+
+    }
+
+    setUserProfileUrl(userId) {
+        // Sử dụng trong $watch của auth: Khi có thay đổi trạng thái người dùng, hàm này sẽ cập nhật lại url tới profile người dùng để dùng trong navsidebar hoặc workspaceslist
+        _.each(this.navSideBarOptionsDB, (item) => {
+            if (item.module === 'users')
+                _.each(item.options, (option) => {
+                   if (option.title === 'Hồ sơ cá nhân')
+                       option.url = `quan-ly/users/${userId}`;
+                });
+        });
     }
 
     getCurrentNavSideBarOptions() {
@@ -53,20 +65,25 @@ function queryNavSideBarOptionsDB() {
             background: 'pink',
             options: [
                 {
+                    title: 'Bảng tin',
                     icon: 'img/icons/workspaces/dashboard.svg',
-                    title: 'Bảng tin'
+                    url: '/quan-ly/thiet-bi'
                 }, {
+                    title: 'Thực lực phương tiện',
                     icon: 'img/icons/workspaces/dvr.svg',
-                    title: 'Thực lực phương tiện'
+                    url: '/quan-ly/thiet-bi'
                 }, {
+                    title: 'Thông số kỹ thuật',
                     icon: 'img/icons/workspaces/assignment.svg',
-                    title: 'Thông số kỹ thuật'
+                    url: '/quan-ly/thong-so-ky-thuat'
                 }, {
+                    title: 'Thông báo',
                     icon: 'img/icons/workspaces/comment.svg',
-                    title: 'Thông báo'
+                    url: '/quan-ly/thong-bao-thiet-bi'
                 }, {
+                    title: 'Nhật ký phương tiện',
                     icon: 'img/icons/workspaces/border_color.svg',
-                    title: 'Nhật ký phương tiện'
+                    url: '/quan-ly/nhat-ky-thiet-bi'
                 }
             ]
         }, {
@@ -99,10 +116,12 @@ function queryNavSideBarOptionsDB() {
                     title: 'Bảng tin'
                 }, {
                     icon: 'img/icons/common/people.svg',
-                    title: 'Danh sách người dùng'
+                    title: 'Danh sách người dùng',
+                    url: '/quan-ly/users'
                 }, {
                     icon: 'img/icons/common/person.svg',
-                    title: 'Hồ sơ cá nhân'
+                    title: 'Hồ sơ cá nhân',
+                    url: ''
                 }
             ]
         }

@@ -10,10 +10,12 @@
     </md-list>
 </md-toolbar>
 <md-list flex>
-    <md-list-item class="md-2-line" ng-repeat="item in navSideBarCurrentPanel.currentNavSideBarOptionsDB.options" ng-click="null">
-        <md-icon md-svg-src="{{item.icon}}"></md-icon>
-        <div class="md-list-item-text">
-            <h3>{{item.title}}</h3>
-        </div>
-    </md-list-item>
+    <a ng-repeat="item in navSideBarCurrentPanel.currentNavSideBarOptionsDB.options" ng-href="{{item.url}}">
+        <md-list-item class="md-2-line"  ng-click="null">
+            <md-icon md-svg-src="{{item.icon}}"></md-icon>
+            <div class="md-list-item-text">
+                <h3>{{item.title}}</h3>
+            </div>
+        </md-list-item>
+    </a>
 </md-list>

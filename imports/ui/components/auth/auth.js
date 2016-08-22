@@ -15,13 +15,14 @@ import { name as ResetPassword } from '../layout/resetPassword/resetPassword';
 import { name as CurrentUserService } from '../../services/common/currentUserService';
 import { name as UserLocalSettingsService } from '../../services/common/userLocalSettingsService';
 import { name as NotificationService } from '../../services/common/notificationService';
+import { name as WorkspacesDataService } from '../../services/workspaces/workspacesDataService';
 
 import { name as UserAvatar } from '../../directives/common/userAvatar';
 
 const name = 'auth';
 
 class Auth {
-    constructor($scope, $reactive, $state, currentUserService, userLocalSettingsService, notificationService) {
+    constructor($scope, $reactive, $state, currentUserService, userLocalSettingsService, notificationService, workspacesDataService) {
         'ngInject';
 
         $reactive(this).attach($scope);
@@ -29,6 +30,7 @@ class Auth {
         this.currentUserService = currentUserService;
         this.userLocalSettingsService = userLocalSettingsService;
         this.notificationService = notificationService;
+        this.workspacesDataService = workspacesDataService;
         this.$state = $state;
 
         this.helpers({
@@ -41,13 +43,16 @@ class Auth {
             currentUser() {
                 this.currentUserService.setCurrentUser(Meteor.user());
                 this.userLocalSettingsService.initCurrentUserLocalSettings(this.currentUserService.getCurrentUser());
+
                 return Meteor.user();
             }
         });
 
         $scope.$watch('auth.currentUserId', (newVal) => {
-            // Nếu người dùng logout/bị logout khỏi hệ thống
+            // Khi có sự thay đổi về Id người dùng -> refresh lại đường dẫn tới url trong navSideBar và workspace
+            this.workspacesDataService.setUserProfileUrl(Meteor.userId());
             if (!newVal) {
+                // Nếu người dùng logout/bị logout khỏi hệ thống -> Chuyển tới login
                 this.$state.go('login');
             }
         });
@@ -73,7 +78,8 @@ export default angular.module(name, [
     ResetPassword,
     CurrentUserService,
     UserLocalSettingsService,
-    NotificationService
+    NotificationService,
+    WorkspacesDataService
 ]).component(name, {
     template,
     controllerAs: name,

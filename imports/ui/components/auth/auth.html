@@ -7,8 +7,8 @@
         <md-button ng-show="auth.isLoggedIn" ng-click="$mdOpenMenu($event)" aria-label="User Name">{{ auth.currentUser | displayNameFilter }}</md-button>
         <md-menu-content width="4" >
             <md-menu-item>
-                <md-button ng-click="null">
-                    <div layout="row" flex>
+                <md-button ui-sref="workspacesList">
+                    <div layout="row" flex style="padding-top: 7px;">
                         <p flex>Bàn làm việc</p>
                         <md-icon md-svg-icon="img/icons/common/devices.svg" style="margin: auto 3px auto 0;"></md-icon>
                     </div>
