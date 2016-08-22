@@ -21,13 +21,17 @@ import { name as PartyDetails } from '../demo/partyDetails/partyDetails';
 import { name as TbisList } from '../thietbis/tbisList/tbisList';
 import { name as TbisDetailsView } from '../thietbis/tbisDetailsView/tbisDetailsView';
 
+import { name as Auth } from '../auth/auth';
+
 import { name as TbisrepList } from '../tbisreports/tbisrepList/tbisrepList';
 import { name as TbishisList } from '../tbishistories/tbishisList/tbishisList';
 
 import { name as UsersList } from '../users/usersList/usersList';
 import { name as UserDetails } from '../users/userDetails/userDetails';
 
-import { name as Auth } from '../auth/auth';
+import { name as WorkspacesList } from '../workspaces/workspacesList/workspacesList';
+
+
 
 
 
@@ -53,6 +57,7 @@ export default angular.module(name, [
     TbishisList,
     UserDetails,
     UsersList,
+    WorkspacesList,
     PartiesList,
     PartyDetails,
     Auth,

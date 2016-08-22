@@ -183,6 +183,7 @@ function queryDefaultSettings() {
             page: "workspaces",
             options: {
                 navSideBar: {
+                    isOpen: false,
                     currentMode: 'thietbis',
                 }
             }
