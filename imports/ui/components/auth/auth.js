@@ -27,6 +27,8 @@ class Auth {
 
         $reactive(this).attach($scope);
 
+        this.utilsSideBarOptions = workspacesDataService.getCurrentUtilsSideBarOptions();
+
         this.currentUserService = currentUserService;
         this.userLocalSettingsService = userLocalSettingsService;
         this.notificationService = notificationService;

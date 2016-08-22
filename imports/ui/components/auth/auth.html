@@ -32,6 +32,11 @@
             </md-menu-item>
         </md-menu-content>
     </md-menu>
-    <!--<img ng-if="auth.isLoggedIn" user-avatar user-id="{{auth.currentUser._id}}" class="sky-avatar" alt="avatar"/>-->
-    <img ng-if="auth.isLoggedIn" user-avatar img-src="{{auth.currentUser.profile.avatar.isGAvatar ? auth.currentUser.profile.avatar.gAvatarUrl : auth.currentUser.profile.avatar.url}}" class="sky-avatar" alt="avatar"/>
+    <a ng-click="auth.utilsSideBarOptions.isOpen = !auth.utilsSideBarOptions.isOpen">
+        <img ng-if="auth.isLoggedIn" user-avatar
+             img-src="{{auth.currentUser.profile.avatar.isGAvatar ? auth.currentUser.profile.avatar.gAvatarUrl : auth.currentUser.profile.avatar.url}}"
+             class="sky-avatar sky-action-hover" alt="myAvatar"
+        />
+    </a>
+
 </div>

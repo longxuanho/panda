@@ -185,6 +185,9 @@ function queryDefaultSettings() {
                 navSideBar: {
                     isOpen: false,
                     currentMode: 'thietbis',
+                },
+                utilsSideBar: {
+                    isOpen: false
                 }
             }
         }

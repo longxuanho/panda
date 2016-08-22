@@ -1,0 +1,52 @@
+<md-toolbar layout="column" class="md-tall md-hue-2">
+    <md-list flex >
+        <div layout="row" layout-align="end start" flex>
+            <img ng-src="{{utilsSideBarCurrentPanel.currentNavSideBarOptionsDB.icon}}" style="width: 40px;height: 40px;margin-top: 5px; margin-right: 40px;" alt="Avatar" />
+        </div>
+        <md-list-item class="md-2-line">
+            <div class="md-list-item-text" layout="column" style="padding-left: 10px;">
+                <h3 style="color: #E1E3F3; text-transform: uppercase;text-align: right;">{{utilsSideBarCurrentPanel.currentNavSideBarOptionsDB.title}}</h3>
+                <p style="color: rgba(255,255,255,.54); text-align: right;">© 2016 Skynet Saigon Newport, Inc.</p>
+            </div>
+        </md-list-item>
+    </md-list>
+</md-toolbar>
+<md-subheader class="md-no-sticky">Tìm kiếm</md-subheader>
+<div layout="row" style="padding: 16px;">
+    <div flex>
+        <input class="k-textbox" style="width:100%;border-color: #e6e6e6;border-radius: 24px;" type="text"  ng-model="tbisSearchForm.searchText"/>
+    </div>
+    <div flex="none">
+        <md-button class="md-icon-button" aria-label="Tìm kiếm" ng-click="tbisSearchForm.submit()">
+            <md-icon md-svg-icon="img/icons/common/search.svg" ng-class="{'md-accent': tbisSearchForm.settings.searchText.length}"></md-icon>
+        </md-button>
+    </div>
+</div>
+<md-subheader class="md-no-sticky">Duyệt trang</md-subheader>
+<div layout="row" layout-align="center center" style="padding: 16px 0;">
+    <div flex="15">
+        <md-button class="md-icon-button" aria-label="Left" style="width:100%; margin:0;">
+            <md-icon md-svg-src="img/icons/common/keyboard_arrow_left.svg"></md-icon>
+        </md-button>
+    </div>
+    <div flex="35">
+        <input kendo-numeric-text-box k-min="0" k-max="100" k-ng-model="value" style="width: 100%;text-align: right;" />
+    </div>
+    <div flex="35">
+        <input kendo-numeric-text-box k-min="0" k-max="100" k-ng-model="value" style="width: 100%;text-align: right;" />
+    </div>
+    <div flex="15">
+        <md-button class="md-icon-button" aria-label="Right" style="width:100%; margin:0;">
+            <md-icon md-svg-src="img/icons/common/keyboard_arrow_right.svg"></md-icon>
+        </md-button>
+    </div>
+</div>
+<md-subheader class="md-no-sticky">Sắp xếp</md-subheader>
+<div style="padding: 16px;">
+    <md-radio-group ng-model="data.group1">
+        <md-radio-button value="Apple">Tăng dần</md-radio-button>
+        <md-radio-button value="Banana">Giảm dần</md-radio-button>
+    </md-radio-group>
+</div>
+
+

@@ -11,8 +11,10 @@ import { name as TbisDisplayListItem } from '../tbisDisplayListItem/tbisDisplayL
 import { name as TbisDataService } from '../../../services/thietbis/tbisDataService';
 import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
 
+
+
 class TbisDisplayListView {
-    constructor($reactive, $scope, userLocalSettingsService, tbisDataService) {
+    constructor($reactive, $scope, userLocalSettingsService, tbisDataService, $timeout) {
         'ngInject';
         $reactive(this).attach($scope);
 
@@ -20,6 +22,9 @@ class TbisDisplayListView {
         this.filterPanelOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').tbisFilterPanel;
 
         this.searchText = '';
+
+
+
 
         this.subscribe('thietbis', () => [
             {
@@ -42,7 +47,7 @@ class TbisDisplayListView {
                 return Counts.get('numberOfThietBis');
             }
         });
-        
+
     }
 
     pageChanged(newPage) {

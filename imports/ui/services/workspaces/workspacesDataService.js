@@ -10,7 +10,10 @@ class WorkspacesDataService {
         'ngInject';
 
         this.userLocalSettingsService = userLocalSettingsService;
+
         this.currentNavSideBarOptions = this.queryCurrentNavSideBarOptions();
+        this.currentUtilsSideBarOptions = this.queryCurrentUtilsBarOptions();
+
         this.navSideBarOptionsDB = queryNavSideBarOptionsDB();
 
 
@@ -31,8 +34,17 @@ class WorkspacesDataService {
         return this.currentNavSideBarOptions;
     }
 
+    getCurrentUtilsSideBarOptions() {
+        return this.currentUtilsSideBarOptions;
+    }
+
+
     queryCurrentNavSideBarOptions() {
         return this.userLocalSettingsService.getPageSettings('workspaces', 'workspaces').navSideBar;
+    }
+
+    queryCurrentUtilsBarOptions() {
+        return this.userLocalSettingsService.getPageSettings('workspaces', 'workspaces').utilsSideBar;
     }
 
     getNavSideBarOptionsDB(moduleName) {
