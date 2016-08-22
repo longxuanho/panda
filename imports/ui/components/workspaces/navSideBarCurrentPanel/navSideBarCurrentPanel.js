@@ -14,14 +14,14 @@ class NavSideBarCurrentPanel {
 
         this.currentNavSideBarOptions = workspacesDataService.getCurrentNavSideBarOptions();
 
-        $scope.$watch('navSideBarCurrentPanel.currentNavSideBarOptions.currentMode', (newVal) => {
+        $scope.$watch('navSideBarCurrentPanel.currentNavSideBarOptions.currentModule', (newVal) => {
             this.currentNavSideBarOptionsDB = this.getNavSideBarOptionsDB(newVal);
         });
 
     }
 
-    getNavSideBarOptionsDB(currentModule) {
-        return this.workspacesDataService.getNavSideBarOptionsDB(currentModule);
+    getNavSideBarOptionsDB(currModule) {
+        return this.workspacesDataService.getNavSideBarOptionsDB(currModule);
     }
 }
 

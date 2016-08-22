@@ -1,6 +1,6 @@
 <md-list flex>
     <md-subheader class="md-no-sticky">Bạn đang xem danh sách {{usersListListView.users.length}}/{{usersListListView.usersCount}} người dùng trên hệ thống Skynet</md-subheader>
-    <md-list-item class="md-2-line" ui-sref="usersdetails({userId: user._id})" ng-repeat="user in usersListListView.users">
+    <md-list-item class="md-2-line" ui-sref="usersDetails({userId: user._id})" ng-repeat="user in usersListListView.users">
         <div class="sky-user-status-container">
             <span class="sky-user-status" user-status user-id="{{user._id}}"></span>
             <img user-avatar user-id="{{user._id}}" class="md-avatar" />

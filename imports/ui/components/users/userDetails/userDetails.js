@@ -48,7 +48,7 @@ export default angular.module(name, [
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('usersdetails', {
+        .state('usersDetails', {
             url: '/quan-ly/users/:userId',
             template: '<user-details></user-details>',
             resolve: {

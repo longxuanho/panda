@@ -3,12 +3,15 @@ import angularMeteor from 'angular-meteor';
 
 import template from './tbisUtilsBar.html';
 import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
+import { name as SubscribeDataService } from '../../../services/workspaces/subscribeDataService';
 
 class TbisUtilsBar {
-    constructor(userLocalSettingsService) {
+    constructor(userLocalSettingsService, subscribeDataService) {
         'ngInject';
 
         this.utilsBarIconsOptions = this.initUtilsBarIconsOptions();
+
+        this.subscribeOptions = subscribeDataService.getCurrentSubscribeOptions();
 
         this.categoryOptions = this.initCategoryOptions();
         this.viewModeOptions = this.initViewModeOptions();
@@ -119,7 +122,8 @@ class TbisUtilsBar {
     }
 
     setCategory(mode) {
-        this.componentOptions.category = mode;
+        // this.componentOptions.category = mode;
+        this.subscribeOptions.subscribe.category = mode;
     }
 
     setSearchFilterMode(mode) {
@@ -154,7 +158,8 @@ const name = 'tbisUtilsBar';
 // create a module
 export default angular.module(name, [
     angularMeteor,
-    UserLocalSettingsService
+    UserLocalSettingsService,
+    SubscribeDataService
 ]).component(name, {
     template,
     controllerAs: name,

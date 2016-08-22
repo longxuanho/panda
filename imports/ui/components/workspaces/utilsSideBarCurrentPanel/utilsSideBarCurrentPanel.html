@@ -12,16 +12,16 @@
     </md-list>
 </md-toolbar>
 <md-subheader class="md-no-sticky">Tìm kiếm</md-subheader>
-<div layout="row" style="padding: 16px;">
+<form ng-submit="utilsSideBarCurrentPanel.searchFormSubmit()" layout="row"  style="padding: 16px;">
     <div flex>
-        <input class="k-textbox" style="width:100%;border-color: #e6e6e6;border-radius: 24px;" type="text"  ng-model="tbisSearchForm.searchText"/>
+        <input class="k-textbox" style="width:100%;border-color: #e6e6e6;border-radius: 24px;" type="text"  ng-model="utilsSideBarCurrentPanel.liveOptions.searchText"/>
     </div>
     <div flex="none">
-        <md-button class="md-icon-button" aria-label="Tìm kiếm" ng-click="tbisSearchForm.submit()">
-            <md-icon md-svg-icon="img/icons/common/search.svg" ng-class="{'md-accent': tbisSearchForm.settings.searchText.length}"></md-icon>
+        <md-button class="md-icon-button" aria-label="Tìm kiếm" ng-click="utilsSideBarCurrentPanel.searchFormSubmit()">
+            <md-icon md-svg-icon="img/icons/common/search.svg" ng-class="{'md-accent': utilsSideBarCurrentPanel.currentSubscribeOptions.subscribe.searchText}"></md-icon>
         </md-button>
     </div>
-</div>
+</form>
 <md-subheader class="md-no-sticky">Duyệt trang</md-subheader>
 <div layout="row" layout-align="center center" style="padding: 16px 0;">
     <div flex="15">
@@ -30,10 +30,14 @@
         </md-button>
     </div>
     <div flex="35">
-        <input kendo-numeric-text-box k-min="0" k-max="100" k-ng-model="value" style="width: 100%;text-align: right;" />
+        <input kendo-numeric-text-box k-min="1" k-max="1000" k-decimals="0" k-format="'n0'"
+               k-ng-model="utilsSideBarCurrentPanel.currentSubscribeOptions.subscribe.page"
+               style="width: 100%;text-align: right;" />
     </div>
     <div flex="35">
-        <input kendo-numeric-text-box k-min="0" k-max="100" k-ng-model="value" style="width: 100%;text-align: right;" />
+        <input kendo-numeric-text-box k-min="5" k-max="1000" k-decimals="0" k-format="'n0'" k-step="10"
+               k-ng-model="utilsSideBarCurrentPanel.currentSubscribeOptions.subscribe.pageSize"
+               style="width: 100%;text-align: right;" />
     </div>
     <div flex="15">
         <md-button class="md-icon-button" aria-label="Right" style="width:100%; margin:0;">
@@ -43,10 +47,18 @@
 </div>
 <md-subheader class="md-no-sticky">Sắp xếp</md-subheader>
 <div style="padding: 16px;">
-    <md-radio-group ng-model="data.group1">
-        <md-radio-button value="Apple">Tăng dần</md-radio-button>
-        <md-radio-button value="Banana">Giảm dần</md-radio-button>
+    <md-radio-group ng-model="utilsSideBarCurrentPanel.currentSubscribeOptions.subscribe.sort['ma_thiet_bi.keyId']">
+        <md-radio-button ng-value="1">Tăng dần</md-radio-button>
+        <md-radio-button ng-value="-1">Giảm dần</md-radio-button>
     </md-radio-group>
 </div>
+
+<pre>
+    {{utilsSideBarCurrentPanel.currentUtilsSideBarOptions | json}}
+</pre>
+
+<pre>
+    {{utilsSideBarCurrentPanel.currentSubscribeOptions.subscribe | json}}
+</pre>
 
 

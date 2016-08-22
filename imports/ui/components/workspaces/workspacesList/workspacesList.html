@@ -10,10 +10,10 @@
         <md-grid-list md-cols="2" md-cols-sm="3" md-cols-md="6" md-cols-gt-md="8" md-row-height-gt-md="1:1"
                       md-row-height="4:3" md-gutter="8px" md-gutter-gt-sm="8px" >
             <md-grid-tile ng-repeat="workspace in workspacesList.navSideBarOptionsDB"
-                          ng-click="workspacesList.setNavSideBarCurrentMode(workspace.module)"
-                          ng-class="(workspace.module === workspacesList.currentNavSideBarOptions.currentMode) ? workspace.background : 'mediumGray'" class="sky-action-hover"
+                          ng-click="workspacesList.setNavSideBarCurrentModule(workspace.module)"
+                          ng-class="(workspace.module === workspacesList.currentNavSideBarOptions.currentModule) ? workspace.background : 'mediumGray'" class="sky-action-hover"
                           md-ink-ripple >
-                <img ng-show="workspace.module === workspacesList.currentNavSideBarOptions.currentMode"
+                <img ng-show="workspace.module === workspacesList.currentNavSideBarOptions.currentModule"
                      ng-src="{{workspace.icon}}" class="md-card-image"
                      style="width: 50px; height: 50px; margin-top: -24px;" alt="Avatar">
                 <md-grid-tile-footer><h3>{{workspace.text}}</h3></md-grid-tile-footer>

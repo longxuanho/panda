@@ -11,9 +11,6 @@ import template from './tbisrepList.html';
 import { name as TbisrepListUtilsBar } from '../tbisrepListUtilsBar/tbisrepListUtilsBar';
 import { name as TbisrepListListView } from '../tbisrepListListView/tbisrepListListView';
 
-// import { name as TbisrepListFabMenu } from '../tbisListFabMenu/tbisListFabMenu';
-// import { name as TbisDisplayListView } from '../tbisDisplayListView/tbisDisplayListView';
-
 
 class TbisrepList {
     constructor($scope, $reactive) {
@@ -45,7 +42,7 @@ export default angular.module(name, [
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('tbisreports', {
+        .state('tbisrepList', {
             url: '/quan-ly/thong-bao-thiet-bi',
             template: '<tbisrep-list></tbisrep-list>',
             resolve: {

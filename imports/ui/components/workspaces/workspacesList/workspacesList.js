@@ -15,20 +15,21 @@ class WorkspacesList {
 
         this.workspacesDataService = workspacesDataService;
 
+        // NavSideBar
         this.currentNavSideBarOptions = workspacesDataService.getCurrentNavSideBarOptions();
         this.navSideBarOptionsDB = workspacesDataService.getNavSideBarOptionsDB();
 
-        $scope.$watch('workspacesList.currentNavSideBarOptions.currentMode', (newVal) => {
+        $scope.$watch('workspacesList.currentNavSideBarOptions.currentModule', (newVal) => {
             this.currentNavSideBarOptionsDB = this.getNavSideBarOptionsDB(newVal);
         });
     }
 
-    setNavSideBarCurrentMode(name) {
-        this.currentNavSideBarOptions.currentMode = name;
+    setNavSideBarCurrentModule(name) {
+        this.currentNavSideBarOptions.currentModule = name;
     }
 
-    getNavSideBarOptionsDB(currentModule) {
-        return this.workspacesDataService.getNavSideBarOptionsDB(currentModule);
+    getNavSideBarOptionsDB(currModule) {
+        return this.workspacesDataService.getNavSideBarOptionsDB(currModule);
     }
 
     toggleNavSideBar() {

@@ -85,7 +85,7 @@ export default angular.module(name, [
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('thietbis', {
+        .state('tbisList', {
             url: '/quan-ly/thiet-bi',
             template: '<tbis-list></tbis-list>',
             resolve: {

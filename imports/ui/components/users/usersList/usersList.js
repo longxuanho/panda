@@ -8,13 +8,8 @@ import { Counts } from 'meteor/tmeasday:publish-counts';
 
 import template from './usersList.html';
 
-// import { name as TbisUtilsBar } from '../tbisUtilsBar/tbisUtilsBar';
-// import { name as TbisListFabMenu } from '../tbisListFabMenu/tbisListFabMenu';
 import { name as UsersListListView } from '../usersListListView/usersListListView';
 import { name as UsersListSearchForm } from '../usersListSearchForm/usersListSearchForm';
-
-// import { name as TbisDisplayListView } from '../tbisDisplayListView/tbisDisplayListView';
-// import { name as TbisDisplayGridView } from '../tbisDisplayGridView/tbisDisplayGridView';
 
 import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
 
@@ -25,8 +20,6 @@ class UsersList {
 
         $reactive(this).attach($scope);
 
-        // this.componentOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').utilsBar;
-        // this.filterPanelOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').tbisFilterPanel;
         this.isOpen = false;
 
         this.subscribe('users');

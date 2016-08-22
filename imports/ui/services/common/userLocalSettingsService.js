@@ -72,7 +72,16 @@ function queryDefaultSettings() {
                     searchFilterMode: 'search',     // Available options: search, filter, search_filter
                     page: 1,
                     pageSize: 5,
+
+                },
+                suscribe: {
+                    category: 'Tất cả',
+                    searchText: '',
+                    searchBy: 'searchField',
+                    page: 1,
+                    pageSize: 5,
                     sort: {
+                        'ma_thiet_bi.keyId': 1
                     }
                 },
                 tbisFilterPanel: {
@@ -184,10 +193,11 @@ function queryDefaultSettings() {
             options: {
                 navSideBar: {
                     isOpen: false,
-                    currentMode: 'thietbis',
+                    currentModule: 'thietbis',
                 },
                 utilsSideBar: {
-                    isOpen: false
+                    isOpen: false,
+                    currentState: ''
                 }
             }
         }

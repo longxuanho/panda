@@ -31,6 +31,9 @@ import { name as UsersList } from '../users/usersList/usersList';
 import { name as UserDetails } from '../users/userDetails/userDetails';
 
 import { name as WorkspacesList } from '../workspaces/workspacesList/workspacesList';
+import { name as WorkspacesDataService } from '../../services/workspaces/workspacesDataService';
+import { name as SubscribeDataService } from '../../services/workspaces/subscribeDataService';
+import { name as NotificationService } from '../../services/common/notificationService';
 
 
 
@@ -60,6 +63,9 @@ export default angular.module(name, [
     UserDetails,
     UsersList,
     WorkspacesList,
+    WorkspacesDataService,
+    SubscribeDataService,
+    NotificationService,
     PartiesList,
     PartyDetails,
     Auth,
@@ -93,16 +99,26 @@ function config($locationProvider, $urlRouterProvider, uiGmapGoogleMapApiProvide
     //     .accentPalette('pink');
 }
 
-function run($rootScope, $state) {
+function run($rootScope, $state, workspacesDataService, subscribeDataService, notificationService) {
     'ngInject';
 
     $rootScope.$on('$stateChangeError',
         (event, toState, toParams, fromState, fromParams, error) => {
             if (error === 'AUTH_REQUIRED') {
-                $state.go('parties');
+                notificationService.error('Phân quyền của bạn không đủ để truy cập liên kết này. Thực hiện chuyển hướng truy cập...', 'Điều hướng thất bại')
+                $state.go('workspacesList');
             }
         }
     );
+
+    $rootScope.$on('$stateChangeSuccess',
+        (event, toState, toParams, fromState, fromParams) => {
+            workspacesDataService.getCurrentUtilsSideBarOptions().currentState = toState.name;
+            subscribeDataService.updateCurrentSubscribeOptions(toState.name);
+        }
+    );
+
+
 }
 
 

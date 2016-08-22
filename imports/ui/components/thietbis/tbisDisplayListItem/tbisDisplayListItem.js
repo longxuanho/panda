@@ -4,7 +4,7 @@ import angularMeteor from 'angular-meteor';
 import template from './tbisDisplayListItem.html';
 
 class TbisDisplayListItem {
-    constructor($scope, $reactive, $timeout) {
+    constructor($scope, $reactive) {
         'ngInject';
 
         $reactive(this).attach($scope);

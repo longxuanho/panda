@@ -1,6 +1,8 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
+import _ from 'underscore';
+
 import { name as UserLocalSettingsService } from '../../services/common/userLocalSettingsService';
 
 
@@ -11,12 +13,12 @@ class WorkspacesDataService {
 
         this.userLocalSettingsService = userLocalSettingsService;
 
+        // NavSideBar
         this.currentNavSideBarOptions = this.queryCurrentNavSideBarOptions();
-        this.currentUtilsSideBarOptions = this.queryCurrentUtilsBarOptions();
-
         this.navSideBarOptionsDB = queryNavSideBarOptionsDB();
 
-
+        // UtilsSideBar
+        this.currentUtilsSideBarOptions = this.queryCurrentUtilsBarOptions();
     }
 
     setUserProfileUrl(userId) {
@@ -30,21 +32,13 @@ class WorkspacesDataService {
         });
     }
 
-    getCurrentNavSideBarOptions() {
-        return this.currentNavSideBarOptions;
-    }
-
-    getCurrentUtilsSideBarOptions() {
-        return this.currentUtilsSideBarOptions;
-    }
-
-
+    // NavSideBar
     queryCurrentNavSideBarOptions() {
         return this.userLocalSettingsService.getPageSettings('workspaces', 'workspaces').navSideBar;
     }
 
-    queryCurrentUtilsBarOptions() {
-        return this.userLocalSettingsService.getPageSettings('workspaces', 'workspaces').utilsSideBar;
+    getCurrentNavSideBarOptions() {
+        return this.currentNavSideBarOptions;
     }
 
     getNavSideBarOptionsDB(moduleName) {
@@ -55,6 +49,28 @@ class WorkspacesDataService {
 
         return this.navSideBarOptionsDB;
     }
+
+    // UtilsSideBar
+    queryCurrentUtilsBarOptions() {
+        return this.userLocalSettingsService.getPageSettings('workspaces', 'workspaces').utilsSideBar;
+    }
+
+    getCurrentUtilsSideBarOptions() {
+        return this.currentUtilsSideBarOptions;
+    }
+
+    // getUtilsSideBarOptionsDB(stateName) {
+    //     if (_.contains(['tbisList', 'tbisrepList', 'tbishisList'], stateName)) {
+    //         let mapToModule = {
+    //             tbisList: 'thietbis',
+    //             tbisrepList: 'tbisreports',
+    //             tbishisList: 'tbishistories'
+    //         };
+    //         return this.userLocalSettingsService.getPageSettings(mapToModule[stateName], stateName).suscribe;
+    //     }
+    //     return null;
+    // }
+
 }
 
 const name = 'workspacesDataService';
