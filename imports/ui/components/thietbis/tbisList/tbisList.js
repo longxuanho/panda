@@ -6,8 +6,7 @@ import ngMdIcons from 'angular-material-icons';
 
 import template from './tbisList.html';
 
-import { name as TbisUtilsBar } from '../tbisUtilsBar/tbisUtilsBar';
-
+import { name as UtilsTopBar } from '../../workspaces/utilsTopBar/utilsTopBar';
 import { name as TbisListFabMenu } from '../tbisListFabMenu/tbisListFabMenu';
 
 import { name as TbisPhanLoaiDataService } from '../../../services/thietbis/tbisPhanLoaiDataService';
@@ -15,21 +14,24 @@ import { name as TbisNguonGocDataService } from '../../../services/thietbis/tbis
 import { name as TbisPhanQuyenDataService } from '../../../services/thietbis/tbisPhanQuyenDataService';
 import { name as TbisDiaDiemDataService } from '../../../services/thietbis/tbisDiaDiemDataService';
 import { name as TbisReferenceDataService } from '../../../services/thietbis/tbisReferenceDataService';
+import { name as UtilsTopBarDataService } from '../../../services/workspaces/utilsTopBarDataService';
+import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
 
 import { name as TbisDisplayListView } from '../tbisDisplayListView/tbisDisplayListView';
 import { name as TbisDisplayGridView } from '../tbisDisplayGridView/tbisDisplayGridView';
-
-import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
 
 
 class TbisList {
     constructor($scope, $reactive, userLocalSettingsService,
                 tbisPhanLoaiDataService, tbisNguonGocDataService, tbisPhanQuyenDataService,
                 tbisDiaDiemDataService, tbisReferenceDataService,
-                tsktThongSoKyThuatDataService) {
+                tsktThongSoKyThuatDataService,
+                utilsTopBarDataService) {
         'ngInject';
 
         $reactive(this).attach($scope);
+
+        this.utilsTopBarOptions = utilsTopBarDataService.getCurrentUtilsTopBarOptions();
 
         this.componentOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').utilsBar;
         this.filterPanelOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').tbisFilterPanel;
@@ -37,7 +39,6 @@ class TbisList {
 
         this.subscribe('tbishelpers');
         this.subscribe('tskthelpers');
-
         
         this.helpers({
             tbishelpers() {
@@ -62,7 +63,7 @@ export default angular.module(name, [
     uiRouter,
     ngMdIcons,
     utilsPagination,
-    TbisUtilsBar,
+    UtilsTopBar,
     TbisListFabMenu,
 
     TbisDisplayListView,
@@ -74,7 +75,8 @@ export default angular.module(name, [
     TbisNguonGocDataService,
     TbisPhanQuyenDataService,
     TbisDiaDiemDataService,
-    TbisReferenceDataService
+    TbisReferenceDataService,
+    UtilsTopBarDataService
 ]).component(name, {
     template,
     controllerAs: name,

@@ -190,7 +190,7 @@ function queryDefaultSettings() {
         {
             _id: "Uit6Bekm4FguR2eoi",
             module: "workspaces",
-            page: "workspaces",
+            page: "workspacesList",
             options: {
                 navSideBar: {
                     isOpen: false,
@@ -199,6 +199,16 @@ function queryDefaultSettings() {
                 utilsSideBar: {
                     isOpen: false,
                     currentState: ''
+                }
+            }
+        },
+        {
+            _id: "Urt6Bnkm4FgkR2eoi",
+            module: "workspaces",
+            page: "utilsTopBar",
+            options: {
+                tbisList: {
+                    viewMode: 'list'
                 }
             }
         }

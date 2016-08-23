@@ -91,6 +91,10 @@ class TbisUtilsBar {
             icon: this.utilsBarIconsOptions.viewMode['list'],
             value: 'list'
         }, {
+            text: 'Dạng thẻ tin',
+            icon: this.utilsBarIconsOptions.viewMode['card'],
+            value: 'card'
+        }, {
             text: 'Dạng bảng biểu',
             icon: this.utilsBarIconsOptions.viewMode['grid'],
             value: 'grid'
@@ -125,7 +129,7 @@ class TbisUtilsBar {
 
     setSearchFilterMode(mode) {
         this.componentOptions.searchFilterMode = mode;
-        
+
     }
 
     setGridSearchFilterMode(mode) {

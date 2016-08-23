@@ -34,7 +34,7 @@ class WorkspacesDataService {
 
     // NavSideBar
     queryCurrentNavSideBarOptions() {
-        return this.userLocalSettingsService.getPageSettings('workspaces', 'workspaces').navSideBar;
+        return this.userLocalSettingsService.getPageSettings('workspaces', 'workspacesList').navSideBar;
     }
 
     getCurrentNavSideBarOptions() {
@@ -52,24 +52,12 @@ class WorkspacesDataService {
 
     // UtilsSideBar
     queryCurrentUtilsBarOptions() {
-        return this.userLocalSettingsService.getPageSettings('workspaces', 'workspaces').utilsSideBar;
+        return this.userLocalSettingsService.getPageSettings('workspaces', 'workspacesList').utilsSideBar;
     }
 
     getCurrentUtilsSideBarOptions() {
         return this.currentUtilsSideBarOptions;
     }
-
-    // getUtilsSideBarOptionsDB(stateName) {
-    //     if (_.contains(['tbisList', 'tbisrepList', 'tbishisList'], stateName)) {
-    //         let mapToModule = {
-    //             tbisList: 'thietbis',
-    //             tbisrepList: 'tbisreports',
-    //             tbishisList: 'tbishistories'
-    //         };
-    //         return this.userLocalSettingsService.getPageSettings(mapToModule[stateName], stateName).suscribe;
-    //     }
-    //     return null;
-    // }
 
 }
 
