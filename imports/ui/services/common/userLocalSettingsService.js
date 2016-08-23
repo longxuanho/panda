@@ -62,18 +62,6 @@ function queryDefaultSettings() {
             module: "thietbis",
             page: "tbisList",
             options: {
-                utilsBar: {
-                    category: 'Tất cả',
-                    viewMode: 'list',
-                    filterText: '',
-                    filterBy: '',
-                    searchText: '',
-                    searchBy: 'searchField',
-                    searchFilterMode: 'search',     // Available options: search, filter, search_filter
-                    page: 1,
-                    pageSize: 5,
-
-                },
                 suscribe: {
                     category: 'Tất cả',
                     searchText: '',
@@ -84,29 +72,6 @@ function queryDefaultSettings() {
                         'ma_thiet_bi.keyId': 1
                     },
                     total: 0
-                },
-                tbisFilterPanel: {
-                    _token: 'default_token',  // Token này sẽ reactive trong subscribe hoặc getReactive để trigger truy vấn CSDL khi token được set.
-                    display: {
-                        isPhanLoaiPanel: true,
-                        isHoSoTBPanel: true,
-                        isPhanQuyenPanel: true
-                    },
-                    filters: {
-                        chungloais: [],
-                        loais: [],
-                        khuvucs: [],
-                        hangsanxuats: [],
-                        dvsohuus: [],
-                        dvquanlies: []
-                    }
-                },
-                searchFilter: {
-                    mode: 'search', // Available options: search, filter, search_filter
-                    searchText: '',
-                    searchBy: 'searchField',
-                    filterText: '',
-                    filterBy: '',
                 }
             }
         },
@@ -209,6 +174,29 @@ function queryDefaultSettings() {
             options: {
                 tbisList: {
                     viewMode: 'list'
+                }
+            }
+        },
+        {
+            _id: "Urt6Bnkm4FgkR2eoi",
+            module: "workspaces",
+            page: "utilsFilters",
+            options: {
+                tbisList: {
+                    display: {
+                        isPhanLoaiPanel: true,
+                        isHoSoTBPanel: true,
+                        isPhanQuyenPanel: true
+                    },
+                    filters: {
+                        chungloais: [],
+                        loais: [],
+                        khuvucs: [],
+                        hangsanxuats: [],
+                        dvsohuus: [],
+                        dvquanlies: []
+                    },
+                    _token: 'default_token'
                 }
             }
         }

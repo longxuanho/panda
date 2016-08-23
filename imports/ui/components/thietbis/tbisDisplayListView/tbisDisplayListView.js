@@ -14,16 +14,19 @@ import { name as TbisDisplayListItem } from '../tbisDisplayListItem/tbisDisplayL
 import { name as TbisDataService } from '../../../services/thietbis/tbisDataService';
 import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
 import { name as SubscribeDataService } from '../../../services/workspaces/subscribeDataService';
+import { name as UtilsFilterDataService } from '../../../services/workspaces/utilsFilterDataService';
+
 
 
 
 class TbisDisplayListView {
-    constructor($reactive, $scope, userLocalSettingsService, tbisDataService, subscribeDataService) {
+    constructor($reactive, $scope, userLocalSettingsService, tbisDataService, subscribeDataService, utilsFilterDataService) {
         'ngInject';
         $reactive(this).attach($scope);
 
-        this.utilsBarOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').utilsBar;
         this.subscribeOptions = subscribeDataService.getCurrentSubscribeOptions();
+        this.utilsFilterOptions = utilsFilterDataService.getCurrentUtilsFilterOptions();
+
         this.filterPanelOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').tbisFilterPanel;
 
         this.ngSortBy = 'ma_thiet_bi.keyId';
@@ -36,8 +39,9 @@ class TbisDisplayListView {
             },
             this.getReactively('subscribeOptions.subscribe.searchText'),
             {
-                _token: this.getReactively('filterPanelOptions._token'),
-                filters: this.filterPanelOptions.filters
+                _token: this.getReactively('utilsFilterOptions.utilsFilter._token'),
+                // filters: this.filterPanelOptions.filters
+                filters: this.utilsFilterOptions.utilsFilter.filters
             },
             this.getReactively('subscribeOptions.subscribe.category')
         ]);
@@ -74,7 +78,8 @@ export default angular.module(name, [
     TbisDisplayListItem,
     TbisDataService,
     UserLocalSettingsService,
-    SubscribeDataService
+    SubscribeDataService,
+    UtilsFilterDataService
 ]).component(name, {
     template,
     controllerAs: name,

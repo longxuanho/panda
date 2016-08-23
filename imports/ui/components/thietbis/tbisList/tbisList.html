@@ -1,16 +1,9 @@
 <md-content layout="column">
-    <!--<tbis-utils-bar></tbis-utils-bar>-->
     <utils-top-bar options="{isShowViewModeBtn: true}"></utils-top-bar>
     <div>
         <tbis-display-list-view ng-if="tbisList.utilsTopBarOptions.viewMode==='list'"></tbis-display-list-view>
         <tbis-display-grid-view ng-if="tbisList.utilsTopBarOptions.viewMode==='grid'"></tbis-display-grid-view>
-        <div layout="column" layout-padding>
-            <div layout="column">
-            <pre>
-                {{tbisList.filterPanelOptions |json}}
-            </pre>
-            </div>
-        </div>
+        <!--<pre>{{tbisList.utilsFilterOptions.utilsFilter |json}}</pre>-->
     </div>
 </md-content>
 <tbis-list-fab-menu></tbis-list-fab-menu>

@@ -12,18 +12,20 @@
         <md-tabs md-dynamic-height md-border-bottom>
             <md-tab label="Tổng quan" md-on-select="tbisListFilterPanelModal.tabSelected='tong_quan'">
                 <md-content>
-                    <tbis-list-filter-panel-modal-tong-quan-tab filter-options="tbisListFilterPanelModal.filterOptions" filter-panel-options="tbisListFilterPanelModal.componentOptions"></tbis-list-filter-panel-modal-tong-quan-tab>
+                    <tbis-list-filter-panel-modal-tong-quan-tab
+                            filter-options-db="tbisListFilterPanelModal.utilsFilterOptionsDB"
+                            filter-panel-options="tbisListFilterPanelModal.utilsFilterOptions.utilsFilter">
+                    </tbis-list-filter-panel-modal-tong-quan-tab>
                 </md-content>
             </md-tab>
             <md-tab label="Thiết lập" md-on-select="tbisListFilterPanelModal.tabSelected='thong_so'">
                 <md-content>
-                    <tbis-list-filter-panel-modal-thiet-lap-tab filter-options="tbisListFilterPanelModal.filterOptions" filter-panel-options="tbisListFilterPanelModal.componentOptions"></tbis-list-filter-panel-modal-thiet-lap-tab>
+                    <tbis-list-filter-panel-modal-thiet-lap-tab
+                            filter-options-db="tbisListFilterPanelModal.utilsFilterOptionsDB"
+                            filter-panel-options="tbisListFilterPanelModal.utilsFilterOptions.utilsFilter"></tbis-list-filter-panel-modal-thiet-lap-tab>
                 </md-content>
             </md-tab>
         </md-tabs>
-        <pre>
-            {{tbisListFilterPanelModal.componentOptions | json}}
-        </pre>
     </md-dialog-content>
     <md-dialog-actions layout="row" ng-if="tbisListFilterPanelModal.tabSelected==='tong_quan'">
         <md-button ng-click="tbisListFilterPanelModal.reset()" aria-label="Reset">Reset</md-button>

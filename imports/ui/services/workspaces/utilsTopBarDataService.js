@@ -91,7 +91,7 @@ function queryUtilsTopBarOptionsDB() {
                         }, {
                             text: 'Trạm nguồn',
                             value: 'Trạm nguồn',
-                            icon: 'img/icons/tbis/tth.svg'
+                            icon: 'img/icons/tbis/trn.svg'
                         }, {
                             text: 'Thanh lý',
                             value: 'Thanh lý',

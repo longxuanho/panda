@@ -16,7 +16,7 @@ class tbisListFilterPanelModalThietLapTab {
     solveFilterOptions() {
         this.isKhoiTaoLoading = true;
         this.tbisFilterPanelSolverService.queryFilterOptions().then((result) => {
-            this.filterOptions = result;
+            this.filterOptionsDb = result;
             this.isKhoiTaoLoading = false;
             this.tbisFilterPanelSolverService.setFilterOptions(result);
             this.$mdToast.show({
@@ -39,7 +39,7 @@ export default angular.module(name, [
 ]).component(name, {
     template: template,
     bindings: {
-        filterOptions: '=',
+        filterOptionsDb: '=',
         filterPanelOptions: '='
     },
     controllerAs: name,

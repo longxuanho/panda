@@ -10,6 +10,7 @@ import modalTemplate from './tbisListFilterPanelModal.html';
 import { name as TbisListFilterPanelModalTongQuanTab } from '../tbisListFilterPanelModalTongQuanTab/tbisListFilterPanelModalTongQuanTab';
 import { name as TbisListFilterPanelModalThietLapTab } from '../tbisListFilterPanelModalThietLapTab/tbisListFilterPanelModalThietLapTab';
 import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
+import { name as UtilsFilterDataService } from '../../../services/workspaces/utilsFilterDataService';
 
 class TbisListFilterPanelMiniFab {
     constructor($mdDialog, $mdMedia) {
@@ -21,15 +22,18 @@ class TbisListFilterPanelMiniFab {
 
     open(event) {
         this.$mdDialog.show({
-            controller($mdDialog, userLocalSettingsService) {
+            controller($mdDialog, userLocalSettingsService, utilsFilterDataService) {
                 'ngInject';
 
-                this.filterOptions = {};
+                this.utilsFilterOptionsDB = [];
+
                 this.componentOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').tbisFilterPanel;
 
+                this.utilsFilterOptions = utilsFilterDataService.getCurrentUtilsFilterOptions();
+
                 this.refreshTriggerToken = () => {
-                    console.log('trigger token...');
-                    this.componentOptions._token = Random.id();
+                    // console.log('trigger token...');
+                    this.utilsFilterOptions.utilsFilter._token = Random.id();
                 };
 
                 this.close = () => {
@@ -38,8 +42,8 @@ class TbisListFilterPanelMiniFab {
                 };
 
                 this.reset = () => {
-                    _.each(_.keys(this.componentOptions.filters), (key) => {
-                        this.componentOptions.filters[key] = [];
+                    _.each(_.keys(this.utilsFilterOptions.utilsFilter.filters), (key) => {
+                        this.utilsFilterOptions.utilsFilter.filters[key] = [];
                     });
                     this.refreshTriggerToken();
                 };
@@ -62,7 +66,8 @@ export default angular.module(name, [
     angularMeteor,
     TbisListFilterPanelModalTongQuanTab,
     TbisListFilterPanelModalThietLapTab,
-    UserLocalSettingsService
+    UserLocalSettingsService,
+    UtilsFilterDataService
 ]).component(name, {
     template: fabTemplate,
     controllerAs: name,

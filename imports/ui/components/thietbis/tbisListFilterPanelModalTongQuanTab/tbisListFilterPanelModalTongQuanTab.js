@@ -10,18 +10,15 @@ class TbisListFilterPanelModalTongQuanTab {
         this.$timeout = $timeout;
         this.tbisFilterPanelSolverService = tbisFilterPanelSolverService;
         this.isKhoiTaoLoading = false;
-
-
-
-        this.filterOptions = tbisFilterPanelSolverService.getFilterOptions();
-        if(!this.filterOptions)
+        this.filterOptionsDb = tbisFilterPanelSolverService.getFilterOptions();
+        if(!this.filterOptionsDb)
             this.solveFilterOptions();
     }
 
     solveFilterOptions() {
         this.isKhoiTaoLoading = true;
         this.tbisFilterPanelSolverService.queryFilterOptions().then((result) => {
-            this.filterOptions = result;
+            this.filterOptionsDb = result;
             this.isKhoiTaoLoading = false;
             this.tbisFilterPanelSolverService.setFilterOptions(result);
         }).catch((error) => {
@@ -39,7 +36,7 @@ export default angular.module(name, [
 ]).component(name, {
     template: template,
     bindings: {
-        filterOptions: '=',
+        filterOptionsDb: '=',
         filterPanelOptions: '='
     },
     controllerAs: name,

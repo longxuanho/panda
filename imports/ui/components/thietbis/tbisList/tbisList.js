@@ -15,26 +15,25 @@ import { name as TbisPhanQuyenDataService } from '../../../services/thietbis/tbi
 import { name as TbisDiaDiemDataService } from '../../../services/thietbis/tbisDiaDiemDataService';
 import { name as TbisReferenceDataService } from '../../../services/thietbis/tbisReferenceDataService';
 import { name as UtilsTopBarDataService } from '../../../services/workspaces/utilsTopBarDataService';
-import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
+import { name as UtilsFilterDataService } from '../../../services/workspaces/utilsFilterDataService';
 
 import { name as TbisDisplayListView } from '../tbisDisplayListView/tbisDisplayListView';
 import { name as TbisDisplayGridView } from '../tbisDisplayGridView/tbisDisplayGridView';
 
 
 class TbisList {
-    constructor($scope, $reactive, userLocalSettingsService,
+    constructor($scope, $reactive,
                 tbisPhanLoaiDataService, tbisNguonGocDataService, tbisPhanQuyenDataService,
                 tbisDiaDiemDataService, tbisReferenceDataService,
                 tsktThongSoKyThuatDataService,
-                utilsTopBarDataService) {
+                utilsTopBarDataService, utilsFilterDataService) {
         'ngInject';
 
         $reactive(this).attach($scope);
 
         this.utilsTopBarOptions = utilsTopBarDataService.getCurrentUtilsTopBarOptions();
+        this.utilsFilterOptions = utilsFilterDataService.getCurrentUtilsFilterOptions();
 
-        this.componentOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').utilsBar;
-        this.filterPanelOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').tbisFilterPanel;
         this.isOpen = false;
 
         this.subscribe('tbishelpers');
@@ -69,14 +68,13 @@ export default angular.module(name, [
     TbisDisplayListView,
     TbisDisplayGridView,
 
-    UserLocalSettingsService,
-
     TbisPhanLoaiDataService,
     TbisNguonGocDataService,
     TbisPhanQuyenDataService,
     TbisDiaDiemDataService,
     TbisReferenceDataService,
-    UtilsTopBarDataService
+    UtilsTopBarDataService,
+    UtilsFilterDataService
 ]).component(name, {
     template,
     controllerAs: name,

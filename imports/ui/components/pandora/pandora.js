@@ -34,6 +34,7 @@ import { name as WorkspacesList } from '../workspaces/workspacesList/workspacesL
 import { name as WorkspacesDataService } from '../../services/workspaces/workspacesDataService';
 import { name as SubscribeDataService } from '../../services/workspaces/subscribeDataService';
 import { name as UtilsTopBarDataService } from '../../services/workspaces/utilsTopBarDataService';
+import { name as UtilsFilterDataService } from '../../services/workspaces/utilsFilterDataService';
 import { name as NotificationService } from '../../services/common/notificationService';
 
 
@@ -67,6 +68,7 @@ export default angular.module(name, [
     WorkspacesDataService,
     SubscribeDataService,
     UtilsTopBarDataService,
+    UtilsFilterDataService,
     NotificationService,
     PartiesList,
     PartyDetails,
@@ -101,7 +103,7 @@ function config($locationProvider, $urlRouterProvider, uiGmapGoogleMapApiProvide
     //     .accentPalette('pink');
 }
 
-function run($rootScope, $state, workspacesDataService, subscribeDataService, notificationService, utilsTopBarDataService) {
+function run($rootScope, $state, workspacesDataService, subscribeDataService, notificationService, utilsTopBarDataService, utilsFilterDataService) {
     'ngInject';
 
     $rootScope.$on('$stateChangeError',
@@ -118,6 +120,7 @@ function run($rootScope, $state, workspacesDataService, subscribeDataService, no
             workspacesDataService.getCurrentUtilsSideBarOptions().currentState = toState.name;
             subscribeDataService.updateCurrentSubscribeOptions(toState.name);
             utilsTopBarDataService.updateCurrentOptions(toState.name);
+            utilsFilterDataService.updateCurrentOptions(toState.name);
         }
     );
 
