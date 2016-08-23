@@ -7,7 +7,6 @@ import _ from 'underscore';
 import template from './tbisDisplayListView.html';
 
 import { name as TbisSearchForm } from '../tbisSearchForm/tbisSearchForm';
-import { name as TbisFilterForm } from '../tbisFilterForm/tbisFilterForm';
 import { name as SkyPager } from '../../layout/skyPager/skyPager';
 import { name as SkyPagingInfo } from '../../layout/skyPagingInfo/skyPagingInfo';
 
@@ -70,7 +69,6 @@ const name = 'tbisDisplayListView';
 export default angular.module(name, [
     angularMeteor,
     TbisSearchForm,
-    TbisFilterForm,
     SkyPager,
     SkyPagingInfo,
     TbisDisplayListItem,

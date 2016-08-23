@@ -19,24 +19,25 @@ class TbisUtilsBar {
 
         this.componentOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').utilsBar;
 
-
     }
 
-    $postLink() {
-        $(window).scroll(() => {
-            let navBarElem = $('navigation'),
-                utilsBarElem = $('tbis-utils-bar');
-
-            if (navBarElem.length && utilsBarElem.length) {
-                if ($(window).scrollTop() > 64)
-                    utilsBarElem.addClass("sky-sticky md-whiteframe-2dp");
-                else {
-                    if (navBarElem.offset().top == utilsBarElem.offset().top)
-                        utilsBarElem.removeClass("sky-sticky md-whiteframe-2dp");
-                }
-            }
-        })
-    }
+    // $postLink() {
+    //     console.log('postlink...', $(window))
+    //     $(window).scroll(() => {
+    //         console.log('scrolling');
+    //         let navBarElem = $('navigation'),
+    //             utilsBarElem = $('tbis-utils-bar');
+    //
+    //         if (navBarElem.length && utilsBarElem.length) {
+    //             if ($(window).scrollTop() > 64)
+    //                 utilsBarElem.addClass("sky-sticky md-whiteframe-2dp");
+    //             else {
+    //                 if (navBarElem.offset().top == utilsBarElem.offset().top)
+    //                     utilsBarElem.removeClass("sky-sticky md-whiteframe-2dp");
+    //             }
+    //         }
+    //     });
+    // }
 
     initUtilsBarIconsOptions() {
         return {
@@ -89,10 +90,6 @@ class TbisUtilsBar {
             text: 'Dạng danh sách',
             icon: this.utilsBarIconsOptions.viewMode['list'],
             value: 'list'
-        }, {
-            text: 'Dạng thẻ tin',
-            icon: this.utilsBarIconsOptions.viewMode['card'],
-            value: 'card'
         }, {
             text: 'Dạng bảng biểu',
             icon: this.utilsBarIconsOptions.viewMode['grid'],
