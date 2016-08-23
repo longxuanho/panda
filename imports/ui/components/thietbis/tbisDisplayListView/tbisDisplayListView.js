@@ -8,6 +8,7 @@ import template from './tbisDisplayListView.html';
 
 import { name as TbisSearchForm } from '../tbisSearchForm/tbisSearchForm';
 import { name as TbisFilterForm } from '../tbisFilterForm/tbisFilterForm';
+import { name as SkyPager } from '../../layout/skyPager/skyPager';
 
 import { name as TbisDisplayListItem } from '../tbisDisplayListItem/tbisDisplayListItem';
 import { name as TbisDataService } from '../../../services/thietbis/tbisDataService';
@@ -25,7 +26,7 @@ class TbisDisplayListView {
         this.subscribeOptions = subscribeDataService.getCurrentSubscribeOptions();
         this.filterPanelOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').tbisFilterPanel;
 
-        this.searchText = '';
+        this.ngSortBy = 'ma_thiet_bi.keyId';
 
         this.subscribe('thietbis', () => [
             {
@@ -45,9 +46,19 @@ class TbisDisplayListView {
                 return tbisDataService.query();
             },
             thietbisCount() {
-                return Counts.get('numberOfThietBis');
+                let totalCount = Counts.get('numberOfThietBis')
+
+                // Cập nhật skyPager
+                this.subscribeOptions.subscribe.total = totalCount;
+
+                return totalCount;
             }
         });
+
+        $scope.$watch('tbisDisplayListView.subscribeOptions.subscribe.sort["ma_thiet_bi.keyId"]', (newVal) => {
+            this.ngSortBy = (newVal === -1) ? '-ma_thiet_bi.keyId' : 'ma_thiet_bi.keyId';
+        });
+
     }
 }
 
@@ -58,6 +69,7 @@ export default angular.module(name, [
     angularMeteor,
     TbisSearchForm,
     TbisFilterForm,
+    SkyPager,
     TbisDisplayListItem,
     TbisDataService,
     UserLocalSettingsService,

@@ -2,9 +2,10 @@
 <tbis-filter-form ng-hide="tbisDisplayListView.utilsBarOptions.searchFilterMode=='search'"></tbis-filter-form>
 <md-list>
     <md-subheader class="md-no-sticky" style="margin-top: -10px; padding-top: 0;">Đang xem {{tbisDisplayListView.thietbis.length}}/{{tbisDisplayListView.thietbisCount}} hạng mục</md-subheader>
-    <tbis-display-list-item ng-repeat="thietbi in tbisDisplayListView.thietbis"
+    <tbis-display-list-item ng-repeat="thietbi in tbisDisplayListView.thietbis | orderBy: tbisDisplayListView.ngSortBy"
                             thietbi="thietbi"
                             ui-sref="tbisDetailsView({thietbiId: thietbi._id})">
     </tbis-display-list-item>
 </md-list>
+<sky-pager subscribe-options="tbisDisplayListView.subscribeOptions"></sky-pager>
 
