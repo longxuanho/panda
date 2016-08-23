@@ -82,7 +82,8 @@ function queryDefaultSettings() {
                     pageSize: 5,
                     sort: {
                         'ma_thiet_bi.keyId': 1
-                    }
+                    },
+                    total: 0
                 },
                 tbisFilterPanel: {
                     _token: 'default_token',  // Token này sẽ reactive trong subscribe hoặc getReactive để trigger truy vấn CSDL khi token được set.
