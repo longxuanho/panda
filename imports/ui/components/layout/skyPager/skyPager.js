@@ -20,10 +20,7 @@ class SkyPager {
         };
 
         $scope.$watch(('skyPager.subscribeOptions.subscribe.total'), (newVal) => {
-           if (!newVal)
-                this.resetPager();
-           else
-               this.resolvePager(newVal);
+            this.resolvePager(newVal);
         });
 
         $scope.$watch(('skyPager.subscribeOptions.subscribe.page'), (newVal) => {
@@ -43,12 +40,6 @@ class SkyPager {
     resolvePager(totalItem) {
         let newRange = _.range(0, totalItem);
         this.skyPagerOptions.dataSource.data(newRange);
-    }
-
-    resetPager() {
-        this.skyPagerOptions.dataSource.data([]);
-        this.skyPagerOptions.dataSource.page(1);
-        this.skyPagerOptions.dataSource.pageSize(5);
     }
 }
 

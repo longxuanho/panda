@@ -3,15 +3,15 @@ import angularMeteor from 'angular-meteor';
 
 import template from './tbisListGridViewKendoGrid.html';
 
-import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
+import { name as UtilsTopBarDataService } from '../../../services/workspaces/utilsTopBarDataService';
 
 class TbisListGridViewKendoGrid {
-    constructor(userLocalSettingsService, $timeout) {
+    constructor($scope, utilsTopBarDataService, $timeout) {
         'ngInject';
 
-        let vm = this;
         this.$timeout = $timeout;
-        this.tbisListPageOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').utilsBar;
+
+        this.utilsTopBarOptions = utilsTopBarDataService.getCurrentUtilsTopBarOptions();
 
         this.kendoGridDataSource = new kendo.data.DataSource({
             data: [],
@@ -43,7 +43,11 @@ class TbisListGridViewKendoGrid {
             }],
             dataBound: function(e) {
             }
-        }
+        };
+
+        $scope.$watch('tbisListGridViewKendoGrid.utilsTopBarOptions._token', () => {
+            this.refreshDataSource();
+        });
     }
 
     refreshDataSource() {
@@ -59,7 +63,7 @@ const name = 'tbisListGridViewKendoGrid';
 // create a module
 export default angular.module(name, [
     angularMeteor,
-    UserLocalSettingsService
+    UtilsTopBarDataService
 ]).component(name, {
     template,
     controllerAs: name,

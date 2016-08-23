@@ -6,7 +6,7 @@ import ngMdIcons from 'angular-material-icons';
 
 import template from './tbisList.html';
 
-import { name as UtilsTopBar } from '../../workspaces/utilsTopBar/utilsTopBar';
+import { name as TbisListUtilsTopBar } from '../tbisListUtilsTopBar/tbisListUtilsTopBar';
 import { name as TbisListFabMenu } from '../tbisListFabMenu/tbisListFabMenu';
 
 import { name as TbisPhanLoaiDataService } from '../../../services/thietbis/tbisPhanLoaiDataService';
@@ -62,7 +62,7 @@ export default angular.module(name, [
     uiRouter,
     ngMdIcons,
     utilsPagination,
-    UtilsTopBar,
+    TbisListUtilsTopBar,
     TbisListFabMenu,
 
     TbisDisplayListView,

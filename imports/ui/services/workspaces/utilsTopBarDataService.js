@@ -1,6 +1,7 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
+import { Random } from 'meteor/random';
 import _ from 'underscore';
 
 import { name as UserLocalSettingsService } from '../../services/common/userLocalSettingsService';
@@ -50,6 +51,10 @@ class UtilsTopBarDataService {
 
     getUtilsTopBarOptionsDB() {
         return this.utilsTopBarOptionsDB.features;
+    }
+
+    triggerRefreshToken() {
+        this.currentUtilsTopBarOptions._token = Random.id();
     }
 
 }

@@ -13,6 +13,9 @@ import 'angular-google-maps';
 import moment from 'moment';
 import 'moment/locale/vi';
 
+import '../../../../imports/ui/kendo/kendo.culture.vi-VI';
+import '../../../../imports/ui/kendo/kendo.messages.vi-VI';
+
 import template from './pandora.html';
 import { name as Navigation } from '../layout/navigation/navigation';
 import { name as NavSideBar } from '../workspaces/navSideBar/navSideBar';

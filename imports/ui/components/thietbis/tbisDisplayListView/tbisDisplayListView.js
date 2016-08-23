@@ -40,7 +40,6 @@ class TbisDisplayListView {
             this.getReactively('subscribeOptions.subscribe.searchText'),
             {
                 _token: this.getReactively('utilsFilterOptions.utilsFilter._token'),
-                // filters: this.filterPanelOptions.filters
                 filters: this.utilsFilterOptions.utilsFilter.filters
             },
             this.getReactively('subscribeOptions.subscribe.category')

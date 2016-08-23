@@ -22,21 +22,19 @@ class TbisListFilterPanelMiniFab {
 
     open(event) {
         this.$mdDialog.show({
-            controller($mdDialog, userLocalSettingsService, utilsFilterDataService) {
+            controller($mdDialog, userLocalSettingsService, utilsFilterDataService, utilsTopBarDataService) {
                 'ngInject';
 
                 this.utilsFilterOptionsDB = [];
-
-                this.componentOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').tbisFilterPanel;
-
                 this.utilsFilterOptions = utilsFilterDataService.getCurrentUtilsFilterOptions();
 
                 this.refreshTriggerToken = () => {
-                    // console.log('trigger token...');
+                    // trigger truy vấn dữ liệu trong list viewMode của utilsTopBar
                     this.utilsFilterOptions.utilsFilter._token = Random.id();
                 };
 
                 this.close = () => {
+
                     this.refreshTriggerToken();
                     $mdDialog.hide();
                 };

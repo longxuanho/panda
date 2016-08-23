@@ -173,8 +173,10 @@ function queryDefaultSettings() {
             page: "utilsTopBar",
             options: {
                 tbisList: {
-                    viewMode: 'list'
-                }
+                    viewMode: 'list',
+                    _refreshTokenInGridMode: 'default_token'
+                },
+
             }
         },
         {

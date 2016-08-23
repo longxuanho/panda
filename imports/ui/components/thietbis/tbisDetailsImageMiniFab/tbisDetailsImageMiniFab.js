@@ -14,14 +14,6 @@ import { name as TbisDetailsImageQuanLyTab } from '../tbisDetailsImageQuanLyTab/
 import { name as TbisDataSerivce } from '../../../services/thietbis/tbisDataService';
 import { name as NotificationService } from '../../../services/common/notificationService';
 
-// import { name as MetadataService } from '../../../services/common/metadataService';
-// import { name as TbisListMajorInputForm } from '../tbisListMajorInputForm/tbisListMajorInputForm';
-// import { name as TbisDetailsUpdateThongSoTab } from '../tbisDetailsUpdateThongSoTab/tbisDetailsUpdateThongSoTab';
-// import { name as TbisDetailsUpdateViTriTab } from '../tbisDetailsUpdateViTriTab/tbisDetailsUpdateViTriTab';
-
-
-// import { name as TsktThongSoKyThuatDataService } from '../../../services/thietbis/tsktThongSoKyThuatDataService';
-
 
 class TbisDetailsImageMiniFab {
     constructor($mdDialog, $mdMedia) {
