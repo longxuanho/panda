@@ -4,7 +4,7 @@ import { Counts } from 'meteor/tmeasday:publish-counts';
 import { ThietBis } from './collection';
 
 if (Meteor.isServer) {
-    Meteor.publish('thietbis', function(options, searchString, filterOptions) {
+    Meteor.publish('thietbis', function(options, searchString, filterOptions, category) {
         const selector = {
             // Chỉ những thiết bị còn active trong hệ thống
             $and: [{
@@ -38,6 +38,10 @@ if (Meteor.isServer) {
                 if(_.isArray(filters[key]) && filters[key].length)
                     selector[ref[key]] = { $in: filters[key] };
             });
+        }
+
+        if (typeof category === 'string' && category.length && category != 'Tất cả') {
+            selector['phan_loai.nhom'] = category
         }
 
         Counts.publish(this, 'numberOfThietBis', ThietBis.find(selector), {

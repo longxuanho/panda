@@ -39,7 +39,8 @@ class TbisDisplayListView {
             {
                 _token: this.getReactively('filterPanelOptions._token'),
                 filters: this.filterPanelOptions.filters
-            }
+            },
+            this.getReactively('subscribeOptions.subscribe.category')
         ]);
 
         this.helpers({
