@@ -1,6 +1,5 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
-import uiRouter from 'angular-ui-router';
 
 import _ from 'underscore';
 
@@ -15,8 +14,9 @@ class SkyPager {
         this.skyPagerOptions = {
             dataSource: new kendo.data.DataSource({
                 data: [],
-                pageSize: 10
-            })
+                pageSize: 5
+            }),
+            info: true
         };
 
         $scope.$watch(('skyPager.subscribeOptions.subscribe.total'), (newVal) => {
@@ -41,14 +41,14 @@ class SkyPager {
     }
 
     resolvePager(totalItem) {
-        let newRange = _.range(1, totalItem);
+        let newRange = _.range(0, totalItem);
         this.skyPagerOptions.dataSource.data(newRange);
     }
 
     resetPager() {
         this.skyPagerOptions.dataSource.data([]);
         this.skyPagerOptions.dataSource.page(1);
-        this.skyPagerOptions.dataSource.pageSize(10);
+        this.skyPagerOptions.dataSource.pageSize(5);
     }
 }
 
@@ -56,8 +56,7 @@ const name = 'skyPager';
 
 // create a module
 export default angular.module(name, [
-    angularMeteor,
-    uiRouter
+    angularMeteor
 ])
     .component(name, {
         template,

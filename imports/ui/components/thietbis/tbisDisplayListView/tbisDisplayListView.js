@@ -9,6 +9,7 @@ import template from './tbisDisplayListView.html';
 import { name as TbisSearchForm } from '../tbisSearchForm/tbisSearchForm';
 import { name as TbisFilterForm } from '../tbisFilterForm/tbisFilterForm';
 import { name as SkyPager } from '../../layout/skyPager/skyPager';
+import { name as SkyPagingInfo } from '../../layout/skyPagingInfo/skyPagingInfo';
 
 import { name as TbisDisplayListItem } from '../tbisDisplayListItem/tbisDisplayListItem';
 import { name as TbisDataService } from '../../../services/thietbis/tbisDataService';
@@ -46,7 +47,7 @@ class TbisDisplayListView {
                 return tbisDataService.query();
             },
             thietbisCount() {
-                let totalCount = Counts.get('numberOfThietBis')
+                let totalCount = Counts.get('numberOfThietBis');
 
                 // Cập nhật skyPager
                 this.subscribeOptions.subscribe.total = totalCount;
@@ -70,6 +71,7 @@ export default angular.module(name, [
     TbisSearchForm,
     TbisFilterForm,
     SkyPager,
+    SkyPagingInfo,
     TbisDisplayListItem,
     TbisDataService,
     UserLocalSettingsService,
