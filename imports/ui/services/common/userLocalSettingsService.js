@@ -221,7 +221,7 @@ function queryDefaultSettings() {
                     },
                     excel: {
                         allPages: true,
-                        fileName: 'From Sky with Love.xslx',
+                        fileName: 'From Sky with Love.xlsx',
                         filterable: true
                     },
                     pdf: {

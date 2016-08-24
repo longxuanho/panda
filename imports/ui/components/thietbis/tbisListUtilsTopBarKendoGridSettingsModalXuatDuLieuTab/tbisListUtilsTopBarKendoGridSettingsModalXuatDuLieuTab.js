@@ -20,11 +20,13 @@ class TbisListUtilsTopBarKendoGridSettingsModalXuatDuLieuTab {
     }
 
     exportExcel() {
-
+        this.kendoGridOptions.options.excel = angular.copy(this.excelExportOptions);
+        this.kendoGridOptions.gridRef.saveAsExcel();
     }
 
     exportPdf() {
-
+        this.kendoGridOptions.options.pdf = angular.copy(this.pdfExportOptions);
+        this.kendoGridOptions.gridRef.saveAsPDF();
     }
 }
 
