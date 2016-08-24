@@ -38,6 +38,7 @@ import { name as WorkspacesDataService } from '../../services/workspaces/workspa
 import { name as SubscribeDataService } from '../../services/workspaces/subscribeDataService';
 import { name as UtilsTopBarDataService } from '../../services/workspaces/utilsTopBarDataService';
 import { name as UtilsFilterDataService } from '../../services/workspaces/utilsFilterDataService';
+import { name as KendoGridDataService } from '../../services/workspaces/kendoGridDataService';
 import { name as NotificationService } from '../../services/common/notificationService';
 
 
@@ -72,6 +73,7 @@ export default angular.module(name, [
     SubscribeDataService,
     UtilsTopBarDataService,
     UtilsFilterDataService,
+    KendoGridDataService,
     NotificationService,
     PartiesList,
     PartyDetails,
@@ -106,7 +108,7 @@ function config($locationProvider, $urlRouterProvider, uiGmapGoogleMapApiProvide
     //     .accentPalette('pink');
 }
 
-function run($rootScope, $state, workspacesDataService, subscribeDataService, notificationService, utilsTopBarDataService, utilsFilterDataService) {
+function run($rootScope, $state, workspacesDataService, subscribeDataService, notificationService, utilsTopBarDataService, utilsFilterDataService, kendoGridDataService) {
     'ngInject';
 
     $rootScope.$on('$stateChangeError',
@@ -121,9 +123,10 @@ function run($rootScope, $state, workspacesDataService, subscribeDataService, no
     $rootScope.$on('$stateChangeSuccess',
         (event, toState, toParams, fromState, fromParams) => {
             workspacesDataService.getCurrentUtilsSideBarOptions().currentState = toState.name;
-            subscribeDataService.updateCurrentSubscribeOptions(toState.name);
+            subscribeDataService.updateCurrentOptions(toState.name);
             utilsTopBarDataService.updateCurrentOptions(toState.name);
             utilsFilterDataService.updateCurrentOptions(toState.name);
+            kendoGridDataService.updateCurrentOptions(toState.name);
         }
     );
 

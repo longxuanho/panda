@@ -37,7 +37,7 @@ kendo.ui.ColumnMenu.prototype.options.messages =
 $.extend(true, kendo.ui.ColumnMenu.prototype.options.messages,{
   "sortAscending": "Tăng dần",
   "sortDescending": "Giảm dần",
-  "filter": "Bộ lọc",
+  "filter": "Lọc",
   "columns": "Các cột",
   "done": "Xong",
   "settings": "Thiết lập các cột",
@@ -139,7 +139,7 @@ kendo.ui.FilterCell.prototype.options.messages =
 $.extend(true, kendo.ui.FilterCell.prototype.options.messages,{
   "isTrue": "là đúng",
   "isFalse": "là sai",
-  "filter": "Bộ lọc",
+  "filter": "Lọc",
   "clear": "Gỡ lọc",
   "operator": "Toán tử"
 });
@@ -189,7 +189,7 @@ $.extend(true, kendo.ui.FilterMenu.prototype.options.messages,{
   "info": "Hiển thị các mục với giá trị:",
   "isTrue": "là đúng",
   "isFalse": "là sai",
-  "filter": "Bộ lọc",
+  "filter": "Lọc",
   "clear": "Gỡ bỏ",
   "and": "Và",
   "or": "Hoặc",
@@ -253,7 +253,7 @@ kendo.ui.FilterMultiCheck.prototype.options.messages =
 $.extend(true, kendo.ui.FilterMultiCheck.prototype.options.messages,{
   "checkAll": "Chọn tất",
   "clear": "Bỏ chọn",
-  "filter": "Bộ lọc",
+  "filter": "Lọc",
   "search": "Tìm kiếm"
 });
 }

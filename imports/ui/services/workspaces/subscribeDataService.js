@@ -18,7 +18,7 @@ class SubscribeDataService {
         };
     }
 
-    updateCurrentSubscribeOptions(stateName) {
+    updateCurrentOptions(stateName) {
         // Check pandora.js - Hàm được gọi mỗi khi chuyển route thành công
         this.currentSubscribeOptions.subscribe = this.queryCurrentSubscribeOptions(stateName);
     }

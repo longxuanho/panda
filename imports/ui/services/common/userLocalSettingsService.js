@@ -201,6 +201,28 @@ function queryDefaultSettings() {
                     _token: 'default_token'
                 }
             }
+        },
+        {
+            _id: "Urt6Bnkm4FgkR2eoi",
+            module: "workspaces",
+            page: "kendoGrid",
+            options: {
+                tbisList: {
+                    groupable: true,
+                    filterable: {
+                        extra: true
+                    },
+                    sortable: true,
+                    resizable: true,
+                    reorderable: true,
+                    pageable: {
+                        pageSizes: true,
+                        buttonCount: 5
+                    }
+                },
+                tbisrepList: {},
+                tbishisList: {}
+            }
         }
     ]
 }
