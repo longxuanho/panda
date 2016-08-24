@@ -8,6 +8,7 @@ import modalTemplate from './tbisListUtilsTopBarKendoGridSettingsModal.html';
 
 import { name as TbisListUtilsTopBarKendoGridSettingsModalHienThiTab } from '../tbisListUtilsTopBarKendoGridSettingsModalHienThiTab/tbisListUtilsTopBarKendoGridSettingsModalHienThiTab';
 import { name as TbisListUtilsTopBarKendoGridSettingsModalXuatDuLieuTab } from '../tbisListUtilsTopBarKendoGridSettingsModalXuatDuLieuTab/tbisListUtilsTopBarKendoGridSettingsModalXuatDuLieuTab';
+import { name as TbisListUtilsTopBarKendoGridSettingsModalCauHinhTab } from '../tbisListUtilsTopBarKendoGridSettingsModalCauHinhTab/tbisListUtilsTopBarKendoGridSettingsModalCauHinhTab';
 
 // import { name as TbisDataService } from '../../../services/thietbis/tbisDataService';
 
@@ -72,7 +73,8 @@ const name = 'tbisListUtilsTopBarKendoGridSettingsBtn';
 export default angular.module(name, [
     angularMeteor,
     TbisListUtilsTopBarKendoGridSettingsModalHienThiTab,
-    TbisListUtilsTopBarKendoGridSettingsModalXuatDuLieuTab
+    TbisListUtilsTopBarKendoGridSettingsModalXuatDuLieuTab,
+    TbisListUtilsTopBarKendoGridSettingsModalCauHinhTab
 ]).component(name, {
     template,
     controllerAs: name,

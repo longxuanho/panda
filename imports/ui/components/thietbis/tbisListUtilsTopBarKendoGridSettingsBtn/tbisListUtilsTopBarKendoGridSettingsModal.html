@@ -10,6 +10,11 @@
     </md-toolbar>
     <md-dialog-content layout-fill>
         <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="Cấu hình" md-on-select="tbisListUtilsTopBarKendoGridSettingsModal.tabSelected='cau_hinh'">
+                <md-content>
+                    <tbis-list-utils-top-bar-kendo-grid-settings-modal-cau-hinh-tab></tbis-list-utils-top-bar-kendo-grid-settings-modal-cau-hinh-tab>
+                </md-content>
+            </md-tab>
             <md-tab label="Hiển thị" md-on-select="tbisListUtilsTopBarKendoGridSettingsModal.tabSelected='hien_thi'">
                 <md-content>
                     <tbis-list-utils-top-bar-kendo-grid-settings-modal-hien-thi-tab></tbis-list-utils-top-bar-kendo-grid-settings-modal-hien-thi-tab>
@@ -24,6 +29,6 @@
     </md-dialog-content>
     <md-dialog-actions layout="row">
         <span flex></span>
-        <md-button style="margin-right:20px;" ng-click="tbisListUtilsTopBarKendoGridSettingsModal.close()" aria-label="Đóng & Tiếp tục">Đóng & Tiếp tục</md-button>
+        <md-button style="margin-right:20px;" ng-click="tbisListUtilsTopBarKendoGridSettingsModal.close()" aria-label="Đóng hộp thoại">Đóng hộp thoại</md-button>
     </md-dialog-actions>
 </md-dialog>

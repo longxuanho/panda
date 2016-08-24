@@ -12,6 +12,7 @@ import 'angular-google-maps';
 
 import moment from 'moment';
 import 'moment/locale/vi';
+import '../../../lib/ngStorage/ngStorage';
 
 import '../../../../imports/ui/kendo/kendo.culture.vi-VI';
 import '../../../../imports/ui/kendo/kendo.messages.vi-VI';
@@ -40,6 +41,8 @@ import { name as UtilsTopBarDataService } from '../../services/workspaces/utilsT
 import { name as UtilsFilterDataService } from '../../services/workspaces/utilsFilterDataService';
 import { name as KendoGridDataService } from '../../services/workspaces/kendoGridDataService';
 import { name as NotificationService } from '../../services/common/notificationService';
+
+
 
 
 
@@ -79,7 +82,8 @@ export default angular.module(name, [
     PartyDetails,
     Auth,
     'accounts.ui',
-    "kendo.directives"
+    "kendo.directives",
+    'ngStorage'
 ]).component(name, {
     template,
     controllerAs: name,

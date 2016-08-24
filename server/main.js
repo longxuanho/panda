@@ -11,3 +11,5 @@ import '../imports/api/thietbis/tbisReports';
 import '../imports/api/thietbis/tbisHistories';
 
 import '../imports/api/users/users';
+
+import '../imports/api/cloudsettings';
