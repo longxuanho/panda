@@ -15,9 +15,7 @@ class TbisListGridViewKendoGrid {
         this.$timeout = $timeout;
 
         this.utilsTopBarOptions = utilsTopBarDataService.getCurrentUtilsTopBarOptions();
-        this.kendoGridOptions = {
-            options: kendoGridDataService.getCurrentKendoGridOptions().options
-        };
+        this.kendoGridOptions = kendoGridDataService.getCurrentKendoGridOptions();
 
         initKendoGridOptions(this.kendoGridOptions.options);
 
@@ -119,7 +117,8 @@ function initKendoGridColumns(options) {
             field: "_id",
             title: "KeyId",
             width: "300px",
-            groupable: false
+            groupable: false,
+            hidden: true
         }, {
             field: "ma_thiet_bi.keyId",
             title: "Mã thiết bị",

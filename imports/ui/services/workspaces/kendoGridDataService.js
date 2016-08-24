@@ -16,6 +16,7 @@ class KendoGridDataService {
         this.allowedStateNames = ['tbisList', 'tbisrepList', 'tbishisList'];
 
         this.currentKendoGridOptions = {
+            gridRef: {},
             options: {}
         };
     }

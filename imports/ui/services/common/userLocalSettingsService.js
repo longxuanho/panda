@@ -173,7 +173,7 @@ function queryDefaultSettings() {
             page: "utilsTopBar",
             options: {
                 tbisList: {
-                    viewMode: 'list',
+                    viewMode: 'grid', // list or grid?
                     _refreshTokenInGridMode: 'default_token'
                 },
 
@@ -218,6 +218,19 @@ function queryDefaultSettings() {
                     pageable: {
                         pageSizes: true,
                         buttonCount: 5
+                    },
+                    excel: {
+                        allPages: true,
+                        fileName: 'From Sky with Love.xslx',
+                        filterable: true
+                    },
+                    pdf: {
+                        allPages: false,
+                        author: 'Skynet',
+                        creator: 'Long Ho',
+                        fileName: 'From Sky with Love.pdf',
+                        landscape: true,
+                        pageSize: 'auto'
                     }
                 },
                 tbisrepList: {},

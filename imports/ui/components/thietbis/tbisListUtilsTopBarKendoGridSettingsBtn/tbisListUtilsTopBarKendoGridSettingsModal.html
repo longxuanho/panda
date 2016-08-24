@@ -1,0 +1,30 @@
+<md-dialog id="tbis-list-filter-panel-modal" aria-label="Thiết lập bảng dữ liệu" ng-cloak>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Thiết lập bảng dữ liệu</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="tbisListUtilsTopBarKendoGridSettingsModal.close()">
+                <md-icon md-svg-src="img/icons/common/close.svg" aria-label="Đóng hộp thoại"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content layout-fill>
+        <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="Hiển thị" md-on-select="tbisListUtilsTopBarKendoGridSettingsModal.tabSelected='hien_thi'">
+                <md-content>
+                    <tbis-list-utils-top-bar-kendo-grid-settings-modal-hien-thi-tab></tbis-list-utils-top-bar-kendo-grid-settings-modal-hien-thi-tab>
+                </md-content>
+            </md-tab>
+            <md-tab label="Xuất dữ liệu" md-on-select="tbisListUtilsTopBarKendoGridSettingsModal.tabSelected='xuat_du_lieu'">
+                <md-content>
+                    <tbis-list-utils-top-bar-kendo-grid-settings-modal-xuat-du-lieu-tab></tbis-list-utils-top-bar-kendo-grid-settings-modal-xuat-du-lieu-tab>
+                </md-content>
+            </md-tab>
+        </md-tabs>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <md-button ng-click="tbisListUtilsTopBarKendoGridSettingsModal.reset()" aria-label="Reset">Reset</md-button>
+        <span flex></span>
+        <md-button style="margin-right:20px;" ng-click="tbisListUtilsTopBarKendoGridSettingsModal.close()" aria-label="Đóng & Tiếp tục">Đóng & Tiếp tục</md-button>
+    </md-dialog-actions>
+</md-dialog>

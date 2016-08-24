@@ -4,6 +4,9 @@ import angularMeteor from 'angular-meteor';
 import _ from 'underscore';
 
 import template from './tbisListUtilsTopBar.html';
+
+import { name as TbisListUtilsTopBarKendoGridSettingsBtn } from '../tbisListUtilsTopBarKendoGridSettingsBtn/tbisListUtilsTopBarKendoGridSettingsBtn';
+
 import { name as UtilsTopBarDataService } from '../../../services/workspaces/utilsTopBarDataService';
 import { name as SubscribeDataService } from '../../../services/workspaces/subscribeDataService';
 import { name as WorkspacesDataService } from '../../../services/workspaces/workspacesDataService';
@@ -81,7 +84,8 @@ export default angular.module(name, [
     angularMeteor,
     SubscribeDataService,
     UtilsTopBarDataService,
-    WorkspacesDataService
+    WorkspacesDataService,
+    TbisListUtilsTopBarKendoGridSettingsBtn
 ]).component(name, {
     template,
     bindings: {

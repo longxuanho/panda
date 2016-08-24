@@ -4,7 +4,7 @@ import angularMeteor from 'angular-meteor';
 import template from './tbisListFilterPanelModalThietLapTab.html';
 import { name as TbisFilterPanelSolverService } from '../../../services/thietbis/tbisFilterPanelSolverService';
 
-class tbisListFilterPanelModalThietLapTab {
+class TbisListFilterPanelModalThietLapTab {
     constructor(tbisFilterPanelSolverService, $timeout, $mdToast) {
         'ngInject';
         this.$timeout = $timeout;
@@ -43,5 +43,5 @@ export default angular.module(name, [
         filterPanelOptions: '='
     },
     controllerAs: name,
-    controller: tbisListFilterPanelModalThietLapTab
+    controller: TbisListFilterPanelModalThietLapTab
 });

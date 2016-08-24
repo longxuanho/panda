@@ -1,0 +1,56 @@
+<md-list flex>
+    <md-subheader class="md-no-sticky">Vui lòng thiết lập các thông số dưới đây trước khi bạn trích xuất dữ liệu từ hệ thống.</md-subheader>
+</md-list>
+<div style="padding: 0 16px;">
+    <md-radio-group ng-model="tbisListUtilsTopBarKendoGridSettingsModalXuatDuLieuTab.fileType" >
+        <md-radio-button value="excel">Định dạng Excel</md-radio-button>
+        <md-radio-button value="pdf">Định dạng PDF</md-radio-button>
+    </md-radio-group>
+</div>
+<md-divider></md-divider>
+<div ng-show="tbisListUtilsTopBarKendoGridSettingsModalXuatDuLieuTab.fileType === 'excel'">
+    <md-list flex>
+        <md-list-item style="margin-top: 40px;">
+            <md-input-container class="md-block" style="width: 100%;">
+                <label>Tên file</label>
+                <input ng-model="tbisListUtilsTopBarKendoGridSettingsModalXuatDuLieuTab.excelExportOptions.fileName" required>
+            </md-input-container>
+        </md-list-item>
+        <md-list-item>
+            <md-checkbox ng-model="tbisListUtilsTopBarKendoGridSettingsModalXuatDuLieuTab.excelExportOptions.allPages" class="md-primary"></md-checkbox>
+            <p>Tất cả các trang</p>
+        </md-list-item>
+        <md-list-item>
+            <md-checkbox ng-model="tbisListUtilsTopBarKendoGridSettingsModalXuatDuLieuTab.excelExportOptions.filterable" class="md-primary"></md-checkbox>
+            <p>Tích hợp cùng bộ lọc dữ liệu</p>
+        </md-list-item>
+        <md-divider></md-divider>
+        <div style="margin-top: 32px;" layout="row" layout-align="center center">
+            <md-button class="md-primary" >Xuất dữ liệu</md-button>
+        </div>
+    </md-list>
+    <pre>{{tbisListUtilsTopBarKendoGridSettingsModalXuatDuLieuTab.excelExportOptions | json}}</pre>
+</div>
+<div ng-show="tbisListUtilsTopBarKendoGridSettingsModalXuatDuLieuTab.fileType === 'pdf'">
+    <md-list flex>
+        <md-list-item style="margin-top: 40px;">
+            <md-input-container class="md-block" style="width: 100%;">
+                <label>Tên file</label>
+                <input ng-model="tbisListUtilsTopBarKendoGridSettingsModalXuatDuLieuTab.pdfExportOptions.fileName" required>
+            </md-input-container>
+        </md-list-item>
+        <md-list-item>
+            <md-checkbox ng-model="tbisListUtilsTopBarKendoGridSettingsModalXuatDuLieuTab.pdfExportOptions.allPages" class="md-primary"></md-checkbox>
+            <p>Tất cả các trang</p>
+        </md-list-item>
+        <md-list-item>
+            <md-checkbox ng-model="tbisListUtilsTopBarKendoGridSettingsModalXuatDuLieuTab.pdfExportOptions.landscape" class="md-primary"></md-checkbox>
+            <p>Giấy khổ ngang</p>
+        </md-list-item>
+        <md-divider></md-divider>
+        <div style="margin-top: 32px;" layout="row" layout-align="center center">
+            <md-button class="md-primary" >Xuất dữ liệu</md-button>
+        </div>
+    </md-list>
+    <pre>{{tbisListUtilsTopBarKendoGridSettingsModalXuatDuLieuTab.pdfExportOptions | json}}</pre>
+</div>

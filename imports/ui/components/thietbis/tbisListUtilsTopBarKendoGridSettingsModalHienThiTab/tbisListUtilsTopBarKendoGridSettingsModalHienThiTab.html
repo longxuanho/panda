@@ -1,0 +1,7 @@
+<md-list flex>
+    <md-subheader class="md-no-sticky">Danh sách các trường dữ liệu được hiển thị</md-subheader>
+    <md-list-item ng-repeat="column in tbisListUtilsTopBarKendoGridSettingsModalHienThiTab.availableColumns" ng-click="tbisListUtilsTopBarKendoGridSettingsModalHienThiTab.toggleColumnVisibility(column)">
+        <md-checkbox ng-model="column.isVisible"></md-checkbox>
+        <p>{{column.title}}</p>
+    </md-list-item>
+</md-list>
