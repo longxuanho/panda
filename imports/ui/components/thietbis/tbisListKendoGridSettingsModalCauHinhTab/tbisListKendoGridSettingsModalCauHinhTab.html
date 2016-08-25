@@ -1,0 +1,48 @@
+<div ng-if="tbisListKendoGridSettingsModalCauHinhTab.mode==='addNew'" >
+    <tbis-list-kendo-grid-settings-modal-cau-hinh-tab-add-new-form
+            done="tbisListKendoGridSettingsModalCauHinhTab.setMode('listView')">
+    </tbis-list-kendo-grid-settings-modal-cau-hinh-tab-add-new-form>
+</div>
+<div ng-if="tbisListKendoGridSettingsModalCauHinhTab.mode==='edit'" >
+    <tbis-list-kendo-grid-settings-modal-cau-hinh-tab-edit-form
+            cloud-setting-descriptions="tbisListKendoGridSettingsModalCauHinhTab.cloudSettingDescriptions"
+            done="tbisListKendoGridSettingsModalCauHinhTab.setMode('listView')">
+    </tbis-list-kendo-grid-settings-modal-cau-hinh-tab-edit-form>
+</div>
+
+<md-divider ng-hide="tbisListKendoGridSettingsModalCauHinhTab.mode==='listView'"></md-divider>
+
+<md-list flex>
+    <md-subheader class="md-no-sticky">
+        <div layout="row">
+            <div flex layout="row" layout-align="start center">
+                <span ng-hide="tbisListKendoGridSettingsModalCauHinhTab.mode==='edit' || !tbisListKendoGridSettingsModalCauHinhTab.cloudSettingDescriptions.length">
+                    Danh sách các cấu hình của tôi:
+                </span>
+                <span ng-hide="tbisListKendoGridSettingsModalCauHinhTab.mode==='edit' || tbisListKendoGridSettingsModalCauHinhTab.cloudSettingDescriptions.length">
+                    Chưa có cấu hình đã lưu trong danh sách của bạn. Hãy bắt đầu bằng việc thêm mới một cấu hình.
+                </span>
+            </div>
+            <md-button  class="md-icon-button"
+                        ng-class="{'md-accent': tbisListKendoGridSettingsModalCauHinhTab.mode==='addNew'}"
+                        ng-click="tbisListKendoGridSettingsModalCauHinhTab.toggleAddNewMode()">
+                <md-icon md-svg-icon="img/icons/common/add.svg" aria-label="Tạo mới"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button"
+                       ng-class="{'md-accent': tbisListKendoGridSettingsModalCauHinhTab.mode==='edit'}"
+                       ng-click="tbisListKendoGridSettingsModalCauHinhTab.toggleEditMode()">
+                <md-icon md-svg-icon="img/icons/common/mode_edit.svg" aria-label="Chỉnh sửa"></md-icon>
+            </md-button>
+        </div>
+    </md-subheader>
+</md-list>
+
+<div style="padding: 0 16px;" ng-hide="tbisListKendoGridSettingsModalCauHinhTab.mode==='edit'">
+    <md-radio-group ng-model="tbisListKendoGridSettingsModalCauHinhTab.selectedCloudSetting.cloudSetting._id" >
+        <md-radio-button ng-repeat="item in tbisListKendoGridSettingsModalCauHinhTab.cloudSettingDescriptions" value="{{item._id}}">{{item.dataSource.description}}</md-radio-button>
+    </md-radio-group>
+</div>
+
+<md-divider style="margin-top: 40px;" ng-hide="tbisListKendoGridSettingsModalCauHinhTab.mode==='edit'"></md-divider>
+
+<div style="color: transparent;">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam</div>

@@ -3,11 +3,11 @@ import angularMeteor from 'angular-meteor';
 
 import _ from 'underscore';
 
-import template from './tbisListUtilsTopBarKendoGridSettingsModalHienThiTab.html';
+import template from './tbisListKendoGridSettingsModalHienThiTab.html';
 
 import { name as KendoGridDataService } from '../../../services/workspaces/kendoGridDataService';
 
-class TbisListUtilsTopBarKendoGridSettingsModalHienThiTab {
+class TbisListKendoGridSettingsModalHienThiTab {
     constructor(kendoGridDataService) {
         'ngInject';
 
@@ -28,7 +28,7 @@ class TbisListUtilsTopBarKendoGridSettingsModalHienThiTab {
     }
 }
 
-const name = 'tbisListUtilsTopBarKendoGridSettingsModalHienThiTab';
+const name = 'tbisListKendoGridSettingsModalHienThiTab';
 
 // create a module
 export default angular.module(name, [
@@ -37,7 +37,7 @@ export default angular.module(name, [
 ]).component(name, {
     template: template,
     controllerAs: name,
-    controller: TbisListUtilsTopBarKendoGridSettingsModalHienThiTab
+    controller: TbisListKendoGridSettingsModalHienThiTab
 });
 
 function resolveAvailableColumns(columns) {

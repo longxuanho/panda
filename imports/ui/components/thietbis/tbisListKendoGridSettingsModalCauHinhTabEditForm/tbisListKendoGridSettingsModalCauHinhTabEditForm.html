@@ -1,0 +1,48 @@
+<md-list flex>
+    <md-subheader class="md-no-sticky" style="padding-left: 0;">Vui lòng click chọn cấu hình trong danh sách dưới đây để bắt đầu chỉnh sửa.</md-subheader>
+</md-list>
+<form name="tbisListKendoGridSettingsModalCauHinhTabEditFormEditForm.editForm" style="padding: 0 16px;">
+    <md-input-container class="md-block" style="width: 100%;">
+        <label>Tên cấu hình</label>
+        <input  name="cloud_setting_description"
+                ng-model="tbisListKendoGridSettingsModalCauHinhTabEditForm.selectedCloudSetting.dataSource.description"
+                required>
+        <div ng-messages="tbisListKendoGridSettingsModalCauHinhTabEditForm.editForm.cloud_setting_description.$error">
+            <div ng-message="required">Thông tin bắt buộc.</div>
+        </div>
+    </md-input-container>
+    <div layout="row" layout-align="space-around center">
+        <md-button class="md-primary no-animate"
+                   ng-disabled="tbisListKendoGridSettingsModalCauHinhTabEditFormEditForm.editForm.$invalid || !tbisListKendoGridSettingsModalCauHinhTabEditForm.selectedCloudSetting._id"
+                   ng-click="tbisListKendoGridSettingsModalCauHinhTabEditForm.updateSelectedCloudSetting()"  >
+            Đổi tên
+        </md-button>
+        <md-button class="no-animate"
+                   ng-disabled="tbisListKendoGridSettingsModalCauHinhTabEditFormEditForm.editForm.$invalid || !tbisListKendoGridSettingsModalCauHinhTabEditForm.selectedCloudSetting._id"
+                   ng-click="tbisListKendoGridSettingsModalCauHinhTabEditForm.removeSelectedCloudSetting()" >
+            Xóa bỏ
+        </md-button>
+    </div>
+</form>
+
+<md-divider></md-divider>
+
+<div ng-show="tbisListKendoGridSettingsModalCauHinhTabEditForm.cloudSettingDescriptions.length">
+    <md-list flex>
+        <md-subheader class="md-no-sticky">
+            Danh sách các cấu hình của tôi:
+        </md-subheader>
+    </md-list>
+    <div style="padding: 0 16px; margin-bottom: 40px;">
+        <md-radio-group  ng-model="tbisListKendoGridSettingsModalCauHinhTabEditForm.selectedCloudSettingId" >
+            <md-radio-button ng-repeat="item in tbisListKendoGridSettingsModalCauHinhTabEditForm.cloudSettingDescriptions" value="{{item._id}}">{{item.dataSource.description}}</md-radio-button>
+        </md-radio-group>
+    </div>
+</div>
+<div ng-hide="tbisListKendoGridSettingsModalCauHinhTabEditForm.cloudSettingDescriptions.length">
+    <md-list flex>
+        <md-subheader class="md-no-sticky">
+            Chưa có cấu hình đã lưu trong danh sách của bạn. Hãy bắt đầu bằng việc thêm mới một cấu hình.
+        </md-subheader>
+    </md-list>
+</div>

@@ -19,6 +19,10 @@ class KendoGridDataService {
             gridRef: {},
             options: {}
         };
+
+        this.selectedKendoGridOptions = {
+            options: {}
+        };
     }
 
     updateCurrentOptions(stateName) {
@@ -35,6 +39,28 @@ class KendoGridDataService {
 
     getCurrentKendoGridOptions() {
         return this.currentKendoGridOptions;
+    }
+
+    getSelectedKendoGridOptions() {
+        return this.selectedKendoGridOptions;
+    }
+
+    syncKendoGridOptions() {
+        // copy options from selectedKendoGridOptions over currentKendoGridOptions
+        if (!_.isEmpty(this.selectedKendoGridOptions.options)) {
+            let dataSourceOptions = this.selectedKendoGridOptions.options.dataSource;
+            let otherOptions = _.omit(this.selectedKendoGridOptions.options, 'dataSource');
+
+            // Set dataSource options
+            this.currentKendoGridOptions.options.dataSource.group(dataSourceOptions.group);
+            this.currentKendoGridOptions.options.dataSource.pageSize(dataSourceOptions.pageSize);
+            this.currentKendoGridOptions.options.dataSource.page(dataSourceOptions.page);
+            this.currentKendoGridOptions.options.dataSource.sort(dataSourceOptions.sort);
+
+            // Set other options
+            this.currentKendoGridOptions.gridRef.setOptions(otherOptions);
+        }
+
     }
 
 }

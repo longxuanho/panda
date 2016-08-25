@@ -15,7 +15,9 @@ class CloudSettingsDataService {
         this.$q = $q;
 
         this.selectedCloudSetting = {
-            cloudSetting: {}
+            cloudSetting: {
+                _id: ''
+            }
         };
     }
 
@@ -76,13 +78,13 @@ class CloudSettingsDataService {
         return defer.promise;
     }
 
-    updateSelectedCloudSettingDescription(newDescription) {
+    updateSelectedCloudSettingDescription(cloudSetting) {
         let defer = this.$q.defer();
         CloudSettings.update({
-            _id: this.selectedCloudSetting.cloudSetting._id
+            _id: cloudSetting._id
         }, {
             $set: {
-                'dataSource.description': newDescription
+                'dataSource.description': cloudSetting.dataSource.description
             }
         }, (error) => {
             if (error)
@@ -99,6 +101,17 @@ class CloudSettingsDataService {
 
     setSelectedCloudSetting(cloudSettingId) {
         this.selectedCloudSetting.cloudSetting = this.queryOne(cloudSettingId);
+    }
+
+    removeSelectedCloudSetting(cloudSettingId) {
+        let defer = this.$q.defer();
+            CloudSettings.remove(cloudSettingId, (error) => {
+                if (error)
+                    defer.reject(error);
+                else
+                    defer.resolve();
+            });
+        return defer.promise;
     }
 }
 

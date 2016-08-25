@@ -1,0 +1,21 @@
+<md-list flex>
+    <md-subheader class="md-no-sticky" style="padding-left: 0;">Vui lòng nhập mô tả cho cấu hình của bạn trước khi lưu.</md-subheader>
+</md-list>
+<form name="tbisListKendoGridSettingsModalCauHinhTabAddNewForm.addNewForm" style="padding: 0 16px;">
+    <md-input-container class="md-block" style="width: 100%;">
+        <label>Tên cấu hình</label>
+        <input  name="cloud_setting_description"
+                ng-model="tbisListKendoGridSettingsModalCauHinhTabAddNewForm.newCloudSetting.dataSource.description"
+                required>
+        <div ng-messages="tbisListKendoGridSettingsModalCauHinhTabAddNewForm.addNewForm.cloud_setting_description.$error">
+            <div ng-message="required">Thông tin bắt buộc.</div>
+        </div>
+    </md-input-container>
+    <div layout="row" layout-align="center center">
+        <md-button class="md-primary no-animate"
+                   ng-disabled="tbisListKendoGridSettingsModalCauHinhTabAddNewForm.addNewForm.$invalid"
+                   ng-click="tbisListKendoGridSettingsModalCauHinhTabAddNewForm.addNewCloudSetting()" >
+            Thêm cấu hình
+        </md-button>
+    </div>
+</form>

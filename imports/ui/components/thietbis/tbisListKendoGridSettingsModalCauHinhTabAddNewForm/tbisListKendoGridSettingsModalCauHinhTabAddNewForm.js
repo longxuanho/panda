@@ -1,46 +1,29 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
-import _ from 'underscore';
-
-import template from './tbisListUtilsTopBarKendoGridSettingsModalCauHinhTab.html';
+import template from './tbisListKendoGridSettingsModalCauHinhTabAddNewForm.html';
 
 import { name as CloudSettingsDataService } from '../../../services/cloudsettings/cloudSettingsDataService';
 import { name as KendoGridDataService } from '../../../services/workspaces/kendoGridDataService';
 import { name as NotificationService } from '../../../services/common/notificationService';
 
-class TbisListUtilsTopBarKendoGridSettingsModalCauHinhTab {
+class TbisListKendoGridSettingsModalCauHinhTabAddNewForm {
     constructor(cloudSettingsDataService, notificationService, kendoGridDataService) {
         'ngInject';
 
+
         this.cloudSettingsDataService = cloudSettingsDataService;
         this.notificationService = notificationService;
+        this.kendoGridDataService = kendoGridDataService;
 
-        this.kendoGridOptions = kendoGridDataService.getCurrentKendoGridOptions();
-        this.descriptionList = this.cloudSettingsDataService.queryForDescriptionList();
+        this.currentKendoGridOptions = kendoGridDataService.getCurrentKendoGridOptions();
 
         this.initNewCloudSetting();
 
-        this.mode = 'listView';
-    }
-
-    setMode(modeName) {
-        this.mode = modeName;
     }
 
     initNewCloudSetting() {
         this.newCloudSetting = this.cloudSettingsDataService.initNewCloudSettingData('thietbis', 'tbisList', 'kendoGrid');
-    }
-
-    getCurrentKendoGridOptions() {
-        return this.kendoGridOptions.gridRef.getOptions();
-    }
-
-    resolveKendoOptionsBeforeInsert() {
-        let currentKendoGridOptions = this.getCurrentKendoGridOptions();
-        currentKendoGridOptions.dataSource.data = [];
-
-        this.newCloudSetting.dataSource.options = JSON.stringify(currentKendoGridOptions);
     }
 
     addNewCloudSetting() {
@@ -51,6 +34,7 @@ class TbisListUtilsTopBarKendoGridSettingsModalCauHinhTab {
             this.cloudSettingsDataService.addNew(this.newCloudSetting).then(() => {
                 this.notificationService.success('Cấu hình của bạn đã được ghi nhận vào Skynet.', 'Lưu cấu hình thành công');
                 this.initNewCloudSetting();
+                this.done();
             }).catch((err) => {
                 this.notificationService.error(err.message, 'Lưu cấu hình thất bại');
             });
@@ -59,9 +43,20 @@ class TbisListUtilsTopBarKendoGridSettingsModalCauHinhTab {
             this.notificationService.error(error.message, 'Thiếu thông tin');
         }
     }
+
+    resolveKendoOptionsBeforeInsert() {
+        let currentKendoGridOptions = this.getCurrentKendoGridOptions();
+        currentKendoGridOptions.dataSource.data = [];
+
+        this.newCloudSetting.dataSource.options = JSON.stringify(currentKendoGridOptions);
+    }
+
+    getCurrentKendoGridOptions() {
+        return this.currentKendoGridOptions.gridRef.getOptions();
+    }
 }
 
-const name = 'tbisListUtilsTopBarKendoGridSettingsModalCauHinhTab';
+const name = 'tbisListKendoGridSettingsModalCauHinhTabAddNewForm';
 
 // create a module
 export default angular.module(name, [
@@ -72,5 +67,8 @@ export default angular.module(name, [
 ]).component(name, {
     template: template,
     controllerAs: name,
-    controller: TbisListUtilsTopBarKendoGridSettingsModalCauHinhTab
+    bindings: {
+        done: '&'
+    },
+    controller: TbisListKendoGridSettingsModalCauHinhTabAddNewForm
 });

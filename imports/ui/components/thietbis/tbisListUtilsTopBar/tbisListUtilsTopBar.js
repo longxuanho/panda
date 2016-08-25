@@ -5,7 +5,7 @@ import _ from 'underscore';
 
 import template from './tbisListUtilsTopBar.html';
 
-import { name as TbisListUtilsTopBarKendoGridSettingsBtn } from '../tbisListUtilsTopBarKendoGridSettingsBtn/tbisListUtilsTopBarKendoGridSettingsBtn';
+import { name as TbisListKendoGridSettingsBtn } from '../tbisListKendoGridSettingsBtn/tbisListKendoGridSettingsBtn';
 
 import { name as UtilsTopBarDataService } from '../../../services/workspaces/utilsTopBarDataService';
 import { name as SubscribeDataService } from '../../../services/workspaces/subscribeDataService';
@@ -85,7 +85,7 @@ export default angular.module(name, [
     SubscribeDataService,
     UtilsTopBarDataService,
     WorkspacesDataService,
-    TbisListUtilsTopBarKendoGridSettingsBtn
+    TbisListKendoGridSettingsBtn
 ]).component(name, {
     template,
     bindings: {

@@ -1,11 +1,11 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
-import template from './tbisListUtilsTopBarKendoGridSettingsModalXuatDuLieuTab.html';
+import template from './tbisListKendoGridSettingsModalXuatDuLieuTab.html';
 
 import { name as KendoGridDataService } from '../../../services/workspaces/kendoGridDataService';
 
-class TbisListUtilsTopBarKendoGridSettingsModalXuatDuLieuTab {
+class TbisListKendoGridSettingsModalXuatDuLieuTab {
     constructor(kendoGridDataService) {
         'ngInject';
 
@@ -30,7 +30,7 @@ class TbisListUtilsTopBarKendoGridSettingsModalXuatDuLieuTab {
     }
 }
 
-const name = 'tbisListUtilsTopBarKendoGridSettingsModalXuatDuLieuTab';
+const name = 'tbisListKendoGridSettingsModalXuatDuLieuTab';
 
 // create a module
 export default angular.module(name, [
@@ -39,5 +39,5 @@ export default angular.module(name, [
 ]).component(name, {
     template: template,
     controllerAs: name,
-    controller: TbisListUtilsTopBarKendoGridSettingsModalXuatDuLieuTab
+    controller: TbisListKendoGridSettingsModalXuatDuLieuTab
 });
