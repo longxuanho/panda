@@ -49,6 +49,17 @@ import { name as NotificationService } from '../../services/common/notificationS
 
 
 class Pandora {
+    constructor() {
+        'ngInject';
+
+        // Fix lỗi treo chương trình khi export pdf từ grid
+        kendo.pdf.defineFont({
+            "Roboto": "/fonts/DejaVuSans.ttf",
+            "Roboto|Bold": "/fonts/DejaVuSans-Bold.ttf",
+            "Roboto|Bold|Italic": "/fonts/DejaVuSans-Oblique.ttf",
+            "Roboto|Italic": "/fonts/DejaVuSans-Oblique.ttf"
+        });
+    }
 }
 
 const name = 'pandora';
