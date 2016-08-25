@@ -1,6 +1,8 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
+import { Roles } from 'meteor/alanning:roles';
+
 import template from './tbisListKendoGridSettingsModalCauHinhTabAddNewForm.html';
 
 import { name as CloudSettingsDataService } from '../../../services/cloudsettings/cloudSettingsDataService';
@@ -8,9 +10,10 @@ import { name as KendoGridDataService } from '../../../services/workspaces/kendo
 import { name as NotificationService } from '../../../services/common/notificationService';
 
 class TbisListKendoGridSettingsModalCauHinhTabAddNewForm {
-    constructor(cloudSettingsDataService, notificationService, kendoGridDataService) {
+    constructor($reactive, $scope, cloudSettingsDataService, notificationService, kendoGridDataService) {
         'ngInject';
 
+        $reactive(this).attach($scope);
 
         this.cloudSettingsDataService = cloudSettingsDataService;
         this.notificationService = notificationService;
@@ -19,6 +22,12 @@ class TbisListKendoGridSettingsModalCauHinhTabAddNewForm {
         this.currentKendoGridOptions = kendoGridDataService.getCurrentKendoGridOptions();
 
         this.initNewCloudSetting();
+
+        this.helpers({
+            isAuthorized() {
+                return Roles.userIsInRole(Meteor.userId(), 'admin', 'sky-project');
+            }
+        });
 
     }
 

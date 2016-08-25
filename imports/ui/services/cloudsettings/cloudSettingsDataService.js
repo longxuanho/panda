@@ -24,7 +24,8 @@ class CloudSettingsDataService {
     queryForDescriptionList(selector) {
         let options = {
             fields: {
-                'dataSource.description': 1
+                'dataSource.description': 1,
+                'order': 1
             }
         };
         if (!selector)
@@ -50,6 +51,7 @@ class CloudSettingsDataService {
             dataSource: {
                 _id: Random.id()
             },
+            order: 100,
             isPublic: false
         }
     }

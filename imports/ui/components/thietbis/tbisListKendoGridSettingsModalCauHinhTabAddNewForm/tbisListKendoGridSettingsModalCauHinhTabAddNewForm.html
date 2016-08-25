@@ -11,6 +11,12 @@
             <div ng-message="required">Thông tin bắt buộc.</div>
         </div>
     </md-input-container>
+    <div ng-if="tbisListKendoGridSettingsModalCauHinhTabAddNewForm.isAuthorized">
+        <md-checkbox ng-model="tbisListKendoGridSettingsModalCauHinhTabAddNewForm.newCloudSetting.isPublic" aria-label="isPublic">
+            Đồng bộ tới tất cả người dùng
+        </md-checkbox>
+    </div>
+    <pre>{{tbisListKendoGridSettingsModalCauHinhTabAddNewForm.newCloudSetting|json}}</pre>
     <div layout="row" layout-align="center center">
         <md-button class="md-primary no-animate"
                    ng-disabled="tbisListKendoGridSettingsModalCauHinhTabAddNewForm.addNewForm.$invalid"

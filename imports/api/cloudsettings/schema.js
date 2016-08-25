@@ -41,6 +41,10 @@ Schema.CloudSetting = new SimpleSchema({
         'dataSource.options': {
             type: String
         },
+    order: {
+        type: Number,
+        defaultValue: 100
+    },
     isPublic: {
         type: Boolean,
         defaultValue: false

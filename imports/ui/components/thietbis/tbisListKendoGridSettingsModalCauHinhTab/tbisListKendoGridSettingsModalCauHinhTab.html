@@ -12,6 +12,12 @@
 
 <md-divider ng-hide="tbisListKendoGridSettingsModalCauHinhTab.mode==='listView'"></md-divider>
 
+<tbis-list-kendo-grid-settings-modal-cau-hinh-tab-default-configs
+        ng-show="tbisListKendoGridSettingsModalCauHinhTab.mode==='listView'"
+        selected-cloud-setting="tbisListKendoGridSettingsModalCauHinhTab.selectedCloudSetting"
+>
+</tbis-list-kendo-grid-settings-modal-cau-hinh-tab-default-configs>
+
 <md-list flex>
     <md-subheader class="md-no-sticky">
         <div layout="row">
@@ -39,7 +45,7 @@
 
 <div style="padding: 0 16px;" ng-hide="tbisListKendoGridSettingsModalCauHinhTab.mode==='edit'">
     <md-radio-group ng-model="tbisListKendoGridSettingsModalCauHinhTab.selectedCloudSetting.cloudSetting._id" >
-        <md-radio-button ng-repeat="item in tbisListKendoGridSettingsModalCauHinhTab.cloudSettingDescriptions" value="{{item._id}}">{{item.dataSource.description}}</md-radio-button>
+        <md-radio-button ng-repeat="item in tbisListKendoGridSettingsModalCauHinhTab.cloudSettingDescriptions  | orderBy: 'order'" value="{{item._id}}">{{item.dataSource.description}}</md-radio-button>
     </md-radio-group>
 </div>
 

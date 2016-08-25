@@ -7,8 +7,9 @@ import { name as CloudSettingsDataService } from '../../../services/cloudsetting
 import { name as KendoGridDataService } from '../../../services/workspaces/kendoGridDataService';
 import { name as NotificationService } from '../../../services/common/notificationService';
 
-import { name as TbisListKendoGridSettingsModalCauHinhTabAddNewForm } from '../tbisListKendoGridSettingsModalCauHinhTabAddNewForm/tbisListKendoGridSettingsModalCauHinhTabAddNewForm'
-import { name as TbisListKendoGridSettingsModalCauHinhTabEditForm } from '../tbisListKendoGridSettingsModalCauHinhTabEditForm/tbisListKendoGridSettingsModalCauHinhTabEditForm'
+import { name as TbisListKendoGridSettingsModalCauHinhTabAddNewForm } from '../tbisListKendoGridSettingsModalCauHinhTabAddNewForm/tbisListKendoGridSettingsModalCauHinhTabAddNewForm';
+import { name as TbisListKendoGridSettingsModalCauHinhTabEditForm } from '../tbisListKendoGridSettingsModalCauHinhTabEditForm/tbisListKendoGridSettingsModalCauHinhTabEditForm';
+import { name as TbisListKendoGridSettingsModalCauHinhTabDefaultConfigs } from '../tbisListKendoGridSettingsModalCauHinhTabDefaultConfigs/tbisListKendoGridSettingsModalCauHinhTabDefaultConfigs';
 
 class TbisListKendoGridSettingsModalCauHinhTab {
     constructor($reactive, $scope, cloudSettingsDataService, notificationService, kendoGridDataService) {
@@ -25,7 +26,6 @@ class TbisListKendoGridSettingsModalCauHinhTab {
         this.selectedCloudSetting = cloudSettingsDataService.getSelectedCloudSetting();
 
         this.mode = 'listView';
-        // this.initNewCloudSetting();
 
         this.subscribe('cloudsettings', () => [
             {},
@@ -38,27 +38,35 @@ class TbisListKendoGridSettingsModalCauHinhTab {
 
         this.helpers({
             cloudSettingDescriptions() {
-                return this.cloudSettingsDataService.queryForDescriptionList();
+                return this.cloudSettingsDataService.queryForDescriptionList({
+                    'user._id': Meteor.userId()
+                });
             }
         });
 
         $scope.$watch('tbisListKendoGridSettingsModalCauHinhTab.selectedCloudSetting.cloudSetting._id', (newVal) => {
             if (newVal) {
-                this.selectedCloudSetting.cloudSetting = this.cloudSettingsDataService.queryOne(newVal);
+                // this.selectedCloudSetting.cloudSetting = this.cloudSettingsDataService.queryOne(newVal);
+                this.cloudSettingsDataService.setSelectedCloudSetting(newVal);
 
-                if (this.selectedCloudSetting.cloudSetting) {
-                    if (this.selectedCloudSetting.cloudSetting.dataSource && this.selectedCloudSetting.cloudSetting.dataSource.options) {
-                        this.selectedKendoGridOptions.options = JSON.parse(this.selectedCloudSetting.cloudSetting.dataSource.options);
-
-                        this.kendoGridDataService.syncKendoGridOptions();
-
-                        this.notificationService.success('Cấu hình mới được nạp thành công.', 'Khởi tạo thành công');
-                    } else {
-                        this.notificationService.success('Có lỗi khi đọc cấu hình hoặc cấu hình không tồn tại.', 'Khởi tạo thất bại');
-                    }
-                }
+                this.syncGridOptionsWithSelectedCloudSetting();
             }
         });
+    }
+
+    syncGridOptionsWithSelectedCloudSetting() {
+
+        if (this.selectedCloudSetting.cloudSetting) {
+            if (this.selectedCloudSetting.cloudSetting.dataSource && this.selectedCloudSetting.cloudSetting.dataSource.options) {
+                this.selectedKendoGridOptions.options = JSON.parse(this.selectedCloudSetting.cloudSetting.dataSource.options);
+
+                this.kendoGridDataService.syncKendoGridOptions();
+
+                this.notificationService.success('Cấu hình mới được nạp thành công.', 'Khởi tạo thành công');
+            } else {
+                this.notificationService.success('Có lỗi khi đọc cấu hình hoặc cấu hình không tồn tại.', 'Khởi tạo thất bại');
+            }
+        }
     }
 
     setMode(modeName) {
@@ -85,7 +93,8 @@ export default angular.module(name, [
     KendoGridDataService,
 
     TbisListKendoGridSettingsModalCauHinhTabAddNewForm,
-    TbisListKendoGridSettingsModalCauHinhTabEditForm
+    TbisListKendoGridSettingsModalCauHinhTabEditForm,
+    TbisListKendoGridSettingsModalCauHinhTabDefaultConfigs
 ]).component(name, {
     template: template,
     controllerAs: name,

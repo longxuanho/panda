@@ -11,14 +11,19 @@ if (Meteor.isServer) {
         check(options, Object);
         check(queryParams, Object);
 
-        selector['user._id'] = this.userId;
-
-        if (queryParams.module)
-            selector['module'] = queryParams.module;
-        if (queryParams.stateName)
-            selector['stateName'] = queryParams.stateName;
-        if (queryParams.subject)
-            selector['subject'] = queryParams.subject;
+        selector['$or'] = [
+            {
+                'module': queryParams.module,
+                'stateName': queryParams.stateName,
+                'subject': queryParams.subject,
+                'isPublic': true
+            }, {
+                'module': queryParams.module,
+                'stateName': queryParams.stateName,
+                'subject': queryParams.subject,
+                'user._id': this.userId
+            }
+        ];
 
         return CloudSettings.find(selector, options);
     });
