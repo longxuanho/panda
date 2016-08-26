@@ -1,0 +1,31 @@
+<md-toolbar class="md-hue-2" id="tbis-utils-bar">
+    <div class="md-toolbar-tools">
+        <!--Category-->
+        <md-menu>
+            <md-button aria-label="Chọn bộ lọc datahelpers" class="md-icon-button"
+                       ng-click="dhelpsListUtilsTopBar.openMenu($mdOpenMenu, $event)">
+                <md-icon md-menu-origin
+                         md-svg-icon="{{dhelpsListUtilsTopBar.liveOptions.category.icon}}"
+                >
+                </md-icon>
+            </md-button>
+            <md-menu-content width="4">
+                <md-menu-item ng-repeat="item in dhelpsListUtilsTopBar.categoryOptionsDB">
+                    <md-button ng-click="dhelpsListUtilsTopBar.setCategory(item)">
+                        <md-icon md-svg-icon="{{item.icon}}" ng-class="{'md-accent': item.value==dhelpsListUtilsTopBar.subscribeOptions.subscribe.category}" md-menu-align-target></md-icon>
+                        {{item.text}}
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+        <md-button style="margin-left:0;" md-no-ink>{{dhelpsListUtilsTopBar.subscribeOptions.subscribe.category}}</md-button>
+
+        <span flex></span>
+
+        <!--Refresh-->
+        <md-button ng-click="dhelpsListUtilsTopBar.triggerRefreshTokenInGridMode()" class="md-icon-button" aria-label="Refresh data in Grid Mode" >
+            <md-icon md-svg-icon="img/icons/common/refresh.svg"></md-icon>
+        </md-button>
+
+    </div>
+</md-toolbar>

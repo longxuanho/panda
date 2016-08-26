@@ -35,17 +35,15 @@ import { name as UsersList } from '../users/usersList/usersList';
 import { name as UserDetails } from '../users/userDetails/userDetails';
 
 import { name as WorkspacesList } from '../workspaces/workspacesList/workspacesList';
+
+import { name as DhelpsList } from '../datahelpers/dhelpsList/dhelpsList';
+
 import { name as WorkspacesDataService } from '../../services/workspaces/workspacesDataService';
 import { name as SubscribeDataService } from '../../services/workspaces/subscribeDataService';
 import { name as UtilsTopBarDataService } from '../../services/workspaces/utilsTopBarDataService';
 import { name as UtilsFilterDataService } from '../../services/workspaces/utilsFilterDataService';
 import { name as KendoGridDataService } from '../../services/workspaces/kendoGridDataService';
 import { name as NotificationService } from '../../services/common/notificationService';
-
-
-
-
-
 
 
 class Pandora {
@@ -83,6 +81,7 @@ export default angular.module(name, [
     UserDetails,
     UsersList,
     WorkspacesList,
+    DhelpsList,
     WorkspacesDataService,
     SubscribeDataService,
     UtilsTopBarDataService,

@@ -14,7 +14,7 @@ class UtilsTopBarDataService {
 
         this.userLocalSettingsService = userLocalSettingsService;
 
-        this.allowedStates = ['tbisList'];
+        this.allowedStates = ['tbisList', 'dhelpsList'];
 
         this.currentUtilsTopBarOptions = {};
         this.utilsTopBarOptionsDB = {};
@@ -26,7 +26,7 @@ class UtilsTopBarDataService {
         this.currentUtilsTopBarOptions = this.queryCurrentUtilsTopBarOptions(stateName);
         this.utilsTopBarOptionsDB = this.queryUtilsTopBarOptionsDB(stateName);
 
-        // console.log('resolved: ', this.currentUtilsTopBarOptions, this.utilsTopBarOptionsDB);
+        // console.log('resolved: ', stateName, this.currentUtilsTopBarOptions, this.utilsTopBarOptionsDB);
     }
 
     queryCurrentUtilsTopBarOptions(stateName) {
@@ -102,6 +102,44 @@ function queryUtilsTopBarOptionsDB() {
                             value: 'Thanh lý',
                             icon: 'img/icons/tbis/thl.svg'
                         }
+                    ]
+                }, {
+                    name: 'viewModes',
+                    menuItems: [
+                        {
+                            text: 'Dạng danh sách',
+                            value: 'list',
+                            icon: 'img/icons/common/view_list.svg'
+                        }, {
+                            text: 'Dạng bảng biểu',
+                            value: 'grid',
+                            icon: 'img/icons/common/view_table.svg'
+                        }
+                    ]
+                }
+            ]
+        }, {
+            stateName: 'dhelpsList',
+            features: [
+                {
+                    name: 'categories',
+                    menuItems: [
+                        {
+                            text: 'Commons',
+                            value: 'commons',
+                            icon: 'img/icons/tbis/all.svg'
+                        },
+                        {
+                            text: 'Thietbis',
+                            value: 'thietbis',
+                            icon: 'img/icons/tbis/tbn.svg'
+                        },
+                        {
+                            text: 'Thongsokts',
+                            value: 'thongsokts',
+                            icon: 'img/icons/common/straighten.svg'
+                        },
+
                     ]
                 }, {
                     name: 'viewModes',

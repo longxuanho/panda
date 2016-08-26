@@ -24,11 +24,12 @@ class SubscribeDataService {
     }
 
     queryCurrentSubscribeOptions(stateName) {
-        if (_.contains(['tbisList', 'tbisrepList', 'tbishisList'], stateName)) {
+        if (_.contains(['tbisList', 'tbisrepList', 'tbishisList', 'dhelpsList'], stateName)) {
             let mapToModule = {
                 tbisList: 'thietbis',
                 tbisrepList: 'tbisreports',
-                tbishisList: 'tbishistories'
+                tbishisList: 'tbishistories',
+                dhelpsList: 'datahelpers'
             };
             return this.userLocalSettingsService.getPageSettings(mapToModule[stateName], stateName).suscribe;
         }

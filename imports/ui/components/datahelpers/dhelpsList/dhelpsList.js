@@ -2,9 +2,11 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 
-import template from './dhelpsList';
+import template from './dhelpsList.html';
 
-// import { name as TbisListUtilsTopBar } from '../tbisListUtilsTopBar/tbisListUtilsTopBar';
+import { name as DhelpsListUtilsTopBar } from '../dhelpsListUtilsTopBar/dhelpsListUtilsTopBar';
+import { name as DhelpsListGridView } from '../dhelpsListGridView/dhelpsListGridView';
+
 
 
 class DhelpsList {
@@ -25,7 +27,9 @@ const name = 'dhelpsList';
 // create a module
 export default angular.module(name, [
     angularMeteor,
-    uiRouter
+    uiRouter,
+    DhelpsListUtilsTopBar,
+    DhelpsListGridView
 ]).component(name, {
     template,
     controllerAs: name,

@@ -176,7 +176,10 @@ function queryDefaultSettings() {
                     viewMode: 'grid', // list or grid?
                     _refreshTokenInGridMode: 'default_token'
                 },
-
+                dhelpsList: {
+                    viewMode: 'grid', // list or grid?
+                    _refreshTokenInGridMode: 'default_token'
+                }
             }
         },
         {
@@ -234,7 +237,37 @@ function queryDefaultSettings() {
                     }
                 },
                 tbisrepList: {},
-                tbishisList: {}
+                tbishisList: {},
+                dhelpsList: {
+                    groupable: true,
+                    filterable: {
+                        extra: true
+                    },
+                    sortable: true,
+                    resizable: true,
+                    reorderable: true,
+                    pageable: {
+                        pageSizes: true,
+                        buttonCount: 5
+                    },
+                    excel: {
+                        allPages: true,
+                        fileName: 'DataHelpers.xlsx',
+                        filterable: true
+                    }
+                }
+            }
+        },
+        {
+            _id: "Ahd6Berm4DbTR2ews",
+            module: "datahelpers",
+            page: "dhelpsList",
+            options: {
+                suscribe: {
+                    category: 'thietbis',
+                    stateName: '',
+                    subject: ''
+                }
             }
         }
     ]

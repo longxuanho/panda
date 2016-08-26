@@ -1,10 +1,6 @@
 <md-content layout="column">
-    <tbis-list-utils-top-bar options="{isShowViewModeBtn: true}"></tbis-list-utils-top-bar>
+    <dhelps-list-utils-top-bar></dhelps-list-utils-top-bar>
     <div>
-        <tbis-display-list-view ng-if="tbisList.utilsTopBarOptions.viewMode==='list'"></tbis-display-list-view>
-        <tbis-display-grid-view ng-if="tbisList.utilsTopBarOptions.viewMode==='grid'"></tbis-display-grid-view>
-        <div style="height: 80px;" flex></div>
-        <!--<pre>{{tbisList.utilsFilterOptions.utilsFilter |json}}</pre>-->
+        <dhelps-list-grid-view></dhelps-list-grid-view>
     </div>
 </md-content>
-<tbis-list-fab-menu></tbis-list-fab-menu>

@@ -1,0 +1,26 @@
+<form layout="row" layout-fill layout-padding name="dhelpsListGridView.addNewDataHelperForm">
+    <md-input-container class="md-block" flex="33">
+        <label>StateName</label>
+        <md-select name="stateName" ng-model="dhelpsListGridView.subscribeOptions.subscribe.stateName" required>
+            <md-option ng-value="stateName"
+                       ng-repeat="stateName in dhelpsListGridView.liveOptions.selectOptions.stateNames">{{stateName}}
+            </md-option>
+        </md-select>
+        <div class="errors" ng-messages="dhelpsListGridView.addNewDataHelperForm.stateName.$error">
+            <div ng-message="required">Thông tin bắt buộc.</div>
+        </div>
+    </md-input-container>
+    <md-input-container class="md-block" flex="33">
+        <label>Subject</label>
+        <md-select name="subject" ng-model="dhelpsListGridView.subscribeOptions.subscribe.subject" required>
+            <md-option ng-value="subject" ng-repeat="subject in dhelpsListGridView.liveOptions.selectOptions.subjects">{{subject}}</md-option>
+        </md-select>
+        <div class="errors" ng-messages="dhelpsListGridView.addNewDataHelperForm.subject.$error">
+            <div ng-message="required">Thông tin bắt buộc.</div>
+        </div>
+    </md-input-container>
+</form>
+<!--<pre>{{dhelpsListGridView.datahelpers | json}}</pre>-->
+<dhelps-list-grid-view-kendo-grid></dhelps-list-grid-view-kendo-grid>
+
+<dhelps-list-add-new-fab></dhelps-list-add-new-fab>

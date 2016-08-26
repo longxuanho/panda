@@ -13,7 +13,7 @@ class KendoGridDataService {
 
         this.userLocalSettingsService = userLocalSettingsService;
 
-        this.allowedStateNames = ['tbisList', 'tbisrepList', 'tbishisList'];
+        this.allowedStateNames = ['tbisList', 'tbisrepList', 'tbishisList', 'dhelpsList'];
 
         this.currentKendoGridOptions = {
             gridRef: {},
