@@ -18,10 +18,13 @@ class DhelpsListGridViewKendoGrid {
 
         $reactive(this).attach($scope);
 
+        this.dhelpsDataService = dhelpsDataService;
+
         this.subscribeOptions = subscribeDataService.getCurrentSubscribeOptions();
         this.kendoGridOptions = kendoGridDataService.getCurrentKendoGridOptions();
+        this.selectedDataHelper = dhelpsDataService.getSelectedDataHelper();
 
-        this.refreshToken = 'default_token';
+        this.refreshToken = 'default_token';    // Token dùng để trigger kendo refresh qua k-rebind
 
 
         initKendoGridOptions(this.kendoGridOptions.options, this.subscribeOptions.subscribe);
@@ -43,6 +46,18 @@ class DhelpsListGridViewKendoGrid {
                 return null;
             }
         });
+    }
+
+    onGridSelect(event, data) {
+        // Hàm được gọi khi user chọn một row trong grid
+        if (data) {
+            if (data._id === this.selectedDataHelper.dataHelper._id) {
+                this.dhelpsDataService.setSelectedDataHelper(null);
+                this.kendoGridOptions.gridRef.clearSelection();
+            }
+            else
+                this.dhelpsDataService.setSelectedDataHelper(data._id);
+        }
     }
 
     reloadGridColumns() {

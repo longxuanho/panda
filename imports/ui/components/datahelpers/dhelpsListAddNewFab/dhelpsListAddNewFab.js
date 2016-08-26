@@ -10,6 +10,8 @@ import modalTemplate from './dhelpsListAddNewModal.html';
 import { name as DhelpsDataService } from '../../../services/datahelpers/dhelpsDataService';
 import { name as NotificationService } from '../../../services/common/notificationService';
 
+import { name as DhelpsListInputForm } from '../dhelpsListInputForm/dhelpsListInputForm';
+
 
 class DhelpsListAddNewFab {
     constructor($scope, $mdDialog, $mdMedia) {
@@ -27,12 +29,8 @@ class DhelpsListAddNewFab {
                 this.newDataHelper = dhelpsDataService.initNewDataHelperData();
 
                 this.liveOptions = {
-                    selectOptions: {
-                        modules:  dhelpsDataService.queryUISelectOptionsDBData().modules,
-                        stateNames: [],
-                        subjects: []
-                    },
-                    selectOptionsDB: dhelpsDataService.queryUISelectOptionsDBData()
+                    isFormInvalid: false,
+                    isPreserveSelect: false
                 };
 
                 this.addNew = () => {
@@ -51,29 +49,18 @@ class DhelpsListAddNewFab {
                 };
 
                 this.reset = () => {
-                    this.newDataHelper = dhelpsDataService.initNewDataHelperData();
-                };
-
-                this.parseDataSource = () => {
-                    try {
-                        this.newDataHelper.dataSource = JSON.parse(this.newDataHelper.stringifiedDataSource);
-                    } catch (error) {
-                        this.newDataHelper.dataSource = {};
+                    if (!this.liveOptions.isPreserveSelect)
+                        this.newDataHelper = dhelpsDataService.initNewDataHelperData();
+                    else {
+                        let preservedSelection = _.pick(this.newDataHelper, 'module', 'stateName', 'subject');
+                        this.newDataHelper = dhelpsDataService.initNewDataHelperData();
+                        _.extend(this.newDataHelper, preservedSelection);
                     }
                 };
 
                 this.close = () => {
                     $mdDialog.hide();
                 };
-
-                this.updateSelectOptionsUI = () => {
-                    if (this.newDataHelper.module) {
-                        this.liveOptions.selectOptions.stateNames = this.liveOptions.selectOptionsDB.stateNames[this.newDataHelper.module];
-                    }
-
-                    if (this.newDataHelper.stateName)
-                        this.liveOptions.selectOptions.subjects = this.liveOptions.selectOptionsDB.subjects[this.newDataHelper.stateName];
-                }
             },
             controllerAs: 'dhelpsListAddNewModal',
             template: modalTemplate,
@@ -93,7 +80,8 @@ export default angular.module(name, [
     angularMeteor,
     ngMessages,
     DhelpsDataService,
-    NotificationService
+    NotificationService,
+    DhelpsListInputForm
 ]).component(name, {
     template: fabTemplate,
     controllerAs: name,

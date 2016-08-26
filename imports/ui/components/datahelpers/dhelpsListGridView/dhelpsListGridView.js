@@ -16,10 +16,11 @@ class DhelpsListGridView {
         'ngInject';
         $reactive(this).attach($scope);
 
+        this.dhelpsDataService = dhelpsDataService;
+
         this.subscribeOptions = subscribeDataService.getCurrentSubscribeOptions();
         this.utilsTopBarOptions = utilsTopBarDataService.getCurrentUtilsTopBarOptions();
-
-        this.dhelpsDataService = dhelpsDataService;
+        this.selectedDataHelper = dhelpsDataService.getSelectedDataHelper();
 
         this.liveOptions = {
             selectOptions: {

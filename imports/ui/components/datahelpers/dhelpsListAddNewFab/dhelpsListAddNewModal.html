@@ -9,93 +9,16 @@
         </div>
     </md-toolbar>
     <md-dialog-content>
-        <!-- <div class="md-dialog-content"> -->
         <p class="md-body-1" style="padding: 16px 16px 0px 16px;">Để tạo mới DataHelper, xin vui lòng điền các thông tin yêu cầu vào mẫu phiếu dưới đây:</p>
-        <form name="dhelpsListAddNewModal.addNewDataHelperForm">
-            <md-list>
-                <!--Section: Thông tin tham chiếu-->
-                <md-divider></md-divider>
-                <md-subheader class="md-no-sticky">Thông tin tham chiếu</md-subheader>
-                <md-list-item>
-                    <div layout="row" layout-fill style="padding: 40px 0;;">
-                        <md-input-container class="md-block" flex="33">
-                            <label>Module</label>
-                            <md-select name="module" ng-model="dhelpsListAddNewModal.newDataHelper.module"
-                                       ng-change="dhelpsListAddNewModal.updateSelectOptionsUI()"
-                                       required>
-                                <md-option ng-value="module" ng-repeat="module in dhelpsListAddNewModal.liveOptions.selectOptions.modules">{{module}}</md-option>
-                            </md-select>
-                            <div class="errors" ng-messages="dhelpsListAddNewModal.addNewDataHelperForm.module.$error">
-                                <div ng-message="required">Thông tin bắt buộc.</div>
-                            </div>
-                        </md-input-container>
-                        <md-input-container class="md-block" flex="33">
-                            <label>StateName</label>
-                            <md-select name="stateName" ng-model="dhelpsListAddNewModal.newDataHelper.stateName"
-                                       ng-change="dhelpsListAddNewModal.updateSelectOptionsUI()"
-                                       required>
-                                <md-option ng-value="stateName" ng-repeat="stateName in dhelpsListAddNewModal.liveOptions.selectOptions.stateNames">{{stateName}}</md-option>
-                            </md-select>
-                            <div class="errors" ng-messages="dhelpsListAddNewModal.addNewDataHelperForm.stateName.$error">
-                                <div ng-message="required">Thông tin bắt buộc.</div>
-                            </div>
-                        </md-input-container>
-                        <md-input-container class="md-block" flex="33">
-                            <label>Subject</label>
-                            <md-select name="subject" ng-model="dhelpsListAddNewModal.newDataHelper.subject"
-                                       ng-change="dhelpsListAddNewModal.updateSelectOptionsUI()"
-                                       required>
-                                <md-option ng-value="subject" ng-repeat="subject in dhelpsListAddNewModal.liveOptions.selectOptions.subjects">{{subject}}</md-option>
-                            </md-select>
-                            <div class="errors" ng-messages="dhelpsListAddNewModal.addNewDataHelperForm.subject.$error">
-                                <div ng-message="required">Thông tin bắt buộc.</div>
-                            </div>
-                        </md-input-container>
-                    </div>
-                </md-list-item>
-                <!--Section: Dữ liệu về đối tượng-->
-                <md-divider></md-divider>
-                <md-subheader class="md-no-sticky">Đối tượng dữ liệu</md-subheader>
-                <md-list-item>
-                    <div layout="column" layout-fill>
-                        <div layout="row">
-                            <md-input-container class="md-block" flex="50">
-                                <label>Order</label>
-                                <input type="number" ng-model="dhelpsListAddNewModal.newDataHelper.order" required name="order">
-                                <div ng-messages="dhelpsListAddNewModal.addNewDataHelperForm.order.$error">
-                                    <div ng-message="required">Thông tin bắt buộc.</div>
-                                </div>
-                            </md-input-container>
-                        </div>
-                        <div layout="row">
-                            <md-input-container class="md-block" flex="100">
-                                <label>DataSource (Stringfied)</label>
-                                <input  ng-model="dhelpsListAddNewModal.newDataHelper.stringifiedDataSource"
-                                        ng-blur="dhelpsListAddNewModal.parseDataSource()"
-                                        required name="dataSource">
-                                <div ng-messages="dhelpsListAddNewModal.addNewDataHelperForm.dataSource.$error">
-                                    <div ng-message="required">Thông tin bắt buộc.</div>
-                                </div>
-                            </md-input-container>
-                        </div>
-                    </div>
-                </md-list-item>
-                <!--Section: Chế độ xem trước-->
-                <md-divider></md-divider>
-                <md-subheader class="md-no-sticky">Chế độ xem trước</md-subheader>
-                <md-list-item>
-                    <pre layout-fill>DataSource:
-{{ dhelpsListAddNewModal.newDataHelper.dataSource | json }}</pre>
-            </md-list>
-        </form>
-        <pre>
-            {{ dhelpsListAddNewModal.newDataHelper | json }}
-        </pre>
-        <!-- </div> -->
+        <dhelps-list-input-form view-model="dhelpsListAddNewModal.newDataHelper"
+                                is-preserve-select="dhelpsListAddNewModal.liveOptions.isPreserveSelect"
+                                is-form-invalid="dhelpsListAddNewModal.liveOptions.isFormInvalid" >
+        </dhelps-list-input-form>
+        <div style="color: transparent;">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam</div>
     </md-dialog-content>
     <md-dialog-actions layout="row">
         <md-button ng-click="dhelpsListAddNewModal.reset()" aria-label="Reset">Reset</md-button>
         <span flex></span>
-        <md-button style="margin-right:20px;" ng-click="dhelpsListAddNewModal.addNew()" ng-disabled="dhelpsListAddNewModal.addNewDataHelperForm.$invalid" aria-label="Tạo mới">Tạo mới</md-button>
+        <md-button style="margin-right:20px;" ng-click="dhelpsListAddNewModal.addNew()" ng-disabled="dhelpsListAddNewModal.liveOptions.isFormInvalid" aria-label="Tạo mới">Tạo mới</md-button>
     </md-dialog-actions>
 </md-dialog>

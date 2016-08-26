@@ -1,0 +1,72 @@
+<form name="dhelpsListInputForm.addNewDataHelperForm">
+    <md-list>
+        <!--Section: Thông tin tham chiếu-->
+        <md-divider></md-divider>
+        <md-subheader class="md-no-sticky">Thông tin tham chiếu</md-subheader>
+        <md-list-item>
+            <div layout="row" layout-fill style="padding: 40px 0;">
+                <md-input-container class="md-block" flex="33">
+                    <label>Module</label>
+                    <md-select name="module" ng-model="dhelpsListInputForm.viewModel.module"
+                               ng-change="dhelpsListInputForm.updateSelectOptionsUI()"
+                               required>
+                        <md-option ng-value="module" ng-repeat="module in dhelpsListInputForm.liveOptions.selectOptions.modules">{{module}}</md-option>
+                    </md-select>
+                    <div class="errors" ng-messages="dhelpsListInputForm.addNewDataHelperForm.module.$error">
+                        <div ng-message="required">Thông tin bắt buộc.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block" flex="33">
+                    <label>StateName</label>
+                    <md-select name="stateName" ng-model="dhelpsListInputForm.viewModel.stateName"
+                               ng-change="dhelpsListInputForm.updateSelectOptionsUI()"
+                               required>
+                        <md-option ng-value="stateName" ng-repeat="stateName in dhelpsListInputForm.liveOptions.selectOptions.stateNames">{{stateName}}</md-option>
+                    </md-select>
+                    <div class="errors" ng-messages="dhelpsListInputForm.addNewDataHelperForm.stateName.$error">
+                        <div ng-message="required">Thông tin bắt buộc.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block" flex="33">
+                    <label>Subject</label>
+                    <md-select name="subject" ng-model="dhelpsListInputForm.viewModel.subject"
+                               ng-change="dhelpsListInputForm.updateSelectOptionsUI()"
+                               required>
+                        <md-option ng-value="subject" ng-repeat="subject in dhelpsListInputForm.liveOptions.selectOptions.subjects">{{subject}}</md-option>
+                    </md-select>
+                    <div class="errors" ng-messages="dhelpsListInputForm.addNewDataHelperForm.subject.$error">
+                        <div ng-message="required">Thông tin bắt buộc.</div>
+                    </div>
+                </md-input-container>
+            </div>
+        </md-list-item>
+        <md-list-item>
+            <p>Giữ các lựa chọn này cho lần tạo mới tiếp theo</p>
+            <md-checkbox class="md-secondary" ng-model="dhelpsListInputForm.isPreserveSelect"></md-checkbox>
+        </md-list-item>
+        <!--Section: Dữ liệu về đối tượng-->
+        <md-divider></md-divider>
+        <md-subheader class="md-no-sticky">Đối tượng dữ liệu</md-subheader>
+        <md-list-item>
+            <div layout="column" layout-fill style="padding: 40px 0;">
+                <div layout="row">
+                    <md-input-container class="md-block" flex="100">
+                        <label>DataSource (Stringfied)</label>
+                        <input  ng-model="dhelpsListInputForm.viewModel.stringifiedDataSource"
+                                ng-blur="dhelpsListInputForm.parseDataSource()"
+                                required name="dataSource">
+                        <div ng-messages="dhelpsListInputForm.addNewDataHelperForm.dataSource.$error">
+                            <div ng-message="required">Thông tin bắt buộc.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+        </md-list-item>
+        <!--Section: Chế độ xem trước-->
+        <md-divider></md-divider>
+        <md-subheader class="md-no-sticky">Chế độ xem trước</md-subheader>
+        <md-list-item>
+                    <pre layout-fill>DataSource:
+{{ dhelpsListInputForm.viewModel.dataSource | json }}</pre>
+    </md-list>
+</form>

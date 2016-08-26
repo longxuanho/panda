@@ -246,6 +246,7 @@ function queryDefaultSettings() {
                     sortable: true,
                     resizable: true,
                     reorderable: true,
+                    selectable: "row",
                     pageable: {
                         pageSizes: true,
                         buttonCount: 5

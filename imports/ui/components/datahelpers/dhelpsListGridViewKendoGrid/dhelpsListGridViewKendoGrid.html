@@ -1,6 +1,9 @@
 <div id="myGrid"
      kendo-grid="dhelpsListGridViewKendoGrid.kendoGridOptions.gridRef"
      k-options="dhelpsListGridViewKendoGrid.kendoGridOptions.options"
+     k-on-change="dhelpsListGridViewKendoGrid.onGridSelect(kendoEvent, data)"
      k-rebind="dhelpsListGridViewKendoGrid.refreshToken"
      style="border-left-width: 0;border-right-width: 0;border-top-width: 0;">
 </div>
+
+<pre>{{dhelpsListGridViewKendoGrid.selectedDataHelper | json}}</pre>

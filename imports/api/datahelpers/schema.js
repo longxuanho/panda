@@ -20,10 +20,6 @@ Schema.DataHelper = new SimpleSchema({
         type: Object,
         blackbox: true
     },
-    order: {
-        type: Number,
-        defaultValue: 100
-    },
     isPublic: {
         type: Boolean,
         defaultValue: true

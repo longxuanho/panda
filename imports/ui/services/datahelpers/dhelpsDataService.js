@@ -12,7 +12,9 @@ class DhelpsDataService {
 
         this.$q = $q;
 
-        this.selectedDataHelper = {};
+        this.selectedDataHelper = {
+            dataHelper: {}
+        };
     }
 
     query(selector, options) {
@@ -33,8 +35,7 @@ class DhelpsDataService {
             stateName: '',
             subject: '',
             dataSource: {},
-            stringifiedDataSource: '', // Trường dữ liệu này sẽ không được ghi nhận vào Schema
-            order: 100,
+            stringifiedDataSource: '', // Trường dữ liệu này sẽ không được ghi nhận vào Schema,
             isPublic: true
         }
     }
@@ -45,6 +46,7 @@ class DhelpsDataService {
         if (_.isEmpty(data.dataSource))
             throw Error('Chưa có thông tin về dataSource. Thông tin không hợp lệ.');
     }
+
 
     addNew(data) {
         let defer = this.$q.defer();
@@ -80,8 +82,11 @@ class DhelpsDataService {
         return this.selectedDataHelper;
     }
 
-    getSelectedDataHelper(datahelperId) {
-        this.selectedDataHelper = this.queryOne(datahelperId);
+    setSelectedDataHelper(datahelperId) {
+        if (!datahelperId)
+            this.selectedDataHelper.dataHelper = {};
+        else
+            this.selectedDataHelper.dataHelper = this.queryOne(datahelperId);
     }
 
     queryUISelectOptionsDBData() {

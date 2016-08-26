@@ -20,7 +20,7 @@
         </div>
     </md-input-container>
 </form>
-<!--<pre>{{dhelpsListGridView.datahelpers | json}}</pre>-->
+
 <dhelps-list-grid-view-kendo-grid></dhelps-list-grid-view-kendo-grid>
 
-<dhelps-list-add-new-fab></dhelps-list-add-new-fab>
+<dhelps-list-add-new-fab ng-hide="dhelpsListGridView.selectedDataHelper.dataHelper._id" class="no-animate"></dhelps-list-add-new-fab>
