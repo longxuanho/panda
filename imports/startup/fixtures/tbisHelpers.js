@@ -100,7 +100,7 @@ Meteor.startup(() => {
                 "ma": "DTV",
                 "ten": "Dầu Thực Vật"
             }, {
-                "ma": "GILNG",
+                "ma": "GILG",
                 "ten": "Giao Long"
             }, {
                 "ma": "HLUC",
@@ -124,10 +124,10 @@ Meteor.startup(() => {
                 "ma": "PHHUU",
                 "ten": "Phú Hữu"
             }, {
-                "ma": "SADEC",
+                "ma": "SADE",
                 "ten": "Sa Đéc"
             }, {
-                "ma": "STHN",
+                "ma": "STH",
                 "ten": "Sóng Thần"
             }, {
                 "ma": "STIEN",
@@ -482,12 +482,6 @@ Meteor.startup(() => {
                     "ten": "Ford"
                 }
             }, {
-                "ten": "LEADER",
-                "hang_san_xuat": {
-                    "ma": "FORD",
-                    "ten": "Ford"
-                }
-            }, {
                 "ten": "45/22",
                 "hang_san_xuat": {
                     "ma": "GENE",
@@ -648,12 +642,6 @@ Meteor.startup(() => {
                 "hang_san_xuat": {
                     "ma": "MAZ",
                     "ten": "Maz"
-                }
-            }, {
-                "ten": "FUSO",
-                "hang_san_xuat": {
-                    "ma": "MITSUBISHI",
-                    "ten": "Mitsubishi"
                 }
             }, {
                 "ten": "FUSO",
@@ -938,13 +926,19 @@ Meteor.startup(() => {
                 }
             }, {
                 "ten": "Sà lan",
-                "order": 400,
+                "order": 300,
                 "nhom": {
                     "ten": "Tàu thuyền"
                 }
             }, {
                 "ten": "Máy phát",
-                "order": 500,
+                "order": 100,
+                "nhom": {
+                    "ten": "Trạm nguồn"
+                }
+            }, {
+                "ten": "Máy biến áp",
+                "order": 200,
                 "nhom": {
                     "ten": "Trạm nguồn"
                 }
@@ -1229,14 +1223,20 @@ Meteor.startup(() => {
                     "ten": "Sà lan"
                 }
             }, {
-                "ten": "Máy phát dưới 1000 KVA",
+                "ten": "Máy phát dưới 900 KVA",
                 "order": 100,
                 "chung_loai": {
                     "ten": "Máy phát"
                 }
             }, {
-                "ten": "Máy phát trên 1000 KVA",
+                "ten": "Máy phát 1000 KVA",
                 "order": 200,
+                "chung_loai": {
+                    "ten": "Máy phát"
+                }
+            }, {
+                "ten": "Máy phát 2000 KVA",
+                "order": 300,
                 "chung_loai": {
                     "ten": "Máy phát"
                 }

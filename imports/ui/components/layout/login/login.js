@@ -29,7 +29,7 @@ class Login {
         this.isLogging = true;
         this.authDataService.login(this.credentials).then(() => {
             this.notificationService.success('Welcome back : )', 'Đăng nhập thành công');
-            this.$state.go('parties');
+            this.$state.go('workspacesList');
         }).catch((err) => {
             this.isLogging = false;
             this.notificationService.error(err.reason, 'Đăng nhập thất bại');

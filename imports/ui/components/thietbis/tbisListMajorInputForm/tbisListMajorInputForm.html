@@ -254,29 +254,19 @@
         <md-divider></md-divider>
         <md-subheader class="md-no-sticky">Thông tin bảo hành</md-subheader>
         <md-list-item>
-            <div layout="row" style="padding-top: 24px; padding-bottom: 10px;">
-                <md-checkbox ng-model="tbisListMajorInputForm.viewModel.bao_hanh.isBaoHanh" aria-label="Có thông tin bảo hành?">
-                    Có thông tin bảo hành
-                </md-checkbox>
-            </div>
+            <p>Có thông tin bảo hành</p>
+            <md-checkbox class="md-secondary" ng-model="tbisListMajorInputForm.viewModel.bao_hanh.isThongTinBaoHanh"></md-checkbox>
         </md-list-item>
-        <md-list-item ng-show="tbisListMajorInputForm.viewModel.bao_hanh.isBaoHanh">
-            <div layout="column" layout-fill>
-                <div layout="row">
-                    <md-input-container class="md-block" flex="50">
-                        <label>T.gian bảo hành (tháng)</label>
-                        <input name="bao_hanh_thoi_gian_bao_hanh" ng-model="tbisListMajorInputForm.viewModel.bao_hanh.thoi_gian_bao_hanh" type="number" step="1" min="0" max="1000">
-                        <div ng-messages="tbisListMajorInputForm.addNewThietBiForm.bao_hanh_thoi_gian_bao_hanh.$error">
-                            <div ng-message="min">Thời gian bảo hành thể âm.</div>
-                            <div ng-message="max">Thời gian bảo hành không thể vượt quá 1000 (tháng)</div>
-                        </div>
-                    </md-input-container>
-                </div>
-                <div layout="row">
-                    <md-datepicker ng-model="tbisListMajorInputForm.viewModel.bao_hanh.ngay_bat_dau" md-placeholder="Ngày bắt đầu" flex="50"></md-datepicker>
-                    <md-datepicker ng-model="tbisListMajorInputForm.viewModel.bao_hanh.ngay_ket_thuc" md-placeholder="Ngày kết thúc" flex="50" disabled></md-datepicker>
-                </div>
-            </div>
+
+        <md-list-item ng-show="tbisListMajorInputForm.viewModel.bao_hanh.isThongTinBaoHanh" layout="row" class="sky-fix-kendo-date-picker" flex>
+            <md-input-container flex="50">
+                <label>Ngày bắt đầu</label>
+                <input kendo-date-picker k-format="'dd/MM/yyyy'" style="width: 100%;" k-ng-model="tbisListMajorInputForm.viewModel.bao_hanh.thoi_gian.ngay_bat_dau" type="date"/>
+            </md-input-container>
+            <md-input-container flex="50">
+                <label>Ngày kết thúc</label>
+                <input kendo-date-picker k-format="'dd/MM/yyyy'" style="width: 100%;" k-ng-model="tbisListMajorInputForm.viewModel.bao_hanh.thoi_gian.ngay_ket_thuc" type="date"/>
+            </md-input-container>
         </md-list-item>
 
         <!--Section: Thiết bị đi kèm-->

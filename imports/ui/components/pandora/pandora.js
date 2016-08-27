@@ -50,13 +50,7 @@ class Pandora {
     constructor() {
         'ngInject';
 
-        // Fix lỗi treo chương trình khi export pdf từ grid
-        kendo.pdf.defineFont({
-            "Roboto": "/fonts/DejaVuSans.ttf",
-            "Roboto|Bold": "/fonts/DejaVuSans-Bold.ttf",
-            "Roboto|Bold|Italic": "/fonts/DejaVuSans-Oblique.ttf",
-            "Roboto|Italic": "/fonts/DejaVuSans-Oblique.ttf"
-        });
+
     }
 }
 
@@ -107,9 +101,21 @@ function config($locationProvider, $urlRouterProvider, uiGmapGoogleMapApiProvide
 
     $locationProvider.html5Mode(true);
 
-    $urlRouterProvider.otherwise('/parties');
+    $urlRouterProvider.otherwise('/quan-ly/ban-lam-viec');
     
+    // Set ngôn ngữ tiếng Việt cho moment.js
     moment.locale('vi');
+
+    // Set ngôn ngữ tiếng Việt cho kendo.js
+    kendo.culture("vi-VI");
+
+    // Fix lỗi treo chương trình khi export pdf từ grid
+    kendo.pdf.defineFont({
+        "Roboto": "/fonts/DejaVuSans.ttf",
+        "Roboto|Bold": "/fonts/DejaVuSans-Bold.ttf",
+        "Roboto|Bold|Italic": "/fonts/DejaVuSans-Oblique.ttf",
+        "Roboto|Italic": "/fonts/DejaVuSans-Oblique.ttf"
+    });
 
     uiGmapGoogleMapApiProvider.configure({
         key: 'AIzaSyDf6ECMBu2pWez3xo4s1H1Sc-spt3PwLDQ'

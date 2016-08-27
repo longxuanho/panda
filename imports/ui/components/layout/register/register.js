@@ -44,7 +44,7 @@ class Register {
         this.isRegistering = true;
         this.authDataService.register(this.credentials).then(() => {
             this.notificationService.success('Chào mừng đến với Skynet!', 'Đăng ký thành công');
-            this.$state.go('parties');
+            this.$state.go('workspacesList');
         }).catch((err) => {
             this.isRegistering = false;
             this.notificationService.error(err.reason, 'Đăng ký thất bại');

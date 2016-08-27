@@ -2,7 +2,6 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
 import template from './tbisListMajorInputForm.html';
-// import { name as TbisListPageSettingsService } from '../../../services/thietbis/tbisListPageSettingsService';
 
 import { name as TbisPhanLoaiDataService } from '../../../services/thietbis/tbisPhanLoaiDataService';
 import { name as TbisNguonGocDataService } from '../../../services/thietbis/tbisNguonGocDataService';
@@ -30,6 +29,13 @@ class TbisListMajorInputForm {
         $scope.$on('reset-tbis-list-major-input-form', (event, args) => {
             this.addNewThietBiForm.$setPristine();
             this.addNewThietBiForm.$setUntouched();
+        });
+
+        $scope.$watch('tbisListMajorInputForm.viewModel.bao_hanh.isThongTinBaoHanh', (newVal) => {
+            if (!newVal) {
+                this.viewModel.bao_hanh.thoi_gian = {};
+                this.viewModel.bao_hanh.stringify = {};
+            }
         });
     }
 }

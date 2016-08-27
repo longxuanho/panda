@@ -36,7 +36,7 @@
                 </md-input-container>
             </div>
         </md-list-item>
-        <md-list-item>
+        <md-list-item ng-if="dhelpsListInputForm.isPreserveSelect !== null">
             <p>Giữ các lựa chọn này cho lần tạo mới tiếp theo</p>
             <md-checkbox class="md-secondary" ng-model="dhelpsListInputForm.isPreserveSelect"></md-checkbox>
         </md-list-item>

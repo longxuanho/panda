@@ -1,16 +1,20 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
+import { Meteor } from 'meteor/meteor';
 
 import _ from 'underscore';
+import moment from 'moment';
 
 import { ThietBis } from '../../../api/thietbis/tbis';
+import { name as MetadataService } from '../../services/common/metadataService';
 
 class TbisDataService {
 
-    constructor($q) {
+    constructor($q, metadataService) {
         'ngInject';
 
         this.$q = $q;
+        this.metadataService = metadataService;
 
         this.selectedThietBi = {};
     }
@@ -41,7 +45,11 @@ class TbisDataService {
                 doi_van_hanh: {}
             },
             ho_so: {},
-            bao_hanh: {},
+            bao_hanh: {
+                isThongTinBaoHanh: false,
+                thoi_gian: {},
+                stringify: {}
+            },
             tags: [],
             thong_so_ky_thuat: [],
             thong_so_hoat_dong: {},
@@ -50,24 +58,34 @@ class TbisDataService {
         }
     }
 
+    buidInputThietBiData(data) {
+        this.metadataService.buildNewMetadata(data, Meteor.user());
+        if (data.bao_hanh.isThongTinBaoHanh && (data.bao_hanh.thoi_gian.ngay_bat_dau && data.bao_hanh.thoi_gian.ngay_ket_thuc)) {
+            data.bao_hanh.stringify.ngay_bat_dau = moment(data.bao_hanh.thoi_gian.ngay_bat_dau).format('YYYY-MM-DD');
+            data.bao_hanh.stringify.ngay_ket_thuc = moment(data.bao_hanh.thoi_gian.ngay_ket_thuc).format('YYYY-MM-DD');
+        }
+    }
+
     validateMajorInputThietBiData(data) {
-        console.log('validating...');
         if (!data.ma_thiet_bi.keyId)
-            throw Error('Chưa có thông tin về mã thiết bị');
+            throw Error('Chưa có thông tin về mã thiết bị.');
         if (!data.phan_loai.nhom)
-            throw Error('Chưa có thông tin về nhóm thiết bị');
+            throw Error('Chưa có thông tin về nhóm thiết bị.');
         if (!data.phan_loai.chung_loai)
-            throw Error('Chưa có thông tin về chủng loại thiết bị');
+            throw Error('Chưa có thông tin về chủng loại thiết bị.');
         if (!data.phan_loai.loai)
-            throw Error('Chưa có thông tin về loại thiết bị');
+            throw Error('Chưa có thông tin về loại thiết bị.');
         if (!data.nguon_goc.hang_san_xuat)
-            throw Error('Chưa có thông tin về hãng sản xuất');
+            throw Error('Chưa có thông tin về hãng sản xuất.');
         if (_.isEmpty(data.dia_diem.khu_vuc))
-            throw Error('Chưa có thông tin về khu vực hoạt động');
+            throw Error('Chưa có thông tin về khu vực hoạt động.');
         if (_.isEmpty(data.phan_quyen.quan_ly))
-            throw Error('Chưa có thông tin về đơn vị quản lý');
+            throw Error('Chưa có thông tin về đơn vị quản lý.');
         if (_.isEmpty(data.phan_quyen.so_huu))
-            throw Error('Chưa có thông tin về đơn vị sở hữu');
+            throw Error('Chưa có thông tin về đơn vị sở hữu.');
+
+        if (data.bao_hanh.isThongTinBaoHanh && !(data.bao_hanh.thoi_gian.ngay_bat_dau && data.bao_hanh.thoi_gian.ngay_ket_thuc))
+            throw Error('Thông tin về thời gian bảo hành chưa đầy đủ.');
     }
 
     validateImageInputData(image) {
@@ -275,6 +293,7 @@ const name = 'tbisDataService';
 
 // create a module
 export default angular.module(name, [
-    angularMeteor
+    angularMeteor,
+    MetadataService
 ])
     .service(name, TbisDataService);

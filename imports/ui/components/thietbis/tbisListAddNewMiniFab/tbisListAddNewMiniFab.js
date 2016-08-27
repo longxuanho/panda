@@ -40,7 +40,8 @@ class TbisListAddNewMiniFab {
 
                 this.addNew = () => {
                     try {
-                        metadataService.buildNewMetadata(this.newThietBi, Meteor.user());
+                        // metadataService.buildNewMetadata(this.newThietBi, Meteor.user());
+                        tbisDataService.buidInputThietBiData(this.newThietBi);
                         tbisDataService.validateMajorInputThietBiData(this.newThietBi);
                         tbisDataService.addNew(this.newThietBi).then(() => {
                             notificationService.success('Thiết bị của bạn đã được ghi nhận vào Skynet.', 'Tạo mới thành công');

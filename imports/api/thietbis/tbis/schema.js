@@ -230,36 +230,45 @@ Schema.ThietBi = new SimpleSchema({
             type: Boolean,
             defaultValue: false
         },
-        'kiem_dinh.so_phieu_kiem_dinh': {
-            type: String,
-            optional: true
+        'kiem_dinh.ho_so': {
+            type: Object,
+            defaultValue: {}
         },
-        'kiem_dinh.so_tem_kiem_dinh': {
-            type: String,
-            optional: true
+            'kiem_dinh.ho_so.so_phieu_kiem_dinh': {
+                type: String,
+                optional: true
+            },
+            'kiem_dinh.ho_so.so_tem_kiem_dinh': {
+                type: String,
+                optional: true
+            },
+        'kiem_dinh.thoi_gian': {
+            type: Object,
+            defaultValue: {}
         },
-        'kiem_dinh.ngay_hieu_luc': {
-            type: Date,
-            optional: true
+            'kiem_dinh.thoi_gian.ngay_hieu_luc': {
+                type: Date,
+                optional: true
+            },
+            'kiem_dinh.thoi_gian.ngay_het_han': {
+                type: Date,
+                optional: true
+            },
+        'kiem_dinh.stringify': {
+            type: Object,
+            defaultValue: {}
         },
-        'kiem_dinh.ngay_het_han': {
-            type: Date,
-            optional: true
-        },
-        'kiem_dinh.ngay_hieu_luc_string': {
-            type: String,
-            optional: true
-        },
-        'kiem_dinh.ngay_het_han_string': {
-            type: String,
-            optional: true
-        },
-        'kiem_dinh.urls': {
-            type: [String],
-            defaultValue: []
-        },
+            'kiem_dinh.stringify.ngay_hieu_luc': {
+                type: String,
+                optional: true
+            },
+            'kiem_dinh.stringify.ngay_het_han': {
+                type: String,
+                optional: true
+            },
     bao_hanh: {
-        type: Object
+        type: Object,
+        defaultValue: {}
     },
         'bao_hanh.isThongTinBaoHanh': {
             type: Boolean,
@@ -269,22 +278,30 @@ Schema.ThietBi = new SimpleSchema({
             type: Boolean,
             defaultValue: false
         },
-        'bao_hanh.ngay_bat_dau': {
-            type: Date,
-            optional: true
+        'bao_hanh.thoi_gian': {
+            type: Object,
+            defaultValue: {}
         },
-        'bao_hanh.ngay_bat_dau_string': {
-            type: Date,
-            optional: true
+            'bao_hanh.thoi_gian.ngay_bat_dau': {
+                type: Date,
+                optional: true
+            },
+            'bao_hanh.thoi_gian.ngay_ket_thuc': {
+                type: Date,
+                optional: true
+            },
+        'bao_hanh.stringify': {
+            type: Object,
+            defaultValue: {}
         },
-        'bao_hanh.ngay_ket_thuc': {
-            type: Date,
-            optional: true
-        },
-        'bao_hanh.ngay_ket_thuc_string': {
-            type: Date,
-            optional: true
-        },
+            'bao_hanh.stringify.ngay_bat_dau': {
+                type: String,
+                optional: true
+            },
+            'bao_hanh.stringify.ngay_ket_thuc': {
+                type: String,
+                optional: true
+            },
     hinh_anh: {
         type: Object,
         optional: true

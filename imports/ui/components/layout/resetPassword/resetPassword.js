@@ -36,7 +36,7 @@ class ResetPassword {
             this.isResetting = true;
             this.authDataService.resetPassword(this.credentials).then(() => {
                 this.notificationService.success('Mật khẩu của bạn đã được khôi phục thành công.', 'Reset mật khẩu thành công');
-                this.$state.go('parties');
+                this.$state.go('workspacesList');
             }).catch((err) => {
                 this.isResetting = false;
                 this.notificationService.error(err.reason, 'Reset mật khẩu thất bại');

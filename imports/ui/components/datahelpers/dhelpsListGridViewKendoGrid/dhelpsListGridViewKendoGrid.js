@@ -35,18 +35,22 @@ class DhelpsListGridViewKendoGrid {
             datahelpers() {
                 let fetchData = dhelpsDataService.query();
                 try {
-                    this.kendoGridOptions.options.dataSource.group([]);
-                    this.kendoGridOptions.options.dataSource.data(fetchData);
-                    this.reloadGridColumns();
-                    this.triggerRefreshToken();
+                    if (fetchData.length)
+                        this.kendoGridOptions.options.dataSource.data(fetchData);
                 } catch(error) {
-                    notificationService.error('Các trường dữ liệu không đồng bộ. Tiến hành restart các quy trình..', 'Khởi tạo thông tin lỗi')
-                    this.reloadGridColumns();
-                    this.triggerRefreshToken();
-                    this.kendoGridOptions.options.dataSource.data(fetchData);
+                    notificationService.error('Các trường dữ liệu không đồng bộ. Tiến hành restart các quy trình..', 'Khởi tạo thông tin lỗi');
                 }
-
                 return null;
+            }
+        });
+
+        $scope.$watch('dhelpsListGridViewKendoGrid.subscribeOptions.subscribe.subject', (newVal) => {
+            if (newVal) {
+                this.kendoGridOptions.options.dataSource.group([]);
+                this.kendoGridOptions.options.dataSource.page(1);
+                this.kendoGridOptions.options.dataSource.data([]);
+                this.reloadGridColumns();
+                this.triggerRefreshToken();
             }
         });
     }
@@ -54,16 +58,17 @@ class DhelpsListGridViewKendoGrid {
     onGridSelect(event) {
         // Hàm được gọi khi user chọn một row trong grid
         let selecteRow = this.kendoGridOptions.gridRef.select();
-        let selectedDataItem = this.kendoGridOptions.gridRef.dataItem(selecteRow);
+        if (selecteRow) {
+            let selectedDataItem = this.kendoGridOptions.gridRef.dataItem(selecteRow);
 
-        if (selectedDataItem && selectedDataItem._id) {
-            if (selectedDataItem._id === this.selectedDataHelper.dataHelper._id) {
-                this.kendoGridOptions.gridRef.clearSelection();
-                this.dhelpsDataService.setSelectedDataHelper(null);
-            } else
-                this.dhelpsDataService.setSelectedDataHelper(selectedDataItem._id);
+            if (selectedDataItem && selectedDataItem._id) {
+                if (selectedDataItem._id === this.selectedDataHelper.dataHelper._id) {
+                    this.kendoGridOptions.gridRef.clearSelection();
+                    this.dhelpsDataService.setSelectedDataHelper(null);
+                } else
+                    this.dhelpsDataService.setSelectedDataHelper(selectedDataItem._id);
+            }
         }
-
     }
 
     onGridDataBound(event) {
@@ -279,10 +284,6 @@ function solveKendoGridColumnsBasedOnSubject(module, subject) {
             ],
             "chungloais": [
                 {
-                    field: "dataSource.nhom.ten",
-                    title: "Nhóm TB",
-                    width: "240px"
-                }, {
                     field: "dataSource.ten",
                     title: "Chủng loại TB",
                     width: "240px",
@@ -290,7 +291,14 @@ function solveKendoGridColumnsBasedOnSubject(module, subject) {
                 }, {
                     field: "dataSource.order",
                     title: "Mức ưu tiên",
-                    width: "240px"
+                    width: "240px",
+                    groupable: false
+                }, {
+                    field: "dataSource.nhom.ten",
+                    title: "Nhóm TB",
+                    width: "240px",
+                    aggregates: ["count"],
+                    groupHeaderTemplate: "Nhóm TB: #= value # (#= count#)"
                 }, {
                     field: "_id",
                     title: "Mã tham chiếu",
@@ -300,10 +308,6 @@ function solveKendoGridColumnsBasedOnSubject(module, subject) {
             ],
             "loais": [
                 {
-                    field: "dataSource.chung_loai.ten",
-                    title: "Chủng loại TB",
-                    width: "240px"
-                }, {
                     field: "dataSource.ten",
                     title: "Loại TB",
                     width: "240px",
@@ -311,7 +315,14 @@ function solveKendoGridColumnsBasedOnSubject(module, subject) {
                 }, {
                     field: "dataSource.order",
                     title: "Mức ưu tiên",
-                    width: "240px"
+                    width: "240px",
+                    groupable: false
+                }, {
+                    field: "dataSource.chung_loai.ten",
+                    title: "Chủng loại TB",
+                    width: "240px",
+                    aggregates: ["count"],
+                    groupHeaderTemplate: "Chủng loại TB: #= value # (#= count#)"
                 }, {
                     field: "_id",
                     title: "Mã tham chiếu",
@@ -321,18 +332,21 @@ function solveKendoGridColumnsBasedOnSubject(module, subject) {
             ],
             "donvis": [
                 {
-                    field: "dataSource.ma",
-                    title: "Mã đơn vị",
-                    width: "240px"
-                }, {
                     field: "dataSource.ten",
                     title: "Tên đơn vị",
                     width: "240px",
                     groupable: false
                 }, {
+                    field: "dataSource.ma",
+                    title: "Mã đơn vị",
+                    width: "240px",
+                    groupable: false
+                }, {
                     field: "dataSource.nhom",
                     title: "Nhóm tham chiếu",
-                    width: "240px"
+                    width: "240px",
+                    aggregates: ["count"],
+                    groupHeaderTemplate: "Nhóm: #= value # (#= count#)"
                 }, {
                     field: "_id",
                     title: "Mã tham chiếu",
@@ -343,22 +357,26 @@ function solveKendoGridColumnsBasedOnSubject(module, subject) {
             "doivanhanhs": [
                 {
                     field: "dataSource.ten",
-                    title: "Tên đội vận hành",
+                    title: "Đội vận hành",
                     width: "240px",
                     groupable: false
                 }, {
                     field: "dataSource.ma",
-                    title: "Mã đội vận hành",
+                    title: "Mã đội",
                     width: "180px",
                     groupable: false
                 }, {
                     field: "dataSource.don_vi.ma",
                     title: "Mã Đơn vị",
-                    width: "180px"
+                    width: "180px",
+                    aggregates: ["count"],
+                    groupHeaderTemplate: "Mã đơn vị: #= value # (#= count#)"
                 }, {
                     field: "dataSource.don_vi.ten",
                     title: "Đơn vị",
-                    width: "320px"
+                    width: "320px",
+                    aggregates: ["count"],
+                    groupHeaderTemplate: "Đơn vị: #= value # (#= count#)"
                 }, {
                     field: "_id",
                     title: "Mã tham chiếu",
@@ -368,13 +386,15 @@ function solveKendoGridColumnsBasedOnSubject(module, subject) {
             ],
             "tags": [
                 {
-                    field: "dataSource.nhom.ten",
-                    title: "Nhóm tham chiếu",
-                    width: "240px"
-                }, {
                     field: "dataSource.ten",
                     title: "Tên Tag",
                     width: "240px"
+                }, {
+                    field: "dataSource.nhom.ten",
+                    title: "Nhóm tham chiếu",
+                    width: "240px",
+                    aggregates: ["count"],
+                    groupHeaderTemplate: "Nhóm TB: #= value # (#= count#)"
                 }, {
                     field: "_id",
                     title: "Mã tham chiếu",
