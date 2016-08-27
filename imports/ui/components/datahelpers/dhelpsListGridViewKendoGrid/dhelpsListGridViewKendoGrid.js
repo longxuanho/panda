@@ -35,6 +35,7 @@ class DhelpsListGridViewKendoGrid {
             datahelpers() {
                 let fetchData = dhelpsDataService.query();
                 try {
+                    this.kendoGridOptions.options.dataSource.group([]);
                     this.kendoGridOptions.options.dataSource.data(fetchData);
                     this.reloadGridColumns();
                     this.triggerRefreshToken();
@@ -161,6 +162,30 @@ function solveKendoGridColumnsBasedOnSubject(module, subject) {
                     width: "240px",
                     groupable: false
                 }
+            ],
+            "donvis": [
+                {
+                    field: "dataSource.ten",
+                    title: "Tên đơn vị",
+                    width: "400px",
+                    groupable: false
+                }, {
+                    field: "dataSource.ma",
+                    title: "Mã đơn vị",
+                    width: "240px",
+                    groupable: false
+                }, {
+                    field: "dataSource.nhom",
+                    title: "Phân nhóm",
+                    width: "320px",
+                    aggregates: ["count"],
+                    groupHeaderTemplate: "Nhóm: #= value # (#= count#)"
+                }, {
+                    field: "_id",
+                    title: "Mã tham chiếu",
+                    width: "240px",
+                    groupable: false
+                }
             ]
         },
         "thietbis": {
@@ -202,16 +227,18 @@ function solveKendoGridColumnsBasedOnSubject(module, subject) {
             ],
             "models": [
                 {
+                    field: "dataSource.ten",
+                    title: "Tên Model",
+                    width: "240px"
+                }, {
                     field: "dataSource.hang_san_xuat.ten",
                     title: "Hãng sản xuất",
-                    width: "240px"
+                    width: "240px",
+                    aggregates: ["count"],
+                    groupHeaderTemplate: "Hãng sản xuất: #= value # (#= count#)"
                 },  {
                     field: "dataSource.hang_san_xuat.ma",
                     title: "Mã hãng",
-                    width: "240px"
-                }, {
-                    field: "dataSource.ten",
-                    title: "Tên Model",
                     width: "240px"
                 }, {
                     field: "_id",
@@ -315,23 +342,23 @@ function solveKendoGridColumnsBasedOnSubject(module, subject) {
             ],
             "doivanhanhs": [
                 {
-                    field: "dataSource.don_vi.ma",
-                    title: "Mã Đơn vị",
-                    width: "240px"
-                }, {
-                    field: "dataSource.don_vi.ten",
-                    title: "Đơn vị",
-                    width: "240px"
-                }, {
-                    field: "dataSource.ma",
-                    title: "Mã đội vận hành",
-                    width: "240px",
-                    groupable: false
-                }, {
                     field: "dataSource.ten",
                     title: "Tên đội vận hành",
                     width: "240px",
                     groupable: false
+                }, {
+                    field: "dataSource.ma",
+                    title: "Mã đội vận hành",
+                    width: "180px",
+                    groupable: false
+                }, {
+                    field: "dataSource.don_vi.ma",
+                    title: "Mã Đơn vị",
+                    width: "180px"
+                }, {
+                    field: "dataSource.don_vi.ten",
+                    title: "Đơn vị",
+                    width: "320px"
                 }, {
                     field: "_id",
                     title: "Mã tham chiếu",

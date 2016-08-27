@@ -2,14 +2,14 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
 import _ from 'underscore';
-import { TbisHelpers } from '../../../api/thietbis/tbisHelpers';
+import { name as DhelpsDataService } from '../../services/datahelpers/dhelpsDataService';
 
 class TbisDiaDiemDataService {
 
-    constructor() {
+    constructor(dhelpsDataService) {
         'ngInject';
-        this.quocgias = [];
-        this.khuvucs = [];
+
+        this.dhelpsDataService = dhelpsDataService;
 
         this.selectOptions = {
             quocgias: [],
@@ -22,30 +22,33 @@ class TbisDiaDiemDataService {
     }
 
     queryAll() {
+        // Hàm reactive được gọi trong Helper(), reinvoke khi thietbishelper thay đổi
         this.queryQuocGias();
         this.queryKhuVucs();
     }
 
     queryQuocGias() {
-        this.quocgias = resolveDataFromDB(
-            TbisHelpers.find({
-                subject: 'diadiems',
-                category: 'quocgias'
-            }).fetch()
+        let quocgias = resolveSelectOptionsDB(
+            this.dhelpsDataService.query({
+                module: "commons",
+                stateName: "dhelpsList",
+                subject: "quocgias"
+            })
         );
 
-        this.selectOptions.quocgias = buildQuocGiasOptions(this.quocgias);
+        this.selectOptions.quocgias = buildQuocGiasOptions(quocgias);
     }
     
     queryKhuVucs() {
-        this.khuvucs = resolveDataFromDB(
-            TbisHelpers.find({
-                subject: 'diadiems',
-                category: 'khuvucs'
-            }).fetch()
+        let khuvucs = resolveSelectOptionsDB(
+            this.dhelpsDataService.query({
+                module: "thietbis",
+                stateName: "tbisList",
+                subject: "khuvucs"
+            })
         );
 
-        this.selectOptions.khuvucs = buildKhuVucsOptions(this.khuvucs);
+        this.selectOptions.khuvucs = buildKhuVucsOptions(khuvucs);
     }
 }
 
@@ -53,15 +56,13 @@ const name = 'tbisDiaDiemDataService';
 
 // create a module
 export default angular.module(name, [
-    angularMeteor
+    angularMeteor,
+    DhelpsDataService
 ])
     .service(name, TbisDiaDiemDataService);
 
-function resolveDataFromDB(data) {
-    "use strict";
-    // console.log('resolveDataFromDB ', _.pluck(data, 'dataObject'));
-    return _.pluck(data, 'dataObject');
-
+function resolveSelectOptionsDB(data) {
+    return _.pluck(data, 'dataSource');
 }
 
 function buildQuocGiasOptions(quocgias) {

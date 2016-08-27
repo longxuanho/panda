@@ -2,14 +2,14 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
 import _ from 'underscore';
-import { TbisHelpers } from '../../../api/thietbis/tbisHelpers';
+import { name as DhelpsDataService } from '../../services/datahelpers/dhelpsDataService';
 
 class TbisPhanQuyenDataService {
 
-    constructor() {
+    constructor(dhelpsDataService) {
         'ngInject';
-        this.donvis = [];
-        this.doivanhanhs = [];
+
+        this.dhelpsDataService = dhelpsDataService;
 
         this.selectOptions = {
             donvis: [],
@@ -22,30 +22,34 @@ class TbisPhanQuyenDataService {
     }
 
     queryAll() {
+        // Hàm reactive được gọi trong Helper(), reinvoke khi thietbishelper thay đổi
         this.queryDonVis();
         this.queryDoiVanHanhs();
     }
 
     queryDonVis() {
-        this.donvis = resolveDataFromDB(
-            TbisHelpers.find({
-                subject: 'phanquyens',
-                category: 'donvis'
-            }).fetch()
+        // Thông tin về đơn vị chứa trong trường dataSource của dữ liệu truy vấn
+        let donvis = resolveSelectOptionsDB(
+            this.dhelpsDataService.query({
+                module: "commons",
+                stateName: "dhelpsList",
+                subject: "donvis"
+            })
         );
 
-        this.selectOptions.donvis = buildDonViOptions(this.donvis);
+        this.selectOptions.donvis = buildDonViOptions(donvis);
     }
 
     queryDoiVanHanhs() {
-        this.doivanhanhs = resolveDataFromDB(
-            TbisHelpers.find({
-                subject: 'phanquyens',
-                category: 'doivanhanhs'
-            }).fetch()
+        let doivanhanhs = resolveSelectOptionsDB(
+            this.dhelpsDataService.query({
+                module: "thietbis",
+                stateName: "tbisList",
+                subject: "doivanhanhs"
+            })
         );
 
-        this.selectOptions.doivanhanhs = buildDoiVanHanhOptions(this.doivanhanhs);
+        this.selectOptions.doivanhanhs = buildDoiVanHanhOptions(doivanhanhs);
     }
 
 }
@@ -54,15 +58,13 @@ const name = 'tbisPhanQuyenDataService';
 
 // create a module
 export default angular.module(name, [
-    angularMeteor
+    angularMeteor,
+    DhelpsDataService
 ])
     .service(name, TbisPhanQuyenDataService);
 
-function resolveDataFromDB(data) {
-    "use strict";
-    // console.log('resolveDataFromDB ', _.pluck(data, 'dataObject'));
-    return _.pluck(data, 'dataObject');
-
+function resolveSelectOptionsDB(data) {
+    return _.pluck(data, 'dataSource');
 }
 
 function buildDonViOptions(donvis) {

@@ -3,12 +3,14 @@ import angularMeteor from 'angular-meteor';
 
 import _ from 'underscore';
 import { TbisHelpers } from '../../../api/thietbis/tbisHelpers';
+import { name as DhelpsDataService } from '../../services/datahelpers/dhelpsDataService';
 
 class TbisReferenceDataService {
 
-    constructor() {
+    constructor(dhelpsDataService) {
         'ngInject';
-        this.tags = [];
+
+        this.dhelpsDataService = dhelpsDataService;
 
         this.selectOptions = {
             tags: []
@@ -20,18 +22,20 @@ class TbisReferenceDataService {
     }
 
     queryAll() {
+        // Hàm reactive được gọi trong Helper(), reinvoke khi thietbishelper thay đổi
         this.queryTags();
     }
 
     queryTags() {
-        this.tags = resolveDataFromDB(
-            TbisHelpers.find({
-                subject: 'references',
-                category: 'tags'
-            }).fetch()
+        let tags = resolveSelectOptionsDB(
+            this.dhelpsDataService.query({
+                module: "thietbis",
+                stateName: "tbisList",
+                subject: "tags"
+            })
         );
 
-        this.selectOptions.tags = buildTagOptions(this.tags);
+        this.selectOptions.tags = buildTagOptions(tags);
     }
 
 }
@@ -40,14 +44,13 @@ const name = 'tbisReferenceDataService';
 
 // create a module
 export default angular.module(name, [
-    angularMeteor
+    angularMeteor,
+    DhelpsDataService
 ])
     .service(name, TbisReferenceDataService);
 
-function resolveDataFromDB(data) {
-    "use strict";
-    return _.pluck(data, 'dataObject');
-
+function resolveSelectOptionsDB(data) {
+    return _.pluck(data, 'dataSource');
 }
 
 function buildTagOptions(tags) {

@@ -14,7 +14,7 @@ Meteor.startup(() => {
             {
                 "ten": "Anh",
                 "name": "England"
-            },{
+            }, {
                 "ten": "Belarus",
                 "name": "Belarus"
             }, {
@@ -64,10 +64,10 @@ Meteor.startup(() => {
 
         const khuvucs = [
             {
-                "ma": "HP128",
+                "ma": "HPH128",
                 "ten": "128 Hải Phòng"
             }, {
-                "ma": "HP189",
+                "ma": "HPH189",
                 "ten": "189 Hải Phòng"
             }, {
                 "ma": "CAOL",
@@ -825,6 +825,8 @@ Meteor.startup(() => {
                 "ten": "Gia Việt Khang"
             }, {
                 "ten": "Unico Vina"
+            }, {
+                "ten": "Huỳnh Thi"
             }
         ];
 

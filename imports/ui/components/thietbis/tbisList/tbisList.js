@@ -38,6 +38,17 @@ class TbisList {
 
         this.subscribe('tbishelpers');
         this.subscribe('tskthelpers');
+        this.subscribe('datahelpers', () => [
+            {
+                // options
+            },
+            {
+                // queryParams
+                module: ['thietbis', 'commons'],
+                stateName: null,
+                subject: null
+            }
+        ]);
         
         this.helpers({
             tbishelpers() {

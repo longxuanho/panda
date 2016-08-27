@@ -2,15 +2,14 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
 import _ from 'underscore';
-import { TbisHelpers } from '../../../api/thietbis/tbisHelpers';
+import { name as DhelpsDataService } from '../../services/datahelpers/dhelpsDataService';
 
 class TbisNguonGocDataService {
 
-    constructor() {
+    constructor(dhelpsDataService) {
         'ngInject';
-        this.hangsanxuats = [];
-        this.models = [];
-        this.vendors = [];
+
+        this.dhelpsDataService = dhelpsDataService;
 
         this.selectOptions = {
             hangsanxuats: [],
@@ -24,44 +23,46 @@ class TbisNguonGocDataService {
     }
     
     queryAll() {
+        // Hàm reactive được gọi trong Helper(), reinvoke khi thietbishelper thay đổi
         this.queryHangSanXuats();
         this.queryModels();
         this.queryVendors();        
     }
 
     queryHangSanXuats() {
-        // Hàm reactive được gọi trong Helper(), reinvoke khi thietbishelper thay đổi
-        // Thông tin về hãng sản xuất chứa trong trường dataObject của dữ liệu truy vấn
-        this.hangsanxuats = resolveDataFromDB(
-            TbisHelpers.find({
-                subject: 'nguongocs',
-                category: 'hangsanxuats'
-            }).fetch()
+        let hangsanxuats = resolveSelectOptionsDB(
+            this.dhelpsDataService.query({
+                module: "thietbis",
+                stateName: "tbisList",
+                subject: "hangsanxuats"
+            })
         );
 
-        this.selectOptions.hangsanxuats = buildHangSanXuatOptions(this.hangsanxuats);
+        this.selectOptions.hangsanxuats = buildHangSanXuatOptions(hangsanxuats);
     }
 
     queryModels() {
-        this.models = resolveDataFromDB(
-            TbisHelpers.find({
-                subject: 'nguongocs',
-                category: 'models'
-            }).fetch()
+        let models = resolveSelectOptionsDB(
+            this.dhelpsDataService.query({
+                module: "thietbis",
+                stateName: "tbisList",
+                subject: "models"
+            })
         );
 
-        this.selectOptions.models = buildModelOptions(this.models);
+        this.selectOptions.models = buildModelOptions(models);
     }
 
     queryVendors() {
-        this.vendors = resolveDataFromDB(
-            TbisHelpers.find({
-                subject: 'nguongocs',
-                category: 'vendors'
-            }).fetch()
+        let vendors = resolveSelectOptionsDB(
+            this.dhelpsDataService.query({
+                module: "thietbis",
+                stateName: "tbisList",
+                subject: "vendors"
+            })
         );
 
-        this.selectOptions.vendors = buildVendorOptions(this.vendors);
+        this.selectOptions.vendors = buildVendorOptions(vendors);
     }
 }
 
@@ -69,14 +70,13 @@ const name = 'tbisNguonGocDataService';
 
 // create a module
 export default angular.module(name, [
-    angularMeteor
+    angularMeteor,
+    DhelpsDataService
 ])
     .service(name, TbisNguonGocDataService);
 
-function resolveDataFromDB(data) {
-    "use strict";
-    return _.pluck(data, 'dataObject');
-
+function resolveSelectOptionsDB(data) {
+    return _.pluck(data, 'dataSource');
 }
 
 function buildHangSanXuatOptions(hangsanxuats) {

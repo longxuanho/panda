@@ -2,16 +2,14 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import _ from 'underscore';
 
-import { TbisHelpers } from '../../../api/thietbis/tbisHelpers';
+import { name as DhelpsDataService } from '../../services/datahelpers/dhelpsDataService';
 
 class TbisPhanLoaiDataService {
 
-    constructor() {
+    constructor(dhelpsDataService) {
         'ngInject';
 
-        this.nhoms = [];
-        this.chungloais = [];
-        this.loais = [];
+        this.dhelpsDataService = dhelpsDataService;
 
         this.selectOptions = {
             nhoms: [],
@@ -32,39 +30,40 @@ class TbisPhanLoaiDataService {
     }
     
     queryNhoms() {
-        // Thông tin về nhóm chứa trong trường dataObject của dữ liệu truy vấn
-        this.nhoms = resolveDataFromDB(
-            TbisHelpers.find({
-                subject: 'phanloais',
-                category: 'nhoms'
-            }, {
-                sort: { order: 1 }
-            }).fetch()
+        // Thông tin về nhóm chứa trong trường dataSource của dữ liệu truy vấn
+        let nhoms = resolveSelectOptionsDB(
+            this.dhelpsDataService.query({
+                module: "thietbis",
+                stateName: "tbisList",
+                subject: "nhoms"
+            })
         );
 
-        this.selectOptions.nhoms = buildNhomOptions(this.nhoms);
+        this.selectOptions.nhoms = buildNhomOptions(nhoms);
     }
 
     queryChungLoais() {
-        this.chungloais = resolveDataFromDB(
-            TbisHelpers.find({
-                subject: 'phanloais',
-                category: 'chungloais'
-            }).fetch()
+        let chungloais = resolveSelectOptionsDB(
+            this.dhelpsDataService.query({
+                module: "thietbis",
+                stateName: "tbisList",
+                subject: "chungloais"
+            })
         );
+        this.selectOptions.chungloais = buildChungLoaiOptions(chungloais);
 
-        this.selectOptions.chungloais = buildChungLoaiOptions(this.chungloais);
     }
 
     queryLoais() {
-        this.loais = this.chungloais = resolveDataFromDB(
-                TbisHelpers.find({
-                subject: 'phanloais',
-                category: 'loais'
-            }).fetch()
+        let loais = this.chungloais = resolveSelectOptionsDB(
+            this.dhelpsDataService.query({
+                module: "thietbis",
+                stateName: "tbisList",
+                subject: "loais"
+            })
         );
 
-        this.selectOptions.loais = buildLoaiOptions(this.loais);
+        this.selectOptions.loais = buildLoaiOptions(loais);
     }
 }
 
@@ -72,14 +71,15 @@ const name = 'tbisPhanLoaiDataService';
 
 // create a module
 export default angular.module(name, [
-    angularMeteor
+    angularMeteor,
+    DhelpsDataService
 ])
     .service(name, TbisPhanLoaiDataService);
 
-function resolveDataFromDB(data) {
-    "use strict";
-    return _.pluck(data, 'dataObject');
+function resolveSelectOptionsDB(data) {
+    return _.pluck(data, 'dataSource');
 }
+
 
 function buildNhomOptions(nhoms) {
     "use strict";
