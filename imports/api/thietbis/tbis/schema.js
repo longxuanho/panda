@@ -219,6 +219,22 @@ Schema.ThietBi = new SimpleSchema({
             type: String,
             optional: true
         },
+        'ho_so.thiet_bi_di_kem': {
+            type: Object,
+            defaultValue: {}
+        },
+            'ho_so.thiet_bi_di_kem.isThietBiDiKem': {
+                type: Boolean,
+                defaultValue: false
+            },
+            'ho_so.thiet_bi_di_kem.danh_sach': {
+                type: [String],
+                defaultValue: []
+            },
+            'ho_so.thiet_bi_di_kem.str_danh_sach': {
+                type: String,
+                optional: true
+            },
     kiem_dinh: {
         type: Object
     },

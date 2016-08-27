@@ -1240,6 +1240,36 @@ Meteor.startup(() => {
                 "chung_loai": {
                     "ten": "Máy phát"
                 }
+            }, {
+                "ten": "MBA dưới 900 KVA",
+                "order": 100,
+                "chung_loai": {
+                    "ten": "Máy biến áp"
+                }
+            }, {
+                "ten": "MBA 1000 - 1900 KVA",
+                "order": 200,
+                "chung_loai": {
+                    "ten": "Máy biến áp"
+                }
+            }, {
+                "ten": "MBA 2000 - 2900 KVA",
+                "order": 300,
+                "chung_loai": {
+                    "ten": "Máy biến áp"
+                }
+            }, {
+                "ten": "MBA 3000 KVA",
+                "order": 400,
+                "chung_loai": {
+                    "ten": "Máy biến áp"
+                }
+            }, {
+                "ten": "MBA 4000 KVA",
+                "order": 500,
+                "chung_loai": {
+                    "ten": "Máy biến áp"
+                }
             }
         ];
 

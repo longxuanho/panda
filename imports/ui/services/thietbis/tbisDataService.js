@@ -44,7 +44,12 @@ class TbisDataService {
                 van_hanh: {},
                 doi_van_hanh: {}
             },
-            ho_so: {},
+            ho_so: {
+                thiet_bi_di_kem: {
+                    isThietBiDiKem: false,
+                    danh_sach: []
+                }
+            },
             bao_hanh: {
                 isThongTinBaoHanh: false,
                 thoi_gian: {},
@@ -63,7 +68,10 @@ class TbisDataService {
         if (data.bao_hanh.isThongTinBaoHanh && (data.bao_hanh.thoi_gian.ngay_bat_dau && data.bao_hanh.thoi_gian.ngay_ket_thuc)) {
             data.bao_hanh.stringify.ngay_bat_dau = moment(data.bao_hanh.thoi_gian.ngay_bat_dau).format('YYYY-MM-DD');
             data.bao_hanh.stringify.ngay_ket_thuc = moment(data.bao_hanh.thoi_gian.ngay_ket_thuc).format('YYYY-MM-DD');
+            data.isTrongThoiGianBaoHanh = (data.bao_hanh.stringify.ngay_ket_thuc > moment().format('YYYY-MM-DD'));
         }
+        if ((data.ho_so.thiet_bi_di_kem.isThietBiDiKem && data.ho_so.thiet_bi_di_kem.danh_sach.length))
+            data.ho_so.thiet_bi_di_kem.str_danh_sach = data.ho_so.thiet_bi_di_kem.danh_sach.join(", ");
     }
 
     validateMajorInputThietBiData(data) {
@@ -86,6 +94,8 @@ class TbisDataService {
 
         if (data.bao_hanh.isThongTinBaoHanh && !(data.bao_hanh.thoi_gian.ngay_bat_dau && data.bao_hanh.thoi_gian.ngay_ket_thuc))
             throw Error('Thông tin về thời gian bảo hành chưa đầy đủ.');
+        if (data.ho_so.thiet_bi_di_kem.isThietBiDiKem && !data.ho_so.thiet_bi_di_kem.danh_sach.length)
+            throw Error('Chưa có danh sách các mã thiết bị đi kèm.');
     }
 
     validateImageInputData(image) {

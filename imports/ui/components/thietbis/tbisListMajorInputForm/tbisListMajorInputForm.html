@@ -273,19 +273,17 @@
         <md-divider></md-divider>
         <md-subheader class="md-no-sticky">Thiết bị đi kèm</md-subheader>
         <md-list-item>
-            <div layout="row" style="padding-top: 24px; padding-bottom: 10px;">
-                <md-checkbox ng-model="tbisListMajorInputForm.viewModel.thiet_bi_di_kem.isThietBiDiKem" aria-label="Có thiết bị đi kèm?">
-                    Có thiết bị đi kèm
-                </md-checkbox>
-            </div>
+            <p>Có thiết bị đi kèm</p>
+            <md-checkbox class="md-secondary" ng-model="tbisListMajorInputForm.viewModel.ho_so.thiet_bi_di_kem.isThietBiDiKem"></md-checkbox>
         </md-list-item>
-        <md-list-item ng-show="tbisListMajorInputForm.viewModel.thiet_bi_di_kem.isThietBiDiKem">
+        <md-list-item ng-show="tbisListMajorInputForm.viewModel.ho_so.thiet_bi_di_kem.isThietBiDiKem">
             <div layout="column" layout-fill>
-                <div layout="row">
-                    <md-input-container class="md-block" flex="100">
-                        <label>Các thiết bị đi kèm</label>
-                        <input name="thiet_bi_di_kem_array" ng-model="tbisListMajorInputForm.viewModel.bao_hanh.thiet_bi_di_kem.danh_sach">
-                    </md-input-container>
+                <div layout="row" flex style="margin-top: 40px; margin-bottom: 40px;">
+                    <md-chips flex
+                            ng-model="tbisListMajorInputForm.viewModel.ho_so.thiet_bi_di_kem.danh_sach"
+                            placeholder="Nhập các mã TB đi kèm"
+                            secondary-placeholder="+Mã thiết bị"
+                    ></md-chips>
                 </div>
             </div>
         </md-list-item>
