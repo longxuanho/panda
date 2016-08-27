@@ -305,12 +305,27 @@
         <md-subheader class="md-no-sticky">Các mục bổ sung</md-subheader>
         <md-list-item>
             <div layout="column" layout-fill>
-                <div layout="row" style="margin-top: 40px; margin-bottom: 40px;">
-                    <select kendo-multi-select
-                            k-data-source="tbisListMajorInputForm.selectOptions.tags[tbisListMajorInputForm.viewModel.phan_loai.nhom]"
-                            k-ng-model="tbisListMajorInputForm.viewModel.tags"
-                            style="width: 100%;"
-                            k-placeholder="'Gắn thẻ...'"></select>
+                <!--<div layout="row" style="margin-top: 40px; margin-bottom: 40px;">-->
+                    <!--<select kendo-multi-select-->
+                            <!--k-data-source="tbisListMajorInputForm.selectOptions.tags[tbisListMajorInputForm.viewModel.phan_loai.nhom]"-->
+                            <!--k-ng-model="tbisListMajorInputForm.viewModel.tags"-->
+                            <!--style="width: 100%;"-->
+                            <!--k-placeholder="'Gắn thẻ...'"></select>-->
+                <!--</div>-->
+                <div layout="row" flex="100" style="margin-top: 40px; margin-bottom: 40px;">
+                    <md-chips flex="100"
+                            ng-model="tbisListMajorInputForm.viewModel.tags"
+                            md-autocomplete-snap
+                            md-require-match="true">
+                        <md-autocomplete
+                                md-selected-item="tbisListMajorInputForm.liveOptions.mdChips.selectedItem"
+                                md-search-text="tbisListMajorInputForm.liveOptions.mdChips.searchText"
+                                md-items="item in tbisListMajorInputForm.selectOptions.tags[tbisListMajorInputForm.viewModel.phan_loai.nhom]"
+                                md-item-text="item"
+                                placeholder="Gắn thẻ cho thiết bị +">
+                            <span md-highlight-text="tbisListMajorInputForm.liveOptions.mdChips.searchText">{{item}}</span>
+                        </md-autocomplete>
+                    </md-chips>
                 </div>
                 <div layout="row">
                     <md-input-container class="md-block" flex="100">

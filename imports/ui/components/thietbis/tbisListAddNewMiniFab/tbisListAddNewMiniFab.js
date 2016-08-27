@@ -78,7 +78,7 @@ class TbisListAddNewMiniFab {
                             if (!_.isEmpty(preservedSelection[key]))
                                 _.extend(this.newThietBi, preservedSelection[key]);
                         });
-                        
+
                         $scope.$broadcast('reset-tbis-list-major-input-form');
                     }, 1000);
                 };

@@ -20,6 +20,13 @@ class TbisListMajorInputForm {
         _.extend(this.selectOptions, tbisPhanQuyenDataService.getSelectOptions());
         _.extend(this.selectOptions, tbisReferenceDataService.getSelectOptions());
 
+        this.liveOptions = {
+            mdChips: {
+                searchText: null,
+                selectedItem: null
+            }
+        };
+
         $scope.$on('reset-tbis-list-major-input-form', (event, args) => {
             this.addNewThietBiForm.$setPristine();
             this.addNewThietBiForm.$setUntouched();
