@@ -41,7 +41,8 @@ export default angular.module(name, [
     template,
     controllerAs: name,
     bindings: {
-        viewModel: '='
+        viewModel: '=',
+        isPreserveSelect: '='
     },
     controller: TbisListMajorInputForm
 });

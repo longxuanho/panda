@@ -29,6 +29,15 @@ class TbisListAddNewMiniFab {
 
                 this.newThietBi = tbisDataService.initNewThietBiData();
 
+                this.liveOptions = {
+                    isPreserveSelect: {
+                        phanLoai: false,
+                        nguonGoc: false,
+                        diaDiem: false,
+                        phanQuyen: false
+                    }
+                };
+
                 this.addNew = () => {
                     try {
                         metadataService.buildNewMetadata(this.newThietBi, Meteor.user());
@@ -47,7 +56,29 @@ class TbisListAddNewMiniFab {
 
                 this.reset = () => {
                     $timeout(() => {
+                        let preservedSelection = {
+                            phanLoai: {},
+                            nguonGoc: {},
+                            diaDiem: {},
+                            phanQuyen: {}
+                        };
+
+                        if (this.liveOptions.isPreserveSelect.phanLoai)
+                            preservedSelection.phanLoai =_.pick(this.newThietBi, 'phan_loai');
+                        if (this.liveOptions.isPreserveSelect.nguonGoc)
+                            preservedSelection.nguonGoc =_.pick(this.newThietBi, 'nguon_goc');
+                        if (this.liveOptions.isPreserveSelect.diaDiem)
+                            preservedSelection.diaDiem =_.pick(this.newThietBi, 'dia_diem');
+                        if (this.liveOptions.isPreserveSelect.phanQuyen)
+                            preservedSelection.phanQuyen =_.pick(this.newThietBi, 'phan_quyen');
+
                         this.newThietBi = tbisDataService.initNewThietBiData();
+
+                        _.each(_.keys(preservedSelection), (key) => {
+                            if (!_.isEmpty(preservedSelection[key]))
+                                _.extend(this.newThietBi, preservedSelection[key]);
+                        });
+                        
                         $scope.$broadcast('reset-tbis-list-major-input-form');
                     }, 1000);
                 };

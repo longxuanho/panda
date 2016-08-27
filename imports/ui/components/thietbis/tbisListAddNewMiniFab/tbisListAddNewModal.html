@@ -9,13 +9,15 @@
         </div>
     </md-toolbar>
     <md-dialog-content>
-        <!-- <div class="md-dialog-content"> -->
-            <p class="md-body-1" style="padding: 16px 16px 0px 16px;">Vui lòng điền các thông tin thiết bị vào mẫu phiếu dưới đây:</p>
-            <tbis-list-major-input-form view-model="tbisListAddNewModal.newThietBi"></tbis-list-major-input-form>
+        <p class="md-body-1" style="padding: 16px 16px 0px 16px;">Vui lòng điền các thông tin thiết bị vào mẫu phiếu dưới đây:</p>
+        <tbis-list-major-input-form
+                view-model="tbisListAddNewModal.newThietBi"
+                is-preserve-select="tbisListAddNewModal.liveOptions.isPreserveSelect"
+        ></tbis-list-major-input-form>
         <pre>
             {{ tbisListAddNewModal.newThietBi | json }}
         </pre>
-        <!-- </div> -->
+        <div style="color: transparent;">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam</div>
     </md-dialog-content>
     <md-dialog-actions layout="row">
         <md-button ng-click="tbisListAddNewModal.reset()" aria-label="Reset">Reset</md-button>

@@ -3,19 +3,19 @@
         <!--Section: Mã thiết bị-->
         <md-divider></md-divider>
         <md-subheader class="md-no-sticky">Mã thiết bị</md-subheader>
-        <md-list-item>
-            <md-input-container class="md-block">
+        <md-list-item layout="row" layout-fill>
+            <md-input-container class="md-block" flex="33">
                 <label>Mã quản lý</label>
                 <input ng-model="tbisListMajorInputForm.viewModel.ma_thiet_bi.keyId" required name="ma_tb">
                 <div ng-messages="tbisListMajorInputForm.addNewThietBiForm.ma_tb.$error">
                     <div ng-message="required">Thông tin bắt buộc.</div>
                 </div>
             </md-input-container>
-            <md-input-container class="md-block">
+            <md-input-container class="md-block" flex="33">
                 <label>Mã TopX</label>
                 <input ng-model="tbisListMajorInputForm.viewModel.ma_thiet_bi.topX" name="ma_topX">
             </md-input-container>
-            <md-input-container class="md-block">
+            <md-input-container class="md-block" flex="33">
                 <label>Mã Maximo</label>
                 <input ng-model="tbisListMajorInputForm.viewModel.ma_thiet_bi.maximo" name="ma_maximo">
             </md-input-container>
@@ -61,6 +61,10 @@
                     </md-input-container>
                 </div>
             </div>
+        </md-list-item>
+        <md-list-item ng-if="tbisListMajorInputForm.isPreserveSelect">
+            <p>Giữ các lựa chọn này cho lần tạo mới tiếp theo</p>
+            <md-checkbox class="md-secondary" ng-model="tbisListMajorInputForm.isPreserveSelect.phanLoai"></md-checkbox>
         </md-list-item>
         <!--Section: Nguồn gốc, xuất xứ-->
         <md-divider></md-divider>
@@ -111,6 +115,10 @@
                 </div>
             </div>
         </md-list-item>
+        <md-list-item ng-if="tbisListMajorInputForm.isPreserveSelect">
+            <p>Giữ các lựa chọn này cho lần tạo mới tiếp theo</p>
+            <md-checkbox class="md-secondary" ng-model="tbisListMajorInputForm.isPreserveSelect.nguonGoc"></md-checkbox>
+        </md-list-item>
         <!--Section: Địa điểm-->
         <md-divider></md-divider>
         <md-subheader class="md-no-sticky">Địa điểm</md-subheader>
@@ -141,6 +149,10 @@
                     </md-input-container>
                 </div>
             </div>
+        </md-list-item>
+        <md-list-item ng-if="tbisListMajorInputForm.isPreserveSelect">
+            <p>Giữ các lựa chọn này cho lần tạo mới tiếp theo</p>
+            <md-checkbox class="md-secondary" ng-model="tbisListMajorInputForm.isPreserveSelect.diaDiem"></md-checkbox>
         </md-list-item>
         <!--Section: Phân quyền-->
         <md-divider></md-divider>
@@ -184,6 +196,10 @@
                     </md-input-container>
                 </div>
             </div>
+        </md-list-item>
+        <md-list-item ng-if="tbisListMajorInputForm.isPreserveSelect">
+            <p>Giữ các lựa chọn này cho lần tạo mới tiếp theo</p>
+            <md-checkbox class="md-secondary" ng-model="tbisListMajorInputForm.isPreserveSelect.phanQuyen"></md-checkbox>
         </md-list-item>
         <!--Section: Hồ sơ-->
         <md-divider></md-divider>
@@ -312,3 +328,5 @@
         </md-list-item>
     </md-list>
 </form>
+
+<pre>{{tbisListMajorInputForm.isPreserveSelect|json}}</pre>
