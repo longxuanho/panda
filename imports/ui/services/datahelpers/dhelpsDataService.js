@@ -59,6 +59,17 @@ class DhelpsDataService {
         return defer.promise;
     }
 
+    remove(dataId) {
+        let defer = this.$q.defer();
+        DataHelpers.remove(dataId, (error) => {
+            if (error)
+                defer.reject(error);
+            else
+                defer.resolve();
+        });
+        return defer.promise;
+    }
+
     updateDataHelper(data) {
         let defer = this.$q.defer();
         DataHelpers.update({

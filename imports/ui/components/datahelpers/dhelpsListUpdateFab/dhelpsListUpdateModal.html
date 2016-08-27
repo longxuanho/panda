@@ -1,0 +1,25 @@
+<md-dialog aria-label="Cập nhật" ng-cloak>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Cập nhật DataHelper</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="dhelpsListUpdateModal.close()">
+                <md-icon md-svg-src="img/icons/common/close.svg" aria-label="Đóng hộp thoại"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <p class="md-body-1" style="padding: 16px 16px 0px 16px;">Để cập nhật DataHelper, xin vui lòng điền các thông tin yêu cầu vào mẫu phiếu dưới đây:</p>
+        <dhelps-list-input-form view-model="dhelpsListUpdateModal.selectedDataHelper.dataHelper"
+                                is-preserve-select="false"
+                                is-form-invalid="dhelpsListUpdateModal.liveOptions.isFormInvalid" >
+        </dhelps-list-input-form>
+        <div style="color: transparent;">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam</div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <md-button ng-click="dhelpsListUpdateModal.reset()" aria-label="Reset">Reset</md-button>
+        <span flex></span>
+        <md-button style="margin-right:20px;" ng-click="dhelpsListUpdateModal.remove()" aria-label="Gỡ bỏ">Gỡ bỏ</md-button>
+        <md-button style="margin-right:20px;" ng-click="dhelpsListUpdateModal.update()" ng-disabled="dhelpsListUpdateModal.liveOptions.isFormInvalid" aria-label="Cập nhật">Cập nhật</md-button>
+    </md-dialog-actions>
+</md-dialog>

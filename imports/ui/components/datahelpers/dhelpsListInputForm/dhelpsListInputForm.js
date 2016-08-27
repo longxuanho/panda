@@ -21,15 +21,25 @@ class DhelpsListInputForm {
         $scope.$watch('dhelpsListInputForm.addNewDataHelperForm.$invalid', (newVal) => {
             this.isFormInvalid = newVal;
         });
+
+        $scope.$watch('dhelpsListInputForm.viewModel.module', (newVal) => {
+            if (newVal)
+                this.liveOptions.selectOptions.stateNames = this.liveOptions.selectOptionsDB.stateNames[newVal];
+        });
+
+        $scope.$watch('dhelpsListInputForm.viewModel.stateName', (newVal) => {
+            if (newVal)
+                this.liveOptions.selectOptions.subjects = this.liveOptions.selectOptionsDB.subjects[newVal];
+        });
     }
 
-    updateSelectOptionsUI() {
-        if (this.viewModel.module) {
-            this.liveOptions.selectOptions.stateNames = this.liveOptions.selectOptionsDB.stateNames[this.viewModel.module];
-        }
-        if (this.viewModel.stateName)
-            this.liveOptions.selectOptions.subjects = this.liveOptions.selectOptionsDB.subjects[this.viewModel.stateName];
-    }
+    // updateSelectOptionsUI() {
+    //     if (this.viewModel.module) {
+    //         this.liveOptions.selectOptions.stateNames = this.liveOptions.selectOptionsDB.stateNames[this.viewModel.module];
+    //     }
+    //     if (this.viewModel.stateName)
+    //         this.liveOptions.selectOptions.subjects = this.liveOptions.selectOptionsDB.subjects[this.viewModel.stateName];
+    // }
 
     parseDataSource() {
         try {
@@ -38,6 +48,8 @@ class DhelpsListInputForm {
             this.viewModel.dataSource = {};
         }
     };
+
+
 }
 
 const name = 'dhelpsListInputForm';

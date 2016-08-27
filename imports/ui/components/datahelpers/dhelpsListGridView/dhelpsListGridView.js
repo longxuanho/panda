@@ -10,6 +10,7 @@ import { name as SubscribeDataService } from '../../../services/workspaces/subsc
 import { name as UtilsTopBarDataService } from '../../../services/workspaces/utilsTopBarDataService';
 
 import { name as DhelpsListAddNewFab } from '../dhelpsListAddNewFab/dhelpsListAddNewFab';
+import { name as DhelpsListUpdateFab } from '../dhelpsListUpdateFab/dhelpsListUpdateFab';
 
 class DhelpsListGridView {
     constructor($reactive, $scope, dhelpsDataService, subscribeDataService, utilsTopBarDataService) {
@@ -64,6 +65,7 @@ export default angular.module(name, [
     UtilsTopBarDataService,
     DhelpsDataService,
     DhelpsListAddNewFab,
+    DhelpsListUpdateFab,
     DhelpsListGridViewKendoGrid
 ]).component(name, {
     template,

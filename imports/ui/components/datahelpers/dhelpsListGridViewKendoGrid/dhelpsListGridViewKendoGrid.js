@@ -13,18 +13,20 @@ import { name as DhelpsDataService } from '../../../services/datahelpers/dhelpsD
 import { name as NotificationService } from '../../../services/common/notificationService';
 
 class DhelpsListGridViewKendoGrid {
-    constructor($reactive, $scope, subscribeDataService, kendoGridDataService, dhelpsDataService, notificationService) {
+    constructor($reactive, $scope, subscribeDataService, kendoGridDataService, dhelpsDataService, notificationService, $timeout) {
         'ngInject';
 
         $reactive(this).attach($scope);
 
+        this.$timeout = $timeout;
         this.dhelpsDataService = dhelpsDataService;
 
         this.subscribeOptions = subscribeDataService.getCurrentSubscribeOptions();
         this.kendoGridOptions = kendoGridDataService.getCurrentKendoGridOptions();
-        this.selectedDataHelper = dhelpsDataService.getSelectedDataHelper();
 
         this.refreshToken = 'default_token';    // Token dùng để trigger kendo refresh qua k-rebind
+
+        this.selectedDataHelper = dhelpsDataService.getSelectedDataHelper();
 
 
         initKendoGridOptions(this.kendoGridOptions.options, this.subscribeOptions.subscribe);
@@ -48,15 +50,29 @@ class DhelpsListGridViewKendoGrid {
         });
     }
 
-    onGridSelect(event, data) {
+    onGridSelect(event) {
         // Hàm được gọi khi user chọn một row trong grid
-        if (data) {
-            if (data._id === this.selectedDataHelper.dataHelper._id) {
-                this.dhelpsDataService.setSelectedDataHelper(null);
+        let selecteRow = this.kendoGridOptions.gridRef.select();
+        let selectedDataItem = this.kendoGridOptions.gridRef.dataItem(selecteRow);
+
+        if (selectedDataItem && selectedDataItem._id) {
+            if (selectedDataItem._id === this.selectedDataHelper.dataHelper._id) {
                 this.kendoGridOptions.gridRef.clearSelection();
+                this.dhelpsDataService.setSelectedDataHelper(null);
+            } else
+                this.dhelpsDataService.setSelectedDataHelper(selectedDataItem._id);
+        }
+
+    }
+
+    onGridDataBound(event) {
+        // Preserve selected row after bounding to data
+        let selectedId = this.selectedDataHelper.dataHelper._id;
+        if (selectedId) {
+            let selecteddataItem = this.kendoGridOptions.options.dataSource.get(selectedId);
+            if (selecteddataItem && selecteddataItem.uid) {
+                this.kendoGridOptions.gridRef.select(`tr[data-uid='${selecteddataItem.uid}']`);
             }
-            else
-                this.dhelpsDataService.setSelectedDataHelper(data._id);
         }
     }
 
