@@ -166,6 +166,12 @@ function initKendoGridColumns(options) {
             aggregates: ["count"],
             groupHeaderTemplate: "Hãng SX: #= value # (#= count#)"
         }, {
+            field: "nguon_goc.model",
+            title: "Model",
+            width: "240px",
+            aggregates: ["count"],
+            groupHeaderTemplate: "Model: #= value # (#= count#)"
+        }, {
             field: "nguon_goc.vendor",
             title: "Vendor",
             width: "180px",

@@ -163,6 +163,7 @@ class TbisDataService {
                 phan_quyen: data.phan_quyen,
                 ho_so: data.ho_so,
                 bao_hanh: data.bao_hanh,
+                kiem_dinh: data.kiem_dinh,
                 tags: data.tags,
                 ghi_chu: data.ghi_chu,
                 mo_ta: data.mo_ta,
@@ -333,6 +334,10 @@ class TbisDataService {
                 item.nguon_goc.vendor = nullText;
             if (!item.nguon_goc.nam_san_xuat)
                 item.nguon_goc.nam_san_xuat = nullNumber;
+            if (!item.nguon_goc.model)
+                item.nguon_goc.model = nullText;
+            if (!item.nguon_goc.xuat_xu)
+                item.nguon_goc.xuat_xu = nullText;
             if (!item.ho_so.nam_su_dung)
                 item.ho_so.nam_su_dung = nullNumber;
             if (!item.nguon_goc.noi_lap_rap)

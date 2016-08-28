@@ -26,7 +26,7 @@ if (Meteor.isServer) {
         };
 
         if (typeof searchString === 'string' && searchString.length) {
-            selector.searchField = {
+            selector['metadata.searchField'] = {
                 $regex: `.*${searchString}.*`,
                 $options : 'i'
             };
