@@ -10,18 +10,14 @@ class NavSideBarCurrentPanel {
         'ngInject';
         $reactive(this).attach($scope);
 
-        this.workspacesDataService = workspacesDataService;
-
         this.currentNavSideBarOptions = workspacesDataService.getCurrentNavSideBarOptions();
+        this.currentNavSideBarOptionsDB = workspacesDataService.getNavSideBarOptionsDB();
 
-        $scope.$watch('navSideBarCurrentPanel.currentNavSideBarOptions.currentModule', (newVal) => {
-            this.currentNavSideBarOptionsDB = this.getNavSideBarOptionsDB(newVal);
+
+        $scope.$watch('navSideBarCurrentPanel.currentNavSideBarOptions.options.currentModule', (newVal) => {
+            workspacesDataService.setNavSideBarOptionsDB(newVal);
         });
 
-    }
-
-    getNavSideBarOptionsDB(currModule) {
-        return this.workspacesDataService.getNavSideBarOptionsDB(currModule);
     }
 }
 

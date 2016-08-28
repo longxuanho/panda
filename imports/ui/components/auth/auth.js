@@ -4,6 +4,8 @@ import angularMeteor from 'angular-meteor';
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 
+import screenfull from '../../../lib/screenfull/screenfull';
+
 import template from './auth.html';
 import { name as DisplayNameFilter } from '../../filters/common/displayNameFilter';
 import { name as Login } from '../layout/login/login';
@@ -18,8 +20,6 @@ import { name as NotificationService } from '../../services/common/notificationS
 import { name as WorkspacesDataService } from '../../services/workspaces/workspacesDataService';
 
 import { name as UserAvatar } from '../../directives/common/userAvatar';
-
-const name = 'auth';
 
 class Auth {
     constructor($scope, $reactive, $state, currentUserService, userLocalSettingsService, notificationService, workspacesDataService) {
@@ -49,8 +49,6 @@ class Auth {
         });
 
         $scope.$watch('auth.currentUserId', (newVal) => {
-            // Khi có sự thay đổi về Id người dùng -> refresh lại đường dẫn tới url trong navSideBar và workspace
-            this.workspacesDataService.setUserProfileUrl(Meteor.userId());
             if (!newVal) {
                 // Nếu người dùng logout/bị logout khỏi hệ thống -> Chuyển tới login
                 this.$state.go('login');
@@ -65,7 +63,17 @@ class Auth {
         this.$state.go('login');
         this.notificationService.success('Bye : )', "Đăng xuất thành công");
     }
+
+    toggleFullScreen() {
+        if (screenfull.enabled) {
+            screenfull.toggle();
+        } else {
+            console.log('toggle screen fails')
+        }
+    }
 }
+
+const name = 'auth';
 
 // create a module
 export default angular.module(name, [

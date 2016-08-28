@@ -73,7 +73,7 @@ class TbisListUtilsTopBar {
     }
 
     toggleUtilsSideBar() {
-        this.utilsSideBarOptions.isOpen = !this.utilsSideBarOptions.isOpen
+        this.utilsSideBarOptions.options.isOpen = !this.utilsSideBarOptions.options.isOpen;
     }
 }
 

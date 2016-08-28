@@ -9,13 +9,13 @@
     <div style="padding: 16px;">
         <md-grid-list md-cols="2" md-cols-sm="3" md-cols-md="6" md-cols-gt-md="8" md-row-height-gt-md="1:1"
                       md-row-height="4:3" md-gutter="8px" md-gutter-gt-sm="8px" >
-            <md-grid-tile ng-repeat="workspace in workspacesList.navSideBarOptionsDB"
+            <md-grid-tile ng-repeat="workspace in workspacesList.workspaceOptionsDB"
                           ng-click="workspacesList.setNavSideBarCurrentModule(workspace.module)"
-                          ng-class="(workspace.module === workspacesList.currentNavSideBarOptions.currentModule) ? workspace.background : 'mediumGray'" class="sky-action-hover"
+                          ng-class="(workspace.module === workspacesList.currentNavSideBarOptions.options.currentModule) ? workspace.background : 'mediumGray'" class="sky-action-hover"
                           md-ink-ripple >
-                <img ng-show="workspace.module === workspacesList.currentNavSideBarOptions.currentModule"
-                     ng-src="{{workspace.icon}}" class="md-card-image"
-                     style="width: 50px; height: 50px; margin-top: -24px;" alt="Avatar">
+                    <img ng-show="workspace.module === workspacesList.currentNavSideBarOptions.options.currentModule"
+                         ng-src="{{workspace.icon}}" class="md-card-image"
+                         style="width: 50px; height: 50px; margin-top: -24px;" alt="Avatar"/>
                 <md-grid-tile-footer><h3>{{workspace.text}}</h3></md-grid-tile-footer>
             </md-grid-tile>
         </md-grid-list>
@@ -25,7 +25,7 @@
 
     <md-list flex>
         <md-subheader class="md-no-sticky">Danh mục các liên kết khả dụng tương ứng với module hiện tại được liệt kê theo danh sách dưới đây.</md-subheader>
-        <a  ng-repeat="item in workspacesList.currentNavSideBarOptionsDB.options" ng-href="{{item.url}}">
+        <a  ng-repeat="item in workspacesList.navSideBarOptionsDB.optionsDB.options" ng-href="{{item.url}}">
             <md-list-item class="md-2-line" ng-click="null">
                 <md-icon md-svg-src="{{item.icon}}"></md-icon>
                 <div class="md-list-item-text">

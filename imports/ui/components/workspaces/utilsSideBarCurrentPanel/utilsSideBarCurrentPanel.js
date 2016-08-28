@@ -11,14 +11,20 @@ class UtilsSideBarCurrentPanel {
         'ngInject';
         $reactive(this).attach($scope);
 
-        this.workspacesDataService = workspacesDataService;
-
         this.currentUtilsSideBarOptions = workspacesDataService.getCurrentUtilsSideBarOptions();
+        this.utilsSideBarOptionsDB = workspacesDataService.getUtilsSideBarOptionsDB();
+
         this.currentSubscribeOptions = subscribeDataService.getCurrentSubscribeOptions();
 
         this.liveOptions = {
             searchText: ''
         };
+
+        $scope.$watch('utilsSideBarCurrentPanel.currentUtilsSideBarOptions.options.currentState', (newVal) => {
+            workspacesDataService.setUtilsSideBarOptionsDB(
+                reverseStateNameToModuleName(newVal)
+            );
+        });
 
         $scope.$watch('utilsSideBarCurrentPanel.currentSubscribeOptions.subscribe.searchText', (newVal) => {
             this.liveOptions.searchText = newVal;
@@ -49,3 +55,10 @@ export default angular.module(name, [
     controllerAs: name,
     controller: UtilsSideBarCurrentPanel
 });
+
+function reverseStateNameToModuleName(stateName) {
+    let ref = {
+        'tbisList': 'thietbis'
+    };
+    return ref[stateName];
+}

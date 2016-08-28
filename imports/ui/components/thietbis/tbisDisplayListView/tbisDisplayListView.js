@@ -47,7 +47,7 @@ class TbisDisplayListView {
 
         this.helpers({
             thietbis() {
-                return tbisDataService.query();
+                return tbisDataService.query({}, {});
             },
             thietbisCount() {
                 let totalCount = Counts.get('numberOfThietBis');

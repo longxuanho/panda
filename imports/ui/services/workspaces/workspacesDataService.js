@@ -14,23 +14,37 @@ class WorkspacesDataService {
         this.userLocalSettingsService = userLocalSettingsService;
 
         // NavSideBar
-        this.currentNavSideBarOptions = this.queryCurrentNavSideBarOptions();
-        this.navSideBarOptionsDB = queryNavSideBarOptionsDB();
+        this.currentNavSideBarOptions = {
+            options: this.queryCurrentNavSideBarOptions()
+        };
+        this.navSideBarOptionsDB = {
+            optionsDB: {}
+        };
 
         // UtilsSideBar
-        this.currentUtilsSideBarOptions = this.queryCurrentUtilsBarOptions();
+        this.currentUtilsSideBarOptions = {
+            options: this.queryCurrentUtilsBarOptions()
+        };
+
+        this.utilsSideBarOptionsDB = {
+            optionsDB: {}
+        };
     }
 
     setUserProfileUrl(userId) {
-        // Sử dụng trong $watch của auth: Khi có thay đổi trạng thái người dùng, hàm này sẽ cập nhật lại url tới profile người dùng để dùng trong navsidebar hoặc workspaceslist
-        _.each(this.navSideBarOptionsDB, (item) => {
-            if (item.module === 'users')
-                _.each(item.options, (option) => {
-                   if (option.title === 'Hồ sơ cá nhân')
-                       option.url = `quan-ly/users/${userId}`;
-                });
-        });
+        if (this.navSideBarOptionsDB.optionsDB.module === 'users') {
+            _.each(this.navSideBarOptionsDB.optionsDB.options, (option) => {
+                if (option.title === 'Hồ sơ cá nhân')
+                    option.url = `quan-ly/users/${userId}`;
+            });
+        }
     }
+
+    // From Pandora.js when route change success
+    updateCurrentState(stateName) {
+        this.currentUtilsSideBarOptions.options.currentState = stateName;
+    }
+
 
     // NavSideBar
     queryCurrentNavSideBarOptions() {
@@ -41,12 +55,15 @@ class WorkspacesDataService {
         return this.currentNavSideBarOptions;
     }
 
-    getNavSideBarOptionsDB(moduleName) {
-        if (moduleName)
-            return _.find(this.navSideBarOptionsDB, (item) => {
-                return item.module === moduleName;
-            });
+    setNavSideBarOptionsDB(moduleName) {
+        this.navSideBarOptionsDB.optionsDB = _.find(queryNavSideBarOptionsDB(), (item) => {
+            return item.module === moduleName;
+        });
+        // Cập nhật lại đường dẫn tới hồ sơ cá nhân người dùng:
+        this.setUserProfileUrl(Meteor.userId());
+    }
 
+    getNavSideBarOptionsDB() {
         return this.navSideBarOptionsDB;
     }
 
@@ -57,6 +74,24 @@ class WorkspacesDataService {
 
     getCurrentUtilsSideBarOptions() {
         return this.currentUtilsSideBarOptions;
+    }
+
+    setUtilsSideBarOptionsDB(moduleName) {
+        this.utilsSideBarOptionsDB.optionsDB = _.pick(
+            _.find(queryNavSideBarOptionsDB(), (item) => {
+                return item.module === moduleName;
+            }),
+            'module', 'text', 'title', 'icon');
+    }
+
+    getUtilsSideBarOptionsDB() {
+        return this.utilsSideBarOptionsDB;
+    }
+
+    // Get all workspace options available
+
+    getWorkspaceOptionsDB() {
+        return queryNavSideBarOptionsDB();
     }
 
 }

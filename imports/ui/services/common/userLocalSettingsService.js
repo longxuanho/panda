@@ -173,7 +173,7 @@ function queryDefaultSettings() {
             page: "utilsTopBar",
             options: {
                 tbisList: {
-                    viewMode: 'grid', // list or grid?
+                    viewMode: 'list', // list or grid?
                     _refreshTokenInGridMode: 'default_token'
                 },
                 dhelpsList: {

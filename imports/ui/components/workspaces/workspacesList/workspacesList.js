@@ -13,19 +13,20 @@ class WorkspacesList {
 
         $reactive(this).attach($scope);
 
-        this.workspacesDataService = workspacesDataService;
+        this.workspaceOptionsDB = workspacesDataService.getWorkspaceOptionsDB();
+
 
         // NavSideBar
         this.currentNavSideBarOptions = workspacesDataService.getCurrentNavSideBarOptions();
         this.navSideBarOptionsDB = workspacesDataService.getNavSideBarOptionsDB();
 
-        $scope.$watch('workspacesList.currentNavSideBarOptions.currentModule', (newVal) => {
-            this.currentNavSideBarOptionsDB = this.getNavSideBarOptionsDB(newVal);
-        });
+        // $scope.$watch('workspacesList.currentNavSideBarOptions.options.currentModule', (newVal) => {
+        //     workspacesDataService.setNavSideBarOptionsDB(newVal);
+        // });
     }
 
-    setNavSideBarCurrentModule(name) {
-        this.currentNavSideBarOptions.currentModule = name;
+    setNavSideBarCurrentModule(moduleName) {
+        this.currentNavSideBarOptions.options.currentModule = moduleName;
     }
 
     getNavSideBarOptionsDB(currModule) {
@@ -33,7 +34,7 @@ class WorkspacesList {
     }
 
     toggleNavSideBar() {
-        this.currentNavSideBarOptions.isOpen = !this.currentNavSideBarOptions.isOpen;
+        this.currentNavSideBarOptions.options.isOpen = !this.currentNavSideBarOptions.options.isOpen;
     }
 }
 
@@ -58,6 +59,15 @@ function config($stateProvider) {
 
     $stateProvider.state('workspacesList', {
         url: '/quan-ly/ban-lam-viec',
-        template: '<workspaces-list></workspaces-list>'
+        template: '<workspaces-list></workspaces-list>',
+        resolve: {
+            currentUser($q) {
+                if (Meteor.userId() === null) {
+                    return $q.reject('LOGIN_REQUIRED');
+                } else {
+                    return $q.resolve();
+                }
+            }
+        }
     });
 }

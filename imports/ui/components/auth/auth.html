@@ -33,8 +33,11 @@
         </md-menu-content>
     </md-menu>
 
-    <img ng-if="auth.isLoggedIn" user-avatar
-         img-src="{{auth.currentUser.profile.avatar.isGAvatar ? auth.currentUser.profile.avatar.gAvatarUrl : auth.currentUser.profile.avatar.url}}"
-         class="sky-avatar" alt="myAvatar"/>
+    <a ng-if="auth.isLoggedIn" ng-click="auth.toggleFullScreen()">
+        <img user-avatar class="sky-avatar sky-action-hover"
+             img-src="{{auth.currentUser.profile.avatar.isGAvatar ? auth.currentUser.profile.avatar.gAvatarUrl : auth.currentUser.profile.avatar.url}}"
+             alt="myAvatar"/>
+    </a>
+
 
 </div>

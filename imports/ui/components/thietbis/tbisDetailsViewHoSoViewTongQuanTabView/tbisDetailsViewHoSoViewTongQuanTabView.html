@@ -28,13 +28,15 @@
     </md-list-item>
     <md-divider></md-divider>
     <md-subheader class="md-no-sticky">Phân quyền</md-subheader>
-    <md-list-item>
+    <md-list-item style="display: inline-block;">
         <span class="sky-typo-strong">Quản lý:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.phan_quyen.quan_ly.ten}}</span>
     </md-list-item>
-    <md-list-item>
+    <md-list-item style="display: inline-block;">
         <span class="sky-typo-strong">Sở hữu:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.phan_quyen.so_huu.ten}}</span>
     </md-list-item>
-    <md-list-item ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.phan_quyen.doi_van_hanh.ten || tbisDetailsViewHoSoViewTongQuanTabView.thietbi.phan_quyen.van_hanh.ten">
+    <md-list-item
+            ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.phan_quyen.doi_van_hanh.ten || tbisDetailsViewHoSoViewTongQuanTabView.thietbi.phan_quyen.van_hanh.ten"
+            flex style="display: inline-block;">
         <span class="sky-typo-strong">Vận hành:&nbsp;</span><span class="sky-typo-normal" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.phan_quyen.doi_van_hanh.ten">{{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.phan_quyen.doi_van_hanh.ten}},&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.phan_quyen.van_hanh.ten}}.</span>
     </md-list-item>
     <md-divider></md-divider>

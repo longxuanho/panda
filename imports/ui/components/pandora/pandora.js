@@ -133,8 +133,11 @@ function run($rootScope, $state, workspacesDataService, subscribeDataService, no
 
     $rootScope.$on('$stateChangeError',
         (event, toState, toParams, fromState, fromParams, error) => {
+            if (error === 'LOGIN_REQUIRED') {
+                $state.go('login');
+            }
             if (error === 'AUTH_REQUIRED') {
-                notificationService.error('Phân quyền của bạn không đủ để truy cập liên kết này. Thực hiện chuyển hướng truy cập...', 'Điều hướng thất bại')
+                notificationService.error('Phân quyền của bạn không đủ để truy cập liên kết này. Thực hiện chuyển hướng truy cập...', 'Điều hướng thất bại');
                 $state.go('workspacesList');
             }
         }
@@ -142,7 +145,7 @@ function run($rootScope, $state, workspacesDataService, subscribeDataService, no
 
     $rootScope.$on('$stateChangeSuccess',
         (event, toState, toParams, fromState, fromParams) => {
-            workspacesDataService.getCurrentUtilsSideBarOptions().currentState = toState.name;
+            workspacesDataService.updateCurrentState(toState.name);
             subscribeDataService.updateCurrentOptions(toState.name);
             utilsTopBarDataService.updateCurrentOptions(toState.name);
             utilsFilterDataService.updateCurrentOptions(toState.name);

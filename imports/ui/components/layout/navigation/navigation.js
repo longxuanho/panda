@@ -3,6 +3,8 @@ import angularMeteor from 'angular-meteor';
 
 import template from './navigation.html';
 
+import screenfull from '../../../../lib/screenfull/screenfull';
+
 import { name as WorkspacesDataService } from '../../../services/workspaces/workspacesDataService';
 
 class Navigation {
@@ -20,7 +22,15 @@ class Navigation {
     }
 
     toggleNavSideBar() {
-        this.navSideBarOptions.isOpen = !this.navSideBarOptions.isOpen;
+        this.navSideBarOptions.options.isOpen = !this.navSideBarOptions.options.isOpen;
+    }
+
+    toggleFullScreen() {
+        if (screenfull.enabled) {
+            screenfull.toggle();
+        } else {
+            console.log('toggle screen fails')
+        }
     }
 }
 

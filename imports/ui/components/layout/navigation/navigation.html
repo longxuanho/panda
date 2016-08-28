@@ -1,6 +1,9 @@
 <md-toolbar md-scroll-shrink class="md-whiteframe-glow-z1">
     <div class="md-toolbar-tools">
-        <md-button ng-click="navigation.toggleNavSideBar()">Skynet</md-button>
+        <!--Toggle Fullscreen (if not user login)-->
+        <md-button ng-click="navigation.toggleFullScreen()" ng-if="!navigation.currentUserId">Skynet</md-button>
+        <!--Toggle Sidebar (if user logged in)-->
+        <md-button ng-click="navigation.toggleNavSideBar()" ng-if="navigation.currentUserId">Skynet</md-button>
         <span flex></span>
         <auth></auth>
     </div>

@@ -19,7 +19,7 @@ class TbisSearchForm {
 
     submit() {
         // Click để tìm kiếm: nếu chưa có text trong ô tìm kiếm -> confirm. Nếu đã có text -> reset.
-        if (this.subscribeOptions.subscribe.searchText.length)
+        if (this.subscribeOptions.subscribe.searchText && (this.subscribeOptions.subscribe.searchText === this.searchText))
             this.reset();
         else
             this.subscribeOptions.subscribe.searchText = this.searchText;
