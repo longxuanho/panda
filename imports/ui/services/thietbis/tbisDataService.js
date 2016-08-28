@@ -22,9 +22,17 @@ class TbisDataService {
     query(selector, options) {
         if (!selector)
             return ThietBis.find({}).fetch();
-        if (!options)
-            return ThietBis.find(selector).fetch();
         return ThietBis.find(selector, options).fetch();
+    }
+
+    queryForGrid(selector, options) {
+        if (!selector)
+            return this.massageThietBisFetchedData(
+                ThietBis.find({}).fetch()
+            );
+        return this.massageThietBisFetchedData(
+            ThietBis.find(selector, options).fetch()
+        );
     }
 
     queryOne(thietbiId) {
@@ -52,6 +60,14 @@ class TbisDataService {
             },
             bao_hanh: {
                 isThongTinBaoHanh: false,
+                isTrongThoiGianBaoHanh: false,
+                thoi_gian: {},
+                stringify: {}
+            },
+            kiem_dinh: {
+                isThongTinKiemDinh: false,
+                isTrongThoiGianKiemDinh: false,
+                ho_so: {},
                 thoi_gian: {},
                 stringify: {}
             },
@@ -70,8 +86,15 @@ class TbisDataService {
             data.bao_hanh.stringify.ngay_ket_thuc = moment(data.bao_hanh.thoi_gian.ngay_ket_thuc).format('YYYY-MM-DD');
             data.isTrongThoiGianBaoHanh = (data.bao_hanh.stringify.ngay_ket_thuc > moment().format('YYYY-MM-DD'));
         }
+
         if ((data.ho_so.thiet_bi_di_kem.isThietBiDiKem && data.ho_so.thiet_bi_di_kem.danh_sach.length))
             data.ho_so.thiet_bi_di_kem.str_danh_sach = data.ho_so.thiet_bi_di_kem.danh_sach.join(", ");
+
+        if (data.kiem_dinh.isThongTinKiemDinh && (data.kiem_dinh.thoi_gian.ngay_bat_dau && data.kiem_dinh.thoi_gian.ngay_ket_thuc)) {
+            data.kiem_dinh.stringify.ngay_bat_dau = moment(data.kiem_dinh.thoi_gian.ngay_bat_dau).format('YYYY-MM-DD');
+            data.kiem_dinh.stringify.ngay_ket_thuc = moment(data.kiem_dinh.thoi_gian.ngay_ket_thuc).format('YYYY-MM-DD');
+            data.isTrongThoiGianKiemDinh = (data.kiem_dinh.stringify.ngay_ket_thuc > moment().format('YYYY-MM-DD'));
+        }
     }
 
     validateMajorInputThietBiData(data) {
@@ -92,8 +115,12 @@ class TbisDataService {
         if (_.isEmpty(data.phan_quyen.so_huu))
             throw Error('Chưa có thông tin về đơn vị sở hữu.');
 
+
         if (data.bao_hanh.isThongTinBaoHanh && !(data.bao_hanh.thoi_gian.ngay_bat_dau && data.bao_hanh.thoi_gian.ngay_ket_thuc))
             throw Error('Thông tin về thời gian bảo hành chưa đầy đủ.');
+        if (data.kiem_dinh.isThongTinKiemDinh && !(data.kiem_dinh.thoi_gian.ngay_bat_dau && data.kiem_dinh.thoi_gian.ngay_ket_thuc))
+            throw Error('Thông tin về thời gian kiểm định chưa đầy đủ.');
+
         if (data.ho_so.thiet_bi_di_kem.isThietBiDiKem && !data.ho_so.thiet_bi_di_kem.danh_sach.length)
             throw Error('Chưa có danh sách các mã thiết bị đi kèm.');
     }
@@ -296,6 +323,28 @@ class TbisDataService {
     getSelectedThongSoKyThuatGroupBy(data) {
         if (data)
             return _.groupBy(data, 'nhom');
+    }
+
+    massageThietBisFetchedData(response) {
+        let nullText = '(Chưa xác định)';
+        let nullNumber = '-';
+        _.each(response, (item) => {
+            if (!item.nguon_goc.vendor)
+                item.nguon_goc.vendor = nullText;
+            if (!item.nguon_goc.nam_san_xuat)
+                item.nguon_goc.nam_san_xuat = nullNumber;
+            if (!item.ho_so.nam_su_dung)
+                item.ho_so.nam_su_dung = nullNumber;
+            if (!item.nguon_goc.noi_lap_rap)
+                item.nguon_goc.noi_lap_rap = nullText;
+            if (!item.phan_quyen.van_hanh.ten)
+                item.phan_quyen.van_hanh.ten = nullText;
+            if (!item.phan_quyen.doi_van_hanh.ten)
+                item.phan_quyen.doi_van_hanh.ten = nullText;
+            if (!item.dia_diem.dia_phuong)
+                item.dia_diem.dia_phuong = nullText;
+        });
+        return response;
     }
 }
 

@@ -27,7 +27,7 @@ class TbisDisplayGridView {
 
     // Hàm được gọi từ trong component KendoGrid khi đọc thấy refreshTokenInGridMode của utilsTopbar thay đổi
     reloadThietBis() {
-        this.thietbis = this.tbisDataService.query();
+        this.thietbis = this.tbisDataService.queryForGrid();
     }
 }
 

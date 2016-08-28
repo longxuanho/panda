@@ -84,10 +84,10 @@ function initKendoDataSource(options) {
                     'bao_hanh.isThongTinBaoHanh': {
                         type: "boolean"
                     },
-                    'bao_hanh.ngay_bat_dau': {
+                    'bao_hanh.thoi_gian.ngay_bat_dau': {
                         type: "date"
                     },
-                    'bao_hanh.ngay_ket_thuc': {
+                    'bao_hanh.thoi_gian.ngay_ket_thuc': {
                         type: "date"
                     },
                     'kiem_dinh.isThongTinKiemDinh': {
@@ -96,10 +96,10 @@ function initKendoDataSource(options) {
                     'kiem_dinh.isTrongThoiGianKiemDinh': {
                         type: "boolean"
                     },
-                    'kiem_dinh.ngay_hieu_luc': {
+                    'kiem_dinh.thoi_gian.ngay_hieu_luc': {
                         type: "date"
                     },
-                    'kiem_dinh.ngay_het_han': {
+                    'kiem_dinh.thoi_gian.ngay_het_han': {
                         type: "date"
                     },
                     'metadata.thoi_gian.tao_moi.ngay_tao_date': {
@@ -188,13 +188,19 @@ function initKendoGridColumns(options) {
             title: "Năm SX",
             width: "150px",
             aggregates: ["count"],
-            groupHeaderTemplate: "Năm SX: #= value # (#= count#)"
+            groupHeaderTemplate: "Năm SX: #= value # (#= count#)",
+            attributes: {
+                style: "text-align: center;"
+            }
         }, {
             field: "ho_so.nam_su_dung",
             title: "Năm SD",
             width: "150px",
             aggregates: ["count"],
-            groupHeaderTemplate: "Năm SD: #= value # (#= count#)"
+            groupHeaderTemplate: "Năm SD: #= value # (#= count#)",
+            attributes: {
+                style: "text-align: center;"
+            }
         }, {
             field: "ho_so.so_dang_ky",
             title: "Số đăng ký",
@@ -260,8 +266,7 @@ function initKendoGridColumns(options) {
             field: "phan_quyen.van_hanh.ma",
             title: "Mã ĐVVH",
             width: "150px",
-            aggregates: ["count"],
-            groupHeaderTemplate: "Mã ĐVVH: #= value # (#= count#)"
+            groupable: false
         }, {
             field: "phan_quyen.van_hanh.ten",
             title: "Tên ĐVVH",
@@ -273,13 +278,12 @@ function initKendoGridColumns(options) {
             title: "Nhóm ĐVVH",
             width: "480px",
             aggregates: ["count"],
-            groupHeaderTemplate: "Nhóm ĐVVH: #= value # (#= count#)"
+            groupable: false
         }, {
             field: "phan_quyen.doi_van_hanh.ma",
             title: "Mã đội VH",
             width: "150px",
-            aggregates: ["count"],
-            groupHeaderTemplate: "Mã đội vận hành: #= value # (#= count#)"
+            groupable: false
         }, {
             field: "phan_quyen.doi_van_hanh.ten",
             title: "Tên đội VH",
@@ -314,20 +318,22 @@ function initKendoGridColumns(options) {
             field: "dia_diem.terminal",
             title: "Terminal",
             width: "180px",
-            aggregates: ["count"],
-            groupHeaderTemplate: "Terminal: #= value # (#= count#)"
+            groupable: false
         }, {
             field: "dia_diem.line",
             title: "Line",
             width: "180px",
-            aggregates: ["count"],
-            groupHeaderTemplate: "Line: #= value # (#= count#)"
+            groupable: false
         }, {
             field: "dia_diem.toa_do.enableAPI",
             title: "Cập nhật vị trí qua API?",
             width: "420px",
             aggregates: ["count"],
-            groupHeaderTemplate: "Cho phép API? #= value # (#= count#)"
+            groupHeaderTemplate: "Cho phép API? #= value # (#= count#)",
+            values: [
+                { text: "Có", value: true },
+                { text: "Không", value: false }
+            ]
         }, {
             field: "dia_diem.toa_do.api",
             title: "GPS API",
@@ -363,21 +369,29 @@ function initKendoGridColumns(options) {
             title: "Có thông tin bảo hành?",
             width: "300px",
             aggregates: ["count"],
-            groupHeaderTemplate: "Thông tin bảo hành? #= value # (#= count#)"
+            groupHeaderTemplate: "Thông tin bảo hành? #= value # (#= count#)",
+            values: [
+                { text: "Có", value: true },
+                { text: "Không", value: false }
+            ]
         }, {
             field: "bao_hanh.isTrongThoiGianBaoHanh",
             title: "Đang bảo hành?",
             width: "300px",
             aggregates: ["count"],
-            groupHeaderTemplate: "Đang bảo hành? #= value # (#= count#)"
+            groupHeaderTemplate: "Đang bảo hành? #= value # (#= count#)",
+            values: [
+                { text: "Có", value: true },
+                { text: "Không", value: false }
+            ]
         }, {
-            field: "bao_hanh.ngay_bat_dau",
+            field: "bao_hanh.thoi_gian.ngay_bat_dau",
             title: "Ngày bắt đầu",
             width: "240px",
             format: "{0: yyyy-MM-dd}",
             groupable: false
         }, {
-            field: "bao_hanh.ngay_ket_thuc",
+            field: "bao_hanh.thoi_gian.ngay_ket_thuc",
             title: "Ngày kết thúc",
             width: "240px",
             format: "{0: yyyy-MM-dd}",
@@ -387,31 +401,39 @@ function initKendoGridColumns(options) {
             title: "Có thông tin kiểm định?",
             width: "300px",
             aggregates: ["count"],
-            groupHeaderTemplate: "Thông tin kiểm định? #= value # (#= count#)"
+            groupHeaderTemplate: "Thông tin kiểm định? #= value # (#= count#)",
+            values: [
+                { text: "Có", value: true },
+                { text: "Không", value: false }
+            ]
         }, {
             field: "kiem_dinh.isTrongThoiGianKiemDinh",
             title: "Trong thời hạn kiểm định?",
             width: "300px",
             aggregates: ["count"],
-            groupHeaderTemplate: "Trong thời hạn kiểm định #= value # (#= count#)"
+            groupHeaderTemplate: "Trong thời hạn kiểm định #= value # (#= count#)",
+            values: [
+                { text: "Có", value: true },
+                { text: "Không", value: false }
+            ]
         }, {
-            field: "kiem_dinh.so_phieu_kiem_dinh",
+            field: "kiem_dinh.ho_so.so_phieu_kiem_dinh",
             title: "Số phiếu kiểm định",
             width: "240px",
             groupable: false
         }, {
-            field: "kiem_dinh.so_tem_kiem_dinh",
+            field: "kiem_dinh.ho_so.so_tem_kiem_dinh",
             title: "Số tem kiểm định",
             width: "240px",
             groupable: false
         }, {
-            field: "kiem_dinh.ngay_hieu_luc",
+            field: "kiem_dinh.thoi_gian.ngay_hieu_luc",
             title: "Ngày có hiệu lực",
             width: "240px",
             format: "{0: yyyy-MM-dd}",
             groupable: false
         }, {
-            field: "kiem_dinh.ngay_het_han",
+            field: "kiem_dinh.thoi_gian.ngay_het_han",
             title: "Ngày hết hạn",
             width: "240px",
             format: "{0: yyyy-MM-dd}",

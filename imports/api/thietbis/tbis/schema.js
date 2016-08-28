@@ -162,7 +162,7 @@ Schema.ThietBi = new SimpleSchema({
             },
         'phan_quyen.van_hanh': {
             type: Object,
-            optional: true
+            defaultValue: {}
         },
             'phan_quyen.van_hanh.ten': {
                 type: String,
@@ -178,7 +178,7 @@ Schema.ThietBi = new SimpleSchema({
             },
         'phan_quyen.doi_van_hanh': {
             type: Object,
-            optional: true
+            defaultValue: {}
         },
             'phan_quyen.doi_van_hanh.ten': {
                 type: String,
@@ -438,15 +438,15 @@ Schema.ThietBi = new SimpleSchema({
     },
         'thong_so_hoat_dong.hours': {
             type: Number,
-            defaultValue: 0
+            optional: true
         },
         'thong_so_hoat_dong.conts': {
             type: Number,
-            defaultValue: 0
+            optional: true
         },
         'thong_so_hoat_dong.kms': {
             type: Number,
-            defaultValue: 0
+            optional: true
         },
     metadata: {
         type: Object,

@@ -66,6 +66,7 @@
             <p>Giữ các lựa chọn này cho lần tạo mới tiếp theo</p>
             <md-checkbox class="md-secondary" ng-model="tbisListMajorInputForm.isPreserveSelect.phanLoai"></md-checkbox>
         </md-list-item>
+
         <!--Section: Nguồn gốc, xuất xứ-->
         <md-divider></md-divider>
         <md-subheader class="md-no-sticky">Nguồn gốc, xuất xứ</md-subheader>
@@ -119,6 +120,7 @@
             <p>Giữ các lựa chọn này cho lần tạo mới tiếp theo</p>
             <md-checkbox class="md-secondary" ng-model="tbisListMajorInputForm.isPreserveSelect.nguonGoc"></md-checkbox>
         </md-list-item>
+
         <!--Section: Địa điểm-->
         <md-divider></md-divider>
         <md-subheader class="md-no-sticky">Địa điểm</md-subheader>
@@ -154,6 +156,7 @@
             <p>Giữ các lựa chọn này cho lần tạo mới tiếp theo</p>
             <md-checkbox class="md-secondary" ng-model="tbisListMajorInputForm.isPreserveSelect.diaDiem"></md-checkbox>
         </md-list-item>
+
         <!--Section: Phân quyền-->
         <md-divider></md-divider>
         <md-subheader class="md-no-sticky">Phân quyền</md-subheader>
@@ -201,6 +204,7 @@
             <p>Giữ các lựa chọn này cho lần tạo mới tiếp theo</p>
             <md-checkbox class="md-secondary" ng-model="tbisListMajorInputForm.isPreserveSelect.phanQuyen"></md-checkbox>
         </md-list-item>
+
         <!--Section: Hồ sơ-->
         <md-divider></md-divider>
         <md-subheader class="md-no-sticky">Hồ sơ thiết bị</md-subheader>
@@ -250,6 +254,7 @@
                 </div>
             </div>
         </md-list-item>
+
         <!--Section: Bảo hành-->
         <md-divider></md-divider>
         <md-subheader class="md-no-sticky">Thông tin bảo hành</md-subheader>
@@ -266,6 +271,36 @@
             <md-input-container flex="50">
                 <label>Ngày kết thúc</label>
                 <input kendo-date-picker k-format="'dd/MM/yyyy'" style="width: 100%;" k-ng-model="tbisListMajorInputForm.viewModel.bao_hanh.thoi_gian.ngay_ket_thuc" type="date"/>
+            </md-input-container>
+        </md-list-item>
+
+        <!--Section: Kiểm định-->
+        <md-divider></md-divider>
+        <md-subheader class="md-no-sticky">Thông tin kiểm định</md-subheader>
+        <md-list-item>
+            <p>Có thông tin kiểm định</p>
+            <md-checkbox class="md-secondary" ng-model="tbisListMajorInputForm.viewModel.kiem_dinh.isThongTinKiemDinh"></md-checkbox>
+        </md-list-item>
+
+        <md-list-item ng-show="tbisListMajorInputForm.viewModel.kiem_dinh.isThongTinKiemDinh" layout="row" class="sky-fix-kendo-date-picker" flex>
+            <md-input-container class="md-block" flex="50">
+                <label>Số phiếu kiểm định</label>
+                <input ng-model="tbisListMajorInputForm.viewModel.kiem_dinh.ho_so.so_phieu_kiem_dinh" name="kiem_dinh_phieu_kiem_dinh">
+            </md-input-container>
+            <md-input-container class="md-block" flex="50">
+                <label>Số tem kiểm định</label>
+                <input ng-model="tbisListMajorInputForm.viewModel.kiem_dinh.ho_so.so_tem_kiem_dinh" name="kiem_dinh_tem_kiem_dinh">
+            </md-input-container>
+        </md-list-item>
+
+        <md-list-item ng-show="tbisListMajorInputForm.viewModel.kiem_dinh.isThongTinKiemDinh" layout="row" class="sky-fix-kendo-date-picker" flex>
+            <md-input-container flex="50">
+                <label>Ngày hiệu lực</label>
+                <input kendo-date-picker k-format="'dd/MM/yyyy'" style="width: 100%;" k-ng-model="tbisListMajorInputForm.viewModel.kiem_dinh.thoi_gian.ngay_bat_dau" type="date"/>
+            </md-input-container>
+            <md-input-container flex="50">
+                <label>Ngày hết hạn</label>
+                <input kendo-date-picker k-format="'dd/MM/yyyy'" style="width: 100%;" k-ng-model="tbisListMajorInputForm.viewModel.kiem_dinh.thoi_gian.ngay_ket_thuc" type="date"/>
             </md-input-container>
         </md-list-item>
 
