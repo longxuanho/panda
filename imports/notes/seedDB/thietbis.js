@@ -3,7 +3,7 @@ import { TbisHelpers } from "../../api/thietbis/tbisHelpers";
 
 Meteor.startup(() => {
     console.log("start up server... ", TbisHelpers.find().count(), " tbisHelper items already seeded!");
-    
+
     if (TbisHelpers.find().count() === 0) {
 
         // Subject: DiaDiems
@@ -819,7 +819,7 @@ Meteor.startup(() => {
         ];
 
         // Subject: PhanLoais
-        
+
         const nhoms = [
             {
                 "ten": "Thiết bị nâng",
@@ -836,9 +836,9 @@ Meteor.startup(() => {
             }, {
                 "ten": "Thanh lý",
                 "order": 500
-            }  
+            }
         ];
-        
+
         const chungloais = [
             {
                 "ten": "Cẩu bờ",
@@ -944,7 +944,7 @@ Meteor.startup(() => {
                 }
             }
         ];
-        
+
         const loais = [
             {
                 "ten": "KE",
@@ -1682,7 +1682,7 @@ Meteor.startup(() => {
                 dataObject: vendor
             });
         });
-        
+
         // PHANLOAIS
 
         nhoms.forEach((nhom) => {
@@ -1740,6 +1740,6 @@ Meteor.startup(() => {
         console.log("seeding db - done, total of ", quocgias.length + khuvucs.length +
             hangsanxuats.length + models.length + vendors.length + nhoms.length +
             chungloais.length + loais.length + donvis.length + doivanhanhs.length, "items inserted!");
-        
+
     }
 });

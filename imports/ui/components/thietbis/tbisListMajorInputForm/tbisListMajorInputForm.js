@@ -1,6 +1,6 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
-
+import _ from 'underscore';
 import template from './tbisListMajorInputForm.html';
 
 import { name as TbisPhanLoaiDataService } from '../../../services/thietbis/tbisPhanLoaiDataService';

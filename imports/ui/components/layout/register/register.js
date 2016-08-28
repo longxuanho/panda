@@ -15,7 +15,17 @@ class Register {
         $reactive(this).attach($scope);
 
 
-        this.subscribe('tbishelpers');
+        this.subscribe('datahelpers', () => [
+            {
+                // options
+            },
+            {
+                // queryParams
+                module: 'commons',
+                stateName: 'dhelpsList',
+                subject: 'donvis'
+            }
+        ]);
 
         this.helpers({
             donvisOptions() {
