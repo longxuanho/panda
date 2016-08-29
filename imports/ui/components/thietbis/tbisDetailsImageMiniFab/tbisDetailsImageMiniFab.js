@@ -8,6 +8,8 @@ import ngMessages from 'angular-messages';
 import fabTemplate from './tbisDetailsImageMiniFab.html';
 import modalTemplate from './tbisDetailsImageModal.html';
 
+
+import { name as TbisDetailsImageModalTatCaTab } from '../tbisDetailsImageModalTatCaTab/tbisDetailsImageModalTatCaTab';
 import { name as TbisDetailsImageQuanLyTab } from '../tbisDetailsImageQuanLyTab/tbisDetailsImageQuanLyTab';
 
 
@@ -22,6 +24,7 @@ class TbisDetailsImageMiniFab {
         this.$mdDialog = $mdDialog;
         this.$mdMedia = $mdMedia;
 
+
     }
 
     open(event) {
@@ -31,7 +34,10 @@ class TbisDetailsImageMiniFab {
 
                 this.tabSelected = '';
                 this.tabModeSelected = 'addNew';
-                this.thietbi = angular.copy(tbisDataService.getSelectedThietBi());
+
+                this.selectedThietBi = tbisDataService.getSelectedThietBi().thietbi;
+
+                this.thietbi = angular.copy(this.selectedThietBi);
                 this.selectedImage = {};
 
                 this.newImage = {
@@ -51,7 +57,7 @@ class TbisDetailsImageMiniFab {
                 };
 
                 this.resetSelectedImage = () => {
-                    this.selectedImage = _.find(tbisDataService.getSelectedThietBi().hinh_anh.collections, (item) => {
+                    this.selectedImage = _.find(this.selectedThietBi.hinh_anh.collections, (item) => {
                         return item._id === this.selectedImage._id;
                     });
                 };
@@ -62,7 +68,6 @@ class TbisDetailsImageMiniFab {
                         tbisDataService.validateImageInputData(this.newImage);
                         tbisDataService.addNewImage(this.newImage).then(() => {
                             notificationService.success('Thay đổi của bạn đã được ghi nhận vào Skynet.', 'Cập nhật thành công');
-                            this.thietbi = angular.copy(tbisDataService.getSelectedThietBi());
                             this.resetNewImage();
                         }).catch((err) => {
                             notificationService.error(err.message, 'Cập nhật thất bại');
@@ -82,7 +87,6 @@ class TbisDetailsImageMiniFab {
                             $scope.yes = () => {
                                 tbisDataService.removeSelectedImage(this.selectedImage).then(() => {
                                     notificationService.success('Hình ảnh đã được gỡ bỏ khỏi Skynet.', 'Gỡ bỏ thành công');
-                                    this.thietbi = angular.copy(tbisDataService.getSelectedThietBi());
                                     this.selectedImage = {};
                                 }).catch((err) => {
                                     notificationService.error(err.message, 'Gỡ bỏ thất bại');
@@ -102,7 +106,6 @@ class TbisDetailsImageMiniFab {
                         tbisDataService.validateImageInputData(this.selectedImage);
                         tbisDataService.updateSelectedImage(this.selectedImage).then(() => {
                             notificationService.success('Thay đổi của bạn đã được ghi nhận vào Skynet.', 'Cập nhật thành công');
-                            this.thietbi = angular.copy(tbisDataService.getSelectedThietBi());
                             this.selectedImage = {};
                         }).catch((err) => {
                             notificationService.error(err.message, 'Cập nhật thất bại');
@@ -131,12 +134,7 @@ export default angular.module(name, [
     ngMessages,
     TbisDetailsImageQuanLyTab,
     TbisDataSerivce,
-    // TbisListMajorInputForm,
-    // TbisDetailsUpdateThongSoTab,
-    // TbisDetailsUpdateViTriTab,
-
-    // MetadataService,
-    // TsktThongSoKyThuatDataService,
+    TbisDetailsImageModalTatCaTab,
     NotificationService
 ]).component(name, {
     template: fabTemplate,

@@ -1278,7 +1278,7 @@ Meteor.startup(() => {
         const donvis = [
             {
                 "ma": "TCT",
-                "ten": "Tổng công ty Tân cảng Sài Gòn",
+                "ten": "Tổng công ty Tân Cảng Sài Gòn",
                 "nhom": "Tổng công ty"
             }, {
                 "ma": "QC",
@@ -1313,6 +1313,7 @@ Meteor.startup(() => {
                 "ten": "Phòng Marketing",
                 "nhom": "Tổng công ty"
             }, {
+                // Chú ý tạo mặc định KTVT để user có thể đăng ký được trong register form
                 "ma": "KTVT",
                 "ten": "Phòng Kỹ thuật Vật tư",
                 "nhom": "Tổng công ty"
@@ -1346,15 +1347,15 @@ Meteor.startup(() => {
                 "nhom": "Đơn vị trực thuộc Tổng công ty"
             }, {
                 "ma": "TTYT",
-                "ten": "Trung tâm Y tế Tân cảng",
+                "ten": "Trung tâm Y tế Tân Cảng",
                 "nhom": "Đơn vị trực thuộc Tổng công ty"
             }, {
                 "ma": "XNCG",
-                "ten": "Xí nghiệp Cơ giới xếp dỡ Tân cảng",
+                "ten": "Xí nghiệp Cơ giới xếp dỡ Tân Cảng",
                 "nhom": "Đơn vị trực thuộc Tổng công ty"
             }, {
                 "ma": "CV",
-                "ten": "Cảng vụ Tân cảng",
+                "ten": "Cảng vụ Tân Cảng",
                 "nhom": "Đơn vị trực thuộc Tổng công ty"
             }, {
                 "ma": "VPMB",
@@ -1370,11 +1371,11 @@ Meteor.startup(() => {
                 "nhom": "Đơn vị trực thuộc Tổng công ty"
             }, {
                 "ma": "TCTT",
-                "ten": "TNHH MTV cảng Tân cảng - Cái Mép Thị Vải",
+                "ten": "TNHH MTV cảng Tân Cảng - Cái Mép Thị Vải",
                 "nhom": "Công ty 100% vốn của Tổng công ty"
             }, {
                 "ma": "HT",
-                "ten": "TNHH MTV Hoa tiêu Tân cảng",
+                "ten": "TNHH MTV Hoa tiêu Tân Cảng",
                 "nhom": "Công ty 100% vốn của Tổng công ty"
             }, {
                 "ma": "XDCT",
@@ -1382,19 +1383,19 @@ Meteor.startup(() => {
                 "nhom": "Công ty 100% vốn của Tổng công ty"
             }, {
                 "ma": "TCCT",
-                "ten": "CP Tân cảng - Cái Mép",
+                "ten": "CP Tân Cảng - Cái Mép",
                 "nhom": "Công ty >= 50% vốn của Tổng công ty"
             }, {
                 "ma": "TCHP",
-                "ten": "CP Cảng Tân cảng Hiệp Phước",
+                "ten": "CP Cảng Tân Cảng Hiệp Phước",
                 "nhom": "Công ty >= 50% vốn của Tổng công ty"
             }, {
                 "ma": "TCPC",
-                "ten": "TNHH Tân cảng - Petro Cam Ranh",
+                "ten": "TNHH Tân Cảng - Petro Cam Ranh",
                 "nhom": "Công ty >= 50% vốn của Tổng công ty"
             }, {
                 "ma": "TCMT",
-                "ten": "CP Tân cảng - Miền Trung",
+                "ten": "CP Tân Cảng - Miền Trung",
                 "nhom": "Công ty >= 50% vốn của Tổng công ty"
             }, {
                 "ma": "HICT",
@@ -1406,23 +1407,23 @@ Meteor.startup(() => {
                 "nhom": "Công ty >= 50% vốn của Tổng công ty"
             }, {
                 "ma": "KVTC",
-                "ten": "CP Kho vận Tân cảng",
+                "ten": "CP Kho vận Tân Cảng",
                 "nhom": "Công ty >= 50% vốn của Tổng công ty"
             }, {
                 "ma": "ICDST",
-                "ten": "TNHH MTV ICD Tân cảng Sóng Thần",
+                "ten": "TNHH MTV ICD Tân Cảng Sóng Thần",
                 "nhom": "Công ty >= 50% vốn của Tổng công ty"
             }, {
                 "ma": "ICDLB",
-                "ten": "CP ICD Tân cảng Long Bình",
+                "ten": "CP ICD Tân Cảng Long Bình",
                 "nhom": "Công ty >= 50% vốn của Tổng công ty"
             }, {
                 "ma": "VTB",
-                "ten": "CP Vận tải bộ Tân cảng",
+                "ten": "CP Vận tải bộ Tân Cảng",
                 "nhom": "Công ty >= 50% vốn của Tổng công ty"
             }, {
                 "ma": "VTT",
-                "ten": "CP Vận tải thủy Tân cảng",
+                "ten": "CP Vận tải thủy Tân Cảng",
                 "nhom": "Công ty >= 50% vốn của Tổng công ty"
             }, {
                 "ma": "DVKT",
@@ -1438,11 +1439,11 @@ Meteor.startup(() => {
                 "nhom": "Công ty >= 50% vốn của Tổng công ty"
             }, {
                 "ma": "TCIDI",
-                "ten": "CP Đầu tư phát triển hạ tầng Tân cảng",
+                "ten": "CP Đầu tư phát triển hạ tầng Tân Cảng",
                 "nhom": "Công ty >= 50% vốn của Tổng công ty"
             }, {
                 "ma": "STC",
-                "ten": "TNHH PT Nguồn nhân lực Tân cảng - STC",
+                "ten": "TNHH PT Nguồn nhân lực Tân Cảng - STC",
                 "nhom": "Công ty >= 50% vốn của Tổng công ty"
             }, {
                 "ma": "CLL",
@@ -1450,7 +1451,7 @@ Meteor.startup(() => {
                 "nhom": "Công ty < 50% vốn, liên doanh, liên kết của Tổng công ty"
             }, {
                 "ma": "TCPH",
-                "ten": "CP Tân cảng - Phú Hữu",
+                "ten": "CP Tân Cảng - Phú Hữu",
                 "nhom": "Công ty < 50% vốn, liên doanh, liên kết của Tổng công ty"
             }, {
                 "ma": "TCIT",
@@ -1458,39 +1459,39 @@ Meteor.startup(() => {
                 "nhom": "Công ty < 50% vốn, liên doanh, liên kết của Tổng công ty"
             }, {
                 "ma": "TC189",
-                "ten": "CP Tân cảng 189 Hải Phòng",
+                "ten": "CP Tân Cảng 189 Hải Phòng",
                 "nhom": "Công ty < 50% vốn, liên doanh, liên kết của Tổng công ty"
             }, {
                 "ma": "TCO",
-                "ten": "CP Dịch vụ biển Tân cảng",
+                "ten": "CP Dịch vụ biển Tân Cảng",
                 "nhom": "Công ty < 50% vốn, liên doanh, liên kết của Tổng công ty"
             }, {
                 "ma": "TCSM",
-                "ten": "CP Xây dựng Tân cảng Số Một",
+                "ten": "CP Xây dựng Tân Cảng Số Một",
                 "nhom": "Công ty < 50% vốn, liên doanh, liên kết của Tổng công ty"
             }, {
                 "ma": "DTV",
-                "ten": "CP Cảng container Dầu thực vật Tân cảng",
+                "ten": "CP Cảng container Dầu thực vật Tân Cảng",
                 "nhom": "Công ty con, liên doanh, liên kết của các công ty thành viên"
             }, {
                 "ma": "TCBT",
-                "ten": "CP Tân cảng - Bến Thành",
+                "ten": "CP Tân Cảng - Bến Thành",
                 "nhom": "Công ty con, liên doanh, liên kết của các công ty thành viên"
             }, {
                 "ma": "SITC",
-                "ten": "TNHH SITC Tân cảng",
+                "ten": "TNHH SITC Tân Cảng",
                 "nhom": "Công ty con, liên doanh, liên kết của các công ty thành viên"
             }, {
                 "ma": "TCHL",
-                "ten": "CP Tân cảng - Hiệp Lực",
+                "ten": "CP Tân Cảng - Hiệp Lực",
                 "nhom": "Công ty con, liên doanh, liên kết của các công ty thành viên"
             }, {
                 "ma": "TC128",
-                "ten": "CP Tân cảng 128 Hải Phòng",
+                "ten": "CP Tân Cảng 128 Hải Phòng",
                 "nhom": "Công ty con, liên doanh, liên kết của các công ty thành viên"
             }, {
                 "ma": "TCASC",
-                "ten": "CP Tân cảng - Asaco",
+                "ten": "CP Tân Cảng - Asaco",
                 "nhom": "Công ty con, liên doanh, liên kết của các công ty thành viên"
             }, {
                 "ma": "TVTL",
@@ -1514,47 +1515,47 @@ Meteor.startup(() => {
                 "nhom": "Công ty con, liên doanh, liên kết của các công ty thành viên"
             }, {
                 "ma": "TVHP",
-                "ten": "CP Tiếp vận Tân cảng - Hiệp Phước",
+                "ten": "CP Tiếp vận Tân Cảng - Hiệp Phước",
                 "nhom": "Công ty con, liên doanh, liên kết của các công ty thành viên"
             }, {
                 "ma": "TVBD",
-                "ten": "CP Tiếp vận Tân cảng - Bình Dương",
+                "ten": "CP Tiếp vận Tân Cảng - Bình Dương",
                 "nhom": "Công ty con, liên doanh, liên kết của các công ty thành viên"
             }, {
                 "ma": "TVLB",
-                "ten": "CP Tiếp vận Tân cảng - Long Bình",
+                "ten": "CP Tiếp vận Tân Cảng - Long Bình",
                 "nhom": "Công ty con, liên doanh, liên kết của các công ty thành viên"
             }, {
                 "ma": "TVĐN",
-                "ten": "CP Tiếp vận Tân cảng - Đồng Nai",
+                "ten": "CP Tiếp vận Tân Cảng - Đồng Nai",
                 "nhom": "Công ty con, liên doanh, liên kết của các công ty thành viên"
             }, {
                 "ma": "TVVT",
-                "ten": "CP Tiếp vận Tân cảng - Vũng Tàu",
+                "ten": "CP Tiếp vận Tân Cảng - Vũng Tàu",
                 "nhom": "Công ty con, liên doanh, liên kết của các công ty thành viên"
             }, {
                 "ma": "TVMK",
-                "ten": "CP Tiếp vận Tân cảng - Mekong",
+                "ten": "CP Tiếp vận Tân Cảng - Mekong",
                 "nhom": "Công ty con, liên doanh, liên kết của các công ty thành viên"
             }, {
                 "ma": "TVMT",
-                "ten": "CP Tiếp vận Tân cảng - Miền Trung",
+                "ten": "CP Tiếp vận Tân Cảng - Miền Trung",
                 "nhom": "Công ty con, liên doanh, liên kết của các công ty thành viên"
             }, {
                 "ma": "TVĐAN",
-                "ten": "CP Tiếp vận Tân cảng - Đà Nẵng",
+                "ten": "CP Tiếp vận Tân Cảng - Đà Nẵng",
                 "nhom": "Công ty con, liên doanh, liên kết của các công ty thành viên"
             }, {
                 "ma": "TVMB",
-                "ten": "CP Tiếp vận Tân cảng - Miền Bắc",
+                "ten": "CP Tiếp vận Tân Cảng - Miền Bắc",
                 "nhom": "Công ty con, liên doanh, liên kết của các công ty thành viên"
             }, {
                 "ma": "NPC",
-                "ten": "CP Tân cảng - Cypress",
+                "ten": "CP Tân Cảng - Cypress",
                 "nhom": "Công ty con, liên doanh, liên kết của các công ty thành viên"
             }, {
                 "ma": "NPL",
-                "ten": "CP Vận tải biển Tân cảng",
+                "ten": "CP Vận tải biển Tân Cảng",
                 "nhom": "Công ty con, liên doanh, liên kết của các công ty thành viên"
             }, {
                 "ma": "TCTS",
@@ -1562,15 +1563,15 @@ Meteor.startup(() => {
                 "nhom": "Công ty con, liên doanh, liên kết của các công ty thành viên"
             }, {
                 "ma": "DIC",
-                "ten": "CP DIC - Tân cảng Cái Mép",
+                "ten": "CP DIC - Tân Cảng Cái Mép",
                 "nhom": "Công ty con, liên doanh, liên kết của các công ty thành viên"
             }, {
                 "ma": "TCDVL",
-                "ten": "CP Dịch vụ container lạnh Tân cảng",
+                "ten": "CP Dịch vụ container lạnh Tân Cảng",
                 "nhom": "Công ty con, liên doanh, liên kết của các công ty thành viên"
             }, {
                 "ma": "TCNL",
-                "ten": "CP Nhiên liệu Tân cảng",
+                "ten": "CP Nhiên liệu Tân Cảng",
                 "nhom": "Công ty con, liên doanh, liên kết của các công ty thành viên"
             }, {
                 "ma": "TKSM",
@@ -1578,7 +1579,7 @@ Meteor.startup(() => {
                 "nhom": "Công ty con, liên doanh, liên kết của các công ty thành viên"
             }, {
                 "ma": "TCOTS",
-                "ten": "CP Bay và Du lịch biển Tân cảng",
+                "ten": "CP Bay và Du lịch biển Tân Cảng",
                 "nhom": "Công ty con, liên doanh, liên kết của các công ty thành viên"
             }
         ];
@@ -1589,35 +1590,35 @@ Meteor.startup(() => {
                 "ten": "Đội Cơ Giới 1",
                 "don_vi": {
                     "ma": "XNCG",
-                    "ten": "Xí nghiệp Cơ giới xếp dỡ Tân cảng"
+                    "ten": "Xí nghiệp Cơ giới xếp dỡ Tân Cảng"
                 }
             }, {
                 "ma": "CG2",
                 "ten": "Đội Cơ Giới 2",
                 "don_vi": {
                     "ma": "XNCG",
-                    "ten": "Xí nghiệp Cơ giới xếp dỡ Tân cảng"
+                    "ten": "Xí nghiệp Cơ giới xếp dỡ Tân Cảng"
                 }
             }, {
                 "ma": "CG3",
                 "ten": "Đội Cơ Giới 3",
                 "don_vi": {
                     "ma": "XNCG",
-                    "ten": "Xí nghiệp Cơ giới xếp dỡ Tân cảng"
+                    "ten": "Xí nghiệp Cơ giới xếp dỡ Tân Cảng"
                 }
             }, {
                 "ma": "CG4",
                 "ten": "Đội Cơ Giới 4",
                 "don_vi": {
                     "ma": "XNCG",
-                    "ten": "Xí nghiệp Cơ giới xếp dỡ Tân cảng"
+                    "ten": "Xí nghiệp Cơ giới xếp dỡ Tân Cảng"
                 }
             }, {
                 "ma": "CG5",
                 "ten": "Đội Cơ Giới 5",
                 "don_vi": {
                     "ma": "XNCG",
-                    "ten": "Xí nghiệp Cơ giới xếp dỡ Tân cảng"
+                    "ten": "Xí nghiệp Cơ giới xếp dỡ Tân Cảng"
                 }
             }
         ];

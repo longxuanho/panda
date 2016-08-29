@@ -1,0 +1,16 @@
+<md-grid-list md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="3"
+              md-row-height-gt-md="1:1" md-row-height="4:3" md-gutter="8px" md-gutter-gt-sm="4px" >
+    <md-grid-tile ng-repeat="tile in tbisDetailsImageModalTatCaTab.selectedThietBi.thietbi.hinh_anh.collections"
+                  md-rowspan="{{tile.span_row}}" md-colspan="{{tile.span_column}}" md-colspan-sm="1" md-colspan-xs="1" ng-class="tile.class">
+        <img ng-src="{{tile.url}}">
+        <md-grid-tile-footer><h3>{{tile.tieu_de}}</h3></md-grid-tile-footer>
+    </md-grid-tile>
+</md-grid-list>
+<div ng-hide="tbisDetailsImageModalTatCaTab.selectedThietBi.thietbi.hinh_anh.collections.length">
+    <div layout="column" layout-align="start center" layout-padding="">
+        <img ng-src="img/icons/tbis/tbisdetails-no-image.svg" style="max-width: 350px">
+        <p class="md-body-1">Chưa có hình ảnh cho thiết bị. Hãy bắt đầu bằng việc thêm hình ảnh mới!</p>
+    </div>
+
+</div>
+<div style="color: #ffffff;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>

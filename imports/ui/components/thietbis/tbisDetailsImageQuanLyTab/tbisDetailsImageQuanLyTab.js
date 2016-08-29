@@ -2,20 +2,27 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import { Random } from 'meteor/random';
 
+import _ from 'underscore';
+
 import template from './tbisDetailsImageQuanLyTab.html';
 import { name as TbisDetailsImageInputForm } from '../tbisDetailsImageInputForm/tbisDetailsImageInputForm';
 import { name as DisplayRelativeTimeFilter } from '../../../filters/common/displayRelativeTimeFilter';
 
-// import { name as TsktThongSoKyThuatDataService } from '../../../services/thietbis/tsktThongSoKyThuatDataService';
 
 class TbisDetailsImageQuanLyTab {
-    constructor() {
+    constructor(tbisDataService, notificationService, $mdToast) {
         'ngInject';
+
+        this.tbisDataService = tbisDataService;
+
+        this.selectedThietBi = tbisDataService.getSelectedThietBi();
+
     }
 
     selectImage(image) {
         this.selectedImage = angular.copy(image);
     }
+
 }
 
 const name = 'tbisDetailsImageQuanLyTab';
@@ -24,7 +31,7 @@ const name = 'tbisDetailsImageQuanLyTab';
 export default angular.module(name, [
     angularMeteor,
     TbisDetailsImageInputForm,
-    DisplayRelativeTimeFilter
+    DisplayRelativeTimeFilter,
 ]).component(name, {
     template,
     controllerAs: name,
@@ -33,7 +40,6 @@ export default angular.module(name, [
         selectedImage: '=',
         tabSelected: '@',
         tabModeSelected: '=',
-        hinhAnhs: '<'
     },
     controller: TbisDetailsImageQuanLyTab
 });

@@ -294,6 +294,10 @@ Schema.ThietBi = new SimpleSchema({
             type: Boolean,
             defaultValue: false
         },
+        'bao_hanh.thoi_gian_bao_hanh': {
+            type: Number,
+            optional: true
+        },
         'bao_hanh.thoi_gian': {
             type: Object,
             defaultValue: {}
@@ -320,7 +324,7 @@ Schema.ThietBi = new SimpleSchema({
             },
     hinh_anh: {
         type: Object,
-        optional: true
+        defaultValue: {}
     },
         'hinh_anh.collections': {
             type: [Object],
@@ -448,10 +452,24 @@ Schema.ThietBi = new SimpleSchema({
             type: Number,
             optional: true
         },
+    statistics: {
+        type: Object,
+        defaultValue: {}
+    },
+        'statistics.hinh_anh': {
+            type: Object,
+            defaultValue: {}
+        },
+            'statistics.hinh_anh.count': {
+                type: Number,
+                defaultValue: 0
+            },
     metadata: {
         type: Object,
         blackbox: true
-    }
+    },
+
+
 });
 
 ThietBis.attachSchema(Schema.ThietBi, {replace: true});

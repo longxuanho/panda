@@ -1,3 +1,5 @@
 <div style="margin-top: 24px;"></div>
-<tbis-details-map style="width: 100%" location="tbisDetailsViewHoSoViewViTriTabView.viewModel.location" ng-if="tbisDetailsViewHoSoViewViTriTabView.tabSelected==='vi_tri'"></tbis-details-map>
-<p>Thiết bị đang hoạt động tại Cát Lái, Terminal A, Line A7.</p>
+<tbis-details-map style="width: 100%" location="tbisDetailsViewHoSoViewViTriTabView.selectedThietBi.thietbi.location" ng-if="tbisDetailsViewHoSoViewViTriTabView.tabSelected==='vi_tri'"></tbis-details-map>
+<p>
+    Thiết bị {{tbisDetailsViewHoSoViewViTriTabView.selectedThietBi.thietbi.trang_thai.toLowerCase()}} tại {{tbisDetailsViewHoSoViewViTriTabView.selectedThietBi.thietbi.dia_diem.khu_vuc.ten}}<span class="sky-typo-normal" ng-show="tbisDetailsViewHoSoViewViTriTabView.selectedThietBi.thietbi.dia_diem.terminal">, {{tbisDetailsViewHoSoViewViTriTabView.selectedThietBi.thietbi.dia_diem.terminal}}</span><span class="sky-typo-normal" ng-show="tbisDetailsViewHoSoViewViTriTabView.selectedThietBi.thietbi.dia_diem.line">, Line {{tbisDetailsViewHoSoViewViTriTabView.selectedThietBi.thietbi.dia_diem.line}}</span>.
+</p>

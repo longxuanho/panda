@@ -17,12 +17,13 @@ import { name as SubscribeDataService } from '../../../services/workspaces/subsc
 import { name as UtilsFilterDataService } from '../../../services/workspaces/utilsFilterDataService';
 
 
-
-
 class TbisDisplayListView {
     constructor($reactive, $scope, userLocalSettingsService, tbisDataService, subscribeDataService, utilsFilterDataService) {
         'ngInject';
         $reactive(this).attach($scope);
+
+        // Reset selected thietbi:
+        tbisDataService.setSelectedThietBi(null);
 
         this.subscribeOptions = subscribeDataService.getCurrentSubscribeOptions();
         this.utilsFilterOptions = utilsFilterDataService.getCurrentUtilsFilterOptions();
@@ -47,11 +48,20 @@ class TbisDisplayListView {
 
         this.helpers({
             thietbis() {
-                return tbisDataService.query({}, {});
+                return tbisDataService.query({}, {
+                    fields: {
+                        'ma_thiet_bi.keyId': 1,
+                        'nguon_goc.hang_san_xuat': 1,
+                        'phan_loai.chung_loai': 1,
+                        'ho_so.nam_su_dung': 1,
+                        'phan_quyen.quan_ly.ten': 1,
+                        'dia_diem.khu_vuc.ten': 1,
+                        'hinh_anh.default': 1
+                    }
+                });
             },
             thietbisCount() {
                 let totalCount = Counts.get('numberOfThietBis');
-
                 // Cập nhật skyPager
                 this.subscribeOptions.subscribe.total = totalCount;
 

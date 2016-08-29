@@ -14,10 +14,10 @@
     <md-divider></md-divider>
     <p style="padding: 16px;" class="md-body-1">Vui lòng click chọn hình ảnh cần cập nhật trong danh sách được liệt kê dưới đây:</p>
     <md-list flex>
-        <md-list-item class="md-3-line" ng-repeat="item in tbisDetailsImageQuanLyTab.hinhAnhs.collections" ng-click="tbisDetailsImageQuanLyTab.selectImage(item)">
-            <img ng-src="{{item.thumb}}?{{$index}}" class="md-avatar" alt="{{item.tieu_de}}" />
+        <md-list-item class="md-3-line" ng-repeat="item in tbisDetailsImageQuanLyTab.selectedThietBi.thietbi.hinh_anh.collections" ng-click="tbisDetailsImageQuanLyTab.selectImage(item)">
+            <img ng-src="{{item.thumb}}?{{$index}}" class="sky-rectangle-avatar" alt="{{item.tieu_de}}" />
             <div class="md-list-item-text" layout="column">
-                <h3 ng-class="{'hightlight': item._id === tbisDetailsImageQuanLyTab.hinhAnhs.default._id}">{{ item.tieu_de }}</h3>
+                <h3 ng-class="{'hightlight': item._id === tbisDetailsImageQuanLyTab.selectedThietBi.thietbi.hinh_anh.default._id}">{{ item.tieu_de }}</h3>
                 <h4>{{ item.ngay_tao | displayRelativeTimeFilter }}</h4>
                 <h4>{{ item.url }}</h4>
             </div>
@@ -26,3 +26,4 @@
     <tbis-details-image-input-form view-model="tbisDetailsImageQuanLyTab.selectedImage"></tbis-details-image-input-form>
     <md-divider></md-divider>
 </div>
+<div style="color: transparent;">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam</div>

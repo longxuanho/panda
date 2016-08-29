@@ -16,7 +16,9 @@ class TbisDataService {
         this.$q = $q;
         this.metadataService = metadataService;
 
-        this.selectedThietBi = {};
+        this.selectedThietBi = {
+            thietbi: {}
+        };
     }
 
     query(selector, options) {
@@ -84,16 +86,19 @@ class TbisDataService {
         if (data.bao_hanh.isThongTinBaoHanh && (data.bao_hanh.thoi_gian.ngay_bat_dau && data.bao_hanh.thoi_gian.ngay_ket_thuc)) {
             data.bao_hanh.stringify.ngay_bat_dau = moment(data.bao_hanh.thoi_gian.ngay_bat_dau).format('YYYY-MM-DD');
             data.bao_hanh.stringify.ngay_ket_thuc = moment(data.bao_hanh.thoi_gian.ngay_ket_thuc).format('YYYY-MM-DD');
-            data.isTrongThoiGianBaoHanh = (data.bao_hanh.stringify.ngay_ket_thuc > moment().format('YYYY-MM-DD'));
+            // (data.bao_hanh.stringify.ngay_ket_thuc > moment().format('YYYY-MM-DD'));
+            data.bao_hanh.isTrongThoiGianBaoHanh = moment(data.bao_hanh.thoi_gian.ngay_ket_thuc).isAfter(moment());
+            data.bao_hanh.thoi_gian_bao_hanh = moment(data.bao_hanh.thoi_gian.ngay_ket_thuc).diff(moment(data.bao_hanh.thoi_gian.ngay_bat_dau), 'months');
         }
 
         if ((data.ho_so.thiet_bi_di_kem.isThietBiDiKem && data.ho_so.thiet_bi_di_kem.danh_sach.length))
             data.ho_so.thiet_bi_di_kem.str_danh_sach = data.ho_so.thiet_bi_di_kem.danh_sach.join(", ");
 
         if (data.kiem_dinh.isThongTinKiemDinh && (data.kiem_dinh.thoi_gian.ngay_bat_dau && data.kiem_dinh.thoi_gian.ngay_ket_thuc)) {
-            data.kiem_dinh.stringify.ngay_bat_dau = moment(data.kiem_dinh.thoi_gian.ngay_bat_dau).format('YYYY-MM-DD');
-            data.kiem_dinh.stringify.ngay_ket_thuc = moment(data.kiem_dinh.thoi_gian.ngay_ket_thuc).format('YYYY-MM-DD');
-            data.isTrongThoiGianKiemDinh = (data.kiem_dinh.stringify.ngay_ket_thuc > moment().format('YYYY-MM-DD'));
+            data.kiem_dinh.stringify.ngay_hieu_luc = moment(data.kiem_dinh.thoi_gian.ngay_hieu_luc).format('YYYY-MM-DD');
+            data.kiem_dinh.stringify.ngay_het_han = moment(data.kiem_dinh.thoi_gian.ngay_het_han).format('YYYY-MM-DD');
+            // data.kiem_dinh.isTrongThoiGianKiemDinh = (data.kiem_dinh.stringify.ngay_ket_thuc > moment().format('YYYY-MM-DD'));
+            data.kiem_dinh.isTrongThoiGianKiemDinh = moment(data.kiem_dinh.thoi_gian.ngay_ket_thuc).isAfter(moment());
         }
     }
 
@@ -233,7 +238,10 @@ class TbisDataService {
 
     addNewImage(newImage) {
         let defer = this.$q.defer();
-        let hinh_anh = angular.copy(this.selectedThietBi.hinh_anh);
+        let hinh_anh = angular.copy(this.selectedThietBi.thietbi.hinh_anh);
+
+        console.log('hinh_anh: ', hinh_anh);
+        console.log('this.selectedThietBi.thietbi: ', this.selectedThietBi.thietbi);
 
         if (newImage.isDefault) {
             _.each(hinh_anh.collections, (item) => {
@@ -244,7 +252,7 @@ class TbisDataService {
 
         hinh_anh.collections.push(newImage);
         ThietBis.update({
-            _id: this.selectedThietBi._id
+            _id: this.selectedThietBi.thietbi._id
         }, {
             $set: {
                 'hinh_anh': hinh_anh
@@ -261,7 +269,7 @@ class TbisDataService {
     updateSelectedImage(image) {
         let defer = this.$q.defer();
         image.ngay_cap_nhat = new Date();
-        let hinh_anh = angular.copy(this.selectedThietBi.hinh_anh);
+        let hinh_anh = angular.copy(this.selectedThietBi.thietbi.hinh_anh);
 
         _.each(hinh_anh.collections, (item, index) => {
             if (item._id === image._id)
@@ -276,7 +284,7 @@ class TbisDataService {
         }
 
         ThietBis.update({
-            _id: this.selectedThietBi._id
+            _id: this.selectedThietBi.thietbi._id
         }, {
             $set: {
                 'hinh_anh': hinh_anh
@@ -292,14 +300,14 @@ class TbisDataService {
 
     removeSelectedImage(image) {
         let defer = this.$q.defer();
-        let hinh_anh = angular.copy(this.selectedThietBi.hinh_anh);
+        let hinh_anh = angular.copy(this.selectedThietBi.thietbi.hinh_anh);
         if (image.isDefault)
             hinh_anh.default = {};
         hinh_anh.collections = _.reject(hinh_anh.collections, (item) => {
             return item._id === image._id;
         });
         ThietBis.update({
-            _id: this.selectedThietBi._id
+            _id: this.selectedThietBi.thietbi._id
         }, {
             $set: {
                 'hinh_anh': hinh_anh
@@ -318,7 +326,7 @@ class TbisDataService {
     }
 
     setSelectedThietBi(thietbiId) {
-        this.selectedThietBi = this.queryOne(thietbiId);
+        this.selectedThietBi.thietbi = (thietbiId) ? this.queryOne(thietbiId) : {};
     }
 
     getSelectedThongSoKyThuatGroupBy(data) {

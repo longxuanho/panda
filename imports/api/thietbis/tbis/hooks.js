@@ -6,7 +6,11 @@ ThietBis.before.insert((userId, doc) => {
 });
 
 ThietBis.before.update((userId, doc, fieldNames, modifier, options) => {
-    modifier.$set.metadata.searchField =  buildSearchField(doc);
+    if (modifier.$set.metadata)
+        modifier.$set.metadata.searchField =  buildSearchField(doc);
+    // Nếu là cập nhật hình ảnh -> cập nhật staticstics cho thiết bị
+    if (modifier.$set.hinh_anh && modifier.$set.hinh_anh.collections)
+        modifier.$set['statistics.hinh_anh.count'] = modifier.$set.hinh_anh.collections.length;
 });
 
 function buildSearchField(doc) {
