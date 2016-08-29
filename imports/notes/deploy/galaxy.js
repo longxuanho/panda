@@ -23,5 +23,5 @@
  *       $ meteor deploy host.snp-skynet.com --settings settings.json
  *
  *  Step 3: Vào Galaxy Dashboard để bật encrypt option: Enabled + Force HTTPS
-  *
+ *
  */

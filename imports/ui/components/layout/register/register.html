@@ -7,7 +7,7 @@
                 <img src="img/icons/common/blogging.svg" class="sky-img"/>
             </div>
         </md-toolbar>
-        <div layout="column" layout-fill layout-margin layout-padding>
+        <div layout="column" layout-fill layout-padding>
             <form name="register.registerForm" layout="column" >
                 <md-input-container>
                     <label>Email đăng ký</label>
@@ -33,14 +33,14 @@
                 </div>
 
                 <div layout="row">
-                    <md-input-container flex="50">
+                    <md-input-container flex="60">
                         <label>Họ tên đệm</label>
                         <input type="text" name="profile_ho_ten_dem" ng-model="register.credentials.profile.ho_so.ho_ten_dem" aria-label="ho_ten_dem" required/>
                         <div ng-messages="register.registerForm.profile_ho_ten_dem.$error">
                             <div ng-message="required">Thông tin bắt buộc.</div>
                         </div>
                     </md-input-container>
-                    <md-input-container flex="50">
+                    <md-input-container flex="40">
                         <label>Tên</label>
                         <input type="text" name="profile_ten" ng-model="register.credentials.profile.ho_so.ten" aria-label="ten" required/>
                         <div ng-messages="register.registerForm.profile_ten.$error">
@@ -50,14 +50,14 @@
                 </div>
 
                 <div layout="row" class="sky-fix-kendo-date-picker">
-                    <md-input-container flex="50">
+                    <md-input-container flex="60">
                         <label>Ngày sinh</label>
                         <input kendo-date-picker name="profile_ngay_sinh" k-format="'dd/MM/yyyy'" style="width: 100%;" k-ng-model="register.credentials.profile.ho_so.ngay_sinh" required type="date"/>
                         <div ng-messages="register.registerForm.profile_ngay_sinh.$error">
                             <div ng-message="required">Thông tin bắt buộc.</div>
                         </div>
                     </md-input-container>
-                    <md-input-container flex="50">
+                    <md-input-container flex="40">
                         <label>Giới tính</label>
                         <md-select name="profile_gioi_tinh" ng-model="register.credentials.profile.ho_so.gioi_tinh" required>
                             <md-option value="Nam">Nam</md-option>
