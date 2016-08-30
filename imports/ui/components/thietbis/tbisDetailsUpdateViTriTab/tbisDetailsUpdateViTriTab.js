@@ -37,8 +37,7 @@ export default angular.module(name, [
 ]).component(name, {
     template,
     bindings: {
-        viewModel: '=',
-        tabSelected: '@'
+        viewModel: '='
     },
     controllerAs: name,
     controller: TbisDetailsUpdateViTriTab

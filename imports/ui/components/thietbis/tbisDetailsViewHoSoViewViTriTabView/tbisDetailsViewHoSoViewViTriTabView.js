@@ -28,7 +28,6 @@ export default angular.module(name, [
 ]).component(name, {
     template,
     bindings: {
-        tabSelected: '@',
         viewModel: '='
     },
     controllerAs: name,

@@ -25,8 +25,10 @@ class TbisDetailsViewHoSoViewUpdateMiniFab {
 
     open(event) {
         this.$mdDialog.show({
-            controller($mdDialog, tbisDataService, metadataService, notificationService, tsktThongSoKyThuatDataService, $stateParams) {
+            controller($mdDialog, tbisDataService, metadataService, notificationService, tsktThongSoKyThuatDataService) {
                 'ngInject';
+
+                this.thietbi = angular.copy(tbisDataService.getSelectedThietBi().thietbi);
 
                 this.solveThongSoKyThuats = () => {
                     this.thongsokythuats = tbisDataService.getSelectedThongSoKyThuatGroupBy(this.thietbi.thong_so_ky_thuat);
@@ -43,19 +45,23 @@ class TbisDetailsViewHoSoViewUpdateMiniFab {
                     thong_so_ky_thuat: {}
                 };
 
-                this.thietbi = angular.copy(tbisDataService.getSelectedThietBi());
                 this.solveThongSoKyThuats();
                 this.solveThongSoHoatDong();
 
 
-                
+                this.reset = () => {
+                    this.thietbi = angular.copy(tbisDataService.getSelectedThietBi().thietbi);
+                    this.solveThongSoKyThuats();
+                    this.solveThongSoHoatDong();
+                };
+
                 this.save = () => {
                     try {
                         metadataService.buildUpdateMetadata(this.thietbi, Meteor.user());
                         tbisDataService.validateMajorInputThietBiData(this.thietbi);
                         tbisDataService.updateMajorForm(this.thietbi).then(() => {
                             notificationService.success('Thay đổi của bạn đã được ghi nhận vào Skynet.', 'Cập nhật thành công');
-                            this.thietbi = angular.copy(tbisDataService.getSelectedThietBi());
+                            this.reset();
                         }).catch((err) => {
                             notificationService.error(err.message, 'Cập nhật thất bại');
                         });
@@ -65,11 +71,7 @@ class TbisDetailsViewHoSoViewUpdateMiniFab {
                     }
                 };
 
-                this.reset = () => {
-                    this.thietbi = angular.copy(tbisDataService.getSelectedThietBi());
-                    this.solveThongSoKyThuats();
-                    this.solveThongSoHoatDong();
-                };
+
 
                 this.addNewThongSo = () => {
                     try {

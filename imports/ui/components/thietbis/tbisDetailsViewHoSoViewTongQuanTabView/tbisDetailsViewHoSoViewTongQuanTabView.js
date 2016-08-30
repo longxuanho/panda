@@ -5,22 +5,27 @@ import _ from 'underscore';
 import moment from 'moment';
 
 import template from './tbisDetailsViewHoSoViewTongQuanTabView.html';
+
+import { name as TbisDataSerivce } from '../../../services/thietbis/tbisDataService';
+
 import { name as DisplayRelativeTimeFilter } from '../../../filters/common/displayRelativeTimeFilter';
 
 class TbisDetailsViewHoSoViewTongQuanTabView {
-    constructor() {
+    constructor(tbisDataService) {
         'ngInject';
 
+        this.selectedThietBi = tbisDataService.getSelectedThietBi();
+
         // Cập nhật lại nếu thiết bị đang / đã hết hạn bảo hạnh (Chưa lưu vào DB)
-        if (this.thietbi && this.thietbi.bao_hanh && this.thietbi.bao_hanh.isThongTinBaoHanh)
-            this.thietbi.bao_hanh.isTrongThoiGianBaoHanh = moment(this.thietbi.bao_hanh.thoi_gian.ngay_ket_thuc).isAfter(moment());
-        if (this.thietbi && this.thietbi.kiem_dinh && this.thietbi.kiem_dinh.isThongTinKiemDinh)
-            this.thietbi.kiem_dinh.isTrongThoiGianKiemDinh = moment(this.thietbi.kiem_dinh.thoi_gian.ngay_het_han).isAfter(moment());
+        if (this.selectedThietBi.thietbi && this.selectedThietBi.thietbi.bao_hanh && this.selectedThietBi.thietbi.bao_hanh.isThongTinBaoHanh)
+            this.selectedThietBi.thietbi.bao_hanh.isTrongThoiGianBaoHanh = moment(this.selectedThietBi.thietbi.bao_hanh.thoi_gian.ngay_ket_thuc).isAfter(moment());
+        if (this.selectedThietBi.thietbi && this.selectedThietBi.thietbi.kiem_dinh && this.selectedThietBi.thietbi.kiem_dinh.isThongTinKiemDinh)
+            this.selectedThietBi.thietbi.kiem_dinh.isTrongThoiGianKiemDinh = moment(this.selectedThietBi.thietbi.kiem_dinh.thoi_gian.ngay_het_han).isAfter(moment());
     }
 
     isEmptyThongTinDangKy() {
-        if (this.thietbi) {
-            let testObject = _.omit(this.thietbi.ho_so, 'nam_su_dung');
+        if (this.selectedThietBi.thietbi) {
+            let testObject = _.omit(this.selectedThietBi.thietbi.ho_so, 'nam_su_dung');
             return _.isEmpty(testObject);
         }
         return true;
@@ -32,12 +37,10 @@ const name = 'tbisDetailsViewHoSoViewTongQuanTabView';
 // create a module
 export default angular.module(name, [
     angularMeteor,
+    TbisDataSerivce,
     DisplayRelativeTimeFilter
 ]).component(name, {
     template,
     controllerAs: name,
-    bindings: {
-        thietbi: '<'
-    },
     controller: TbisDetailsViewHoSoViewTongQuanTabView
 });

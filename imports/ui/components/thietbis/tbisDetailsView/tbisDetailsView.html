@@ -1,7 +1,6 @@
-<tbis-details-utils-bar has-options="true" title="{{tbisDetailsView.thietbi.ma_thiet_bi.keyId}}"></tbis-details-utils-bar>
+<tbis-details-utils-bar has-options="true" title="{{tbisDetailsView.selectedThietBi.thietbi.ma_thiet_bi.keyId}}"></tbis-details-utils-bar>
 <div id="section-ho-so-view" ng-if="tbisDetailsView.componentOptions.utilsBar.category==='Hồ sơ'">
-    <tbis-details-view-ho-so-view thietbi="tbisDetailsView.thietbi"></tbis-details-view-ho-so-view>
-    <tbis-details-view-ho-so-view-fab-menu></tbis-details-view-ho-so-view-fab-menu>
+    <tbis-details-view-ho-so-view></tbis-details-view-ho-so-view>
 </div>
 <div id="section-report-view" ng-if="tbisDetailsView.componentOptions.utilsBar.category==='Tin tức'">
     <tbis-details-view-report-view></tbis-details-view-report-view>

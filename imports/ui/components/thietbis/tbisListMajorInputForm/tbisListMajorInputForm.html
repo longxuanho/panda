@@ -296,11 +296,11 @@
         <md-list-item ng-show="tbisListMajorInputForm.viewModel.kiem_dinh.isThongTinKiemDinh" layout="row" class="sky-fix-kendo-date-picker" flex>
             <md-input-container flex="50">
                 <label>Ngày hiệu lực</label>
-                <input kendo-date-picker k-format="'dd/MM/yyyy'" style="width: 100%;" k-ng-model="tbisListMajorInputForm.viewModel.kiem_dinh.thoi_gian.ngay_bat_dau" type="date"/>
+                <input kendo-date-picker k-format="'dd/MM/yyyy'" style="width: 100%;" k-ng-model="tbisListMajorInputForm.viewModel.kiem_dinh.thoi_gian.ngay_hieu_luc" type="date"/>
             </md-input-container>
             <md-input-container flex="50">
                 <label>Ngày hết hạn</label>
-                <input kendo-date-picker k-format="'dd/MM/yyyy'" style="width: 100%;" k-ng-model="tbisListMajorInputForm.viewModel.kiem_dinh.thoi_gian.ngay_ket_thuc" type="date"/>
+                <input kendo-date-picker k-format="'dd/MM/yyyy'" style="width: 100%;" k-ng-model="tbisListMajorInputForm.viewModel.kiem_dinh.thoi_gian.ngay_het_han" type="date"/>
             </md-input-container>
         </md-list-item>
 
@@ -335,7 +335,7 @@
                             <!--style="width: 100%;"-->
                             <!--k-placeholder="'Gắn thẻ...'"></select>-->
                 <!--</div>-->
-                <div layout="row" flex="100" style="margin-top: 40px; margin-bottom: 40px;">
+                <div layout="row" flex="100" ng-if="tbisListMajorInputForm.selectOptions.tags[tbisListMajorInputForm.viewModel.phan_loai.nhom]" style="margin-top: 40px; margin-bottom: 40px;">
                     <md-chips flex="100"
                             ng-model="tbisListMajorInputForm.viewModel.tags"
                             md-autocomplete-snap
@@ -367,4 +367,4 @@
     </md-list>
 </form>
 
-<pre>{{tbisListMajorInputForm.isPreserveSelect|json}}</pre>
+<!--<pre>{{tbisListMajorInputForm.viewModel|json}}</pre>-->

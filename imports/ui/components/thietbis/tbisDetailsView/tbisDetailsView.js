@@ -5,12 +5,12 @@ import uiRouter from 'angular-ui-router';
 import { Meteor } from 'meteor/meteor';
 
 import template from './tbisDetailsView.html';
-import { ThietBis } from '../../../../api/thietbis/tbis';
+
 import { name as TbisDetailsUtilsBar } from '../tbisDetailsUtilsBar/tbisDetailsUtilsBar';
 import { name as TbisDetailsViewHoSoView } from '../tbisDetailsViewHoSoView/tbisDetailsViewHoSoView';
 import { name as TbisDetailsViewReportView } from '../tbisDetailsViewReportView/tbisDetailsViewReportView';
 import { name as TbisDetailsViewHistoryView } from '../tbisDetailsViewHistoryView/tbisDetailsViewHistoryView';
-import { name as TbisDetailsViewHoSoViewFabMenu } from '../tbisDetailsViewHoSoViewFabMenu/tbisDetailsViewHoSoViewFabMenu';
+
 import { name as TbisDataSerivce } from '../../../services/thietbis/tbisDataService';
 import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
 
@@ -33,9 +33,7 @@ class TbisDetailsView {
                 // Dùng cho phần update với user có quyền hạn
                 tbisDataService.setSelectedThietBi($stateParams.thietbiId);
 
-                return ThietBis.findOne({
-                    _id: $stateParams.thietbiId
-                });
+                return null;
             },
             isLoggedIn() {
                 return !!Meteor.userId();
@@ -62,7 +60,6 @@ export default angular.module(name, [
     TbisDetailsViewHoSoView,
     TbisDetailsViewReportView,
     TbisDetailsViewHistoryView,
-    TbisDetailsViewHoSoViewFabMenu,
     TbisDataSerivce,
     UserLocalSettingsService
 ]).component(name, {

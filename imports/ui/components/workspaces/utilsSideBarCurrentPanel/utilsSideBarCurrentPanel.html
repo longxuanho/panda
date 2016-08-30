@@ -11,6 +11,13 @@
         </md-list-item>
     </md-list>
 </md-toolbar>
+<md-subheader class="md-no-sticky">Sắp xếp</md-subheader>
+<div style="padding: 40px 16px;">
+    <md-radio-group ng-model="utilsSideBarCurrentPanel.currentSubscribeOptions.subscribe.sort['ma_thiet_bi.keyId']">
+        <md-radio-button ng-value="1">Tăng dần</md-radio-button>
+        <md-radio-button ng-value="-1">Giảm dần</md-radio-button>
+    </md-radio-group>
+</div>
 <md-subheader class="md-no-sticky">Tìm kiếm</md-subheader>
 <form ng-submit="utilsSideBarCurrentPanel.searchFormSubmit()" layout="row"  style="padding: 40px 16px;">
     <div flex>
@@ -45,16 +52,10 @@
         </md-button>
     </div>
 </div>
-<md-subheader class="md-no-sticky">Sắp xếp</md-subheader>
-<div style="padding: 40px 16px;">
-    <md-radio-group ng-model="utilsSideBarCurrentPanel.currentSubscribeOptions.subscribe.sort['ma_thiet_bi.keyId']">
-        <md-radio-button ng-value="1">Tăng dần</md-radio-button>
-        <md-radio-button ng-value="-1">Giảm dần</md-radio-button>
-    </md-radio-group>
-</div>
 
-<pre>
-    {{utilsSideBarCurrentPanel.currentSubscribeOptions.subscribe | json}}
-</pre>
+
+<!--<pre>-->
+    <!--{{utilsSideBarCurrentPanel.currentSubscribeOptions.subscribe | json}}-->
+<!--</pre>-->
 
 

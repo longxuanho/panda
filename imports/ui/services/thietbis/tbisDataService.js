@@ -123,7 +123,7 @@ class TbisDataService {
 
         if (data.bao_hanh.isThongTinBaoHanh && !(data.bao_hanh.thoi_gian.ngay_bat_dau && data.bao_hanh.thoi_gian.ngay_ket_thuc))
             throw Error('Thông tin về thời gian bảo hành chưa đầy đủ.');
-        if (data.kiem_dinh.isThongTinKiemDinh && !(data.kiem_dinh.thoi_gian.ngay_bat_dau && data.kiem_dinh.thoi_gian.ngay_ket_thuc))
+        if (data.kiem_dinh.isThongTinKiemDinh && !(data.kiem_dinh.thoi_gian.ngay_hieu_luc && data.kiem_dinh.thoi_gian.ngay_het_han))
             throw Error('Thông tin về thời gian kiểm định chưa đầy đủ.');
 
         if (data.ho_so.thiet_bi_di_kem.isThietBiDiKem && !data.ho_so.thiet_bi_di_kem.danh_sach.length)

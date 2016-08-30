@@ -3,7 +3,7 @@
 <md-tabs md-dynamic-height md-border-bottom>
     <md-tab label="Tổng quan" md-on-select="tbisDetailsViewHoSoView.tabSelected='tong_quan'">
         <md-content>
-            <tbis-details-view-ho-so-view-tong-quan-tab-view thietbi="tbisDetailsViewHoSoView.thietbi"></tbis-details-view-ho-so-view-tong-quan-tab-view>
+            <tbis-details-view-ho-so-view-tong-quan-tab-view></tbis-details-view-ho-so-view-tong-quan-tab-view>
         </md-content>
     </md-tab>
     <md-tab label="Thông số" md-on-select="tbisDetailsViewHoSoView.tabSelected='thong_so'">
@@ -13,7 +13,12 @@
     </md-tab>
     <md-tab label="Vị trí" md-on-select="tbisDetailsViewHoSoView.tabSelected='vi_tri'">
         <md-content class="md-padding">
-            <tbis-details-view-ho-so-view-vi-tri-tab-view tab-selected="{{tbisDetailsViewHoSoView.tabSelected}}" view-model="tbisDetailsViewHoSoView.thietbi.dia_diem.toa_do"></tbis-details-view-ho-so-view-vi-tri-tab-view>
+            <tbis-details-view-ho-so-view-vi-tri-tab-view
+                    ng-if="tbisDetailsViewHoSoView.tabSelected==='vi_tri'"
+                    view-model="tbisDetailsViewHoSoView.thietbi.dia_diem.toa_do">
+            </tbis-details-view-ho-so-view-vi-tri-tab-view>
         </md-content>
     </md-tab>
 </md-tabs>
+
+<tbis-details-view-ho-so-view-fab-menu></tbis-details-view-ho-so-view-fab-menu>

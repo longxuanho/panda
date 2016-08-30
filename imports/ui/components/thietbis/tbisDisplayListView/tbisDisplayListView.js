@@ -9,6 +9,7 @@ import template from './tbisDisplayListView.html';
 import { name as TbisSearchForm } from '../tbisSearchForm/tbisSearchForm';
 import { name as SkyPager } from '../../layout/skyPager/skyPager';
 import { name as SkyPagingInfo } from '../../layout/skyPagingInfo/skyPagingInfo';
+import { name as TbisListFabMenu } from '../tbisListFabMenu/tbisListFabMenu';
 
 import { name as TbisDisplayListItem } from '../tbisDisplayListItem/tbisDisplayListItem';
 import { name as TbisDataService } from '../../../services/thietbis/tbisDataService';
@@ -84,6 +85,7 @@ export default angular.module(name, [
     TbisSearchForm,
     SkyPager,
     SkyPagingInfo,
+    TbisListFabMenu,
     TbisDisplayListItem,
     TbisDataService,
     UserLocalSettingsService,

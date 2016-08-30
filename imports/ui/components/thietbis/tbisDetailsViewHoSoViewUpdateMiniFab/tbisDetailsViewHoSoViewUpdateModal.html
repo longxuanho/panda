@@ -27,8 +27,10 @@
             </md-tab>
             <md-tab label="Vị trí" md-on-select="tbisDetailsViewHoSoViewUpdateModal.tabSelected='vi_tri'">
                 <md-content class="md-padding">
-                    <tbis-details-update-vi-tri-tab     view-model="tbisDetailsViewHoSoViewUpdateModal.thietbi.dia_diem.toa_do"
-                                                        tab-selected="{{tbisDetailsViewHoSoViewUpdateModal.tabSelected}}"></tbis-details-update-vi-tri-tab>
+                    <tbis-details-update-vi-tri-tab
+                            ng-if="tbisDetailsViewHoSoViewUpdateModal.tabSelected==='vi_tri'"
+                            view-model="tbisDetailsViewHoSoViewUpdateModal.thietbi.dia_diem.toa_do">
+                    </tbis-details-update-vi-tri-tab>
                 </md-content>
             </md-tab>
         </md-tabs>

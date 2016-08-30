@@ -16,7 +16,7 @@ class TbisFilterPanelSolverService {
                 if (error) {
                     defer.reject(error);
                 } else {
-                    console.log('query done');
+                    console.log('truy vấn filter... done!');
                     defer.resolve(result);
                 }
             }

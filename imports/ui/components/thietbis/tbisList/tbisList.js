@@ -7,7 +7,7 @@ import ngMdIcons from 'angular-material-icons';
 import template from './tbisList.html';
 
 import { name as TbisListUtilsTopBar } from '../tbisListUtilsTopBar/tbisListUtilsTopBar';
-import { name as TbisListFabMenu } from '../tbisListFabMenu/tbisListFabMenu';
+
 
 import { name as TbisPhanLoaiDataService } from '../../../services/thietbis/tbisPhanLoaiDataService';
 import { name as TbisNguonGocDataService } from '../../../services/thietbis/tbisNguonGocDataService';
@@ -74,7 +74,6 @@ export default angular.module(name, [
     ngMdIcons,
     utilsPagination,
     TbisListUtilsTopBar,
-    TbisListFabMenu,
 
     TbisDisplayListView,
     TbisDisplayGridView,

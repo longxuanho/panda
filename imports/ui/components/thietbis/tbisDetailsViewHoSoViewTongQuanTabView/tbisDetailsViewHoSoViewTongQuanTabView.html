@@ -3,17 +3,17 @@
     <!--Tham chiếu-->
     <md-subheader class="md-no-sticky">Tham chiếu</md-subheader>
     <md-list-item layout="column" layout-align="start start">
-        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ma_thiet_bi.topX || tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ma_thiet_bi.maximo">
-            <span class="sky-typo-strong" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ma_thiet_bi.topX">{{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ma_thiet_bi.topX}} (TopX);&nbsp;</span><span class="sky-typo-strong" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ma_thiet_bi.maximo">{{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ma_thiet_bi.maximo}} (Maximo);</span>
+        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ma_thiet_bi.topX || tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ma_thiet_bi.maximo">
+            <span class="sky-typo-strong" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ma_thiet_bi.topX">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ma_thiet_bi.topX}} (TopX);&nbsp;</span><span class="sky-typo-strong" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ma_thiet_bi.maximo">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ma_thiet_bi.maximo}} (Maximo);</span>
         </p>
         <p>
-            <span class="sky-typo-normal">Phân nhóm {{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.phan_loai.nhom}}, chủng loại {{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.phan_loai.chung_loai}}, loại {{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.phan_loai.loai}}.</span>
+            <span class="sky-typo-normal">Phân nhóm {{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.phan_loai.nhom}}, chủng loại {{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.phan_loai.chung_loai}}, loại {{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.phan_loai.loai}}.</span>
         </p>
-        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ho_so.nam_su_dung">
-            <span class="sky-typo-normal">Thiết bị được sử dụng từ năm {{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ho_so.nam_su_dung}}.</span>
+        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ho_so.nam_su_dung">
+            <span class="sky-typo-normal">Thiết bị được sử dụng từ năm {{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ho_so.nam_su_dung}}.</span>
         </p>
         <p>
-            <span class="sky-typo-strong">{{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.trang_thai}} tại {{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.dia_diem.khu_vuc.ten}}</span><span class="sky-typo-normal" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.dia_diem.terminal">, {{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.dia_diem.terminal}}</span><span class="sky-typo-normal" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.dia_diem.line">, Line {{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.dia_diem.line}}</span>.
+            <span class="sky-typo-strong">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.trang_thai}} tại {{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.dia_diem.khu_vuc.ten}}</span><span class="sky-typo-normal" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.dia_diem.terminal">, {{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.dia_diem.terminal}}</span><span class="sky-typo-normal" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.dia_diem.line">, Line {{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.dia_diem.line}}</span>.
         </p>
     </md-list-item>
     <md-divider></md-divider>
@@ -22,16 +22,16 @@
     <md-subheader class="md-no-sticky">Nguồn gốc, xuất xứ</md-subheader>
     <md-list-item layout="column" layout-align="start start">
         <p>
-            <span class="sky-typo-strong">Hãng sản xuất:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.nguon_goc.hang_san_xuat}}</span><span class="sky-typo-normal" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.nguon_goc.nam_san_xuat">, năm {{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.nguon_goc.nam_san_xuat}}.</span>
+            <span class="sky-typo-strong">Hãng sản xuất:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.nguon_goc.hang_san_xuat}}</span><span class="sky-typo-normal" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.nguon_goc.nam_san_xuat">, năm {{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.nguon_goc.nam_san_xuat}}.</span>
         </p>
-        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.nguon_goc.vendor">
-            <span class="sky-typo-strong">Nhà phân phối:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.nguon_goc.vendor}}</span>
+        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.nguon_goc.vendor">
+            <span class="sky-typo-strong">Nhà phân phối:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.nguon_goc.vendor}}</span>
         </p>
-        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.nguon_goc.model">
-            <span class="sky-typo-normal">Model {{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.nguon_goc.model}}.</span>
+        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.nguon_goc.model">
+            <span class="sky-typo-normal">Model {{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.nguon_goc.model}}.</span>
         </p>
-        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.nguon_goc.noi_lap_rap">
-            <span class="sky-typo-normal">Thiết bị được lắp ráp tại {{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.nguon_goc.noi_lap_rap}}.</span>
+        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.nguon_goc.noi_lap_rap">
+            <span class="sky-typo-normal">Thiết bị được lắp ráp tại {{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.nguon_goc.noi_lap_rap}}.</span>
         </p>
     </md-list-item>
     <md-divider></md-divider>
@@ -40,13 +40,13 @@
     <md-subheader class="md-no-sticky">Phân quyền</md-subheader>
     <md-list-item layout="column" layout-align="start start">
         <p>
-            <span class="sky-typo-strong">Quản lý:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.phan_quyen.quan_ly.ten}}</span>
+            <span class="sky-typo-strong">Quản lý:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.phan_quyen.quan_ly.ten}}</span>
         </p>
         <p>
-            <span class="sky-typo-strong">Sở hữu:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.phan_quyen.so_huu.ten}}</span>
+            <span class="sky-typo-strong">Sở hữu:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.phan_quyen.so_huu.ten}}</span>
         </p>
-        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.phan_quyen.van_hanh.ten">
-            <span class="sky-typo-strong">Vận hành:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.phan_quyen.van_hanh.ten}}</span><span class="sky-typo-normal" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.phan_quyen.doi_van_hanh.ten">, {{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.phan_quyen.van_hanh.ten}}.</span>
+        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.phan_quyen.van_hanh.ten">
+            <span class="sky-typo-strong">Vận hành:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.phan_quyen.van_hanh.ten}}</span><span class="sky-typo-normal" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.phan_quyen.doi_van_hanh.ten">, {{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.phan_quyen.van_hanh.ten}}.</span>
         </p>
     </md-list-item>
 
@@ -54,23 +54,23 @@
     <md-divider></md-divider>
     <md-subheader class="md-no-sticky">Các thông tin đăng ký</md-subheader>
     <md-list-item layout="column" layout-align="start start">
-        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ho_so.so_dang_ky">
-            <span class="sky-typo-strong">Số đăng ký:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ho_so.so_dang_ky}}</span>
+        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ho_so.so_dang_ky">
+            <span class="sky-typo-strong">Số đăng ký:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ho_so.so_dang_ky}}</span>
         </p>
-        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ho_so.bien_so">
-            <span class="sky-typo-strong">Biển số:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ho_so.bien_so}}</span>
+        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ho_so.bien_so">
+            <span class="sky-typo-strong">Biển số:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ho_so.bien_so}}</span>
         </p>
-        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ho_so.so_dang_kiem">
-            <span class="sky-typo-strong">Số đăng kiểm:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ho_so.so_dang_kiem}}</span>
+        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ho_so.so_dang_kiem">
+            <span class="sky-typo-strong">Số đăng kiểm:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ho_so.so_dang_kiem}}</span>
         </p>
-        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ho_so.so_khung">
-            <span class="sky-typo-strong">Số khung:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ho_so.so_khung}}</span>
+        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ho_so.so_khung">
+            <span class="sky-typo-strong">Số khung:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ho_so.so_khung}}</span>
         </p>
-        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ho_so.so_may">
-            <span class="sky-typo-strong">Số máy:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ho_so.so_may}}</span>
+        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ho_so.so_may">
+            <span class="sky-typo-strong">Số máy:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ho_so.so_may}}</span>
         </p>
-        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ho_so.xuat_xu">
-            <span class="sky-typo-strong">Xuất xứ:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ho_so.xuat_xu}}</span>
+        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ho_so.xuat_xu">
+            <span class="sky-typo-strong">Xuất xứ:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ho_so.xuat_xu}}</span>
         </p>
         <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.isEmptyThongTinDangKy()">
             <span class="sky-typo-normal">Chưa cập nhật các thông tin đăng ký.</span>
@@ -80,21 +80,21 @@
     <!--Kiểm định-->
     <md-divider></md-divider>
     <md-subheader class="md-no-sticky">Kiểm định</md-subheader>
-    <md-list-item layout="column" layout-align="start start" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.kiem_dinh.isThongTinKiemDinh">
+    <md-list-item layout="column" layout-align="start start" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.kiem_dinh.isThongTinKiemDinh">
         <p>
-            <span class="sky-typo-strong">Thiết bị {{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.kiem_dinh.isTrongThoiGianKiemDinh ? 'đang trong thời gian kiểm định' : 'đã hết hạn kiểm định' }}.</span>
+            <span class="sky-typo-strong">Thiết bị {{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.kiem_dinh.isTrongThoiGianKiemDinh ? 'đang trong thời gian kiểm định' : 'đã hết hạn kiểm định' }}.</span>
         </p>
-        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.kiem_dinh.ho_so.so_phieu_kiem_dinh">
-            <span class="sky-typo-strong">Số phiếu:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.kiem_dinh.ho_so.so_phieu_kiem_dinh}}</span>
+        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.kiem_dinh.ho_so.so_phieu_kiem_dinh">
+            <span class="sky-typo-strong">Số phiếu:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.kiem_dinh.ho_so.so_phieu_kiem_dinh}}</span>
         </p>
-        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.kiem_dinh.ho_so.so_tem_kiem_dinh">
-            <span class="sky-typo-strong">Số tem:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.kiem_dinh.ho_so.so_tem_kiem_dinh}}</span>
+        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.kiem_dinh.ho_so.so_tem_kiem_dinh">
+            <span class="sky-typo-strong">Số tem:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.kiem_dinh.ho_so.so_tem_kiem_dinh}}</span>
         </p>
         <p>
-            <span class="sky-typo-normal">Có hiệu lực từ ngày {{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.kiem_dinh.thoi_gian.ngay_hieu_luc | displayCustomDateTimeFilter:'DD/MM/YYYY'}} đến ngày {{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.kiem_dinh.thoi_gian.ngay_het_han | displayCustomDateTimeFilter:'DD/MM/YYYY'}}.</span>
+            <span class="sky-typo-normal">Có hiệu lực từ ngày {{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.kiem_dinh.thoi_gian.ngay_hieu_luc | displayCustomDateTimeFilter:'DD/MM/YYYY'}} đến ngày {{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.kiem_dinh.thoi_gian.ngay_het_han | displayCustomDateTimeFilter:'DD/MM/YYYY'}}.</span>
         </p>
     </md-list-item>
-    <md-list-item layout="column" layout-align="start start" ng-hide="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.kiem_dinh.isThongTinKiemDinh">
+    <md-list-item layout="column" layout-align="start start" ng-hide="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.kiem_dinh.isThongTinKiemDinh">
         <p>
             <span class="sky-typo-normal">Không có thông tin được ghi nhận về thiết bị.</span>
         </p>
@@ -103,18 +103,18 @@
     <!--Bảo hành-->
     <md-divider></md-divider>
     <md-subheader class="md-no-sticky">Bảo hành</md-subheader>
-    <md-list-item layout="column" layout-align="start start" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.bao_hanh.isThongTinBaoHanh">
+    <md-list-item layout="column" layout-align="start start" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.bao_hanh.isThongTinBaoHanh">
         <p>
-            <span class="sky-typo-strong">Thiết bị {{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.bao_hanh.isTrongThoiGianBaoHanh ? 'đang trong thời gian bảo hành' : 'đã hết hạn bảo hành' }}.</span>
+            <span class="sky-typo-strong">Thiết bị {{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.bao_hanh.isTrongThoiGianBaoHanh ? 'đang trong thời gian bảo hành' : 'đã hết hạn bảo hành' }}.</span>
         </p>
         <p>
-            <span class="sky-typo-normal">Bảo hành từ ngày {{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.bao_hanh.thoi_gian.ngay_bat_dau | displayCustomDateTimeFilter:'DD/MM/YYYY'}} đến ngày {{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.bao_hanh.thoi_gian.ngay_ket_thuc | displayCustomDateTimeFilter:'DD/MM/YYYY'}}.</span>
+            <span class="sky-typo-normal">Bảo hành từ ngày {{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.bao_hanh.thoi_gian.ngay_bat_dau | displayCustomDateTimeFilter:'DD/MM/YYYY'}} đến ngày {{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.bao_hanh.thoi_gian.ngay_ket_thuc | displayCustomDateTimeFilter:'DD/MM/YYYY'}}.</span>
         </p>
         <p>
-            <span class="sky-typo-normal">Thời gian bảo hành {{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.bao_hanh.thoi_gian_bao_hanh}} tháng.</span>
+            <span class="sky-typo-normal">Thời gian bảo hành {{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.bao_hanh.thoi_gian_bao_hanh}} tháng.</span>
         </p>
     </md-list-item>
-    <md-list-item layout="column" layout-align="start start" ng-hide="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.bao_hanh.isThongTinBaoHanh">
+    <md-list-item layout="column" layout-align="start start" ng-hide="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.bao_hanh.isThongTinBaoHanh">
         <p>
             <span class="sky-typo-normal">Không có thông tin được ghi nhận về thiết bị.</span>
         </p>
@@ -127,15 +127,15 @@
         <span class="sky-typo-strong">VT-13:&nbsp;</span><span class="sky-typo-normal">Vận thăng, Alimax (2001)</span>
     </md-list-item>
     <md-divider></md-divider>
-    <md-subheader class="md-no-sticky" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.tags.length || tbisDetailsViewHoSoViewTongQuanTabView.thietbi.mo_ta || tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ghi_chu">Các thông tin khác</md-subheader>
-    <md-list-item ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.tags.length">
-        <span class="sky-typo-strong">Gắn thẻ:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.tags.join(', ')}}.</span>
+    <md-subheader class="md-no-sticky" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.tags.length || tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.mo_ta || tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ghi_chu">Các thông tin khác</md-subheader>
+    <md-list-item ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.tags.length">
+        <span class="sky-typo-strong">Gắn thẻ:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.tags.join(', ')}}.</span>
     </md-list-item>
-    <md-list-item ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.mo_ta">
-        <span class="sky-typo-strong">Mô tả:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.mo_ta}}</span>
+    <md-list-item ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.mo_ta">
+        <span class="sky-typo-strong">Mô tả:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.mo_ta}}</span>
     </md-list-item>
-    <md-list-item ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ghi_chu">
-        <span class="sky-typo-strong">Ghi chú:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ghi_chu}}</span>
+    <md-list-item ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ghi_chu">
+        <span class="sky-typo-strong">Ghi chú:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ghi_chu}}</span>
     </md-list-item>
 
     <div style="margin-top: 20px;"></div>

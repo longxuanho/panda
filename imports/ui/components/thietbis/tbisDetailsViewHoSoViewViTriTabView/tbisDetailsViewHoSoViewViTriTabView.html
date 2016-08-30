@@ -1,5 +1,7 @@
 <div style="margin-top: 24px;"></div>
-<tbis-details-map style="width: 100%" location="tbisDetailsViewHoSoViewViTriTabView.selectedThietBi.thietbi.location" ng-if="tbisDetailsViewHoSoViewViTriTabView.tabSelected==='vi_tri'"></tbis-details-map>
-<p>
+    <tbis-details-map style="width: 100%"
+                      location="tbisDetailsViewHoSoViewViTriTabView.selectedThietBi.thietbi.dia_diem.toa_do.location">
+    </tbis-details-map>
+<p class="md-body-1">
     Thiết bị {{tbisDetailsViewHoSoViewViTriTabView.selectedThietBi.thietbi.trang_thai.toLowerCase()}} tại {{tbisDetailsViewHoSoViewViTriTabView.selectedThietBi.thietbi.dia_diem.khu_vuc.ten}}<span class="sky-typo-normal" ng-show="tbisDetailsViewHoSoViewViTriTabView.selectedThietBi.thietbi.dia_diem.terminal">, {{tbisDetailsViewHoSoViewViTriTabView.selectedThietBi.thietbi.dia_diem.terminal}}</span><span class="sky-typo-normal" ng-show="tbisDetailsViewHoSoViewViTriTabView.selectedThietBi.thietbi.dia_diem.line">, Line {{tbisDetailsViewHoSoViewViTriTabView.selectedThietBi.thietbi.dia_diem.line}}</span>.
 </p>
