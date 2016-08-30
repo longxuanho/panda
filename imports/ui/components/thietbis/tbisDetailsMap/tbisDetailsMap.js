@@ -18,8 +18,10 @@ class TbisDetailsMap {
             zoom: 15,
             events: {
                 click: (mapModel, eventName, originalEventArgs) => {
-                    this.setLocation(originalEventArgs[0].latLng.lat(), originalEventArgs[0].latLng.lng());
-                    $scope.$apply();
+                    if (this.pickLocation) {
+                        this.setLocation(originalEventArgs[0].latLng.lat(), originalEventArgs[0].latLng.lng());
+                        $scope.$apply();
+                    }
                 }
             }
         };
@@ -30,8 +32,11 @@ class TbisDetailsMap {
             },
             events: {
                 dragend: (marker, eventName, mapModel, args) => {
-                    this.setLocation(marker.getPosition().lat(), marker.getPosition().lng());
-                    $scope.$apply();
+                    if (this.pickLocation) {
+                        this.setLocation(marker.getPosition().lat(), marker.getPosition().lng());
+                        $scope.$apply();
+                    }
+
                 }
             }
         };
@@ -56,7 +61,8 @@ export default angular.module(name, [
     template,
     controllerAs: name,
     bindings: {
-        location: '='
+        location: '=',
+        pickLocation: '<'
     },
     controller: TbisDetailsMap
 });

@@ -1,5 +1,7 @@
 <p class="md-body-1">Vui lòng click chọn trên bản đồ hoặc sử dụng API (GPS) để cập nhật vị trí hiện thời cho thiết bị.</p>
-<tbis-details-map style="width: 100%" location="tbisDetailsUpdateViTriTab.viewModel.location"></tbis-details-map>
+<tbis-details-map style="width: 100%"
+                  pick-location="true"
+                  location="tbisDetailsUpdateViTriTab.viewModel.location"></tbis-details-map>
 <div layout="column" style="margin-top: 24px;">
     <div layout="row">
         <md-checkbox ng-model="tbisDetailsUpdateViTriTab.viewModel.enableAPI" aria-label="Cập nhật vị trí qua API">
