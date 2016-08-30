@@ -2,7 +2,7 @@
 
     <!--Tham chiếu-->
     <md-subheader class="md-no-sticky">Tham chiếu</md-subheader>
-    <md-list-item style="display: inline-block;">
+    <md-list-item layout="column" layout-align="start start">
         <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ma_thiet_bi.topX || tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ma_thiet_bi.maximo">
             <span class="sky-typo-strong" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ma_thiet_bi.topX">{{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ma_thiet_bi.topX}} (TopX);&nbsp;</span><span class="sky-typo-strong" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ma_thiet_bi.maximo">{{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ma_thiet_bi.maximo}} (Maximo);</span>
         </p>
@@ -20,7 +20,7 @@
 
     <!--Nguồn gốc, xuất xứ-->
     <md-subheader class="md-no-sticky">Nguồn gốc, xuất xứ</md-subheader>
-    <md-list-item style="display: inline-block;">
+    <md-list-item layout="column" layout-align="start start">
         <p>
             <span class="sky-typo-strong">Hãng sản xuất:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.nguon_goc.hang_san_xuat}}</span><span class="sky-typo-normal" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.nguon_goc.nam_san_xuat">, năm {{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.nguon_goc.nam_san_xuat}}.</span>
         </p>
@@ -38,7 +38,7 @@
 
     <!--Phân quyền-->
     <md-subheader class="md-no-sticky">Phân quyền</md-subheader>
-    <md-list-item style="display: inline-block;">
+    <md-list-item layout="column" layout-align="start start">
         <p>
             <span class="sky-typo-strong">Quản lý:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.phan_quyen.quan_ly.ten}}</span>
         </p>
@@ -53,7 +53,7 @@
     <!--Các thông tin đăng ký-->
     <md-divider></md-divider>
     <md-subheader class="md-no-sticky">Các thông tin đăng ký</md-subheader>
-    <md-list-item style="display: inline-block;">
+    <md-list-item layout="column" layout-align="start start">
         <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ho_so.so_dang_ky">
             <span class="sky-typo-strong">Số đăng ký:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.ho_so.so_dang_ky}}</span>
         </p>
@@ -80,7 +80,7 @@
     <!--Kiểm định-->
     <md-divider></md-divider>
     <md-subheader class="md-no-sticky">Kiểm định</md-subheader>
-    <md-list-item style="display: inline-block;" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.kiem_dinh.isThongTinKiemDinh">
+    <md-list-item layout="column" layout-align="start start" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.kiem_dinh.isThongTinKiemDinh">
         <p>
             <span class="sky-typo-strong">Thiết bị {{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.kiem_dinh.isTrongThoiGianKiemDinh ? 'đang trong thời gian kiểm định' : 'đã hết hạn kiểm định' }}.</span>
         </p>
@@ -94,16 +94,16 @@
             <span class="sky-typo-normal">Có hiệu lực từ ngày {{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.kiem_dinh.thoi_gian.ngay_hieu_luc | displayCustomDateTimeFilter:'DD/MM/YYYY'}} đến ngày {{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.kiem_dinh.thoi_gian.ngay_het_han | displayCustomDateTimeFilter:'DD/MM/YYYY'}}.</span>
         </p>
     </md-list-item>
-    <md-list-item style="display: inline-block;" ng-hide="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.kiem_dinh.isThongTinKiemDinh">
+    <md-list-item layout="column" layout-align="start start" ng-hide="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.kiem_dinh.isThongTinKiemDinh">
         <p>
-            Không có thông tin kiểm định được ghi nhận về thiết bị.
+            <span class="sky-typo-normal">Không có thông tin được ghi nhận về thiết bị.</span>
         </p>
     </md-list-item>
 
     <!--Bảo hành-->
     <md-divider></md-divider>
     <md-subheader class="md-no-sticky">Bảo hành</md-subheader>
-    <md-list-item style="display: inline-block;" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.bao_hanh.isThongTinBaoHanh">
+    <md-list-item layout="column" layout-align="start start" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.bao_hanh.isThongTinBaoHanh">
         <p>
             <span class="sky-typo-strong">Thiết bị {{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.bao_hanh.isTrongThoiGianBaoHanh ? 'đang trong thời gian bảo hành' : 'đã hết hạn bảo hành' }}.</span>
         </p>
@@ -114,9 +114,9 @@
             <span class="sky-typo-normal">Thời gian bảo hành {{tbisDetailsViewHoSoViewTongQuanTabView.thietbi.bao_hanh.thoi_gian_bao_hanh}} tháng.</span>
         </p>
     </md-list-item>
-    <md-list-item style="display: inline-block;" ng-hide="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.bao_hanh.isThongTinBaoHanh">
+    <md-list-item layout="column" layout-align="start start" ng-hide="tbisDetailsViewHoSoViewTongQuanTabView.thietbi.bao_hanh.isThongTinBaoHanh">
         <p>
-            Không có thông tin bảo hành được ghi nhận về thiết bị.
+            <span class="sky-typo-normal">Không có thông tin được ghi nhận về thiết bị.</span>
         </p>
     </md-list-item>
 
