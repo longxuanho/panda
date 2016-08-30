@@ -6,10 +6,15 @@ import {Random} from 'meteor/random';
 import _ from 'underscore';
 import { TsktHelpers } from '../../../api/thietbis/tsktHelpers';
 
+import { name as DhelpsDataService } from '../../services/datahelpers/dhelpsDataService';
+
 class TsktThongSoKyThuatDataService {
 
-    constructor() {
+    constructor(dhelpsDataService) {
         'ngInject';
+
+        this.dhelpsDataService = dhelpsDataService;
+
         this.nhoms = [];
         this.tenthongsos = [];
         this.donvis = [];
@@ -40,6 +45,23 @@ class TsktThongSoKyThuatDataService {
                 category: 'nhoms'
             }).fetch()
         );
+        // let nhomtskts = resolveSelectOptionsDB(
+        //     this.dhelpsDataService.query({
+        //         module: "thongsokts",
+        //         stateName: "tsktsList",
+        //         subject: "nhomtskts"
+        //     })
+        // );
+
+        // console.log('hey: ', resolveSelectOptionsDB(
+        //     this.dhelpsDataService.query({
+        //         module: "thongsokts",
+        //         stateName: "tsktsList",
+        //         subject: "nhomtskts"
+        //     })
+        // ));
+
+        // this.selectOptions.nhoms = buildNhomsOptions(nhomtskts);
         this.selectOptions.nhoms = buildNhomsOptions(this.nhoms);
     }
 
@@ -78,9 +100,17 @@ const name = 'tsktThongSoKyThuatDataService';
 
 // create a module
 export default angular.module(name, [
-    angularMeteor
+    angularMeteor,
+    DhelpsDataService
 ])
     .service(name, TsktThongSoKyThuatDataService);
+
+
+
+
+function resolveSelectOptionsDB(data) {
+    return _.pluck(data, 'dataSource');
+}
 
 function resolveDataFromDB(data) {
     "use strict";

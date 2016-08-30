@@ -6,7 +6,7 @@ import template from './tbisDetailsUpdateThongSoTab.html';
 import { name as TsktThongSoKyThuatDataService } from '../../../services/thietbis/tsktThongSoKyThuatDataService';
 
 class TbisDetailsUpdateThongSoTab {
-    constructor($scope, tsktThongSoKyThuatDataService) {
+    constructor(tsktThongSoKyThuatDataService) {
         'ngInject';
 
         this.selectOptions = tsktThongSoKyThuatDataService.getSelectOptions();
