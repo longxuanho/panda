@@ -1,0 +1,21 @@
+<p class="md-body-1">
+    <span class="sky-typo-strong">Lưu ý:</span> Xin vui lòng cân nhắc trước khi bạn thực hiện các tác vụ liệt kê tại đây.
+    Dữ liệu một khi đã bị xóa sẽ không thể khôi phục lại trên hệ thống. Be careful.
+</p>
+<div layout="row" layout-align="center center" style="padding-top: 40px; padding-bottom: 40px;">
+    <img style="width: 250px;" ng-src="img/icons/tbis/database_remove.svg"/>
+</div>
+<div layout="column">
+    <div>
+        <md-checkbox ng-model="tbisDetailsDarkZoneTab.isOkToContinue" aria-label="Cập nhật vị trí qua API">
+            Tôi đã đọc và hiểu những điều trên.
+        </md-checkbox>
+    </div>
+    <div>
+        <md-button ng-click="tbisDetailsDarkZoneTab.remove()" ng-disabled="!tbisDetailsDarkZoneTab.isOkToContinue" class="md-warn">
+            Gỡ bỏ thiết bị này!
+        </md-button>
+    </div>
+
+</div>
+

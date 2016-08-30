@@ -68,6 +68,26 @@ body.md-dialog-is-showing {
       font-weight: 400;
       color: rgba(0,0,0,0.38);
     }
+
+  }
+  &-typo {
+    &-strong {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: .010em;
+    }
+    &-normal {
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: .010em;
+    }
+    &-add-new {
+      color: #8BC34A;
+    }
+    &-remove {
+      color: #FF5722;
+      text-decoration: line-through;
+    }
   }
   &-img {
     //border-radius: 50%;
@@ -111,13 +131,20 @@ body.md-dialog-is-showing {
     letter-spacing: .010em;
     line-height: 1.6em;
   }
+  &-margin {
+    &-top {
+      &-64 {
+        margin-top: 64px;
+      }
+      &-56 {
+        margin-top: 56px;
+      }
+      &-48 {
+        margin-top: 48px;
+      }
+    }
+  }
 
-  &-margin-top-64 {
-    margin-top: 64px;
-  }
-  &-margin-top-56 {
-    margin-top: 56px;
-  }
   &-sticky {
     position: fixed;
     top: 0;

@@ -334,6 +334,24 @@ class TbisDataService {
             return _.groupBy(data, 'nhom');
     }
 
+    remove(thietbiId) {
+        // Check nếu thietbiId trùng với id của selectedThietBi.thietbi
+        let defer = this.$q.defer();
+
+        if(thietbiId !== this.selectedThietBi.thietbi._id)
+            defer.reject(new Error("Xác nhận thiết bị không khớp. Xin vui lòng thử lại sau."));
+        else {
+            ThietBis.remove(this.selectedThietBi.thietbi._id, (error) => {
+                if (error)
+                    defer.reject(error);
+                else
+                    defer.resolve();
+            });
+        }
+
+        return defer.promise;
+    }
+
     massageThietBisFetchedData(response) {
         let nullText = '(Chưa xác định)';
         let nullNumber = '-';

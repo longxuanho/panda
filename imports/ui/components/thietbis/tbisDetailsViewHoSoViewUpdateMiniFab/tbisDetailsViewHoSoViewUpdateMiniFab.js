@@ -10,6 +10,8 @@ import { name as MetadataService } from '../../../services/common/metadataServic
 import { name as TbisListMajorInputForm } from '../tbisListMajorInputForm/tbisListMajorInputForm';
 import { name as TbisDetailsUpdateThongSoTab } from '../tbisDetailsUpdateThongSoTab/tbisDetailsUpdateThongSoTab';
 import { name as TbisDetailsUpdateViTriTab } from '../tbisDetailsUpdateViTriTab/tbisDetailsUpdateViTriTab';
+import { name as TbisDetailsDarkZoneTab } from '../tbisDetailsDarkZoneTab/tbisDetailsDarkZoneTab';
+
 import { name as TbisDataSerivce } from '../../../services/thietbis/tbisDataService';
 import { name as NotificationService } from '../../../services/common/notificationService';
 import { name as TsktThongSoKyThuatDataService } from '../../../services/thietbis/tsktThongSoKyThuatDataService';
@@ -160,6 +162,7 @@ export default angular.module(name, [
     TbisListMajorInputForm,
     TbisDetailsUpdateThongSoTab,
     TbisDetailsUpdateViTriTab,
+    TbisDetailsDarkZoneTab,
     TbisDataSerivce,
     MetadataService,
     TsktThongSoKyThuatDataService,
