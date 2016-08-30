@@ -18,8 +18,6 @@ class TbisDetailsDarkZoneTab {
 
         // id của thiết bị được chọn sẽ được check với thietbiId trong DataService để đảm bảo gỡ bỏ đúng đối tượng
         this.selectedThietBiId = $stateParams.thietbiId;
-
-        console.log('this.selectedThietBiId, ', this.selectedThietBiId,)
     }
 
     remove() {

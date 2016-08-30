@@ -17,10 +17,16 @@ class TbisDetailsViewHoSoViewTongQuanTabView {
         this.selectedThietBi = tbisDataService.getSelectedThietBi();
 
         // Cập nhật lại nếu thiết bị đang / đã hết hạn bảo hạnh (Chưa lưu vào DB)
-        if (this.selectedThietBi.thietbi && this.selectedThietBi.thietbi.bao_hanh && this.selectedThietBi.thietbi.bao_hanh.isThongTinBaoHanh)
-            this.selectedThietBi.thietbi.bao_hanh.isTrongThoiGianBaoHanh = moment(this.selectedThietBi.thietbi.bao_hanh.thoi_gian.ngay_ket_thuc).isAfter(moment());
-        if (this.selectedThietBi.thietbi && this.selectedThietBi.thietbi.kiem_dinh && this.selectedThietBi.thietbi.kiem_dinh.isThongTinKiemDinh)
-            this.selectedThietBi.thietbi.kiem_dinh.isTrongThoiGianKiemDinh = moment(this.selectedThietBi.thietbi.kiem_dinh.thoi_gian.ngay_het_han).isAfter(moment());
+        // if (this.selectedThietBi.thietbi && this.selectedThietBi.thietbi.bao_hanh && this.selectedThietBi.thietbi.bao_hanh.isThongTinBaoHanh)
+        //     this.selectedThietBi.thietbi.bao_hanh.isTrongThoiGianBaoHanh = moment(this.selectedThietBi.thietbi.bao_hanh.thoi_gian.ngay_ket_thuc).isAfter(moment());
+        // if (this.selectedThietBi.thietbi && this.selectedThietBi.thietbi.kiem_dinh && this.selectedThietBi.thietbi.kiem_dinh.isThongTinKiemDinh) {
+        //     this.selectedThietBi.thietbi.kiem_dinh.isTrongThoiGianKiemDinh = moment(this.selectedThietBi.thietbi.kiem_dinh.thoi_gian.ngay_het_han).isAfter(moment());
+        //     console.log('exec!, ', this.selectedThietBi.thietbi.kiem_dinh.isTrongThoiGianKiemDinh);
+        // }
+    }
+
+    isOutOfDate(date) {
+        return moment(date).isAfter(moment());
     }
 
     isEmptyThongTinDangKy() {

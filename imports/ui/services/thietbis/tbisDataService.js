@@ -16,6 +16,10 @@ class TbisDataService {
         this.$q = $q;
         this.metadataService = metadataService;
 
+        this.newThietBi = {
+            thietbi: {}
+        };
+
         this.selectedThietBi = {
             thietbi: {}
         };
@@ -42,7 +46,7 @@ class TbisDataService {
     }
 
     initNewThietBiData() {
-        return {
+        this.newThietBi.thietbi = {
             ma_thiet_bi: {},
             phan_loai: {},
             trang_thai: 'Đang hoạt động',
@@ -81,6 +85,10 @@ class TbisDataService {
         }
     }
 
+    getNewThietBi() {
+        return this.newThietBi;
+    }
+
     buidInputThietBiData(data) {
         this.metadataService.buildNewMetadata(data, Meteor.user());
         if (data.bao_hanh.isThongTinBaoHanh && (data.bao_hanh.thoi_gian.ngay_bat_dau && data.bao_hanh.thoi_gian.ngay_ket_thuc)) {
@@ -97,8 +105,7 @@ class TbisDataService {
         if (data.kiem_dinh.isThongTinKiemDinh && (data.kiem_dinh.thoi_gian.ngay_bat_dau && data.kiem_dinh.thoi_gian.ngay_ket_thuc)) {
             data.kiem_dinh.stringify.ngay_hieu_luc = moment(data.kiem_dinh.thoi_gian.ngay_hieu_luc).format('YYYY-MM-DD');
             data.kiem_dinh.stringify.ngay_het_han = moment(data.kiem_dinh.thoi_gian.ngay_het_han).format('YYYY-MM-DD');
-            // data.kiem_dinh.isTrongThoiGianKiemDinh = (data.kiem_dinh.stringify.ngay_ket_thuc > moment().format('YYYY-MM-DD'));
-            data.kiem_dinh.isTrongThoiGianKiemDinh = moment(data.kiem_dinh.thoi_gian.ngay_ket_thuc).isAfter(moment());
+            data.kiem_dinh.isTrongThoiGianKiemDinh = moment(data.kiem_dinh.thoi_gian.ngay_het_han).isAfter(moment());
         }
     }
 

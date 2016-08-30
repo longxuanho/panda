@@ -110,9 +110,10 @@ Schema.ThietBi = new SimpleSchema({
             type: Object,
             defaultValue: {}
         },
+            // location phải ở chế độ optional để không gây lỗi khi hiển thị trên bản đồ
             'dia_diem.toa_do.location': {
                 type: Object,
-                defaultValue: {}
+                optional: true
             },
                 'dia_diem.toa_do.location.latitude': {
                     type: Number,

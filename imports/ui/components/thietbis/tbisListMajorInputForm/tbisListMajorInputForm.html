@@ -6,18 +6,18 @@
         <md-list-item layout="row" layout-fill>
             <md-input-container class="md-block" flex="33">
                 <label>Mã quản lý</label>
-                <input ng-model="tbisListMajorInputForm.viewModel.ma_thiet_bi.keyId" required name="ma_tb">
+                <input ng-model="tbisListMajorInputForm.viewModel.thietbi.ma_thiet_bi.keyId" required name="ma_tb">
                 <div ng-messages="tbisListMajorInputForm.addNewThietBiForm.ma_tb.$error">
                     <div ng-message="required">Thông tin bắt buộc.</div>
                 </div>
             </md-input-container>
             <md-input-container class="md-block" flex="33">
                 <label>Mã TopX</label>
-                <input ng-model="tbisListMajorInputForm.viewModel.ma_thiet_bi.topX" name="ma_topX">
+                <input ng-model="tbisListMajorInputForm.viewModel.thietbi.ma_thiet_bi.topX" name="ma_topX">
             </md-input-container>
             <md-input-container class="md-block" flex="33">
                 <label>Mã Maximo</label>
-                <input ng-model="tbisListMajorInputForm.viewModel.ma_thiet_bi.maximo" name="ma_maximo">
+                <input ng-model="tbisListMajorInputForm.viewModel.thietbi.ma_thiet_bi.maximo" name="ma_maximo">
             </md-input-container>
         </md-list-item>
         <!--Section: Phân loại-->
@@ -28,8 +28,8 @@
                 <div layout="row">
                     <md-input-container class="md-block" flex="50">
                         <label>Nhóm</label>
-                        <md-select name="phan_loai_nhom" ng-model="tbisListMajorInputForm.viewModel.phan_loai.nhom"
-                                   ng-change="tbisListMajorInputForm.viewModel.phan_loai.chung_loai = '';tbisListMajorInputForm.viewModel.phan_loai.loai = '';"
+                        <md-select name="phan_loai_nhom" ng-model="tbisListMajorInputForm.viewModel.thietbi.phan_loai.nhom"
+                                   ng-change="tbisListMajorInputForm.viewModel.thietbi.phan_loai.chung_loai = '';tbisListMajorInputForm.viewModel.thietbi.phan_loai.loai = '';"
                                    required>
                             <md-option ng-value="nhom" ng-repeat="nhom in tbisListMajorInputForm.selectOptions.nhoms">{{nhom}}</md-option>
                         </md-select>
@@ -39,10 +39,10 @@
                     </md-input-container>
                     <md-input-container class="md-block" flex="50">
                         <label>Chủng loại</label>
-                        <md-select name="phan_loai_chung_loai" ng-model="tbisListMajorInputForm.viewModel.phan_loai.chung_loai"
-                                   ng-change="tbisListMajorInputForm.viewModel.phan_loai.loai = '';"
+                        <md-select name="phan_loai_chung_loai" ng-model="tbisListMajorInputForm.viewModel.thietbi.phan_loai.chung_loai"
+                                   ng-change="tbisListMajorInputForm.viewModel.thietbi.phan_loai.loai = '';"
                                    required>
-                            <md-option ng-value="chungloai" ng-repeat="chungloai in tbisListMajorInputForm.selectOptions.chungloais[tbisListMajorInputForm.viewModel.phan_loai.nhom]">{{chungloai}}</md-option>
+                            <md-option ng-value="chungloai" ng-repeat="chungloai in tbisListMajorInputForm.selectOptions.chungloais[tbisListMajorInputForm.viewModel.thietbi.phan_loai.nhom]">{{chungloai}}</md-option>
                         </md-select>
                         <div class="errors" ng-messages="tbisListMajorInputForm.addNewThietBiForm.phan_loai_chung_loai.$error">
                             <div ng-message="required">Thông tin bắt buộc.</div>
@@ -52,8 +52,8 @@
                 <div layout="row" style="margin-bottom: 24px;">
                     <md-input-container class="md-block" flex="50">
                         <label>Loại</label>
-                        <md-select name="phan_loai_loai" ng-model="tbisListMajorInputForm.viewModel.phan_loai.loai" required>
-                            <md-option ng-value="loai" ng-repeat="loai in tbisListMajorInputForm.selectOptions.loais[tbisListMajorInputForm.viewModel.phan_loai.chung_loai]">{{loai}}</md-option>
+                        <md-select name="phan_loai_loai" ng-model="tbisListMajorInputForm.viewModel.thietbi.phan_loai.loai" required>
+                            <md-option ng-value="loai" ng-repeat="loai in tbisListMajorInputForm.selectOptions.loais[tbisListMajorInputForm.viewModel.thietbi.phan_loai.chung_loai]">{{loai}}</md-option>
                         </md-select>
                         <div class="errors" ng-messages="tbisListMajorInputForm.addNewThietBiForm.phan_loai_loai.$error">
                             <div ng-message="required">Thông tin bắt buộc.</div>
@@ -75,8 +75,8 @@
                 <div layout="row">
                     <md-input-container class="md-block" flex="50">
                         <label>Hãng sản xuất</label>
-                        <md-select name="nguon_goc_hang_san_xuat" ng-model="tbisListMajorInputForm.viewModel.nguon_goc.hang_san_xuat"
-                                   ng-change="tbisListMajorInputForm.viewModel.nguon_goc.model = '';" required>
+                        <md-select name="nguon_goc_hang_san_xuat" ng-model="tbisListMajorInputForm.viewModel.thietbi.nguon_goc.hang_san_xuat"
+                                   ng-change="tbisListMajorInputForm.viewModel.thietbi.nguon_goc.model = '';" required>
                             <md-option ng-value="hangsanxuat" ng-repeat="hangsanxuat in tbisListMajorInputForm.selectOptions.hangsanxuats | orderBy">{{hangsanxuat}}</md-option>
                         </md-select>
                         <div class="errors" ng-messages="tbisListMajorInputForm.addNewThietBiForm.nguon_goc_hang_san_xuat.$error">
@@ -85,21 +85,21 @@
                     </md-input-container>
                     <md-input-container class="md-block" flex="50">
                         <label>Model thiết bị</label>
-                        <md-select name="nguon_goc_model" ng-model="tbisListMajorInputForm.viewModel.nguon_goc.model">
-                            <md-option ng-value="model" ng-repeat="model in tbisListMajorInputForm.selectOptions.models[tbisListMajorInputForm.viewModel.nguon_goc.hang_san_xuat] | orderBy">{{model}}</md-option>
+                        <md-select name="nguon_goc_model" ng-model="tbisListMajorInputForm.viewModel.thietbi.nguon_goc.model">
+                            <md-option ng-value="model" ng-repeat="model in tbisListMajorInputForm.selectOptions.models[tbisListMajorInputForm.viewModel.thietbi.nguon_goc.hang_san_xuat] | orderBy">{{model}}</md-option>
                         </md-select>
                     </md-input-container>
                 </div>
                 <div layout="row">
                     <md-input-container class="md-block" flex="50">
                         <label>Nhà phân phối</label>
-                        <md-select name="nguon_goc_vendor" ng-model="tbisListMajorInputForm.viewModel.nguon_goc.vendor">
+                        <md-select name="nguon_goc_vendor" ng-model="tbisListMajorInputForm.viewModel.thietbi.nguon_goc.vendor">
                             <md-option ng-value="vendor" ng-repeat="vendor in tbisListMajorInputForm.selectOptions.vendors | orderBy">{{vendor}}</md-option>
                         </md-select>
                     </md-input-container>
                     <md-input-container class="md-block" flex="50">
                         <label>Nơi lắp ráp</label>
-                        <md-select name="nguon_goc_noi_lap_rap" ng-model="tbisListMajorInputForm.viewModel.nguon_goc.noi_lap_rap">
+                        <md-select name="nguon_goc_noi_lap_rap" ng-model="tbisListMajorInputForm.viewModel.thietbi.nguon_goc.noi_lap_rap">
                             <md-option ng-value="quocgia" ng-repeat="quocgia in tbisListMajorInputForm.selectOptions.quocgias | orderBy">{{quocgia}}</md-option>
                         </md-select>
                     </md-input-container>
@@ -107,7 +107,7 @@
                 <div layout="row">
                     <md-input-container class="md-block" flex="50">
                         <label>Năm sản xuất</label>
-                        <input name="nguon_goc_nam_san_xuat" ng-model="tbisListMajorInputForm.viewModel.nguon_goc.nam_san_xuat" type="number" step="any" min="1900" max="2100">
+                        <input name="nguon_goc_nam_san_xuat" ng-model="tbisListMajorInputForm.viewModel.thietbi.nguon_goc.nam_san_xuat" type="number" step="any" min="1900" max="2100">
                         <div ng-messages="tbisListMajorInputForm.addNewThietBiForm.nguon_goc_nam_san_xuat.$error">
                             <div ng-message="min">Năm sản xuất không ít hơn 1900.</div>
                             <div ng-message="max">Năm sản xuất không quá 2100.</div>
@@ -129,7 +129,7 @@
                 <div layout="row">
                     <md-input-container class="md-block" flex="50">
                         <label>Khu vực</label>
-                        <md-select name="dia_diem_khu_vuc" ng-model="tbisListMajorInputForm.viewModel.dia_diem.khu_vuc" ng-model-options="{trackBy: '$value.ten'}">
+                        <md-select name="dia_diem_khu_vuc" ng-model="tbisListMajorInputForm.viewModel.thietbi.dia_diem.khu_vuc" ng-model-options="{trackBy: '$value.ten'}">
                             <md-option ng-value="khuvuc" ng-repeat="khuvuc in tbisListMajorInputForm.selectOptions.khuvucs">{{khuvuc.ten}}</md-option>
                         </md-select>
                         <div class="errors" ng-messages="tbisListMajorInputForm.addNewThietBiForm.phan_quyen_quan_ly.$error">
@@ -138,7 +138,7 @@
                     </md-input-container>
                     <md-input-container class="md-block" flex="50">
                         <label>Terminal</label>
-                        <md-select name="dia_diem_terminal" ng-model="tbisListMajorInputForm.viewModel.dia_diem.terminal">
+                        <md-select name="dia_diem_terminal" ng-model="tbisListMajorInputForm.viewModel.thietbi.dia_diem.terminal">
                             <md-option value="TER A">TER A</md-option>
                             <md-option value="TER B">TER B</md-option>
                         </md-select>
@@ -147,7 +147,7 @@
                 <div layout="row">
                     <md-input-container class="md-block" flex="50">
                         <label>Line</label>
-                        <input ng-model="tbisListMajorInputForm.viewModel.dia_diem.line" name="dia_diem_line">
+                        <input ng-model="tbisListMajorInputForm.viewModel.thietbi.dia_diem.line" name="dia_diem_line">
                     </md-input-container>
                 </div>
             </div>
@@ -166,7 +166,7 @@
 
                     <md-input-container class="md-block" flex="50">
                         <label>Sở hữu</label>
-                        <md-select name="phan_quyen_so_huu" ng-model="tbisListMajorInputForm.viewModel.phan_quyen.so_huu" ng-model-options="{trackBy: '$value.ten'}">
+                        <md-select name="phan_quyen_so_huu" ng-model="tbisListMajorInputForm.viewModel.thietbi.phan_quyen.so_huu" ng-model-options="{trackBy: '$value.ten'}">
                             <md-option ng-value="dvsohuu" ng-repeat="dvsohuu in tbisListMajorInputForm.selectOptions.donvis | orderBy:'ten'" ng-bind="dvsohuu.ten"></md-option>
                         </md-select>
                         <div class="errors" ng-messages="tbisListMajorInputForm.addNewThietBiForm.phan_quyen_so_huu.$error">
@@ -175,7 +175,7 @@
                     </md-input-container>
                     <md-input-container class="md-block" flex="50">
                         <label>Quản lý</label>
-                        <md-select name="phan_quyen_quan_ly" ng-model="tbisListMajorInputForm.viewModel.phan_quyen.quan_ly" ng-model-options="{trackBy: '$value.ten'}">
+                        <md-select name="phan_quyen_quan_ly" ng-model="tbisListMajorInputForm.viewModel.thietbi.phan_quyen.quan_ly" ng-model-options="{trackBy: '$value.ten'}">
                             <md-option ng-value="dvquanly" ng-repeat="dvquanly in tbisListMajorInputForm.selectOptions.donvis | orderBy:'ten'" ng-bind="dvquanly.ten"></md-option>
                         </md-select>
                         <div class="errors" ng-messages="tbisListMajorInputForm.addNewThietBiForm.phan_quyen_quan_ly.$error">
@@ -186,15 +186,15 @@
                 <div layout="row" style="margin-bottom: 30px;">
                     <md-input-container class="md-block" flex="50">
                         <label>Vận hành</label>
-                        <md-select name="phan_quyen_van_hanh" ng-model="tbisListMajorInputForm.viewModel.phan_quyen.van_hanh" ng-model-options="{trackBy: '$value.ten'}"
-                                   ng-change="tbisListMajorInputForm.viewModel.phan_quyen.doi_van_hanh = {};">
+                        <md-select name="phan_quyen_van_hanh" ng-model="tbisListMajorInputForm.viewModel.thietbi.phan_quyen.van_hanh" ng-model-options="{trackBy: '$value.ten'}"
+                                   ng-change="tbisListMajorInputForm.viewModel.thietbi.phan_quyen.doi_van_hanh = {};">
                             <md-option ng-value="doivanhanh" ng-repeat="doivanhanh in tbisListMajorInputForm.selectOptions.donvis | orderBy:'ten'">{{doivanhanh.ten}}</md-option>
                         </md-select>
                     </md-input-container>
                     <md-input-container class="md-block" flex="50">
                         <label>Đội vận hành</label>
-                        <md-select name="phan_quyen_doi_van_hanh" ng-model="tbisListMajorInputForm.viewModel.phan_quyen.doi_van_hanh" ng-model-options="{trackBy: '$value.ten'}">
-                            <md-option ng-value="doivanhanh" ng-repeat="doivanhanh in tbisListMajorInputForm.selectOptions.doivanhanhs[tbisListMajorInputForm.viewModel.phan_quyen.van_hanh.ma] | orderBy:'ten'">{{doivanhanh.ten}}</md-option>
+                        <md-select name="phan_quyen_doi_van_hanh" ng-model="tbisListMajorInputForm.viewModel.thietbi.phan_quyen.doi_van_hanh" ng-model-options="{trackBy: '$value.ten'}">
+                            <md-option ng-value="doivanhanh" ng-repeat="doivanhanh in tbisListMajorInputForm.selectOptions.doivanhanhs[tbisListMajorInputForm.viewModel.thietbi.phan_quyen.van_hanh.ma] | orderBy:'ten'">{{doivanhanh.ten}}</md-option>
                         </md-select>
                     </md-input-container>
                 </div>
@@ -213,7 +213,7 @@
                 <div layout="row">
                     <md-input-container class="md-block" flex="50">
                         <label>Năm sử dụng</label>
-                        <input name="ho_so_nam_su_dung" ng-model="tbisListMajorInputForm.viewModel.ho_so.nam_su_dung" type="number" step="1" min="1900" max="2100">
+                        <input name="ho_so_nam_su_dung" ng-model="tbisListMajorInputForm.viewModel.thietbi.ho_so.nam_su_dung" type="number" step="1" min="1900" max="2100">
                         <div ng-messages="tbisListMajorInputForm.addNewThietBiForm.ho_so_nam_su_dung.$error">
                             <div ng-message="min">Năm sản xuất không ít hơn 1900.</div>
                             <div ng-message="max">Năm sản xuất không quá 2100.</div>
@@ -221,33 +221,33 @@
                     </md-input-container>
                     <md-input-container class="md-block" flex="50">
                         <label>Số đăng ký</label>
-                        <input name="ho_so_so_dang_ky" ng-model="tbisListMajorInputForm.viewModel.ho_so.so_dang_ky">
+                        <input name="ho_so_so_dang_ky" ng-model="tbisListMajorInputForm.viewModel.thietbi.ho_so.so_dang_ky">
                     </md-input-container>
                 </div>
                 <div layout="row">
                     <md-input-container class="md-block" flex="50">
                         <label>Số khung</label>
-                        <input name="ho_so_so_khung" ng-model="tbisListMajorInputForm.viewModel.ho_so.so_khung">
+                        <input name="ho_so_so_khung" ng-model="tbisListMajorInputForm.viewModel.thietbi.ho_so.so_khung">
                     </md-input-container>
                     <md-input-container class="md-block" flex="50">
                         <label>Số máy</label>
-                        <input name="ho_so_so_may" ng-model="tbisListMajorInputForm.viewModel.ho_so.so_may">
+                        <input name="ho_so_so_may" ng-model="tbisListMajorInputForm.viewModel.thietbi.ho_so.so_may">
                     </md-input-container>
                 </div>
                 <div layout="row">
                     <md-input-container class="md-block" flex="50">
                         <label>Biển số</label>
-                        <input name="ho_so_bien_so" ng-model="tbisListMajorInputForm.viewModel.ho_so.bien_so">
+                        <input name="ho_so_bien_so" ng-model="tbisListMajorInputForm.viewModel.thietbi.ho_so.bien_so">
                     </md-input-container>
                     <md-input-container class="md-block" flex="50">
                         <label>Số giấy đăng kiểm</label>
-                        <input name="ho_so_so_dang_kiem" ng-model="tbisListMajorInputForm.viewModel.ho_so.so_dang_kiem">
+                        <input name="ho_so_so_dang_kiem" ng-model="tbisListMajorInputForm.viewModel.thietbi.ho_so.so_dang_kiem">
                     </md-input-container>
                 </div>
                 <div layout="row" style="margin-bottom: 24px;">
                     <md-input-container class="md-block" flex="50">
                         <label>Xuất xứ</label>
-                        <md-select name="ho_so_xuat_xu" ng-model="tbisListMajorInputForm.viewModel.ho_so.xuat_xu">
+                        <md-select name="ho_so_xuat_xu" ng-model="tbisListMajorInputForm.viewModel.thietbi.ho_so.xuat_xu">
                             <md-option ng-value="quocgia" ng-repeat="quocgia in tbisListMajorInputForm.selectOptions.quocgias | orderBy">{{quocgia}}</md-option>
                         </md-select>
                     </md-input-container>
@@ -260,17 +260,17 @@
         <md-subheader class="md-no-sticky">Thông tin bảo hành</md-subheader>
         <md-list-item>
             <p>Có thông tin bảo hành</p>
-            <md-checkbox class="md-secondary" ng-model="tbisListMajorInputForm.viewModel.bao_hanh.isThongTinBaoHanh"></md-checkbox>
+            <md-checkbox class="md-secondary" ng-model="tbisListMajorInputForm.viewModel.thietbi.bao_hanh.isThongTinBaoHanh"></md-checkbox>
         </md-list-item>
 
-        <md-list-item ng-show="tbisListMajorInputForm.viewModel.bao_hanh.isThongTinBaoHanh" layout="row" class="sky-fix-kendo-date-picker" flex>
+        <md-list-item ng-show="tbisListMajorInputForm.viewModel.thietbi.bao_hanh.isThongTinBaoHanh" layout="row" class="sky-fix-kendo-date-picker" flex>
             <md-input-container flex="50">
                 <label>Ngày bắt đầu</label>
-                <input kendo-date-picker k-format="'dd/MM/yyyy'" style="width: 100%;" k-ng-model="tbisListMajorInputForm.viewModel.bao_hanh.thoi_gian.ngay_bat_dau" type="date"/>
+                <input kendo-date-picker k-format="'dd/MM/yyyy'" style="width: 100%;" k-ng-model="tbisListMajorInputForm.viewModel.thietbi.bao_hanh.thoi_gian.ngay_bat_dau" type="date"/>
             </md-input-container>
             <md-input-container flex="50">
                 <label>Ngày kết thúc</label>
-                <input kendo-date-picker k-format="'dd/MM/yyyy'" style="width: 100%;" k-ng-model="tbisListMajorInputForm.viewModel.bao_hanh.thoi_gian.ngay_ket_thuc" type="date"/>
+                <input kendo-date-picker k-format="'dd/MM/yyyy'" style="width: 100%;" k-ng-model="tbisListMajorInputForm.viewModel.thietbi.bao_hanh.thoi_gian.ngay_ket_thuc" type="date"/>
             </md-input-container>
         </md-list-item>
 
@@ -279,28 +279,28 @@
         <md-subheader class="md-no-sticky">Thông tin kiểm định</md-subheader>
         <md-list-item>
             <p>Có thông tin kiểm định</p>
-            <md-checkbox class="md-secondary" ng-model="tbisListMajorInputForm.viewModel.kiem_dinh.isThongTinKiemDinh"></md-checkbox>
+            <md-checkbox class="md-secondary" ng-model="tbisListMajorInputForm.viewModel.thietbi.kiem_dinh.isThongTinKiemDinh"></md-checkbox>
         </md-list-item>
 
-        <md-list-item ng-show="tbisListMajorInputForm.viewModel.kiem_dinh.isThongTinKiemDinh" layout="row" class="sky-fix-kendo-date-picker" flex>
+        <md-list-item ng-show="tbisListMajorInputForm.viewModel.thietbi.kiem_dinh.isThongTinKiemDinh" layout="row" class="sky-fix-kendo-date-picker" flex>
             <md-input-container class="md-block" flex="50">
                 <label>Số phiếu kiểm định</label>
-                <input ng-model="tbisListMajorInputForm.viewModel.kiem_dinh.ho_so.so_phieu_kiem_dinh" name="kiem_dinh_phieu_kiem_dinh">
+                <input ng-model="tbisListMajorInputForm.viewModel.thietbi.kiem_dinh.ho_so.so_phieu_kiem_dinh" name="kiem_dinh_phieu_kiem_dinh">
             </md-input-container>
             <md-input-container class="md-block" flex="50">
                 <label>Số tem kiểm định</label>
-                <input ng-model="tbisListMajorInputForm.viewModel.kiem_dinh.ho_so.so_tem_kiem_dinh" name="kiem_dinh_tem_kiem_dinh">
+                <input ng-model="tbisListMajorInputForm.viewModel.thietbi.kiem_dinh.ho_so.so_tem_kiem_dinh" name="kiem_dinh_tem_kiem_dinh">
             </md-input-container>
         </md-list-item>
 
-        <md-list-item ng-show="tbisListMajorInputForm.viewModel.kiem_dinh.isThongTinKiemDinh" layout="row" class="sky-fix-kendo-date-picker" flex>
+        <md-list-item ng-show="tbisListMajorInputForm.viewModel.thietbi.kiem_dinh.isThongTinKiemDinh" layout="row" class="sky-fix-kendo-date-picker" flex>
             <md-input-container flex="50">
                 <label>Ngày hiệu lực</label>
-                <input kendo-date-picker k-format="'dd/MM/yyyy'" style="width: 100%;" k-ng-model="tbisListMajorInputForm.viewModel.kiem_dinh.thoi_gian.ngay_hieu_luc" type="date"/>
+                <input kendo-date-picker k-format="'dd/MM/yyyy'" style="width: 100%;" k-ng-model="tbisListMajorInputForm.viewModel.thietbi.kiem_dinh.thoi_gian.ngay_hieu_luc" type="date"/>
             </md-input-container>
             <md-input-container flex="50">
                 <label>Ngày hết hạn</label>
-                <input kendo-date-picker k-format="'dd/MM/yyyy'" style="width: 100%;" k-ng-model="tbisListMajorInputForm.viewModel.kiem_dinh.thoi_gian.ngay_het_han" type="date"/>
+                <input kendo-date-picker k-format="'dd/MM/yyyy'" style="width: 100%;" k-ng-model="tbisListMajorInputForm.viewModel.thietbi.kiem_dinh.thoi_gian.ngay_het_han" type="date"/>
             </md-input-container>
         </md-list-item>
 
@@ -309,13 +309,13 @@
         <md-subheader class="md-no-sticky">Thiết bị đi kèm</md-subheader>
         <md-list-item>
             <p>Có thiết bị đi kèm</p>
-            <md-checkbox class="md-secondary" ng-model="tbisListMajorInputForm.viewModel.ho_so.thiet_bi_di_kem.isThietBiDiKem"></md-checkbox>
+            <md-checkbox class="md-secondary" ng-model="tbisListMajorInputForm.viewModel.thietbi.ho_so.thiet_bi_di_kem.isThietBiDiKem"></md-checkbox>
         </md-list-item>
-        <md-list-item ng-show="tbisListMajorInputForm.viewModel.ho_so.thiet_bi_di_kem.isThietBiDiKem">
+        <md-list-item ng-show="tbisListMajorInputForm.viewModel.thietbi.ho_so.thiet_bi_di_kem.isThietBiDiKem">
             <div layout="column" layout-fill>
                 <div layout="row" flex style="margin-top: 40px; margin-bottom: 40px;">
                     <md-chips flex
-                            ng-model="tbisListMajorInputForm.viewModel.ho_so.thiet_bi_di_kem.danh_sach"
+                            ng-model="tbisListMajorInputForm.viewModel.thietbi.ho_so.thiet_bi_di_kem.danh_sach"
                             placeholder="Nhập các mã TB đi kèm"
                             secondary-placeholder="+Mã thiết bị"
                     ></md-chips>
@@ -330,20 +330,20 @@
             <div layout="column" layout-fill>
                 <!--<div layout="row" style="margin-top: 40px; margin-bottom: 40px;">-->
                     <!--<select kendo-multi-select-->
-                            <!--k-data-source="tbisListMajorInputForm.selectOptions.tags[tbisListMajorInputForm.viewModel.phan_loai.nhom]"-->
-                            <!--k-ng-model="tbisListMajorInputForm.viewModel.tags"-->
+                            <!--k-data-source="tbisListMajorInputForm.selectOptions.tags[tbisListMajorInputForm.viewModel.thietbi.phan_loai.nhom]"-->
+                            <!--k-ng-model="tbisListMajorInputForm.viewModel.thietbi.tags"-->
                             <!--style="width: 100%;"-->
                             <!--k-placeholder="'Gắn thẻ...'"></select>-->
                 <!--</div>-->
-                <div layout="row" flex="100" ng-if="tbisListMajorInputForm.selectOptions.tags[tbisListMajorInputForm.viewModel.phan_loai.nhom]" style="margin-top: 40px; margin-bottom: 40px;">
+                <div layout="row" flex="100" ng-if="tbisListMajorInputForm.selectOptions.tags[tbisListMajorInputForm.viewModel.thietbi.phan_loai.nhom]" style="margin-top: 40px; margin-bottom: 40px;">
                     <md-chips flex="100"
-                            ng-model="tbisListMajorInputForm.viewModel.tags"
+                            ng-model="tbisListMajorInputForm.viewModel.thietbi.tags"
                             md-autocomplete-snap
                             md-require-match="true">
                         <md-autocomplete
                                 md-selected-item="tbisListMajorInputForm.liveOptions.mdChips.selectedItem"
                                 md-search-text="tbisListMajorInputForm.liveOptions.mdChips.searchText"
-                                md-items="item in tbisListMajorInputForm.selectOptions.tags[tbisListMajorInputForm.viewModel.phan_loai.nhom]"
+                                md-items="item in tbisListMajorInputForm.selectOptions.tags[tbisListMajorInputForm.viewModel.thietbi.phan_loai.nhom]"
                                 md-item-text="item"
                                 placeholder="Gắn thẻ cho thiết bị +">
                             <span md-highlight-text="tbisListMajorInputForm.liveOptions.mdChips.searchText">{{item}}</span>
@@ -353,18 +353,16 @@
                 <div layout="row">
                     <md-input-container class="md-block" flex="100">
                         <label>Mô tả</label>
-                        <input name="mo_ta" ng-model="tbisListMajorInputForm.viewModel.mo_ta">
+                        <input name="mo_ta" ng-model="tbisListMajorInputForm.viewModel.thietbi.mo_ta">
                     </md-input-container>
                 </div>
                 <div layout="row">
                     <md-input-container class="md-block" flex="100">
                         <label>Ghi chú</label>
-                        <input name="ghi_chu" ng-model="tbisListMajorInputForm.viewModel.ghi_chu">
+                        <input name="ghi_chu" ng-model="tbisListMajorInputForm.viewModel.thietbi.ghi_chu">
                     </md-input-container>
                 </div>
             </div>
         </md-list-item>
     </md-list>
 </form>
-
-<!--<pre>{{tbisListMajorInputForm.viewModel|json}}</pre>-->

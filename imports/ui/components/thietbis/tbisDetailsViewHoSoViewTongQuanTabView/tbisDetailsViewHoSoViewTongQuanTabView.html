@@ -46,7 +46,7 @@
             <span class="sky-typo-strong">Sở hữu:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.phan_quyen.so_huu.ten}}</span>
         </p>
         <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.phan_quyen.van_hanh.ten">
-            <span class="sky-typo-strong">Vận hành:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.phan_quyen.van_hanh.ten}}</span><span class="sky-typo-normal" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.phan_quyen.doi_van_hanh.ten">, {{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.phan_quyen.van_hanh.ten}}.</span>
+            <span class="sky-typo-strong">Vận hành:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.phan_quyen.van_hanh.ten}}</span><span class="sky-typo-normal" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.phan_quyen.doi_van_hanh.ten">, {{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.phan_quyen.doi_van_hanh.ten}}.</span>
         </p>
     </md-list-item>
 
@@ -82,7 +82,7 @@
     <md-subheader class="md-no-sticky">Kiểm định</md-subheader>
     <md-list-item layout="column" layout-align="start start" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.kiem_dinh.isThongTinKiemDinh">
         <p>
-            <span class="sky-typo-strong">Thiết bị {{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.kiem_dinh.isTrongThoiGianKiemDinh ? 'đang trong thời gian kiểm định' : 'đã hết hạn kiểm định' }}.</span>
+            <span class="sky-typo-strong">Thiết bị {{ tbisDetailsViewHoSoViewTongQuanTabView.isOutOfDate(tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.kiem_dinh.thoi_gian.ngay_het_han) ? 'đang trong thời gian kiểm định' : 'đã hết hạn kiểm định' }}.</span>
         </p>
         <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.kiem_dinh.ho_so.so_phieu_kiem_dinh">
             <span class="sky-typo-strong">Số phiếu:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.kiem_dinh.ho_so.so_phieu_kiem_dinh}}</span>
@@ -105,7 +105,7 @@
     <md-subheader class="md-no-sticky">Bảo hành</md-subheader>
     <md-list-item layout="column" layout-align="start start" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.bao_hanh.isThongTinBaoHanh">
         <p>
-            <span class="sky-typo-strong">Thiết bị {{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.bao_hanh.isTrongThoiGianBaoHanh ? 'đang trong thời gian bảo hành' : 'đã hết hạn bảo hành' }}.</span>
+            <span class="sky-typo-strong">Thiết bị {{ tbisDetailsViewHoSoViewTongQuanTabView.isOutOfDate(tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.bao_hanh.thoi_gian.ngay_ket_thuc) ? 'đang trong thời gian bảo hành' : 'đã hết hạn bảo hành' }}.</span>
         </p>
         <p>
             <span class="sky-typo-normal">Bảo hành từ ngày {{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.bao_hanh.thoi_gian.ngay_bat_dau | displayCustomDateTimeFilter:'DD/MM/YYYY'}} đến ngày {{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.bao_hanh.thoi_gian.ngay_ket_thuc | displayCustomDateTimeFilter:'DD/MM/YYYY'}}.</span>

@@ -36,28 +36,18 @@ class TbisList {
 
         this.isOpen = false;
 
-        this.subscribe('tbishelpers');
+        // this.subscribe('tbishelpers');
         this.subscribe('tskthelpers');
-        this.subscribe('datahelpers', () => [
-            {
-                // options
-            },
-            {
-                // queryParams
-                module: ['thietbis', 'commons'],
-                stateName: null,
-                subject: null
-            }
-        ]);
+
         
         this.helpers({
-            tbishelpers() {
-                tbisPhanLoaiDataService.queryAll();
-                tbisNguonGocDataService.queryAll();
-                tbisPhanQuyenDataService.queryAll();
-                tbisDiaDiemDataService.queryAll();
-                tbisReferenceDataService.queryAll();
-            },
+            // tbishelpers() {
+            //     tbisPhanLoaiDataService.queryAll();
+            //     tbisNguonGocDataService.queryAll();
+            //     tbisPhanQuyenDataService.queryAll();
+            //     tbisDiaDiemDataService.queryAll();
+            //     tbisReferenceDataService.queryAll();
+            // },
             tskthelpers() {
                 tsktThongSoKyThuatDataService.queryAll();
             }
