@@ -36,8 +36,9 @@ class TbisListAddNewMiniFab {
                     }
                 };
 
-                tbisDataService.initNewThietBiData();
-                this.newThietBi = tbisDataService.getNewThietBi();
+                this.newThietBi = {
+                    thietbi: tbisDataService.initNewThietBiData()
+                };
 
                 this.addNew = () => {
                     try {
@@ -73,7 +74,7 @@ class TbisListAddNewMiniFab {
                     if (this.liveOptions.isPreserveSelect.phanQuyen)
                         preservedSelection.phanQuyen =_.pick(this.newThietBi.thietbi, 'phan_quyen');
 
-                    tbisDataService.initNewThietBiData();
+                    this.newThietBi.thietbi = tbisDataService.initNewThietBiData();
 
                     _.each(_.keys(preservedSelection), (key) => {
                         if (!_.isEmpty(preservedSelection[key]))

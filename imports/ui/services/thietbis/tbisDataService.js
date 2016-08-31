@@ -16,12 +16,9 @@ class TbisDataService {
         this.$q = $q;
         this.metadataService = metadataService;
 
-        this.newThietBi = {
-            thietbi: {}
-        };
-
         this.selectedThietBi = {
-            thietbi: {}
+            thietbi: {},
+            clone: {}
         };
     }
 
@@ -46,7 +43,7 @@ class TbisDataService {
     }
 
     initNewThietBiData() {
-        this.newThietBi.thietbi = {
+        return {
             ma_thiet_bi: {},
             phan_loai: {},
             trang_thai: 'Đang hoạt động',
@@ -82,11 +79,7 @@ class TbisDataService {
             thong_so_hoat_dong: {},
             isActive: true,
             metadata: {}
-        }
-    }
-
-    getNewThietBi() {
-        return this.newThietBi;
+        };
     }
 
     buidInputThietBiData(data) {
@@ -107,6 +100,7 @@ class TbisDataService {
             data.kiem_dinh.stringify.ngay_het_han = moment(data.kiem_dinh.thoi_gian.ngay_het_han).format('YYYY-MM-DD');
             data.kiem_dinh.isTrongThoiGianKiemDinh = moment(data.kiem_dinh.thoi_gian.ngay_het_han).isAfter(moment());
         }
+
     }
 
     validateMajorInputThietBiData(data) {
@@ -334,11 +328,13 @@ class TbisDataService {
 
     setSelectedThietBi(thietbiId) {
         this.selectedThietBi.thietbi = (thietbiId) ? this.queryOne(thietbiId) : {};
+        if (!thietbiId)
+            this.selectedThietBi.clone = {};
     }
 
-    getSelectedThongSoKyThuatGroupBy(data) {
-        if (data)
-            return _.groupBy(data, 'nhom');
+    getSelectedThongSoKyThuatGroupBy(thietbi) {
+        if (thietbi && thietbi.thong_so_ky_thuat)
+            return _.groupBy(thietbi.thong_so_ky_thuat, 'nhom');
     }
 
     remove(thietbiId) {

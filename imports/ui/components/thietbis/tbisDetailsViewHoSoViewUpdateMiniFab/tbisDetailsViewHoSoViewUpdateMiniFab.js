@@ -30,14 +30,16 @@ class TbisDetailsViewHoSoViewUpdateMiniFab {
             controller($mdDialog, tbisDataService, metadataService, notificationService, tsktThongSoKyThuatDataService) {
                 'ngInject';
 
-                this.thietbi = angular.copy(tbisDataService.getSelectedThietBi().thietbi);
+                this.cloneSelectedThietBi = angular.copy(tbisDataService.getSelectedThietBi());
 
                 this.solveThongSoKyThuats = () => {
-                    this.thongsokythuats = tbisDataService.getSelectedThongSoKyThuatGroupBy(this.thietbi.thong_so_ky_thuat);
+                    if (this.cloneSelectedThietBi.thietbi)
+                        this.thongsokythuats = tbisDataService.getSelectedThongSoKyThuatGroupBy(this.cloneSelectedThietBi.thietbi);
                 };
 
-                this.solveThongSoHoatDong= () => {
-                    this.newThongSo.thong_so_hoat_dong = this.thietbi.thong_so_hoat_dong;
+                this.solveThongSoHoatDong = () => {
+                    if (this.cloneSelectedThietBi.thietbi)
+                        this.newThongSo.thong_so_hoat_dong = this.cloneSelectedThietBi.thietbi.thong_so_hoat_dong;
                 };
 
                 this.tabSelected = '';
@@ -52,18 +54,18 @@ class TbisDetailsViewHoSoViewUpdateMiniFab {
 
 
                 this.reset = () => {
-                    this.thietbi = angular.copy(tbisDataService.getSelectedThietBi().thietbi);
-                    this.solveThongSoKyThuats();
-                    this.solveThongSoHoatDong();
+                    this.cloneSelectedThietBi.thietbi = angular.copy(tbisDataService.getSelectedThietBi().thietbi);
                 };
 
                 this.save = () => {
                     try {
-                        metadataService.buildUpdateMetadata(this.thietbi, Meteor.user());
-                        tbisDataService.validateMajorInputThietBiData(this.thietbi);
-                        tbisDataService.updateMajorForm(this.thietbi).then(() => {
+                        metadataService.buildUpdateMetadata(this.cloneSelectedThietBi.thietbi, Meteor.user());
+                        tbisDataService.validateMajorInputThietBiData(this.cloneSelectedThietBi.thietbi);
+                        tbisDataService.updateMajorForm(this.cloneSelectedThietBi.thietbi).then(() => {
                             notificationService.success('Thay đổi của bạn đã được ghi nhận vào Skynet.', 'Cập nhật thành công');
                             this.reset();
+                            this.solveThongSoKyThuats();
+                            this.solveThongSoHoatDong();
                         }).catch((err) => {
                             notificationService.error(err.message, 'Cập nhật thất bại');
                         });
@@ -73,14 +75,13 @@ class TbisDetailsViewHoSoViewUpdateMiniFab {
                     }
                 };
 
-
-
                 this.addNewThongSo = () => {
+                    // Hàm được gọi từ trong ThongSoTab thông qua tham chiếu &
                     try {
                         this.newThongSo.thong_so_ky_thuat.addNew = true;
                         tsktThongSoKyThuatDataService.validateNewThongSoKyThuatInputData(this.newThongSo.thong_so_ky_thuat);
-                        this.thietbi.thong_so_ky_thuat = this.thietbi.thong_so_ky_thuat || [];
-                        this.thietbi.thong_so_ky_thuat.push(this.newThongSo.thong_so_ky_thuat);
+                        this.cloneSelectedThietBi.thietbi.thong_so_ky_thuat = this.cloneSelectedThietBi.thietbi.thong_so_ky_thuat || [];
+                        this.cloneSelectedThietBi.thietbi.thong_so_ky_thuat.push(this.newThongSo.thong_so_ky_thuat);
                         this.solveThongSoKyThuats();
                         this.newThongSo.thong_so_ky_thuat = {};
                     }
@@ -90,9 +91,9 @@ class TbisDetailsViewHoSoViewUpdateMiniFab {
                 };
 
                 this.saveThongSo = () => {
-                    metadataService.buildUpdateMetadata(this.thietbi, Meteor.user());
+                    metadataService.buildUpdateMetadata(this.cloneSelectedThietBi.thietbi, Meteor.user());
                     if (this.tabModeSelected === 'thong_so_hoat_dong') {
-                        tbisDataService.updateThongSoHoatDong(this.thietbi).then(() => {
+                        tbisDataService.updateThongSoHoatDong(this.cloneSelectedThietBi.thietbi).then(() => {
                             notificationService.success('Thay đổi của bạn đã được ghi nhận vào Skynet.', 'Cập nhật thành công');
                             this.solveThongSoHoatDong();
                         }).catch((err) => {
@@ -101,10 +102,10 @@ class TbisDetailsViewHoSoViewUpdateMiniFab {
                     }
                     if (this.tabModeSelected === 'thong_so_ky_thuat') {
                         // Lọc các thông số, bỏ đi các giá trị bị gắn cờ remove = true;
-                        this.thietbi.thong_so_ky_thuat = _.reject(this.thietbi.thong_so_ky_thuat, (item) => {
+                        this.cloneSelectedThietBi.thietbi.thong_so_ky_thuat = _.reject(this.cloneSelectedThietBi.thietbi.thong_so_ky_thuat, (item) => {
                             return item.remove;
                         });
-                        tbisDataService.updateThongSoKyThuat(this.thietbi).then(() => {
+                        tbisDataService.updateThongSoKyThuat(this.cloneSelectedThietBi.thietbi).then(() => {
                             notificationService.success('Thay đổi của bạn đã được ghi nhận vào Skynet.', 'Cập nhật thành công');
                             this.solveThongSoKyThuats();
                         }).catch((err) => {
@@ -114,7 +115,7 @@ class TbisDetailsViewHoSoViewUpdateMiniFab {
                 };
 
                 this.saveLocation = () => {
-                    tbisDataService.updateLocation(this.thietbi).then(() => {
+                    tbisDataService.updateLocation(this.cloneSelectedThietBi.thietbi).then(() => {
                         notificationService.success('Thay đổi của bạn đã được ghi nhận vào Skynet.', 'Cập nhật thành công');
                     }).catch((err) => {
                         notificationService.error(err.message, 'Cập nhật thất bại');
@@ -124,13 +125,13 @@ class TbisDetailsViewHoSoViewUpdateMiniFab {
                 this.toggleRemoveThongSoKyThuat = (thongsokythuat) => {
                     if (thongsokythuat.addNew) {
                         // Xóa khỏi arr thông số kỹ thuật nếu thông số là mới thêm vào và chưa được lưu
-                        this.thietbi.thong_so_ky_thuat = _.reject(this.thietbi.thong_so_ky_thuat, (item) => {
+                        this.cloneSelectedThietBi.thietbi.thong_so_ky_thuat = _.reject(this.cloneSelectedThietBi.thietbi.thong_so_ky_thuat, (item) => {
                             return item._id === thongsokythuat._id;
                         });
                         this.solveThongSoKyThuats();
                     } else {
                         thongsokythuat.remove = !thongsokythuat.remove;
-                        _.each(this.thietbi.thong_so_ky_thuat, (item) => {
+                        _.each(this.cloneSelectedThietBi.thietbi.thong_so_ky_thuat, (item) => {
                             if (item._id === thongsokythuat._id)
                                 item.remove = thongsokythuat.remove;
                         });
@@ -138,6 +139,7 @@ class TbisDetailsViewHoSoViewUpdateMiniFab {
                 };
 
                 this.close = () => {
+                    this.reset();
                     $mdDialog.hide();
                 };
 

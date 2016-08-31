@@ -8,12 +8,6 @@ import template from './tbisList.html';
 
 import { name as TbisListUtilsTopBar } from '../tbisListUtilsTopBar/tbisListUtilsTopBar';
 
-
-import { name as TbisPhanLoaiDataService } from '../../../services/thietbis/tbisPhanLoaiDataService';
-import { name as TbisNguonGocDataService } from '../../../services/thietbis/tbisNguonGocDataService';
-import { name as TbisPhanQuyenDataService } from '../../../services/thietbis/tbisPhanQuyenDataService';
-import { name as TbisDiaDiemDataService } from '../../../services/thietbis/tbisDiaDiemDataService';
-import { name as TbisReferenceDataService } from '../../../services/thietbis/tbisReferenceDataService';
 import { name as UtilsTopBarDataService } from '../../../services/workspaces/utilsTopBarDataService';
 import { name as UtilsFilterDataService } from '../../../services/workspaces/utilsFilterDataService';
 
@@ -23,9 +17,6 @@ import { name as TbisDisplayGridView } from '../tbisDisplayGridView/tbisDisplayG
 
 class TbisList {
     constructor($scope, $reactive,
-                tbisPhanLoaiDataService, tbisNguonGocDataService, tbisPhanQuyenDataService,
-                tbisDiaDiemDataService, tbisReferenceDataService,
-                tsktThongSoKyThuatDataService,
                 utilsTopBarDataService, utilsFilterDataService) {
         'ngInject';
 
@@ -36,22 +27,7 @@ class TbisList {
 
         this.isOpen = false;
 
-        // this.subscribe('tbishelpers');
-        this.subscribe('tskthelpers');
-
-        
-        this.helpers({
-            // tbishelpers() {
-            //     tbisPhanLoaiDataService.queryAll();
-            //     tbisNguonGocDataService.queryAll();
-            //     tbisPhanQuyenDataService.queryAll();
-            //     tbisDiaDiemDataService.queryAll();
-            //     tbisReferenceDataService.queryAll();
-            // },
-            tskthelpers() {
-                tsktThongSoKyThuatDataService.queryAll();
-            }
-        });
+        this.helpers({});
     }
 }
 
@@ -68,11 +44,6 @@ export default angular.module(name, [
     TbisDisplayListView,
     TbisDisplayGridView,
 
-    TbisPhanLoaiDataService,
-    TbisNguonGocDataService,
-    TbisPhanQuyenDataService,
-    TbisDiaDiemDataService,
-    TbisReferenceDataService,
     UtilsTopBarDataService,
     UtilsFilterDataService
 ]).component(name, {

@@ -72,6 +72,9 @@
         <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ho_so.xuat_xu">
             <span class="sky-typo-strong">Xuất xứ:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ho_so.xuat_xu}}</span>
         </p>
+        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ho_so.xuat_xu">
+            <span class="sky-typo-strong">Cấp chất lượng:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ho_so.cap_chat_luong}}</span>
+        </p>
         <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.isEmptyThongTinDangKy()">
             <span class="sky-typo-normal">Chưa cập nhật các thông tin đăng ký.</span>
         </p>
@@ -120,24 +123,35 @@
         </p>
     </md-list-item>
 
+    <md-divider></md-divider>
+    <md-subheader class="md-no-sticky">Các thông tin khác</md-subheader>
+    <md-list-item layout="column" layout-align="start start" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.tags.length || tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.mo_ta || tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ghi_chu">
+        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.tags.length">
+            <span class="sky-typo-strong">Gắn thẻ:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.tags.join(', ')}}.</span>
+        </p>
+        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.mo_ta">
+            <span class="sky-typo-strong">Mô tả:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.mo_ta}}</span>
+        </p>
+        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ghi_chu">
+            <span class="sky-typo-strong">Ghi chú:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ghi_chu}}</span>
+        </p>
+    </md-list-item>
+    <md-list-item layout="column" layout-align="start start" ng-hide="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.tags.length || tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.mo_ta || tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ghi_chu">
+        <p>
+            <span class="sky-typo-normal">Không có thông tin được ghi nhận về thiết bị.</span>
+        </p>
+    </md-list-item>
+
     <!--Thiết bị đi kèm-->
     <md-divider></md-divider>
     <md-subheader class="md-no-sticky">Thiết bị đi kèm</md-subheader>
-    <md-list-item>
-        <span class="sky-typo-strong">VT-13:&nbsp;</span><span class="sky-typo-normal">Vận thăng, Alimax (2001)</span>
-    </md-list-item>
-    <md-divider></md-divider>
-    <md-subheader class="md-no-sticky" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.tags.length || tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.mo_ta || tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ghi_chu">Các thông tin khác</md-subheader>
-    <md-list-item ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.tags.length">
-        <span class="sky-typo-strong">Gắn thẻ:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.tags.join(', ')}}.</span>
-    </md-list-item>
-    <md-list-item ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.mo_ta">
-        <span class="sky-typo-strong">Mô tả:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.mo_ta}}</span>
-    </md-list-item>
-    <md-list-item ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ghi_chu">
-        <span class="sky-typo-strong">Ghi chú:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ghi_chu}}</span>
+    <md-list-item layout="column" layout-align="start start">
+        <p>
+            <span class="sky-typo-strong">VT-13:&nbsp;</span><span class="sky-typo-normal">Vận thăng, Alimax (2001)</span>
+        </p>
     </md-list-item>
 
-    <div style="margin-top: 20px;"></div>
+    <md-divider></md-divider>
+    <div style="height: 40px;"></div>
 
 </md-list>

@@ -8,12 +8,13 @@ import { name as TbisNguonGocDataService } from '../../../services/thietbis/tbis
 import { name as TbisPhanQuyenDataService } from '../../../services/thietbis/tbisPhanQuyenDataService';
 import { name as TbisDiaDiemDataService } from '../../../services/thietbis/tbisDiaDiemDataService';
 import { name as TbisReferenceDataService } from '../../../services/thietbis/tbisReferenceDataService';
+import { name as TsktThongSoKyThuatDataService } from '../../../services/thietbis/tsktThongSoKyThuatDataService';
 
-import { name as TbisDataService } from '../../../services/thietbis/tbisDataService';
+// import { name as TbisDataService } from '../../../services/thietbis/tbisDataService';
 
 class TbisListMajorInputForm {
     constructor($scope, $reactive, tbisPhanLoaiDataService, tbisNguonGocDataService, tbisDiaDiemDataService,
-                tbisPhanQuyenDataService, tbisReferenceDataService, tbisDataService) {
+                tbisPhanQuyenDataService, tbisReferenceDataService, tsktThongSoKyThuatDataService) {
         'ngInject';
 
         $reactive(this).attach($scope);
@@ -23,8 +24,6 @@ class TbisListMajorInputForm {
         this.tbisDiaDiemDataService = tbisDiaDiemDataService;
         this.tbisPhanQuyenDataService = tbisPhanQuyenDataService;
         this.tbisReferenceDataService = tbisReferenceDataService;
-
-        this.viewModel = (this.mode === 'addNew') ? tbisDataService.getNewThietBi() : tbisDataService.getSelectedThietBi();
 
         this.subscribe('datahelpers', () => [
             {
@@ -38,6 +37,8 @@ class TbisListMajorInputForm {
             }
         ]);
 
+        this.subscribe('tskthelpers');
+
         this.helpers({
             tbishelpers() {
                 tbisPhanLoaiDataService.queryAll();
@@ -48,6 +49,9 @@ class TbisListMajorInputForm {
 
                 this.buildSelectOptions();
                 return null;
+            },
+            tskthelpers() {
+                tsktThongSoKyThuatDataService.queryAll();
             }
         });
 
@@ -65,22 +69,22 @@ class TbisListMajorInputForm {
             this.addNewThietBiForm.$setUntouched();
         });
 
-        $scope.$watch('tbisListMajorInputForm.viewModel.thietbi.bao_hanh.isThongTinBaoHanh', (newVal) => {
+        $scope.$watch('tbisListMajorInputForm.vm.bao_hanh.isThongTinBaoHanh', (newVal) => {
             if (!newVal) {
-                if (this.viewModel && this.viewModel.thietbi && this.viewModel.thietbi.bao_hanh) {
-                    this.viewModel.thietbi.bao_hanh.thoi_gian = {};
-                    this.viewModel.thietbi.bao_hanh.stringify = {};
+                if (this.vm && this.vm.bao_hanh) {
+                    this.vm.bao_hanh.thoi_gian = {};
+                    this.vm.bao_hanh.stringify = {};
                 }
             }
         });
 
-        $scope.$watch('tbisListMajorInputForm.viewModel.thietbi.bao_hanh.isThongTinKiemDinh', (newVal) => {
+        $scope.$watch('tbisListMajorInputForm.vm.kiem_dinh.isThongTinKiemDinh', (newVal) => {
             if (!newVal) {
-                if (this.viewModel && this.viewModel.thietbi && this.viewModel.thietbi.kiem_dinh) {
-                    this.viewModel.thietbi.kiem_dinh.isTrongThoiGianKiemDinh = false;
-                    this.viewModel.thietbi.kiem_dinh.ho_so = {};
-                    this.viewModel.thietbi.kiem_dinh.thoi_gian = {};
-                    this.viewModel.thietbi.kiem_dinh.stringify = {};
+                if (this.vm && this.vm.kiem_dinh) {
+                    this.vm.kiem_dinh.isTrongThoiGianKiemDinh = false;
+                    this.vm.kiem_dinh.ho_so = {};
+                    this.vm.kiem_dinh.thoi_gian = {};
+                    this.vm.kiem_dinh.stringify = {};
                 }
             }
         });
@@ -105,12 +109,13 @@ export default angular.module(name, [
     TbisPhanQuyenDataService,
     TbisDiaDiemDataService,
     TbisReferenceDataService,
-    TbisDataService
+
+    TsktThongSoKyThuatDataService
 ]).component(name, {
     template,
     controllerAs: name,
     bindings: {
-        mode: '@',
+        vm: '=',
         isPreserveSelect: '='
     },
     controller: TbisListMajorInputForm

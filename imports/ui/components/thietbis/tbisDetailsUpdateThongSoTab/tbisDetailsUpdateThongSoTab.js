@@ -11,6 +11,10 @@ class TbisDetailsUpdateThongSoTab {
 
         this.selectOptions = tsktThongSoKyThuatDataService.getSelectOptions();
     }
+
+    addNew() {
+        this.addNewThongSo();
+    }
 }
 
 const name = 'tbisDetailsUpdateThongSoTab';
@@ -23,8 +27,9 @@ export default angular.module(name, [
     template,
     controllerAs: name,
     bindings: {
+        addNewThongSo: '&',
         tabModeSelected: '=',
-        thietbi: '<',
+        mode: '@',
         viewModel: '=',
         thongsokythuats: '<',
         toggleRemoveThongSoKyThuat: '&'

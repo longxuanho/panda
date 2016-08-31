@@ -10,16 +10,19 @@
     </md-toolbar>
     <md-dialog-content layout-fill>
         <md-tabs md-dynamic-height md-border-bottom>
+            <!--Lỗi khó hiểu? Mất tab DarkZone nếu đặt label là Tổng quan? OH HELL!-->
             <md-tab label="Thống kê" md-on-select="tbisDetailsViewHoSoViewUpdateModal.tabSelected='tong_quan'">
                 <md-content>
                     <p class="md-body-1" style="padding: 16px 16px 0px 16px;">Vui lòng cập nhật các thông tin thiết bị theo mẫu phiếu dưới đây:</p>
-                    <tbis-list-major-input-form view-model="tbisDetailsViewHoSoViewUpdateModal.thietbi"></tbis-list-major-input-form>
+                    <tbis-list-major-input-form vm="tbisDetailsViewHoSoViewUpdateModal.cloneSelectedThietBi.thietbi"></tbis-list-major-input-form>
                 </md-content>
             </md-tab>
             <md-tab label="Thông số" md-on-select="tbisDetailsViewHoSoViewUpdateModal.tabSelected='thong_so'">
                 <md-content>
-                    <tbis-details-update-thong-so-tab   tab-mode-selected="tbisDetailsViewHoSoViewUpdateModal.tabModeSelected"
-                                                        thietbi="tbisDetailsViewHoSoViewUpdateModal.thietbi" view-model="tbisDetailsViewHoSoViewUpdateModal.newThongSo"
+                    <tbis-details-update-thong-so-tab   add-new-thong-so="tbisDetailsViewHoSoViewUpdateModal.addNewThongSo()"
+                                                        tab-mode-selected="tbisDetailsViewHoSoViewUpdateModal.tabModeSelected"
+                                                        mode="{{tbisDetailsViewHoSoViewUpdateModal.cloneSelectedThietBi.thietbi.phan_loai.loai}}"
+                                                        view-model="tbisDetailsViewHoSoViewUpdateModal.newThongSo"
                                                         thongsokythuats="tbisDetailsViewHoSoViewUpdateModal.thongsokythuats"
                                                         toggle-remove-thong-so-ky-thuat="tbisDetailsViewHoSoViewUpdateModal.toggleRemoveThongSoKyThuat(thongsokythuat)"
                     ></tbis-details-update-thong-so-tab>
@@ -29,7 +32,7 @@
                 <md-content class="md-padding">
                     <tbis-details-update-vi-tri-tab
                             ng-if="tbisDetailsViewHoSoViewUpdateModal.tabSelected==='vi_tri'"
-                            view-model="tbisDetailsViewHoSoViewUpdateModal.thietbi.dia_diem.toa_do">
+                            view-model="tbisDetailsViewHoSoViewUpdateModal.cloneSelectedThietBi.thietbi.dia_diem.toa_do">
                     </tbis-details-update-vi-tri-tab>
                 </md-content>
             </md-tab>
@@ -53,8 +56,6 @@
     </md-dialog-actions>
     <md-dialog-actions layout="row" ng-if="tbisDetailsViewHoSoViewUpdateModal.tabSelected==='thong_so' && tbisDetailsViewHoSoViewUpdateModal.tabModeSelected==='thong_so_ky_thuat'">
         <md-button ng-click="tbisDetailsViewHoSoViewUpdateModal.reset()" aria-label="Reset">Reset</md-button>
-        <span flex></span>
-        <md-button ng-click="tbisDetailsViewHoSoViewUpdateModal.addNewThongSo()" aria-label="Reset">Thêm thông số</md-button>
         <span flex></span>
         <md-button style="margin-right:20px;" ng-click="tbisDetailsViewHoSoViewUpdateModal.saveThongSo()" aria-label="Cập nhật">Lưu thay đổi</md-button>
     </md-dialog-actions>
