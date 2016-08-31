@@ -9,7 +9,6 @@ import { name as NotificationService } from '../../../services/common/notificati
 class TbisDetailsDarkZoneTab {
     constructor(tbisDataService, notificationService, $mdToast, $stateParams, $state, $timeout) {
         'ngInject';
-
         this.tbisDataService = tbisDataService;
         this.notificationService = notificationService;
         this.$mdToast = $mdToast;

@@ -40,7 +40,6 @@ class TbisListMajorInputForm {
 
         this.helpers({
             tbishelpers() {
-                console.log('query...');
                 tbisPhanLoaiDataService.queryAll();
                 tbisNguonGocDataService.queryAll();
                 tbisPhanQuyenDataService.queryAll();
@@ -68,17 +67,21 @@ class TbisListMajorInputForm {
 
         $scope.$watch('tbisListMajorInputForm.viewModel.thietbi.bao_hanh.isThongTinBaoHanh', (newVal) => {
             if (!newVal) {
-                this.viewModel.thietbi.bao_hanh.thoi_gian = {};
-                this.viewModel.thietbi.bao_hanh.stringify = {};
+                if (this.viewModel && this.viewModel.thietbi && this.viewModel.thietbi.bao_hanh) {
+                    this.viewModel.thietbi.bao_hanh.thoi_gian = {};
+                    this.viewModel.thietbi.bao_hanh.stringify = {};
+                }
             }
         });
 
         $scope.$watch('tbisListMajorInputForm.viewModel.thietbi.bao_hanh.isThongTinKiemDinh', (newVal) => {
             if (!newVal) {
-                this.viewModel.thietbi.kiem_dinh.isTrongThoiGianKiemDinh = false;
-                this.viewModel.thietbi.kiem_dinh.ho_so = {};
-                this.viewModel.thietbi.kiem_dinh.thoi_gian = {};
-                this.viewModel.thietbi.kiem_dinh.stringify = {};
+                if (this.viewModel && this.viewModel.thietbi && this.viewModel.thietbi.kiem_dinh) {
+                    this.viewModel.thietbi.kiem_dinh.isTrongThoiGianKiemDinh = false;
+                    this.viewModel.thietbi.kiem_dinh.ho_so = {};
+                    this.viewModel.thietbi.kiem_dinh.thoi_gian = {};
+                    this.viewModel.thietbi.kiem_dinh.stringify = {};
+                }
             }
         });
     }

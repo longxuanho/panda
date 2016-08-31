@@ -9,6 +9,8 @@ import { name as TbisDetailsViewHoSoViewTongQuanTabView } from '../tbisDetailsVi
 import { name as TbisDetailsViewHoSoViewThongSoTabView } from '../tbisDetailsViewHoSoViewThongSoTabView/tbisDetailsViewHoSoViewThongSoTabView';
 import { name as TbisDetailsViewHoSoViewViTriTabView } from '../tbisDetailsViewHoSoViewViTriTabView/tbisDetailsViewHoSoViewViTriTabView';
 
+import { name as SkyFixMarginTop } from '../../../directives/shims/skyFixMarginTop';
+
 class TbisDetailsViewHoSoView {
     constructor($mdMedia) {
         'ngInject';
@@ -28,7 +30,8 @@ export default angular.module(name, [
     TbisDetailsViewHoSoViewFabMenu,
     TbisDetailsViewHoSoViewTongQuanTabView,
     TbisDetailsViewHoSoViewThongSoTabView,
-    TbisDetailsViewHoSoViewViTriTabView
+    TbisDetailsViewHoSoViewViTriTabView,
+    SkyFixMarginTop
 ]).component(name, {
     template,
     controllerAs: name,

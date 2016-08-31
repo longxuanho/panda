@@ -224,6 +224,10 @@ Schema.ThietBi = new SimpleSchema({
             type: Object,
             defaultValue: {}
         },
+        'ho_so.cap_chat_luong': {
+            type:Number,
+            optional: true
+        },
             'ho_so.thiet_bi_di_kem.isThietBiDiKem': {
                 type: Boolean,
                 defaultValue: false

@@ -28,7 +28,7 @@ class SkyPagingInfo {
     }
 
     resolvePagingInfo(page, pageSize, total) {
-        this.liveOptions.from = pageSize * (page - 1) + 1;
+        this.liveOptions.from = (total) ? pageSize * (page - 1) + 1 : 0;
         this.liveOptions.to = pageSize * page;
 
         this.liveOptions.to = (this.liveOptions.to < total) ? this.liveOptions.to : total;

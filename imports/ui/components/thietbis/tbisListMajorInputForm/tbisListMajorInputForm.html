@@ -251,6 +251,14 @@
                             <md-option ng-value="quocgia" ng-repeat="quocgia in tbisListMajorInputForm.selectOptions.quocgias | orderBy">{{quocgia}}</md-option>
                         </md-select>
                     </md-input-container>
+                    <md-input-container class="md-block" flex="50">
+                        <label>Cấp chất lượng</label>
+                        <input name="ho_so_cap_chat_luong" ng-model="tbisListMajorInputForm.viewModel.thietbi.ho_so.cap_chat_luong" type="number" step="1" min="1" max="5">
+                        <div ng-messages="tbisListMajorInputForm.addNewThietBiForm.ho_so_cap_chat_luong.$error">
+                            <div ng-message="min">Cấp chất lượng không ít hơn 1.</div>
+                            <div ng-message="max">Cấp chất lượng không vượt quá 5.</div>
+                        </div>
+                    </md-input-container>
                 </div>
             </div>
         </md-list-item>
