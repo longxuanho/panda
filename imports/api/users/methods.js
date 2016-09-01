@@ -56,6 +56,10 @@ export function updateSelectedUserRoles(selectedUserId, roles) {
         Roles.setUserRoles(selectedUserId, roles.assets, 'assets');
     if (_.isArray(roles.donvies))
         Roles.setUserRoles(selectedUserId, roles.donvies, 'donvies');
+    if (_.isArray(roles.updatefields))
+        Roles.setUserRoles(selectedUserId, roles.updatefields, 'updatefields');
+    if (_.isArray(roles.exports))
+        Roles.setUserRoles(selectedUserId, roles.exports, 'exports');
 }
 
 export function updateSelectedUserPhanQuyenDesc(selectedUserId, phanQuyenDesc) {
