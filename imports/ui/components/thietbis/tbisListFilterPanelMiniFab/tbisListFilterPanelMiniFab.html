@@ -1,4 +1,10 @@
-<md-button aria-label="Lọc dữ liệu" class="md-fab md-raised md-mini" ng-click="tbisListFilterPanelMiniFab.open($event)">
+<md-button ng-if="tbisListFilterPanelMiniFab.mode!=='bigFab'" aria-label="Lọc dữ liệu" class="md-fab md-raised md-mini"
+           ng-click="tbisListFilterPanelMiniFab.open($event)">
     <md-tooltip md-direction="left" md-delay="800">Lọc dữ liệu</md-tooltip>
     <md-icon md-svg-src="/img/icons/common/filter_list.svg" style="color: #757575;" aria-label="Duyệt trang"></md-icon>
+</md-button>
+
+<md-button ng-if="tbisListFilterPanelMiniFab.mode==='bigFab'" class="md-fab md-warn sky-float-fab" aria-label="Lọc dữ liệu"
+           ng-click="tbisListFilterPanelMiniFab.open($event)">
+    <md-icon md-svg-src="img/icons/common/filter_list.svg"></md-icon>
 </md-button>

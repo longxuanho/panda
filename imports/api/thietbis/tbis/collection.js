@@ -61,8 +61,8 @@ ThietBis.allow({
         if (Roles.userIsInRole(userId, ['admin'], 'sky-project'))
             return true;
 
-        // Để update, user phải có một trong các quyền sau: tbis:viux || tbis:viu || tbis:vux
-        if (Roles.userIsInRole(userId, ['tbis:viux','tbis:viu', 'tbis:vux'], 'rights')) {
+        // Để update, user phải có một trong các quyền sau: tbis:viux || tbis:viu || tbis:vux || tbis:vu
+        if (Roles.userIsInRole(userId, ['tbis:viux','tbis:viu', 'tbis:vux', 'tbis:vu'], 'rights')) {
 
             // Tiếp theo, thiết bị phải nằm trong vùng cho phép đối với quyền hạn user
             let allowedAssets = _.find(Roles.getRolesForUser(userId, 'assets'), (item) => {

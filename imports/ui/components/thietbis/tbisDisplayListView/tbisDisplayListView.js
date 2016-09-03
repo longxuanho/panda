@@ -17,9 +17,11 @@ import { name as UserLocalSettingsService } from '../../../services/common/userL
 import { name as SubscribeDataService } from '../../../services/workspaces/subscribeDataService';
 import { name as UtilsFilterDataService } from '../../../services/workspaces/utilsFilterDataService';
 
+import { name as CurrentUserService } from '../../../services/common/currentUserService';
+
 
 class TbisDisplayListView {
-    constructor($reactive, $scope, userLocalSettingsService, tbisDataService, subscribeDataService, utilsFilterDataService, $timeout) {
+    constructor($reactive, $scope, userLocalSettingsService, tbisDataService, subscribeDataService, utilsFilterDataService, currentUserService) {
         'ngInject';
         $reactive(this).attach($scope);
 
@@ -32,6 +34,8 @@ class TbisDisplayListView {
         this.filterPanelOptions = userLocalSettingsService.getPageSettings('thietbis', 'tbisList').tbisFilterPanel;
 
         this.ngSortBy = 'ma_thiet_bi.keyId';
+
+        this.currentUserRights = currentUserService.getCurrentUserRights();
 
         this.subscribe('thietbis', () => [
             {
@@ -90,7 +94,8 @@ export default angular.module(name, [
     TbisDataService,
     UserLocalSettingsService,
     SubscribeDataService,
-    UtilsFilterDataService
+    UtilsFilterDataService,
+    CurrentUserService
 ]).component(name, {
     template,
     controllerAs: name,

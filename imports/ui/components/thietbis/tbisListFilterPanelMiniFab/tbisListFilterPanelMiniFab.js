@@ -69,5 +69,8 @@ export default angular.module(name, [
 ]).component(name, {
     template: fabTemplate,
     controllerAs: name,
+    bindings: {
+        mode: '@'
+    },
     controller: TbisListFilterPanelMiniFab
 });

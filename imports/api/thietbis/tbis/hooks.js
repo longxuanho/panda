@@ -40,7 +40,6 @@ ThietBis.before.update((userId, doc, fieldNames, modifier, options) => {
         if (modifier.$set.hinh_anh && modifier.$set.hinh_anh.collections)
             modifier.$set['statistics.hinh_anh.count'] = modifier.$set.hinh_anh.collections.length;
     }
-    console.log('result: ', modifier);
 });
 
 function buildSearchField(doc) {

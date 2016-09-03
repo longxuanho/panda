@@ -78,7 +78,7 @@ if (Meteor.isServer) {
 
 
         // Route 1: user phải ở một trong các role sau mới có quyền xem dữ liệu ở module này
-        if (Roles.userIsInRole(this.userId, ['tbis:viux','tbis:viu', 'tbis:vi', 'tbis:v'], 'rights')) {
+        if (Roles.userIsInRole(this.userId, ['tbis:viux','tbis:viu', 'tbis:vi', 'tbis:vu', 'tbis:v'], 'rights')) {
 
             // Route 1a: Cấu hình selector theo các phân quyền assets tương ứng
             let allowedAssets = _.find(currentUserRoles.assets, (item) => {

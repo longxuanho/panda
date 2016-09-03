@@ -17,8 +17,7 @@ class TbisDataService {
         this.metadataService = metadataService;
 
         this.selectedThietBi = {
-            thietbi: {},
-            clone: {}
+            thietbi: {}
         };
     }
 
@@ -328,8 +327,6 @@ class TbisDataService {
 
     setSelectedThietBi(thietbiId) {
         this.selectedThietBi.thietbi = (thietbiId) ? this.queryOne(thietbiId) : {};
-        if (!thietbiId)
-            this.selectedThietBi.clone = {};
     }
 
     getSelectedThongSoKyThuatGroupBy(thietbi) {

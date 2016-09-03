@@ -11,7 +11,7 @@ import { name as TbisDetailsViewHoSoView } from '../tbisDetailsViewHoSoView/tbis
 import { name as TbisDetailsViewReportView } from '../tbisDetailsViewReportView/tbisDetailsViewReportView';
 import { name as TbisDetailsViewHistoryView } from '../tbisDetailsViewHistoryView/tbisDetailsViewHistoryView';
 
-import { name as TbisDataSerivce } from '../../../services/thietbis/tbisDataService';
+import { name as TbisDataService } from '../../../services/thietbis/tbisDataService';
 import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
 
 class TbisDetailsView {
@@ -60,7 +60,7 @@ export default angular.module(name, [
     TbisDetailsViewHoSoView,
     TbisDetailsViewReportView,
     TbisDetailsViewHistoryView,
-    TbisDataSerivce,
+    TbisDataService,
     UserLocalSettingsService
 ]).component(name, {
     template,

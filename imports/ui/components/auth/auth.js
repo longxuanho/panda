@@ -42,8 +42,11 @@ class Auth {
             },
             currentUser() {
                 this.currentUserService.setCurrentUser(Meteor.user());
-                this.userLocalSettingsService.initCurrentUserLocalSettings(this.currentUserService.getCurrentUser());
 
+                // Cập nhật ui nhập liệu cho người dùng dựa theo roles
+                this.currentUserService.resolveCurrentUserRights('tbis');
+
+                this.userLocalSettingsService.initCurrentUserLocalSettings(this.currentUserService.getCurrentUser());
                 return Meteor.user();
             }
         });

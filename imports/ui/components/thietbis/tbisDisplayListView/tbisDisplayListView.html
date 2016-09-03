@@ -1,11 +1,19 @@
 <tbis-search-form></tbis-search-form>
-<md-list>
+<md-list ng-show="tbisDisplayListView.currentUserRights.tbis.isAllowView">
     <sky-paging-info subscribe-options="tbisDisplayListView.subscribeOptions"></sky-paging-info>
     <tbis-display-list-item ng-repeat="thietbi in tbisDisplayListView.thietbis | orderBy: tbisDisplayListView.ngSortBy"
                             thietbi="thietbi"
                             ui-sref="tbisDetailsView({thietbiId: thietbi._id})">
     </tbis-display-list-item>
 </md-list>
+
+<div ng-hide="tbisDisplayListView.currentUserRights.tbis.isAllowView" class="no-animate" layout="column" layout-align="center center" layout-padding>
+    <img ng-src="img/icons/common/lock_archive.svg" alt="Dữ liệu bị khóa" style="width: 300px;">
+    <p class="md-body-1">Tài khoản của bạn chưa được cấp quyền để xem các thông tin tại phân vùng này. Xin vui lòng kiểm tra lại phân quyền tài khoản và liên hệ với người quản trị để được cấp quyền truy cập tương ứng.</p>
+</div>
+
 <sky-pager subscribe-options="tbisDisplayListView.subscribeOptions"></sky-pager>
-<tbis-list-fab-menu></tbis-list-fab-menu>
+
+<tbis-list-fab-menu ng-if="tbisDisplayListView.currentUserRights.tbis.isAllowInsert"></tbis-list-fab-menu>
+<tbis-list-filter-panel-mini-fab ng-if="!tbisDisplayListView.currentUserRights.tbis.isAllowInsert && tbisDisplayListView.currentUserRights.tbis.isAllowView" mode="bigFab"></tbis-list-filter-panel-mini-fab>
 

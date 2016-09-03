@@ -10,11 +10,11 @@ import { name as TbisDiaDiemDataService } from '../../../services/thietbis/tbisD
 import { name as TbisReferenceDataService } from '../../../services/thietbis/tbisReferenceDataService';
 import { name as TsktThongSoKyThuatDataService } from '../../../services/thietbis/tsktThongSoKyThuatDataService';
 
-// import { name as TbisDataService } from '../../../services/thietbis/tbisDataService';
+import { name as CurrentUserService } from '../../../services/common/currentUserService';
 
 class TbisListMajorInputForm {
     constructor($scope, $reactive, tbisPhanLoaiDataService, tbisNguonGocDataService, tbisDiaDiemDataService,
-                tbisPhanQuyenDataService, tbisReferenceDataService, tsktThongSoKyThuatDataService) {
+                tbisPhanQuyenDataService, tbisReferenceDataService, tsktThongSoKyThuatDataService, currentUserService) {
         'ngInject';
 
         $reactive(this).attach($scope);
@@ -61,8 +61,38 @@ class TbisListMajorInputForm {
             mdChips: {
                 searchText: null,
                 selectedItem: null
+            },
+            isDisabled: {
+                ma_thiet_bi: true,
+                phan_loai: true,
+                trang_thai: true,
+                nguon_goc: true,
+                dia_diem: true,
+                phan_quyen: true,
+                ho_so: true,
+                bao_hanh: true,
+                kiem_dinh: true,
+                tags: true,
+                ghi_chu: true,
+                mo_ta: true
             }
         };
+
+        this.currentUserRights = currentUserService.getCurrentUserRights();
+
+        $scope.$watch('tbisListMajorInputForm.currentUserRights.tbis.fieldsCanUpdate', (newVal) => {
+            // Khóa các vùng không cho phép cập nhật tùy theo phân quyền người dùng
+            if (this.mode === 'update') {
+                if (_.isArray(newVal)) {
+                    _.each(_.keys(this.liveOptions.isDisabled), (key) => {
+                        this.liveOptions.isDisabled[key] = true;
+                    });
+                    _.each(newVal, (field) => {
+                        this.liveOptions.isDisabled[field] = false;
+                    });
+                }
+            }
+        });
 
         $scope.$on('reset-tbis-list-major-input-form', (event, args) => {
             this.addNewThietBiForm.$setPristine();
@@ -110,13 +140,16 @@ export default angular.module(name, [
     TbisDiaDiemDataService,
     TbisReferenceDataService,
 
-    TsktThongSoKyThuatDataService
+    TsktThongSoKyThuatDataService,
+
+    CurrentUserService
 ]).component(name, {
     template,
     controllerAs: name,
     bindings: {
         vm: '=',
-        isPreserveSelect: '='
+        isPreserveSelect: '=',
+        mode: '@'
     },
     controller: TbisListMajorInputForm
 });

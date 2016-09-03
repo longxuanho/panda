@@ -2,6 +2,7 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
 import ngMessages from 'angular-messages';
+import _ from 'underscore';
 
 import fabTemplate from './tbisDetailsViewHoSoViewUpdateMiniFab.html';
 import modalTemplate from './tbisDetailsViewHoSoViewUpdateModal.html';
@@ -16,6 +17,8 @@ import { name as TbisDataSerivce } from '../../../services/thietbis/tbisDataServ
 import { name as NotificationService } from '../../../services/common/notificationService';
 import { name as TsktThongSoKyThuatDataService } from '../../../services/thietbis/tsktThongSoKyThuatDataService';
 
+import { name as CurrentUserService } from '../../../services/common/currentUserService';
+
 
 class TbisDetailsViewHoSoViewUpdateMiniFab {
     constructor($mdDialog, $mdMedia) {
@@ -27,10 +30,13 @@ class TbisDetailsViewHoSoViewUpdateMiniFab {
 
     open(event) {
         this.$mdDialog.show({
-            controller($mdDialog, tbisDataService, metadataService, notificationService, tsktThongSoKyThuatDataService) {
+            controller($mdDialog, tbisDataService, metadataService, notificationService, tsktThongSoKyThuatDataService, currentUserService) {
                 'ngInject';
 
+
                 this.cloneSelectedThietBi = angular.copy(tbisDataService.getSelectedThietBi());
+
+                this.currentUserRights = currentUserService.getCurrentUserRights();
 
                 this.solveThongSoKyThuats = () => {
                     if (this.cloneSelectedThietBi.thietbi)
@@ -168,7 +174,8 @@ export default angular.module(name, [
     TbisDataSerivce,
     MetadataService,
     TsktThongSoKyThuatDataService,
-    NotificationService
+    NotificationService,
+    CurrentUserService
 ]).component(name, {
     template: fabTemplate,
     controllerAs: name,

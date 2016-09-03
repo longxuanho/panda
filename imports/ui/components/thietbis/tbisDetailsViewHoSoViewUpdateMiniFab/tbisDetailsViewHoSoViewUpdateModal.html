@@ -14,7 +14,10 @@
             <md-tab label="Thống kê" md-on-select="tbisDetailsViewHoSoViewUpdateModal.tabSelected='tong_quan'">
                 <md-content>
                     <p class="md-body-1" style="padding: 16px 16px 0px 16px;">Vui lòng cập nhật các thông tin thiết bị theo mẫu phiếu dưới đây:</p>
-                    <tbis-list-major-input-form vm="tbisDetailsViewHoSoViewUpdateModal.cloneSelectedThietBi.thietbi"></tbis-list-major-input-form>
+                    <tbis-list-major-input-form
+                            vm="tbisDetailsViewHoSoViewUpdateModal.cloneSelectedThietBi.thietbi"
+                            mode="update">
+                    </tbis-list-major-input-form>
                 </md-content>
             </md-tab>
             <md-tab label="Thông số" md-on-select="tbisDetailsViewHoSoViewUpdateModal.tabSelected='thong_so'">
@@ -36,7 +39,9 @@
                     </tbis-details-update-vi-tri-tab>
                 </md-content>
             </md-tab>
-            <md-tab label="Dark Zone" md-on-select="tbisDetailsViewHoSoViewUpdateModal.tabSelected='dark_zone'">
+            <md-tab label="Dark Zone"
+                    ng-if="tbisDetailsViewHoSoViewUpdateModal.currentUserRights.tbis.isAllowRemove"
+                    md-on-select="tbisDetailsViewHoSoViewUpdateModal.tabSelected='dark_zone'">
                 <md-content class="md-padding">
                     <tbis-details-dark-zone-tab done="tbisDetailsViewHoSoViewUpdateModal.close()"></tbis-details-dark-zone-tab>
                 </md-content>

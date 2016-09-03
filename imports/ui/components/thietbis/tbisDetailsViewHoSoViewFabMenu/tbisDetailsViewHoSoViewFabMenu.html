@@ -11,7 +11,7 @@
                 <md-icon md-svg-src="img/icons/common/apps.svg"></md-icon>
             </md-button>
             <tbis-details-image-mini-fab></tbis-details-image-mini-fab>
-            <tbis-details-view-ho-so-view-update-mini-fab></tbis-details-view-ho-so-view-update-mini-fab>
+            <tbis-details-view-ho-so-view-update-mini-fab ng-if="tbisDetailsViewHoSoViewFabMenu.currentUserRights.tbis.isAllowUpdate"></tbis-details-view-ho-so-view-update-mini-fab>
         </md-fab-actions>
     </md-toolbar>
 </md-fab-toolbar>

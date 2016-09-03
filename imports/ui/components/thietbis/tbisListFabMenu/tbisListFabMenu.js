@@ -6,7 +6,7 @@ import { name as TbisListFilterPanelMiniFab } from '../tbisListFilterPanelMiniFa
 import { name as TbisListAddNewMiniFab } from '../tbisListAddNewMiniFab/tbisListAddNewMiniFab';
 
 class TbisListFabMenu {
-    constructor($scope, $timeout) {
+    constructor($scope, currentUserService) {
         'ngInject';
         this.clickIcon = 'menu';
         this.isOpen = false;
@@ -32,7 +32,7 @@ const name = 'tbisListFabMenu';
 export default angular.module(name, [
     angularMeteor,
     TbisListFilterPanelMiniFab,
-    TbisListAddNewMiniFab
+    TbisListAddNewMiniFab,
 ]).component(name, {
     template,
     controllerAs: name,
