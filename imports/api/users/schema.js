@@ -152,7 +152,9 @@ Schema.User = new SimpleSchema({
             rights: [],
             zones: [],
             assets: [],
-            donvies: []
+            donvies: [],
+            updatefields: [],
+            exports: []
         }
     },
     // In order to avoid an 'Exception in setInterval callback' from Meteor

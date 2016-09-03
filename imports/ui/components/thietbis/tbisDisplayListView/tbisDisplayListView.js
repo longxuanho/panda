@@ -19,7 +19,7 @@ import { name as UtilsFilterDataService } from '../../../services/workspaces/uti
 
 
 class TbisDisplayListView {
-    constructor($reactive, $scope, userLocalSettingsService, tbisDataService, subscribeDataService, utilsFilterDataService) {
+    constructor($reactive, $scope, userLocalSettingsService, tbisDataService, subscribeDataService, utilsFilterDataService, $timeout) {
         'ngInject';
         $reactive(this).attach($scope);
 
