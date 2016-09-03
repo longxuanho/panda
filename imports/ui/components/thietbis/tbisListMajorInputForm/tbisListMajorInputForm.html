@@ -1,5 +1,6 @@
 <form name="tbisListMajorInputForm.addNewThietBiForm">
     <md-list>
+
         <!--Section: Mã thiết bị-->
         <md-divider></md-divider>
         <md-subheader class="md-no-sticky">Mã thiết bị</md-subheader>
@@ -23,6 +24,7 @@
                        ng-disabled="tbisListMajorInputForm.mode==='update' && tbisListMajorInputForm.liveOptions.isDisabled.ma_thiet_bi" name="ma_maximo">
             </md-input-container>
         </md-list-item>
+
         <!--Section: Phân loại-->
         <md-divider></md-divider>
         <md-subheader class="md-no-sticky">Phân loại</md-subheader>
@@ -171,6 +173,12 @@
                         <input ng-model="tbisListMajorInputForm.vm.dia_diem.line"
                                ng-disabled="tbisListMajorInputForm.mode==='update' && tbisListMajorInputForm.liveOptions.isDisabled.dia_diem"
                                name="dia_diem_line">
+                    </md-input-container>
+                    <md-input-container class="md-block" flex="50">
+                        <label>Cầu cảng</label>
+                        <input ng-model="tbisListMajorInputForm.vm.dia_diem.cau_cang"
+                               ng-disabled="tbisListMajorInputForm.mode==='update' && tbisListMajorInputForm.liveOptions.isDisabled.dia_diem"
+                               name="dia_diem_cau_cang">
                     </md-input-container>
                 </div>
             </div>

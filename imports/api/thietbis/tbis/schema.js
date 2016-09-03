@@ -106,6 +106,10 @@ Schema.ThietBi = new SimpleSchema({
             type: String,
             optional: true
         },
+        'dia_diem.cau_cang': {
+            type: String,
+            optional: true
+        },
         'dia_diem.toa_do': {
             type: Object,
             defaultValue: {}
