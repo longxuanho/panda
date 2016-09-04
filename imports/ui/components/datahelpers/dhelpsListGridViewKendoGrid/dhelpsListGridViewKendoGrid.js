@@ -148,6 +148,7 @@ function initKendoGridFilterMenu(gridOptions) {
 }
 
 function solveKendoGridColumnsBasedOnSubject(module, subject) {
+    "use strict";
     let db = {
         "commons": {
             "quocgias": [
@@ -405,7 +406,7 @@ function solveKendoGridColumnsBasedOnSubject(module, subject) {
         },
         "thongsokts": {
             "nhomtskts": [
-                , {
+                {
                     field: "dataSource.loai_thiet_bi",
                     title: "Loại thiết bị",
                     width: "240px"
