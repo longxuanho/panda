@@ -3,26 +3,27 @@ import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 
 import template from './workspacesList.html';
+import { name as CurrentUserService } from '../../../services/common/currentUserService';
 
 import { name as UserLocalSettingsService } from '../../../services/common/userLocalSettingsService';
 import { name as WorkspacesDataService } from '../../../services/workspaces/workspacesDataService';
 
 class WorkspacesList {
-    constructor($scope, $reactive, workspacesDataService) {
+    constructor($scope, $reactive, workspacesDataService, currentUserService) {
         'ngInject';
 
         $reactive(this).attach($scope);
 
-        this.workspaceOptionsDB = workspacesDataService.getWorkspaceOptionsDB();
+        this.currentUser = currentUserService.getCurrentUser(); // Dùng để xác định xem user đã kích hoạt (verify) hay chưa
 
+        this.workspaceOptionsDB = workspacesDataService.getWorkspaceOptionsDB();
 
         // NavSideBar
         this.currentNavSideBarOptions = workspacesDataService.getCurrentNavSideBarOptions();
         this.navSideBarOptionsDB = workspacesDataService.getNavSideBarOptionsDB();
 
-        // $scope.$watch('workspacesList.currentNavSideBarOptions.options.currentModule', (newVal) => {
-        //     workspacesDataService.setNavSideBarOptionsDB(newVal);
-        // });
+
+
     }
 
     setNavSideBarCurrentModule(moduleName) {
@@ -44,6 +45,7 @@ const name = 'workspacesList';
 export default angular.module(name, [
     angularMeteor,
     uiRouter,
+    CurrentUserService,
     UserLocalSettingsService,
     WorkspacesDataService
 ])

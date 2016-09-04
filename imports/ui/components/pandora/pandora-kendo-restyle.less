@@ -18,6 +18,21 @@
 .k-grid-filter.k-state-active .k-icon {
   opacity: 1.0 !important;
 }
+.k-grid {
+  tr.k-state-selected {
+    background-color: rgba(255,64,129,0.87);
+    &:hover td {
+      background-color: rgba(255,64,129,0.87);
+    }
+    &>td {
+      border-color: transparent;
+    }
+  }
+}
+
+
+
+
 
 .k-multiselect{
   .k-button {

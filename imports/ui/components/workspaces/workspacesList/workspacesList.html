@@ -1,4 +1,4 @@
-<md-content layout="column">
+<md-content layout="column" ng-if="workspacesList.currentUser.user.emails[0].verified" class="no-animate">
     <md-list flex>
         <md-subheader class="md-no-sticky">
             Bàn làm việc tập hợp tất cả các liên kết mà bạn có thể truy cập trong hệ
@@ -34,4 +34,9 @@
             </md-list-item>
         </a>
     </md-list>
+</md-content>
+
+<md-content ng-if="!workspacesList.currentUser.user.emails[0].verified" class="no-animate" layout="column" layout-align="center center" layout-padding>
+    <img ng-src="img/icons/workspaces/locked.svg" style="width: 300px;"/>
+    <p class="md-body-1">Tài khoản của bạn hiện chưa được kích hoạt. Xin vui lòng kiểm tra thông tin cá nhân và liên hệ với người quản trị để tiến hành kích hoạt tài khoản này.</p>
 </md-content>
