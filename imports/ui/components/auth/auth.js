@@ -3,6 +3,7 @@ import angularMeteor from 'angular-meteor';
 
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
+import { Roles } from 'meteor/alanning:roles';
 
 import screenfull from '../../../lib/screenfull/screenfull';
 
@@ -36,6 +37,9 @@ class Auth {
         this.helpers({
             isLoggedIn() {
                 return !!Meteor.userId();
+            },
+            isAuthorized() {
+                return Roles.userIsInRole(Meteor.userId(), 'admin', 'sky-project');
             },
             currentUserId() {
                 return Meteor.userId();

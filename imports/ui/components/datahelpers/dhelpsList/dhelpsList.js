@@ -1,5 +1,6 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
+import { Roles } from 'meteor/alanning:roles';
 import uiRouter from 'angular-ui-router';
 
 import template from './dhelpsList.html';
@@ -45,10 +46,10 @@ function config($stateProvider) {
             template: '<dhelps-list></dhelps-list>',
             resolve: {
                 currentUser($q) {
-                    if (Meteor.userId() === null) {
-                        return $q.reject('AUTH_REQUIRED');
-                    } else {
+                    if (Roles.userIsInRole(Meteor.userId(), ['admin'], 'sky-project')) {
                         return $q.resolve();
+                    } else {
+                        return $q.reject('AUTH_REQUIRED');
                     }
                 }
             }

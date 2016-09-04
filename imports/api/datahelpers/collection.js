@@ -1,18 +1,16 @@
 import { Mongo } from 'meteor/mongo';
+import { Roles } from 'meteor/alanning:roles';
 
 export const DataHelpers = new Mongo.Collection('datahelpers');
 
 DataHelpers.allow({
-    insert(userId, thietBi) {
-        return true;
-        // return userId && thietBi.owner === userId;
+    insert(userId, doc) {
+        return (Roles.userIsInRole(userId, ['admin'], 'sky-project'));
     },
-    update(userId, thietBi, fields, modifier) {
-        return true;
-        // return userId && thietBi.owner === userId;
+    update(userId, doc, fields, modifier) {
+        return (Roles.userIsInRole(userId, ['admin'], 'sky-project'));
     },
-    remove(userId, thietBi) {
-        return true;
-        // return userId && thietBi.owner === userId;
+    remove(userId, doc) {
+        return (Roles.userIsInRole(userId, ['admin'], 'sky-project'));
     }
 });

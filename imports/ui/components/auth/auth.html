@@ -24,6 +24,15 @@
                     </div>
                 </md-button>
             </md-menu-item>
+            <md-menu-item ng-if="auth.isAuthorized">
+                <md-button ui-sref="dhelpsList">
+                    <!--<div layout="row" flex style="padding-top: 7px;">-->
+                    <div layout="row" flex>
+                        <p flex>Datahelpers</p>
+                        <md-icon md-svg-icon="img/icons/common/dvr.svg" style="margin: auto 3px auto 0;"></md-icon>
+                    </div>
+                </md-button>
+            </md-menu-item>
             <md-menu-item>
                 <md-button ng-click="auth.logout()">
                     <div layout="row" flex>

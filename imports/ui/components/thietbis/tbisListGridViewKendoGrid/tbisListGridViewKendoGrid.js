@@ -331,6 +331,11 @@ function initKendoGridColumns(options) {
             width: "180px",
             groupable: false
         }, {
+            field: "dia_diem.cau_cang",
+            title: "Cầu cảng",
+            width: "180px",
+            groupable: false
+        }, {
             field: "dia_diem.toa_do.enableAPI",
             title: "Cập nhật vị trí qua API?",
             width: "420px",
