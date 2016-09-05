@@ -461,6 +461,10 @@ Schema.ThietBi = new SimpleSchema({
             type: Number,
             optional: true
         },
+        'thong_so_hoat_dong.co_cau': {
+            type: Object,
+            defaultValue: {}
+        },
     statistics: {
         type: Object,
         defaultValue: {}
