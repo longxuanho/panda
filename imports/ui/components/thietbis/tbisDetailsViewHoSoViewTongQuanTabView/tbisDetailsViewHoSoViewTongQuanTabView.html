@@ -40,10 +40,10 @@
     <md-subheader class="md-no-sticky">Phân quyền</md-subheader>
     <md-list-item layout="column" layout-align="start start">
         <p>
-            <span class="sky-typo-strong">Quản lý:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.phan_quyen.quan_ly.ten}}</span>
+            <span class="sky-typo-strong">Sở hữu:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.phan_quyen.so_huu.ten}}</span>
         </p>
         <p>
-            <span class="sky-typo-strong">Sở hữu:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.phan_quyen.so_huu.ten}}</span>
+            <span class="sky-typo-strong">Quản lý:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.phan_quyen.quan_ly.ten}}</span>
         </p>
         <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.phan_quyen.van_hanh.ten">
             <span class="sky-typo-strong">Vận hành:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.phan_quyen.van_hanh.ten}}</span><span class="sky-typo-normal" ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.phan_quyen.doi_van_hanh.ten">, {{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.phan_quyen.doi_van_hanh.ten}}.</span>
@@ -72,7 +72,7 @@
         <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ho_so.xuat_xu">
             <span class="sky-typo-strong">Xuất xứ:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ho_so.xuat_xu}}</span>
         </p>
-        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ho_so.xuat_xu">
+        <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ho_so.cap_chat_luong">
             <span class="sky-typo-strong">Cấp chất lượng:&nbsp;</span><span class="sky-typo-normal">{{tbisDetailsViewHoSoViewTongQuanTabView.selectedThietBi.thietbi.ho_so.cap_chat_luong}}</span>
         </p>
         <p ng-show="tbisDetailsViewHoSoViewTongQuanTabView.isEmptyThongTinDangKy()">
