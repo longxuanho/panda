@@ -37,7 +37,7 @@ class TbisListMajorInputForm {
             }
         ]);
 
-        this.subscribe('tskthelpers');
+        // this.subscribe('tskthelpers');
 
         this.helpers({
             tbishelpers() {
@@ -50,9 +50,9 @@ class TbisListMajorInputForm {
                 this.buildSelectOptions();
                 return null;
             },
-            tskthelpers() {
-                tsktThongSoKyThuatDataService.queryAll();
-            }
+            // tskthelpers() {
+            //     tsktThongSoKyThuatDataService.queryAll();
+            // }
         });
 
 
