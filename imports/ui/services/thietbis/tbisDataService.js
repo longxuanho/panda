@@ -94,7 +94,7 @@ class TbisDataService {
         if ((data.ho_so.thiet_bi_di_kem.isThietBiDiKem && data.ho_so.thiet_bi_di_kem.danh_sach.length))
             data.ho_so.thiet_bi_di_kem.str_danh_sach = data.ho_so.thiet_bi_di_kem.danh_sach.join(", ");
 
-        if (data.kiem_dinh.isThongTinKiemDinh && (data.kiem_dinh.thoi_gian.ngay_bat_dau && data.kiem_dinh.thoi_gian.ngay_ket_thuc)) {
+        if (data.kiem_dinh.isThongTinKiemDinh && (data.kiem_dinh.thoi_gian.ngay_hieu_luc && data.kiem_dinh.thoi_gian.ngay_het_han)) {
             data.kiem_dinh.stringify.ngay_hieu_luc = moment(data.kiem_dinh.thoi_gian.ngay_hieu_luc).format('YYYY-MM-DD');
             data.kiem_dinh.stringify.ngay_het_han = moment(data.kiem_dinh.thoi_gian.ngay_het_han).format('YYYY-MM-DD');
             data.kiem_dinh.isTrongThoiGianKiemDinh = moment(data.kiem_dinh.thoi_gian.ngay_het_han).isAfter(moment());
@@ -353,6 +353,7 @@ class TbisDataService {
     }
 
     massageThietBisFetchedData(response) {
+        let now = moment();
         let nullText = '(Chưa xác định)';
         let nullNumber = '-';
         _.each(response, (item) => {
@@ -374,7 +375,13 @@ class TbisDataService {
                 item.phan_quyen.doi_van_hanh.ten = nullText;
             if (!item.dia_diem.dia_phuong)
                 item.dia_diem.dia_phuong = nullText;
+            // Tính lại trường isTrongThoiGianKiemDinh và isTrongThoiGianBaoHanh
+            if (item.bao_hanh.isThongTinBaoHanh && item.bao_hanh.thoi_gian.ngay_ket_thuc)
+                item.bao_hanh.isTrongThoiGianBaoHanh = moment(item.bao_hanh.thoi_gian.ngay_ket_thuc).isAfter(now);
+            if (item.kiem_dinh.isThongTinKiemDinh && item.kiem_dinh.thoi_gian.ngay_het_han)
+                item.kiem_dinh.isTrongThoiGianKiemDinh = moment(item.kiem_dinh.thoi_gian.ngay_het_han).isAfter(now);
         });
+
         return response;
     }
 }

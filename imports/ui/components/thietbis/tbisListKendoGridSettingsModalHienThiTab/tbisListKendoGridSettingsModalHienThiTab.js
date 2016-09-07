@@ -13,7 +13,9 @@ class TbisListKendoGridSettingsModalHienThiTab {
 
         this.kendoGridOptions = kendoGridDataService.getCurrentKendoGridOptions();
 
-        this.availableColumns = resolveAvailableColumns(this.kendoGridOptions.options.columns);
+        this.availableColumns = this.kendoGridOptions.gridRef.getOptions().columns;
+
+        resolveAvailableColumns(this.availableColumns);
 
     }
 
@@ -44,5 +46,4 @@ function resolveAvailableColumns(columns) {
     _.each(columns, (column) => {
         column.isVisible = !column.hidden
     });
-    return columns;
 }

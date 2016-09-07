@@ -107,10 +107,17 @@
       }
     }
   }
+
   &-fix-kendo-date-picker {
     .k-picker-wrap {
       background-color: transparent;
       border-width: 0;
+      & .k-select {
+        border-width: 0;
+      }
+      &.k-state-default>.k-select {
+        border-color: transparent;
+      }
       &.k-state-hover, &.k-state-focused {
         box-shadow: none;
         input {

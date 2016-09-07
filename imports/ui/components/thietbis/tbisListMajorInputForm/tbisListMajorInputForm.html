@@ -333,13 +333,13 @@
             <md-input-container flex="50">
                 <label>Ngày bắt đầu</label>
                 <input kendo-date-picker k-format="'dd/MM/yyyy'"
-                       k-ng-disabled="tbisListMajorInputForm.mode==='update' && tbisListMajorInputForm.liveOptions.isDisabled.bao_hanh"
+                       ng-disabled="tbisListMajorInputForm.mode==='update' && tbisListMajorInputForm.liveOptions.isDisabled.bao_hanh"
                        style="width: 100%;" k-ng-model="tbisListMajorInputForm.vm.bao_hanh.thoi_gian.ngay_bat_dau" type="date"/>
             </md-input-container>
             <md-input-container flex="50">
                 <label>Ngày kết thúc</label>
                 <input kendo-date-picker k-format="'dd/MM/yyyy'"
-                       k-ng-disabled="tbisListMajorInputForm.mode==='update' && tbisListMajorInputForm.liveOptions.isDisabled.bao_hanh"
+                       ng-disabled="tbisListMajorInputForm.mode==='update' && tbisListMajorInputForm.liveOptions.isDisabled.bao_hanh"
                        style="width: 100%;" k-ng-model="tbisListMajorInputForm.vm.bao_hanh.thoi_gian.ngay_ket_thuc" type="date"/>
             </md-input-container>
         </md-list-item>
@@ -371,13 +371,13 @@
             <md-input-container flex="50">
                 <label>Ngày hiệu lực</label>
                 <input kendo-date-picker
-                       k-ng-disabled="tbisListMajorInputForm.mode==='update' && tbisListMajorInputForm.liveOptions.isDisabled.kiem_dinh"
+                       ng-disabled="tbisListMajorInputForm.mode==='update' && tbisListMajorInputForm.liveOptions.isDisabled.kiem_dinh"
                        k-format="'dd/MM/yyyy'" style="width: 100%;" k-ng-model="tbisListMajorInputForm.vm.kiem_dinh.thoi_gian.ngay_hieu_luc" type="date"/>
             </md-input-container>
             <md-input-container flex="50">
                 <label>Ngày hết hạn</label>
                 <input kendo-date-picker k-format="'dd/MM/yyyy'"
-                       k-ng-disabled="tbisListMajorInputForm.mode==='update' && tbisListMajorInputForm.liveOptions.isDisabled.kiem_dinh"
+                       ng-disabled="tbisListMajorInputForm.mode==='update' && tbisListMajorInputForm.liveOptions.isDisabled.kiem_dinh"
                        style="width: 100%;" k-ng-model="tbisListMajorInputForm.vm.kiem_dinh.thoi_gian.ngay_het_han" type="date"/>
             </md-input-container>
         </md-list-item>
