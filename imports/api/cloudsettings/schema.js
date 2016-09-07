@@ -45,6 +45,10 @@ Schema.CloudSetting = new SimpleSchema({
         type: Number,
         defaultValue: 100
     },
+    icon: {
+        type: String,
+        optional: true
+    },
     isPublic: {
         type: Boolean,
         defaultValue: false

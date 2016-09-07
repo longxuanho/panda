@@ -6,6 +6,7 @@ import template from './tbisListKendoGridSettingsModalCauHinhTabDefaultConfigs.h
 import { name as CloudSettingsDataService } from '../../../services/cloudsettings/cloudSettingsDataService';
 import { name as KendoGridDataService } from '../../../services/workspaces/kendoGridDataService';
 import { name as NotificationService } from '../../../services/common/notificationService';
+import { name as ImageFallback } from '../../../directives/common/imageFallback';
 
 class TbisListKendoGridSettingsModalCauHinhTabDefaultConfigs {
     constructor($reactive, $scope, cloudSettingsDataService, notificationService, kendoGridDataService) {
@@ -48,7 +49,8 @@ export default angular.module(name, [
     angularMeteor,
     CloudSettingsDataService,
     NotificationService,
-    KendoGridDataService
+    KendoGridDataService,
+    ImageFallback
 ]).component(name, {
     template: template,
     controllerAs: name,

@@ -178,8 +178,8 @@ function initKendoGridColumns(options) {
             hidden: true
         }, {
             field: "nguon_goc.vendor",
-            title: "Vendor",
-            width: "180px",
+            title: "Nhà cung cấp",
+            width: "240px",
             aggregates: ["count"],
             groupHeaderTemplate: "Vendor: #= value # (#= count#)",
             hidden: true

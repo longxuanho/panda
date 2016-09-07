@@ -7,12 +7,12 @@
                 <md-button class="md-primary"
                            style="margin-right: 30px;"
                            ng-disabled="userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab.phanQuyenDescForm.$invalid"
-                           ng-click="userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab.addNewDescription()"
-                           > Thêm mô tả
+                           ng-click="userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab.addNewDescription()">
+                    Thêm mô tả
                 </md-button>
             </div>
             <form name="userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab.phanQuyenDescForm">
-                                <div ng-repeat="description in userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab.selectedUserPhanQuyenDesc track by $index" layout="column" style="width: 100%; padding: 0 16px;" >
+                <div ng-repeat="description in userDetailsViewQuanLyTabUpdatePhanQuyenModalMoTaTab.selectedUserPhanQuyenDesc track by $index" layout="column" style="width: 100%; padding: 0 16px;" >
                     <div layout="row" layout-align="start center" flex="100">
                         <md-input-container class="md-block" flex>
                             <label>Module</label>

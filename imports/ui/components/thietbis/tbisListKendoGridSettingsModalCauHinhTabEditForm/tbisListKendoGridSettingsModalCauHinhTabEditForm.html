@@ -11,11 +11,27 @@
             <div ng-message="required">Thông tin bắt buộc.</div>
         </div>
     </md-input-container>
+    <div layout="row" flex>
+        <md-input-container class="md-block" flex="30">
+            <label>Mức ưu tiên</label>
+            <input  type="number"
+                    name="cloud_setting_order"
+                    ng-model="tbisListKendoGridSettingsModalCauHinhTabEditForm.selectedCloudSetting.order" required>
+            <div ng-messages="tbisListKendoGridSettingsModalCauHinhTabEditForm.editForm.cloud_setting_order.$error">
+                <div ng-message="required">Thông tin bắt buộc.</div>
+            </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex="70">
+            <label>Icon</label>
+            <input  name="cloud_setting_icon"
+                    ng-model="tbisListKendoGridSettingsModalCauHinhTabEditForm.selectedCloudSetting.icon">
+        </md-input-container>
+    </div>
     <div layout="row" layout-align="space-around center">
         <md-button class="md-primary no-animate"
                    ng-disabled="tbisListKendoGridSettingsModalCauHinhTabEditFormEditForm.editForm.$invalid || !tbisListKendoGridSettingsModalCauHinhTabEditForm.selectedCloudSetting._id"
                    ng-click="tbisListKendoGridSettingsModalCauHinhTabEditForm.updateSelectedCloudSetting()"  >
-            Đổi tên
+            Cập nhật
         </md-button>
         <md-button class="no-animate"
                    ng-disabled="tbisListKendoGridSettingsModalCauHinhTabEditFormEditForm.editForm.$invalid || !tbisListKendoGridSettingsModalCauHinhTabEditForm.selectedCloudSetting._id"
@@ -23,6 +39,7 @@
             Xóa bỏ
         </md-button>
     </div>
+    <!--<pre>{{tbisListKendoGridSettingsModalCauHinhTabEditForm.selectedCloudSetting|json}}</pre>-->
 </form>
 
 <md-divider></md-divider>
@@ -34,7 +51,7 @@
         </md-subheader>
     </md-list>
     <div style="padding: 0 16px; margin-bottom: 40px;">
-        <md-radio-group  ng-model="tbisListKendoGridSettingsModalCauHinhTabEditForm.selectedCloudSettingId" >
+        <md-radio-group  ng-model="tbisListKendoGridSettingsModalCauHinhTabEditForm.selectedCloudSettingId" class="md-primary">
             <md-radio-button ng-repeat="item in tbisListKendoGridSettingsModalCauHinhTabEditForm.cloudSettingDescriptions" value="{{item._id}}">{{item.dataSource.description}}</md-radio-button>
         </md-radio-group>
     </div>

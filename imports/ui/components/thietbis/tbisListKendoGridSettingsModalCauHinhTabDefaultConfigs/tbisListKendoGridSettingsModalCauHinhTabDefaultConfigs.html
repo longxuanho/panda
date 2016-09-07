@@ -1,21 +1,17 @@
-<md-list flex>
-    <md-subheader class="md-no-sticky">
-        <div layout="row">
-            <div flex layout="row" layout-align="start center">
-                <span ng-show="tbisListKendoGridSettingsModalCauHinhTabDefaultConfigs.cloudSettingDescriptions.length">
-                    Các cấu hình mặc định:
-                </span>
-                <span ng-hide="tbisListKendoGridSettingsModalCauHinhTabDefaultConfigs.cloudSettingDescriptions.length">
-                    Chưa có danh sách các cấu hình mặc định.
-                </span>
+<div>
+    <md-list flex>
+        <md-subheader class="md-no-sticky" >
+            <span ng-show="tbisListKendoGridSettingsModalCauHinhTabDefaultConfigs.cloudSettingDescriptions.length">Các cấu hình mặc định:</span>
+            <span ng-hide="tbisListKendoGridSettingsModalCauHinhTabDefaultConfigs.cloudSettingDescriptions.length">Chưa có danh sách các cấu hình mặc định.</span>
+        </md-subheader>
+        <md-list-item class="md-2-line"
+                      ng-repeat="item in tbisListKendoGridSettingsModalCauHinhTabDefaultConfigs.cloudSettingDescriptions | orderBy: 'order'"
+                      ng-click="tbisListKendoGridSettingsModalCauHinhTabDefaultConfigs.selectedCloudSetting.cloudSetting._id = item._id" >
+            <img image-fallback ng-src="{{item.icon}}" class="md-avatar sky-reset-border-radius"/>
+            <div class="md-list-item-text">
+                <h3>{{item.dataSource.description}}</h3>
             </div>
-        </div>
-    </md-subheader>
-</md-list>
-
-<div style="padding: 0 16px;">
-    <md-radio-group ng-model="tbisListKendoGridSettingsModalCauHinhTabDefaultConfigs.selectedCloudSetting.cloudSetting._id" >
-        <md-radio-button ng-repeat="item in tbisListKendoGridSettingsModalCauHinhTabDefaultConfigs.cloudSettingDescriptions | orderBy: 'order'" value="{{item._id}}">{{item.dataSource.description}}</md-radio-button>
-    </md-radio-group>
+        </md-list-item>
+    </md-list>
 </div>
 <md-divider style="margin-top: 40px;"></md-divider>

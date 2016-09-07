@@ -11,12 +11,29 @@
             <div ng-message="required">Thông tin bắt buộc.</div>
         </div>
     </md-input-container>
+    <div layout="row" flex>
+        <md-input-container class="md-block" flex="30">
+            <label>Mức ưu tiên</label>
+            <input  type="number"
+                    name="cloud_setting_order"
+                    ng-model="tbisListKendoGridSettingsModalCauHinhTabAddNewForm.newCloudSetting.order" required>
+            <div ng-messages="tbisListKendoGridSettingsModalCauHinhTabAddNewForm.addNewForm.cloud_setting_order.$error">
+                <div ng-message="required">Thông tin bắt buộc.</div>
+            </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex="70">
+            <label>Icon</label>
+            <input  name="cloud_setting_icon"
+                    ng-model="tbisListKendoGridSettingsModalCauHinhTabAddNewForm.newCloudSetting.icon">
+        </md-input-container>
+    </div>
+
     <div ng-if="tbisListKendoGridSettingsModalCauHinhTabAddNewForm.isAuthorized">
         <md-checkbox ng-model="tbisListKendoGridSettingsModalCauHinhTabAddNewForm.newCloudSetting.isPublic" aria-label="isPublic">
             Đồng bộ tới tất cả người dùng
         </md-checkbox>
     </div>
-    <pre>{{tbisListKendoGridSettingsModalCauHinhTabAddNewForm.newCloudSetting|json}}</pre>
+    <!--<pre>{{tbisListKendoGridSettingsModalCauHinhTabAddNewForm.newCloudSetting|json}}</pre>-->
     <div layout="row" layout-align="center center">
         <md-button class="md-primary no-animate"
                    ng-disabled="tbisListKendoGridSettingsModalCauHinhTabAddNewForm.addNewForm.$invalid"

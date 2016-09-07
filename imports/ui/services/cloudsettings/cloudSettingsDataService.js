@@ -25,7 +25,8 @@ class CloudSettingsDataService {
         let options = {
             fields: {
                 'dataSource.description': 1,
-                'order': 1
+                'order': 1,
+                'icon': 1
             }
         };
         if (!selector)
@@ -86,7 +87,9 @@ class CloudSettingsDataService {
             _id: cloudSetting._id
         }, {
             $set: {
-                'dataSource.description': cloudSetting.dataSource.description
+                'dataSource.description': cloudSetting.dataSource.description,
+                'order': cloudSetting.order,
+                'icon': cloudSetting.icon
             }
         }, (error) => {
             if (error)
