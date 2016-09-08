@@ -146,7 +146,18 @@
         <md-list-item>
             <div layout="column" layout-fill>
                 <div layout="row">
-                    <md-input-container class="md-block" flex="50">
+                    <md-input-container class="md-block" flex="50" ng-if="tbisListMajorInputForm.mode==='addNew'">
+                        <label>Khu vực</label>
+                        <md-select name="dia_diem_khu_vuc"
+                                   ng-disabled="tbisListMajorInputForm.mode==='update' && tbisListMajorInputForm.liveOptions.isDisabled.dia_diem"
+                                   ng-model="tbisListMajorInputForm.vm.dia_diem.khu_vuc" ng-model-options="{trackBy: '$value.ten'}">
+                            <md-option ng-value="khuvuc" ng-repeat="khuvuc in tbisListMajorInputForm.selectOptions.khuvucs">{{khuvuc.ten}}</md-option>
+                        </md-select>
+                        <div class="errors" ng-messages="tbisListMajorInputForm.addNewThietBiForm.phan_quyen_quan_ly.$error">
+                            <div ng-message="required">Thông tin bắt buộc.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex="50" ng-if="tbisListMajorInputForm.mode==='update'">
                         <label>Khu vực</label>
                         <md-select name="dia_diem_khu_vuc"
                                    ng-disabled="tbisListMajorInputForm.mode==='update' && tbisListMajorInputForm.liveOptions.isDisabled.dia_diem"
@@ -158,6 +169,7 @@
                             <div ng-message="required">Thông tin bắt buộc.</div>
                         </div>
                     </md-input-container>
+
                     <md-input-container class="md-block" flex="50">
                         <label>Terminal</label>
                         <md-select name="dia_diem_terminal"
@@ -193,9 +205,54 @@
         <md-divider></md-divider>
         <md-subheader class="md-no-sticky">Phân quyền</md-subheader>
         <md-list-item>
-            <div layout="column" layout-fill>
+            <div layout="column" layout-fill ng-if="tbisListMajorInputForm.mode==='addNew'">
                 <div layout="row">
+                    <md-input-container class="md-block" flex="50">
+                        <label>Sở hữu</label>
+                        <md-select name="phan_quyen_so_huu"
+                                   ng-disabled="tbisListMajorInputForm.mode==='update' && tbisListMajorInputForm.liveOptions.isDisabled.phan_quyen"
+                                   ng-model="tbisListMajorInputForm.vm.phan_quyen.so_huu" ng-model-options="{trackBy: '$value.ten'}">
+                            <md-option ng-value="dvsohuu" ng-repeat="dvsohuu in tbisListMajorInputForm.selectOptions.donvis | orderBy:'ten'" ng-bind="dvsohuu.ten"></md-option>
+                        </md-select>
+                        <div class="errors" ng-messages="tbisListMajorInputForm.addNewThietBiForm.phan_quyen_so_huu.$error">
+                            <div ng-message="required">Thông tin bắt buộc.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex="50">
+                        <label>Quản lý</label>
+                        <md-select name="phan_quyen_quan_ly"
+                                   ng-disabled="tbisListMajorInputForm.mode==='update' && tbisListMajorInputForm.liveOptions.isDisabled.phan_quyen"
+                                   ng-model="tbisListMajorInputForm.vm.phan_quyen.quan_ly" ng-model-options="{trackBy: '$value.ten'}">
+                            <md-option ng-value="dvquanly" ng-repeat="dvquanly in tbisListMajorInputForm.selectOptions.donvis | orderBy:'ten'" ng-bind="dvquanly.ten"></md-option>
+                        </md-select>
+                        <div class="errors" ng-messages="tbisListMajorInputForm.addNewThietBiForm.phan_quyen_quan_ly.$error">
+                            <div ng-message="required">Thông tin bắt buộc.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout="row" style="margin-bottom: 30px;">
+                    <md-input-container class="md-block" flex="50">
+                        <label>Vận hành</label>
+                        <md-select name="phan_quyen_van_hanh"
+                                   ng-disabled="tbisListMajorInputForm.mode==='update' && tbisListMajorInputForm.liveOptions.isDisabled.phan_quyen"
+                                   ng-model="tbisListMajorInputForm.vm.phan_quyen.van_hanh" ng-model-options="{trackBy: '$value.ten'}"
+                                   ng-change="tbisListMajorInputForm.vm.phan_quyen.doi_van_hanh = {};">
+                            <md-option ng-value="doivanhanh" ng-repeat="doivanhanh in tbisListMajorInputForm.selectOptions.donvis | orderBy:'ten'">{{doivanhanh.ten}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex="50">
+                        <label>Đội vận hành</label>
+                        <md-select name="phan_quyen_doi_van_hanh"
+                                   ng-disabled="tbisListMajorInputForm.mode==='update' && tbisListMajorInputForm.liveOptions.isDisabled.phan_quyen"
+                                   ng-model="tbisListMajorInputForm.vm.phan_quyen.doi_van_hanh" ng-model-options="{trackBy: '$value.ten'}">
+                            <md-option ng-value="doivanhanh" ng-repeat="doivanhanh in tbisListMajorInputForm.selectOptions.doivanhanhs[tbisListMajorInputForm.vm.phan_quyen.van_hanh.ma] | orderBy:'ten'">{{doivanhanh.ten}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+            </div>
 
+            <div layout="column" layout-fill ng-if="tbisListMajorInputForm.mode==='update'">
+                <div layout="row">
                     <md-input-container class="md-block" flex="50">
                         <label>Sở hữu</label>
                         <md-select name="phan_quyen_so_huu"
