@@ -139,6 +139,15 @@ if (Meteor.isServer) {
         return;
 
     });
+
+    Meteor.publish('thietbis-details', function(thietbiId) {
+        if (typeof thietbiId === 'string' && thietbiId) {
+            return ThietBis.find({_id: thietbiId});
+        }
+        // Automatic fail với các trường hợp khác
+        this.stop();
+        return;
+    });
 }
 
 // View:
