@@ -32,7 +32,7 @@ ThietBis.before.update((userId, doc, fieldNames, modifier, options) => {
             modifier.$set = {};
     }
 
-    if (_.isEmpty(!modifier.$set)) {
+    if (!_.isEmpty(modifier.$set)) {
         // Cập nhật searchField cho thiết  bị
         if (modifier.$set.metadata)
             modifier.$set.metadata.searchField =  buildSearchField(doc);
