@@ -1,4 +1,4 @@
-<md-content layout="row" layout-align="center start" layout-fill layout-margin>
+<md-content layout="row" layout-align="center start" layout-margin>
     <md-whiteframe layout="column" flex flex-md="50" flex-lg="50" flex-gt-lg="33" class="md-whiteframe-z2" layout-fill>
         <md-toolbar class="md-primary md-tall" layout="column" layout-align="end" layout-fill>
             <div layout="row" class="md-toolbar-tools md-toolbar-tools-bottom">
@@ -9,12 +9,9 @@
         </md-toolbar>
         <div layout="column" layout-fill layout-padding>
             <form name="login.loginForm" layout="column">
-                <div layout="row" layout-fill>
-                    <p class="md-body-2">
-                        Đăng nhập Skynet bằng tài khoản của tôi
-                    </p>
-                </div>
-
+                <p class="md-body-2">
+                    Đăng nhập Skynet bằng tài khoản của tôi
+                </p>
                 <md-input-container>
                     <label>Email của tôi</label>
                     <input type="email" ng-model="login.credentials.email" name="creadentials_email" aria-label="email" required ng-pattern="/^.+@.+\..+$/"/>
