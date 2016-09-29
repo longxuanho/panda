@@ -66,6 +66,7 @@ class TbisDetailsViewHoSoViewUpdateMiniFab {
                 this.save = () => {
                     try {
                         metadataService.buildUpdateMetadata(this.cloneSelectedThietBi.thietbi, Meteor.user());
+                        tbisDataService.buildSearchField(this.cloneSelectedThietBi.thietbi);
                         tbisDataService.validateMajorInputThietBiData(this.cloneSelectedThietBi.thietbi);
                         tbisDataService.updateMajorForm(this.cloneSelectedThietBi.thietbi).then(() => {
                             notificationService.success('Thay đổi của bạn đã được ghi nhận vào Skynet.', 'Cập nhật thành công');

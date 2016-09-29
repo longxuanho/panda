@@ -384,6 +384,10 @@ class TbisDataService {
 
         return response;
     }
+
+    buildSearchField(doc) {
+        doc.metadata.searchField = `[id]${doc.ma_thiet_bi.keyId} : [id]${doc.ma_thiet_bi.topX} : [id]${doc.ma_thiet_bi.maximo} : [hsx]${doc.nguon_goc.hang_san_xuat} : [model]${doc.nguon_goc.model} : [sokhung]${doc.ho_so.so_khung} : [somay]${doc.ho_so.so_may} : [bienso]${doc.ho_so.bien_so}`;
+    }
 }
 
 const name = 'tbisDataService';
