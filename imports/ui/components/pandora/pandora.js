@@ -36,6 +36,8 @@ import { name as UserDetails } from '../users/userDetails/userDetails';
 
 import { name as WorkspacesList } from '../workspaces/workspacesList/workspacesList';
 
+import { name as CalendarsList } from '../schedulers/calendarsList/calendarsList';
+
 import { name as DhelpsList } from '../datahelpers/dhelpsList/dhelpsList';
 
 import { name as WorkspacesDataService } from '../../services/workspaces/workspacesDataService';
@@ -75,6 +77,7 @@ export default angular.module(name, [
     UserDetails,
     UsersList,
     WorkspacesList,
+    CalendarsList,
     DhelpsList,
     WorkspacesDataService,
     SubscribeDataService,
