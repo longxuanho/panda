@@ -138,6 +138,27 @@ function queryNavSideBarOptionsDB() {
                 }
             ]
         }, {
+            module: 'schedulers',
+            text: 'Lịch trình',
+            title: 'Lịch trình',
+            icon: 'img/icons/schedulers/calendar.svg',
+            background: 'deepBlue',
+            options: [
+                {
+                    icon: 'img/icons/workspaces/dashboard.svg',
+                    title: 'Lịch của tôi',
+                    url: '/lich-trinh/lich-cua-toi'
+                }, {
+                    icon: 'img/icons/common/date_range.svg',
+                    title: 'Kế hoạch công việc',
+                    url: '/lich-trinh/ke-hoach'
+                }, {
+                    icon: 'img/icons/workspaces/dvr.svg',
+                    title: 'Thông báo',
+                    url: '/lich-trinh/thong-bao'
+                }
+            ]
+        }, {
             module: 'cauhois',
             text: 'Câu hỏi NGB',
             title: 'Câu hỏi NGB',
